@@ -5,7 +5,7 @@ const SignUpInfo = ({ formData, setFormData }) => {
          <div>
             <label
                htmlFor='fname'
-               className='block mb-2 text-sm font-medium text-gray-900'
+               className='inline-block mb-2 text-sm font-medium text-gray-900'
             >
                Your full name
             </label>
@@ -25,7 +25,7 @@ const SignUpInfo = ({ formData, setFormData }) => {
          <div>
             <label
                htmlFor='email'
-               className='block mb-2 text-sm font-medium text-gray-900'
+               className='inline-block mb-2 text-sm font-medium text-gray-900'
             >
                Your email
             </label>

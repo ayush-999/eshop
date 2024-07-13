@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import SignUpInfo from './SignUpInfo';
 import PersonalInfo from './PersonalInfo';
 import OtherInfo from './OtherInfo';
+import { server } from '../../server';
 
 const SignUp = () => {
    const [page, setPage] = useState(0);
@@ -23,14 +25,39 @@ const SignUp = () => {
       } else if (page === 1) {
          return <PersonalInfo formData={formData} setFormData={setFormData} />;
       } else {
-         return <OtherInfo formData={formData} setFormData={setFormData} />;
+         return (
+            <OtherInfo
+               formData={formData}
+               setFormData={setFormData}
+               passwordsMatch={passwordsMatch}
+            />
+         );
       }
    };
 
-   const handleSubmit = () => {
-      const formDataCopy = { ...formData };
-      formDataCopy.userPic = formData.userPic ? formData.userPic.name : null;
-      console.log(formDataCopy);
+   const handleSubmit = async (e) => {
+      e.preventDefault();
+      const newForm = new FormData();
+      newForm.append('name', formData.fname);
+      newForm.append('email', formData.email);
+      if (formData.userPic) {
+         newForm.append('file', formData.userPic);
+      }
+      newForm.append('addresses[country]', formData.userCountry);
+      newForm.append('password', formData.password);
+      const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+
+      axios
+         .post(`${server}/user/create-user`, newForm, config)
+         .then((res) => {
+            console.log(res);
+            if (res.data.success === true) {
+               navigate('/sign-in');
+            }
+         })
+         .catch((err) => {
+            console.log(err);
+         });
    };
 
    const isNextDisabled = () => {
@@ -39,9 +66,15 @@ const SignUp = () => {
       } else if (page === 1) {
          return !formData.userPic || !formData.userCountry;
       } else if (page === 2) {
-         return !formData.password || !formData.confirmPassword;
+         return (
+            !formData.password || !formData.confirmPassword || !passwordsMatch()
+         );
       }
       return false;
+   };
+
+   const passwordsMatch = () => {
+      return formData.password === formData.confirmPassword;
    };
 
    const getProgressBarColor = () => {
@@ -105,9 +138,9 @@ const SignUp = () => {
                            <button
                               className='text-white bg-primary-700 hover:bg-primary-800 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center  disabled:opacity-70'
                               disabled={isNextDisabled()}
-                              onClick={() => {
+                              onClick={(e) => {
                                  if (page == FormTitles.length - 1) {
-                                    handleSubmit();
+                                    handleSubmit(e);
                                  } else {
                                     setPage((currPage) => currPage + 1);
                                  }

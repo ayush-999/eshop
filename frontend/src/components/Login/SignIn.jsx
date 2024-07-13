@@ -33,7 +33,7 @@ const SignInPage = () => {
                      <div>
                         <label
                            htmlFor='email'
-                           className='block mb-2 text-sm font-medium text-gray-900'
+                           className='inline-block mb-2 text-sm font-medium text-gray-900'
                         >
                            Your email
                         </label>
@@ -51,7 +51,7 @@ const SignInPage = () => {
                      <div className='relative'>
                         <label
                            htmlFor='password'
-                           className='block mb-2 text-sm font-medium text-gray-900'
+                           className='inline-block mb-2 text-sm font-medium text-gray-900'
                         >
                            Password
                         </label>
