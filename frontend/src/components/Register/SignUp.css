@@ -43,7 +43,7 @@
 .country-dropdown button:focus-within {
     --tw-border-opacity: 1;
     outline: none;
-    border-color: rgb(229 4 47 / var(--tw-border-opacity));
+    border-color: rgb(253 151 170 / var(--tw-border-opacity));
 }
 
 .country-dropdown ul {

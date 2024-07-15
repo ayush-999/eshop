@@ -38,7 +38,7 @@ const PersonalInfo = ({ formData, setFormData }) => {
                   <label
                      htmlFor='userPic'
                      id='uploadBtn'
-                     className='uploadBtn bg-gray-100 rounded-full hover:bg-primary-600 hover:text-white'
+                     className='uploadBtn bg-gray-100 rounded-full hover:bg-primary-200 hover:text-white'
                   >
                      <FaCamera />
                   </label>

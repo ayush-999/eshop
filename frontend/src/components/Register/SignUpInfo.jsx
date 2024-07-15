@@ -13,7 +13,7 @@ const SignUpInfo = ({ formData, setFormData }) => {
                type='text'
                name='fname'
                id='fname'
-               className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:border-primary-600 block w-full p-2.5'
+               className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:border-primary-200 block w-full p-2.5'
                placeholder='Enter full name'
                value={formData.fname}
                onChange={(e) =>
@@ -33,7 +33,7 @@ const SignUpInfo = ({ formData, setFormData }) => {
                type='email'
                name='email'
                id='email'
-               className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:border-primary-600 block w-full p-2.5'
+               className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:border-primary-200 block w-full p-2.5'
                placeholder='name@company.com'
                value={formData.email}
                onChange={(e) =>

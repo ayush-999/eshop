@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import SignUpInfo from './SignUpInfo';
 import PersonalInfo from './PersonalInfo';
 import OtherInfo from './OtherInfo';
@@ -50,13 +52,24 @@ const SignUp = () => {
       axios
          .post(`${server}/user/create-user`, newForm, config)
          .then((res) => {
-            console.log(res);
             if (res.data.success === true) {
-               navigate('/sign-in');
+               toast.success('User created successfully!');
+               setTimeout(() => {
+                  navigate('/sign-in');
+               }, 3000);
             }
          })
          .catch((err) => {
-            console.log(err);
+            if (
+               err.response &&
+               err.response.data &&
+               err.response.data.message
+            ) {
+               toast.error(err.response.data.message);
+               console.log(err);
+            } else {
+               toast.error('An error occurred. Please try again.');
+            }
          });
    };
 
@@ -156,6 +169,23 @@ const SignUp = () => {
                </div>
             </div>
          </div>
+         <ToastContainer
+            position='top-center'
+            autoClose={1500}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme='light'
+            toastStyle={{
+               margin: 'auto',
+               marginTop: '10px',
+               borderRadius: '10px',
+            }}
+         />
       </section>
    );
 };
