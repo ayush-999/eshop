@@ -3,6 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { SyncLoader } from 'react-spinners';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 import SignUpInfo from './SignUpInfo';
 import PersonalInfo from './PersonalInfo';
 import OtherInfo from './OtherInfo';
@@ -10,54 +13,55 @@ import { server } from '../../server';
 
 const SignUp = () => {
    const [page, setPage] = useState(0);
-   const [formData, setFormData] = useState({
+   const [loading, setLoading] = useState(false);
+   const FormTitles = ['step-1', 'step-2', 'step-3'];
+   const navigate = useNavigate();
+
+   const initialValues = {
       fname: '',
       email: '',
       userPic: null,
       userCountry: '',
       password: '',
       confirmPassword: '',
-   });
-   const FormTitles = ['step-1', 'step-2', 'step-3'];
-   const navigate = useNavigate();
-
-   const PageDisplay = () => {
-      if (page === 0) {
-         return <SignUpInfo formData={formData} setFormData={setFormData} />;
-      } else if (page === 1) {
-         return <PersonalInfo formData={formData} setFormData={setFormData} />;
-      } else {
-         return (
-            <OtherInfo
-               formData={formData}
-               setFormData={setFormData}
-               passwordsMatch={passwordsMatch}
-            />
-         );
-      }
    };
 
-   const handleSubmit = async (e) => {
-      e.preventDefault();
+   const validationSchema = [
+      Yup.object().shape({
+         fname: Yup.string().required('Full name is required'),
+         email: Yup.string()
+            .email('Invalid email address')
+            .required('Email is required'),
+      }),
+      Yup.object().shape({
+         userCountry: Yup.string().required('Country is required'),
+      }),
+      Yup.object().shape({
+         password: Yup.string()
+            .min(6, 'Password must be at least 6 characters')
+            .required('Password is required'),
+         confirmPassword: Yup.string()
+            .oneOf([Yup.ref('password'), null], 'Passwords must match')
+            .required('Confirm password is required'),
+      }),
+   ];
+
+   const handleSubmit = async (values) => {
+      setLoading(true);
       const newForm = new FormData();
-      newForm.append('name', formData.fname);
-      newForm.append('email', formData.email);
-      if (formData.userPic) {
-         newForm.append('file', formData.userPic);
+      newForm.append('name', values.fname);
+      newForm.append('email', values.email);
+      if (values.userPic) {
+         newForm.append('file', values.userPic);
       }
-      newForm.append('addresses[country]', formData.userCountry);
-      newForm.append('password', formData.password);
+      newForm.append('addresses[country]', values.userCountry);
+      newForm.append('password', values.password);
       const config = { headers: { 'Content-Type': 'multipart/form-data' } };
 
       axios
          .post(`${server}/user/create-user`, newForm, config)
          .then((res) => {
-            if (res.data.success === true) {
-               toast.success('User created successfully!');
-               setTimeout(() => {
-                  navigate('/sign-in');
-               }, 3000);
-            }
+            toast.success(res.data.message);
          })
          .catch((err) => {
             if (
@@ -66,28 +70,26 @@ const SignUp = () => {
                err.response.data.message
             ) {
                toast.error(err.response.data.message);
-               console.log(err);
             } else {
                toast.error('An error occurred. Please try again.');
             }
+         })
+         .finally(() => {
+            setLoading(false);
          });
    };
 
-   const isNextDisabled = () => {
+   const isNextDisabled = (errors, touched) => {
       if (page === 0) {
-         return !formData.fname || !formData.email;
-      } else if (page === 1) {
-         return !formData.userPic || !formData.userCountry;
-      } else if (page === 2) {
          return (
-            !formData.password || !formData.confirmPassword || !passwordsMatch()
+            !touched.fname || !touched.email || errors.fname || errors.email
          );
+      } else if (page === 1) {
+         return !touched.userCountry || errors.userCountry;
+      } else if (page === 2) {
+         return errors.password || errors.confirmPassword;
       }
       return false;
-   };
-
-   const passwordsMatch = () => {
-      return formData.password === formData.confirmPassword;
    };
 
    const getProgressBarColor = () => {
@@ -99,6 +101,7 @@ const SignUp = () => {
          return 'bg-green-300';
       }
    };
+
    return (
       <section className='bg-gray-100'>
          <div className='flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0'>
@@ -132,46 +135,80 @@ const SignUp = () => {
                         ></div>
                      </div>
                   </div>
-                  <div className='form-container'>
-                     <div className='register-body'>{PageDisplay()}</div>
-                     <div className='register-footer'>
-                        <div className='flex justify-end mt-5'>
-                           <button
-                              className='text-white bg-primary-700 hover:bg-primary-800 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center mr-2'
-                              onClick={() => {
-                                 if (page === 0) {
-                                    navigate('/sign-in');
-                                 } else {
-                                    setPage((currPage) => currPage - 1);
+                  <Formik
+                     initialValues={initialValues}
+                     validationSchema={validationSchema[page]}
+                     onSubmit={(values) => {
+                        if (page === FormTitles.length - 1) {
+                           handleSubmit(values);
+                        } else {
+                           setPage(page + 1);
+                        }
+                     }}
+                  >
+                     {({ errors, touched, setFieldValue, values }) => (
+                        <Form>
+                           {page === 0 && (
+                              <SignUpInfo
+                                 formData={values}
+                                 setFormData={setFieldValue}
+                              />
+                           )}
+                           {page === 1 && (
+                              <PersonalInfo
+                                 formData={values}
+                                 setFormData={setFieldValue}
+                              />
+                           )}
+                           {page === 2 && (
+                              <OtherInfo
+                                 formData={values}
+                                 setFormData={setFieldValue}
+                              />
+                           )}
+                           <div className='flex justify-end mt-5'>
+                              <button
+                                 type='button'
+                                 className='text-white bg-primary-700 hover:bg-primary-800 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center mr-2'
+                                 onClick={() => {
+                                    if (page === 0) {
+                                       navigate('/sign-in');
+                                    } else {
+                                       setPage((currPage) => currPage - 1);
+                                    }
+                                 }}
+                              >
+                                 {page === 0 ? 'Go to Login' : 'Back'}
+                              </button>
+                              <button
+                                 type='submit'
+                                 className='text-white bg-primary-700 hover:bg-primary-800 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center disabled:opacity-70'
+                                 disabled={
+                                    isNextDisabled(errors, touched) || loading
                                  }
-                              }}
-                           >
-                              {page === 0 ? 'Go to Login' : 'Back'}
-                           </button>
-                           <button
-                              className='text-white bg-primary-700 hover:bg-primary-800 focus:outline-none font-medium rounded-lg text-sm px-5 py-3 text-center  disabled:opacity-70'
-                              disabled={isNextDisabled()}
-                              onClick={(e) => {
-                                 if (page == FormTitles.length - 1) {
-                                    handleSubmit(e);
-                                 } else {
-                                    setPage((currPage) => currPage + 1);
-                                 }
-                              }}
-                           >
-                              {page === FormTitles.length - 1
-                                 ? 'Submit'
-                                 : 'Next'}
-                           </button>
-                        </div>
-                     </div>
-                  </div>
+                              >
+                                 {loading ? (
+                                    <SyncLoader
+                                       margin={1}
+                                       size={8}
+                                       color={'#fff'}
+                                    />
+                                 ) : page === FormTitles.length - 1 ? (
+                                    'Submit'
+                                 ) : (
+                                    'Next'
+                                 )}
+                              </button>
+                           </div>
+                        </Form>
+                     )}
+                  </Formik>
                </div>
             </div>
          </div>
          <ToastContainer
             position='top-center'
-            autoClose={1500}
+            autoClose={5000}
             hideProgressBar={true}
             newestOnTop={false}
             closeOnClick

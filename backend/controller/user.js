@@ -5,6 +5,8 @@ const { upload } = require('../multer');
 const ErrorHandler = require('../utils/ErrorHandler');
 const User = require('../model/user');
 const fs = require('fs');
+const jwt = require('jsonwebtoken');
+const sendMailForActivationUrl = require('../utils/Emails/sendMailForActivationUrl');
 
 router.post('/create-user', upload.single('file'), async (req, res, next) => {
    try {
@@ -41,15 +43,47 @@ router.post('/create-user', upload.single('file'), async (req, res, next) => {
             country: country,
          },
       };
-
-      const newUser = await User.create(user);
-      res.status(201).json({
-         success: true,
-         newUser,
-      });
+      const activationToken = createActivationToken(user);
+      const activationUrl = `${process.env.FRONTEND_URL}/activation/${activationToken}`;
+      try {
+         await sendMailForActivationUrl({
+            email: user.email,
+            subject: 'Activate your account',
+            activationUrl: activationUrl,
+            userName: user.name,
+         });
+         res.status(201).json({
+            success: true,
+            // message: `Please check your email (${user.email}) to activate your account!`,
+            message: `Check your entered email to activate your account!`,
+         });
+      } catch (error) {
+         return next(new ErrorHandler(error.message, 500));
+      }
    } catch (err) {
-      next(err); // Pass any errors to the error handler middleware
+      if (req.file) {
+         const filename = req.file.filename;
+         const filePath = `uploads/${filename}`;
+         fs.unlink(filePath, (err) => {
+            if (err) {
+               console.log(err);
+               return res.status(500).json({ message: 'Error deleting file' });
+            } else {
+               console.log('File deleted successfully');
+            }
+         });
+      }
+      next(new ErrorHandler(err.message, 400)); // Pass any errors to the error handler middleware
    }
 });
+
+// activationToken token function
+const createActivationToken = (user) => {
+   return jwt.sign(user, process.env.ACTIVATION_SECRET, {
+      expiresIn: '5m',
+   });
+};
+
+// activate user
 
 module.exports = router;

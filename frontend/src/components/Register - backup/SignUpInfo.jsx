@@ -1,6 +1,5 @@
-import { Field, ErrorMessage } from 'formik';
-
-const SignUpInfo = () => {
+/* eslint-disable react/prop-types */
+const SignUpInfo = ({ formData, setFormData }) => {
    return (
       <div className='space-y-4 md:space-y-4'>
          <div>
@@ -10,18 +9,17 @@ const SignUpInfo = () => {
             >
                Your full name
             </label>
-            <Field
+            <input
                type='text'
                name='fname'
                id='fname'
                className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:border-primary-200 block w-full p-2.5'
                placeholder='Enter full name'
-               autoComplete='off'
-            />
-            <ErrorMessage
-               name='fname'
-               component='div'
-               className='text-red-500 text-sm'
+               value={formData.fname}
+               onChange={(e) =>
+                  setFormData({ ...formData, fname: e.target.value })
+               }
+               autoComplete='name'
             />
          </div>
          <div>
@@ -31,22 +29,20 @@ const SignUpInfo = () => {
             >
                Your email
             </label>
-            <Field
+            <input
                type='email'
                name='email'
                id='email'
                className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:border-primary-200 block w-full p-2.5'
-               placeholder='Enter your email'
+               placeholder='name@company.com'
+               value={formData.email}
+               onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+               }
                autoComplete='email'
-            />
-            <ErrorMessage
-               name='email'
-               component='div'
-               className='text-red-500 text-sm'
             />
          </div>
       </div>
    );
 };
-
 export default SignUpInfo;

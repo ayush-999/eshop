@@ -100,7 +100,7 @@ const SignInPage = () => {
                                  autoComplete='current-password'
                               />
                               <span
-                                 className='icon-container text-gray-600'
+                                 className='icon-container text-gray-400'
                                  onClick={togglePasswordVisibility}
                               >
                                  {isPasswordVisible ? (
@@ -118,7 +118,7 @@ const SignInPage = () => {
                            <div className='flex items-center justify-between forgotPassword'>
                               <div className='flex items-start'>
                                  <div className='flex items-center h-5'>
-                                    <Field
+                                    <input
                                        id='remember'
                                        name='remember'
                                        type='checkbox'
