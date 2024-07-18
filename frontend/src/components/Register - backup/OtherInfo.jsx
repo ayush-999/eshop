@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { RiEyeCloseLine, RiEyeLine } from 'react-icons/ri';
-import { Field, ErrorMessage } from 'formik';
 
-const OtherInfo = () => {
+const OtherInfo = ({ formData, setFormData }) => {
    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
    const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
       useState(false);
@@ -15,20 +15,24 @@ const OtherInfo = () => {
 
    return (
       <div className='space-y-4 md:space-y-4'>
-         <div className='input-with-icon-container'>
+         <div className='relative'>
             <label
                htmlFor='password'
                className='inline-block mb-2 text-sm font-medium text-gray-900'
             >
                Password
             </label>
-            <Field
+            <input
                type={isPasswordVisible ? 'text' : 'password'}
                name='password'
                id='password'
                className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:border-primary-200 block w-full p-2.5 input-with-icon'
                placeholder='••••••••'
-               autoComplete='new-password'
+               value={formData.password}
+               onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+               }
+               autoComplete='current-password'
             />
             <span
                className='icon-container text-gray-400'
@@ -36,25 +40,25 @@ const OtherInfo = () => {
             >
                {isPasswordVisible ? <RiEyeCloseLine /> : <RiEyeLine />}
             </span>
-            <ErrorMessage
-               name='password'
-               component='div'
-               className='error-message'
-            />
          </div>
-         <div className='input-with-icon-container'>
+         <div className='relative'>
             <label
                htmlFor='confirm-password'
                className='inline-block mb-2 text-sm font-medium text-gray-900'
             >
                Confirm password
             </label>
-            <Field
+            <input
                type={isConfirmPasswordVisible ? 'text' : 'password'}
                name='confirmPassword'
                id='confirmPassword'
                className='bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:border-primary-200 block w-full p-2.5 input-with-icon'
                placeholder='••••••••'
+               value={formData.confirmPassword}
+               onChange={(e) =>
+                  setFormData({ ...formData, confirmPassword: e.target.value })
+               }
+               autoComplete='current-password'
             />
             <span
                className='icon-container text-gray-400'
@@ -62,11 +66,6 @@ const OtherInfo = () => {
             >
                {isConfirmPasswordVisible ? <RiEyeCloseLine /> : <RiEyeLine />}
             </span>
-            <ErrorMessage
-               name='confirmPassword'
-               component='div'
-               className='error-message'
-            />
          </div>
       </div>
    );

@@ -48,14 +48,32 @@ input[type=number] {
 
 .input-with-icon {
     padding-right: 2.5rem !important;
-    /* Adjust padding as needed */
 }
 
 .icon-container {
+    font-size: 20px;
     position: absolute;
-    top: 50%;
+    top: 70%;
     right: 0.75rem;
-    /* Adjust as needed */
-    transform: translateY(20%);
+    transform: translateY(-50%);
     cursor: pointer;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-with-icon-container {
+    position: relative;
+    margin-bottom: 30px !important;
+}
+
+.error-message {
+    position: absolute;
+    bottom: -1.3rem;
+    left: 0;
+    font-size: 0.875rem;
+    font-weight: 400;
+    --tw-text-opacity: 1;
+    color: rgb(239 68 68 / var(--tw-text-opacity));
 }
