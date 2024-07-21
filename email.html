@@ -1,90 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activate Your Account</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
 
-        h2 {
-            color: #333333;
-            font-weight: 600;
-        }
+      h2 {
+        color: #333333;
+        font-weight: 600;
+      }
 
-        .message {
-            margin-bottom: 20px;
-            color: #666666;
-        }
+      .message {
+        margin-bottom: 20px;
+        color: #666666;
+      }
 
-        .btn {
-            display: inline-block;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-right: 10px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
+      .btn {
+        display: inline-block;
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
 
-        .btn-copy {
-            background-color: #008CBA;
-            padding: 15px 20px;
-            border: transparent;
-        }
+      .btn-copy {
+        background-color: #008cba;
+        padding: 15px 20px;
+        border: transparent;
+      }
 
-        .btn-wrapper {
-            display: flex;
-            align-items: center;
-        }
+      .btn-wrapper {
+        display: flex;
+        align-items: center;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <h2>Activate Your Account</h2>
-        <p class="message">Hello ${userName},</p>
-        <p class="message">Click the button below to activate your account:</p>
-        <div class="btn-wrapper">
-            <a href="${activationUrl} " target="_blank" class="btn"
-                style="color: #FFF; font-size: 15px; display: block;">Activate Now</a>
-            <button class="btn btn-copy" onclick="copyActivationLink()">Copy Activation Link</button>
-            <script>
-                function copyActivationLink() {
-                    const activationLink = '${activationUrl}';
-                    navigator.clipboard.writeText(activationLink)
-                        .then(() => {
-                            alert('Activation link copied to clipboard!');
-                        })
-                        .catch(err => {
-                            console.error('Failed to copy activation link: ', err);
-                        });
-                }
-            </script>
-        </div>
-        <p class="message">If clicking the button above doesn't work, you can paste the following URL into your browser:
-        </p>
-        <p class="message">${activationUrl}</p>
-        <p class="message">Thank you!</p>
+      <h2>Activate Your Account</h2>
+      <p class="message">Hello ${userName},</p>
+      <p class="message">Click the button below to activate your account:</p>
+      <div class="btn-wrapper">
+        <a
+          href="${activationUrl} "
+          target="_blank"
+          class="btn"
+          style="color: #fff; font-size: 15px; display: block"
+          >Activate Now</a
+        >
+        <button class="btn btn-copy" onclick="copyActivationLink()">
+          Copy Activation Link
+        </button>
+        <script>
+          function copyActivationLink() {
+            const activationLink = "${activationUrl}";
+            navigator.clipboard
+              .writeText(activationLink)
+              .then(() => {
+                alert("Activation link copied to clipboard!");
+              })
+              .catch((err) => {
+                console.error("Failed to copy activation link: ", err);
+              });
+          }
+        </script>
+      </div>
+      <p class="message">
+        If clicking the button above doesn't work, you can paste the following
+        URL into your browser:
+      </p>
+      <p class="message">${activationUrl}</p>
+      <p class="message">Thank you!</p>
     </div>
-</body>
-
+  </body>
 </html>

@@ -1,80 +1,63 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import ReactFlagsSelect from 'react-flags-select';
-import { FaCamera } from 'react-icons/fa6';
-import { ErrorMessage } from 'formik';
-import './SignUp.css';
-const PersonalInfo = ({ formData, setFormData }) => {
-   const [imageSrc, setImageSrc] = useState(
-      formData.userPic
-         ? URL.createObjectURL(formData.userPic)
-         : '/img/default.png'
-   );
+import { Field, ErrorMessage } from "formik";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
+import "./SignUp.css";
 
-   const handleImageUpload = (e) => {
-      const file = e.target.files[0];
-      if (file) {
-         setImageSrc(URL.createObjectURL(file));
-         setFormData('userPic', file);
-      }
-   };
-   return (
-      <>
-         <div className='space-y-4 md:space-y-4'>
-            <div className='flex justify-center'>
-               <div className='imgWrapper'>
-                  <label
-                     htmlFor='userPic'
-                     id='uploadBtn'
-                     className='uploadBtn bg-gray-100 rounded-full hover:bg-primary-400 hover:text-white'
-                  >
-                     <FaCamera />
-                  </label>
-                  <img
-                     src={imageSrc}
-                     className='rounded-full ring-4 ring-gray-100 userImage'
-                     id='userImage'
-                     alt='User Image'
-                  />
-                  <input
-                     type='file'
-                     id='userPic'
-                     className='userPic'
-                     name='userPic'
-                     onChange={handleImageUpload}
-                  />
-                  <ErrorMessage
-                     name='userPic'
-                     component='div'
-                     className='text-red-500 text-sm'
-                  />
-               </div>
-            </div>
-            <div>
-               <label
-                  htmlFor='userCountry'
-                  className='inline-block mb-2 text-sm font-medium text-gray-900'
-               >
-                  Country
-               </label>
-               <ReactFlagsSelect
-                  name='userCountry'
-                  selected={formData.userCountry}
-                  onSelect={(code) => setFormData('userCountry', code)}
-                  searchable
-                  searchPlaceholder='Search countries'
-                  placeholder='Select country'
-                  className='country-dropdown'
-               />
-               <ErrorMessage
-                  name='userCountry'
-                  component='div'
-                  className='text-red-500 text-sm'
-               />
-            </div>
-         </div>
-      </>
-   );
+const PersonalInfo = ({ errors, touched, setFieldValue, values, setFieldTouched }) => {
+  return (
+    <>
+      <div className="space-y-4 md:space-y-4">
+        <div>
+          <label
+            htmlFor="email"
+            className="inline-block mb-2 text-sm font-medium text-gray-900"
+          >
+            Your email
+          </label>
+          <Field
+            type="email"
+            name="email"
+            id="email"
+            className={`bg-gray-50 border ${
+              errors.email && touched.email
+                ? "border-error-600 bg-error-0 focus:border-error-600"
+                : "border-gray-300"
+            } text-gray-900 rounded-lg focus:border-primary-600 block w-full p-2.5`}
+            placeholder="Enter your email"
+            autoComplete="email"
+          />
+          <ErrorMessage
+            name="email"
+            component="div"
+            className="text-red-500 text-sm"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="userMobile"
+            className="inline-block mb-2 text-sm font-medium text-gray-900"
+          >
+            Your Mobile number
+          </label>
+          <PhoneInput
+            name="userMobile"
+            id="userMobile"
+            defaultCountry="in"
+            value={values.userMobile}
+            onChange={(phone) => setFieldValue("userMobile", phone)}
+            onBlur={() => setFieldTouched("userMobile", true)}
+            className='userMobile'
+          />
+          <ErrorMessage
+            name="userMobile"
+            component="div"
+            className="text-red-500 text-sm"
+          />
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default PersonalInfo;
