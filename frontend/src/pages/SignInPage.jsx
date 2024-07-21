@@ -1,10 +1,10 @@
-import SignIn from '../components/Login/SignIn';
+import SignIn from "../components/Login/SignIn";
 const SignInPage = () => {
-   return (
-      <>
-         <SignIn />
-      </>
-   );
+  return (
+    <>
+      <SignIn />
+    </>
+  );
 };
 
 export default SignInPage;

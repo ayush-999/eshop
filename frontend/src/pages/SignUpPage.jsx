@@ -1,11 +1,11 @@
-import SignUp from '../components/Register/SignUp';
+import SignUp from "../components/Register/SignUp";
 
 const RegisterPage = () => {
-   return (
-      <>
-         <SignUp />
-      </>
-   );
+  return (
+    <>
+      <SignUp />
+    </>
+  );
 };
 
 export default RegisterPage;
