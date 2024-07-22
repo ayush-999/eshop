@@ -147,7 +147,13 @@ const SignUp = () => {
                 }
               }}
             >
-              {({ errors, touched, setFieldValue, setFieldTouched, values }) => (
+              {({
+                errors,
+                touched,
+                setFieldValue,
+                setFieldTouched,
+                values,
+              }) => (
                 <Form>
                   {page === 0 && (
                     <SignUpInfo

@@ -84,7 +84,7 @@ const OtherInfo = ({ errors, touched }) => {
           component="div"
           className="error-message"
         />
-      </div> 
+      </div>
     </div>
   );
 };
