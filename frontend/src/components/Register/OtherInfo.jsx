@@ -28,9 +28,9 @@ const OtherInfo = ({ errors, touched }) => {
           id="password"
           className={`bg-gray-50 border ${
             errors.password && touched.password
-              ? "border-error-600 bg-error-10 focus-within:border-error-600"
+              ? "border-error-600 bg-error-10"
               : "border-gray-300"
-          } text-gray-900 rounded-lg focus-within:border-primary-600 block w-full p-2.5 input-with-icon`}
+          } text-gray-900 rounded-lg block w-full p-2.5 input-with-icon`}
           placeholder="••••••••"
           autoComplete="new-password"
         />
@@ -63,9 +63,9 @@ const OtherInfo = ({ errors, touched }) => {
           id="confirmPassword"
           className={`bg-gray-50 border ${
             errors.confirmPassword && touched.confirmPassword
-              ? "border-error-600 bg-error-10 focus-within:border-error-600"
+              ? "border-error-600 bg-error-10"
               : "border-gray-300"
-          } text-gray-900 rounded-lg focus-within:border-primary-600 block w-full p-2.5 input-with-icon`}
+          } text-gray-900 rounded-lg block w-full p-2.5 input-with-icon`}
           placeholder="••••••••"
         />
         <span
