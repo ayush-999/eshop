@@ -35,9 +35,7 @@ const SignUp = () => {
       email: Yup.string()
         .email("Invalid email address")
         .required("Email is required"),
-      userMobile: Yup.string()
-        .required("Mobile number is required")
-        .matches(/^\+\d{1,3}\d{3,}$/, "Invalid mobile number"),
+      userMobile: Yup.string().required("Mobile number is required"),
     }),
     Yup.object().shape({
       password: Yup.string()
