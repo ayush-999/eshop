@@ -13,7 +13,6 @@ const OtherInfo = ({ errors, touched }) => {
   function toggleConfirmPasswordVisibility() {
     setIsConfirmPasswordVisible((prevState) => !prevState);
   }
-
   return (
     <div className="space-y-4 md:space-y-4">
       <div className="input-with-icon-container">
