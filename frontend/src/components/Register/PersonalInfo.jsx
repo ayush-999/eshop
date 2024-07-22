@@ -27,9 +27,9 @@ const PersonalInfo = ({
             id="email"
             className={`bg-gray-50 border ${
               errors.email && touched.email
-                ? "border-error-600 bg-error-0 focus:border-error-600"
+                ? "border-error-600 bg-error-10 focus-within:border-error-600"
                 : "border-gray-300"
-            } text-gray-900 rounded-lg focus:border-primary-600 block w-full p-2.5`}
+            } text-gray-900 rounded-lg focus-within:border-primary-600 block w-full p-2.5`}
             placeholder="Enter your email"
             autoComplete="email"
           />
@@ -51,9 +51,17 @@ const PersonalInfo = ({
             id="userMobile"
             defaultCountry="in"
             value={values.userMobile}
-            onChange={(phone) => setFieldValue("userMobile", phone)}
-            onBlur={() => setFieldTouched("userMobile", true)}
-            className='userMobile'
+            onChange={(phone) => {
+              setFieldValue("userMobile", phone);
+            }}
+            onBlur={() => {
+              setFieldTouched("userMobile", true);
+            }}
+            className={`userMobile ${
+              errors.userMobile && touched.userMobile
+                ? "error-show"
+                : "border-gray-300"
+            }`}
           />
           <ErrorMessage
             name="userMobile"
