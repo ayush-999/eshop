@@ -20,29 +20,29 @@ const SignUpInfo = ({ formData, setFormData, errors, touched }) => {
   return (
     <div className="space-y-4 md:space-y-4">
       <div className="flex justify-center">
-          <div className="imgWrapper">
-            <label
-              htmlFor="userPic"
-              id="uploadBtn"
-              className="uploadBtn bg-gray-100 rounded-full hover:bg-primary-600 hover:text-white"
-            >
-              <FaCamera />
-            </label>
-            <img
-              src={imageSrc}
-              className="rounded-full ring-4 ring-gray-100 userImage"
-              id="userImage"
-              alt="User Image"
-            />
-            <input
-              type="file"
-              id="userPic"
-              className="userPic"
-              name="userPic"
-              onChange={handleImageUpload}
-            />
-          </div>
+        <div className="imgWrapper">
+          <label
+            htmlFor="userPic"
+            id="uploadBtn"
+            className="uploadBtn bg-gray-100 rounded-full hover:bg-primary-600 hover:text-white"
+          >
+            <FaCamera />
+          </label>
+          <img
+            src={imageSrc}
+            className="rounded-full ring-4 ring-gray-100 userImage"
+            id="userImage"
+            alt="User Image"
+          />
+          <input
+            type="file"
+            id="userPic"
+            className="userPic"
+            name="userPic"
+            onChange={handleImageUpload}
+          />
         </div>
+      </div>
       <div>
         <label
           htmlFor="fname"
@@ -51,7 +51,7 @@ const SignUpInfo = ({ formData, setFormData, errors, touched }) => {
           Your full name
         </label>
         <Field
-          type="text" 
+          type="text"
           name="fname"
           id="fname"
           className={`bg-gray-50 border ${
@@ -68,7 +68,7 @@ const SignUpInfo = ({ formData, setFormData, errors, touched }) => {
           className="text-red-500 text-sm"
         />
       </div>
-    </div> 
+    </div>
   );
 };
 

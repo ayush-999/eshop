@@ -4,7 +4,13 @@ import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import "./SignUp.css";
 
-const PersonalInfo = ({ errors, touched, setFieldValue, values, setFieldTouched }) => {
+const PersonalInfo = ({
+  errors,
+  touched,
+  setFieldValue,
+  values,
+  setFieldTouched,
+}) => {
   return (
     <>
       <div className="space-y-4 md:space-y-4">
