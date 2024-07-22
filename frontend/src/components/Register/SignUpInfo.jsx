@@ -71,5 +71,4 @@ const SignUpInfo = ({ formData, setFormData, errors, touched }) => {
     </div>
   );
 };
-
 export default SignUpInfo;

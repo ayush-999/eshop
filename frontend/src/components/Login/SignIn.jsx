@@ -12,7 +12,6 @@ const SignInPage = () => {
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
-
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email("Invalid email address")

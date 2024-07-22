@@ -11,7 +11,6 @@ import PersonalInfo from "./PersonalInfo";
 import OtherInfo from "./OtherInfo";
 import { server } from "../../server";
 import { TypeAnimation } from "react-type-animation";
-
 const SignUp = () => {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
