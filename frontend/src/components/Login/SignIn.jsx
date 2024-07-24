@@ -75,9 +75,9 @@ const SignInPage = () => {
                       id="email"
                       className={`bg-gray-50 border ${
                         errors.email && touched.email
-                          ? "border-error-600 bg-error-10"
+                          ? "border-red-600 bg-red-50 focus-within:border-red-600"
                           : "border-gray-300"
-                      } text-gray-900 rounded-lg block w-full p-2.5`}
+                      } text-gray-900 rounded-lg focus-within:border-primary-600 block w-full p-2.5`}
                       placeholder="name@company.com"
                       autoComplete="email"
                     />
@@ -100,9 +100,9 @@ const SignInPage = () => {
                       id="password"
                       className={`bg-gray-50 border ${
                         errors.password && touched.password
-                          ? "border-error-600 bg-error-10"
+                          ? "border-red-600 bg-red-50 focus-within:border-red-600"
                           : "border-gray-300"
-                      } text-gray-900 rounded-lg block w-full p-2.5 input-with-icon`}
+                      } text-gray-900 rounded-lg focus-within:border-primary-600 block w-full p-2.5 input-with-icon`}
                       placeholder="••••••••"
                       autoComplete="current-password"
                     />
