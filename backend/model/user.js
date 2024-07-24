@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, "Please enter your email!"],
+    unique: true,
   },
   password: {
     type: String,
@@ -66,6 +67,13 @@ const userSchema = new mongoose.Schema({
   },
   resetPasswordToken: String,
   resetPasswordTime: Date,
+  isActivated: {
+    type: Boolean,
+    default: false,
+  },
+  activationExpires: {
+    type: Date,
+  },
 });
 
 //  Hash password
