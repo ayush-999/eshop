@@ -1,73 +1,51 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { server } from "../server";
-import { FaCheckCircle } from "react-icons/fa";
+import Lottie from 'react-lottie'
+import success from '../../public/assets/lottie/success.json'
 import { IoIosCloseCircle } from "react-icons/io";
 
 const ActivationPage = () => {
   const { activation_token } = useParams();
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (activation_token) {
-  //     const sendRequest = async () => {
-  //       await axios
-  //         .post(`${server}/user/activation`, {
-  //           activation_token,
-  //         })
-  //         .then((res) => {
-  //           console.log(res);
-  //         })
-  //         .catch((error) => {
-  //           console.log(error);
-  //           setError(true);
-  //         });
-  //     };
-  //     sendRequest();
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   if (activation_token) {
-  //     const sendRequest = async () => {
-  //       try {
-  //         const res = await axios.post(`${server}/user/activation`, {
-  //           activation_token,
-  //         });
-  //         setMessage(res.data.message);
-  //       } catch (error) {
-  //         if (error.response && error.response.data.message) {
-  //           setMessage(error.response.data.message);
-  //         } else {
-  //           setMessage("An error occurred");
-  //         }
-  //         setError(true);
-  //       }
-  //     };
-  //     sendRequest();
-  //   }
-  // }, [activation_token]);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: success,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
 
   useEffect(() => {
     if (activation_token) {
       const sendRequest = async () => {
-        await axios
-          .post(`${server}/user/activation`, { activation_token })
-          .then((res) => {
-            setMessage(res.data.message);
-            setError(false);
-          })
-          .catch((error) => {
-            console.log(error);
-            setError(true);
-            setMessage(error.response.data.message);
-          });
+        try {
+          const res = await axios.post(`${server}/user/activation`, { activation_token });
+          setMessage(res.data.message);
+          setError(false);
+        } catch (error) {
+          console.log(error);
+          setError(true);
+          setMessage(error.response?.data?.message || "An error occurred");
+        }
       };
       sendRequest();
     }
   }, [activation_token]);
+
+  useEffect(() => {
+    if (!error) {
+      const timer = setTimeout(() => {
+        navigate("/sign-in");
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error, navigate]);
 
   return (
     <section className="bg-gray-100">
@@ -78,7 +56,7 @@ const ActivationPage = () => {
         >
           <img
             className="w-auto h-12 mr-2"
-            src="/img/logo-black.png"
+            src="../assets/img/logo-black.png"
             alt="logo"
           />
         </Link>
@@ -96,10 +74,14 @@ const ActivationPage = () => {
             ) : (
               <>
                 <div className="text-5xl text-center flex justify-center">
-                  <FaCheckCircle className="text-green-600" />
+                    <Lottie 
+                      options={defaultOptions}
+                      height={100}
+                      width={100}
+                    />
                 </div>
                 <div className="text-center">
-                  <p className="mt-3">
+                  <p>
                     {message || "Your account has been created successfully"}
                   </p>
                 </div>

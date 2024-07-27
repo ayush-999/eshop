@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { SyncLoader } from "react-spinners";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -114,7 +113,7 @@ const SignUp = () => {
         >
           <img
             className="w-auto h-12 mr-2"
-            src="img/logo-black.png"
+            src="assets/img/logo-black.png"
             alt="logo"
           />
         </Link>
@@ -219,23 +218,6 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={true}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        toastStyle={{
-          margin: "auto",
-          marginTop: "10px",
-          borderRadius: "10px",
-        }}
-      />
     </section>
   );
 };

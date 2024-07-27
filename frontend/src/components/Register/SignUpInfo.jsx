@@ -7,7 +7,7 @@ const SignUpInfo = ({ formData, setFormData, errors, touched }) => {
   const [imageSrc, setImageSrc] = useState(
     formData.userPic
       ? URL.createObjectURL(formData.userPic)
-      : "/img/default.png"
+      : "assets/img/default.png"
   );
 
   const handleImageUpload = (e) => {
