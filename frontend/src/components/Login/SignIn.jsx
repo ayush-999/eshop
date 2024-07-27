@@ -1,17 +1,25 @@
-import { Link } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import { Link, useNavigate } from "react-router-dom";
 import "./SignIn.css";
 import { useState } from "react";
+import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
+import { SyncLoader } from "react-spinners";
 import { TypeAnimation } from "react-type-animation";
+import { server } from "../../server";
+import { toast } from "react-toastify";
 
 const SignInPage = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
   };
+
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email("Invalid email address")
@@ -26,8 +34,30 @@ const SignInPage = () => {
     password: "",
   };
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleSubmit = async (values) => {
+    setLoading(true);
+    axios
+      .post(`${server}/user/login-user`, values, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        toast.success("Login Success!");
+        navigate("/");
+      })
+      .catch((err) => {
+        if (err.response && err.response.data && err.response.data.message) {
+          toast.error(err.response.data.message);
+          console.log(err);
+        } else {
+          toast.error("An error occurred. Please try again.");
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -39,7 +69,7 @@ const SignInPage = () => {
         >
           <img
             className="w-auto h-12 mr-2"
-            src="img/logo-black.png"
+            src="assets/img/logo-black.png"
             alt="logo"
           />
         </Link>
@@ -148,9 +178,13 @@ const SignInPage = () => {
                   <button
                     type="submit"
                     className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-medium rounded-lg text-sm px-5 py-3 text-center disabled:opacity-70"
-                    disabled={!isValid}
+                    disabled={!isValid || loading}
                   >
-                    Sign In
+                    {loading ? (
+                      <SyncLoader margin={1} size={8} color={"#fff"} />
+                    ) : (
+                      "Sign In"
+                    )}
                   </button>
                   <p className="text-sm font-light text-gray-400 text-center">
                     Don’t have an account yet?
