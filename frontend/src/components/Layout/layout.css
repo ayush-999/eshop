@@ -1,0 +1,13 @@
+.cart-badge{
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #dc2626;
+    font-size: 11px;
+    color: #FFF;
+    border-radius: 50%;
+    position: absolute;
+    left: 20px;
+}
