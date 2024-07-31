@@ -271,11 +271,11 @@ export const productData = [
       image_Url: [
          {
             public_id: 'test',
-            url: 'https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png',
+            url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/computer/l/q/t/-original-imaguw3hwp55jj7b.jpeg?q=70',
          },
          {
             public_id: 'test',
-            url: 'https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png',
+            url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/computer/l/q/t/-original-imaguw3hwp55jj7b.jpeg?q=70',
          },
       ],
       shop: {
@@ -320,7 +320,6 @@ export const productData = [
       rating: 5,
       total_sell: 80,
       stock: 10,
-      category: 'Mobile & Tablets',
    },
    {
       id: 1,
@@ -331,11 +330,11 @@ export const productData = [
       image_Url: [
          {
             public_id: 'test',
-            url: 'https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png',
+            url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/computer/l/q/t/-original-imaguw3hwp55jj7b.jpeg?q=70',
          },
          {
             public_id: 'test',
-            url: 'https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png',
+            url: 'https://rukminim2.flixcart.com/image/312/312/xif0q/computer/l/q/t/-original-imaguw3hwp55jj7b.jpeg?q=70',
          },
       ],
       shop: {
@@ -351,7 +350,6 @@ export const productData = [
       rating: 4,
       total_sell: 75,
       stock: 10,
-      category: 'Computers & Laptop',
    },
    {
       id: 4,
@@ -393,11 +391,11 @@ export const productData = [
       image_Url: [
          {
             public_id: 'test',
-            url: 'https://mirzacdns3.s3.ap-south-1.amazonaws.com/cache/catalog/RLV0015/2-800x800.jpg',
+            url: 'https://rukminim2.flixcart.com/image/612/612/l407mvk0/shoe/j/a/v/-original-imagfyyvdfndjxg7.jpeg?q=70',
          },
          {
             public_id: 'test',
-            url: 'https://mirzacdns3.s3.ap-south-1.amazonaws.com/cache/catalog/RLV0015/2-800x800.jpg',
+            url: 'https://rukminim2.flixcart.com/image/612/612/l407mvk0/shoe/j/a/v/-original-imagfyyvdfndjxg7.jpeg?q=70',
          },
       ],
       shop: {
@@ -413,7 +411,6 @@ export const productData = [
       rating: 5,
       total_sell: 49,
       stock: 10,
-      category: 'Shoes',
    },
    {
       id: 1,

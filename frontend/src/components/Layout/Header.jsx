@@ -7,19 +7,23 @@ import { CiShop } from "react-icons/ci";
 import { PiPackage } from "react-icons/pi";
 import { IoLogOutOutline, IoNotificationsOutline } from "react-icons/io5";
 import { MdOutlineCardGiftcard } from "react-icons/md";
+import Select from 'react-select';
 import "./layout.css";
+import { navItems, categoriesData, productData } from "../../static/data";
 
 const Header = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [searchDropdownVisible, setSearchDropdownVisible] = useState(false);
   const [topSearches, setTopSearches] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchData, setSearchData] = useState([]);
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
   const searchInputRef = useRef(null);
 
   useEffect(() => {
     // Fetch today's top searches when the component mounts
-    fetchTopSearches().then(searches => setTopSearches(searches));
+    fetchTopSearches().then((searches) => setTopSearches(searches));
 
     const handleClickOutside = (event) => {
       if (
@@ -48,6 +52,69 @@ const Header = () => {
     return ["Laptops", "Headphones", "Smartphones", "Cameras", "Watches"];
   };
 
+  const handleSearchChange = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    if (term.trim() === "") {
+      setSearchData([]);
+    } else {
+      const filteredProducts =
+        productData &&
+        productData.filter((product) =>
+          product.name.toLowerCase().includes(term.toLowerCase())
+        );
+      setSearchData(filteredProducts);
+    }
+    setSearchDropdownVisible(true);
+  };
+
+  const renderSearchResults = () => {
+    if (searchTerm.trim() === "") {
+      return (
+        <>
+          <li className="py-2 px-2 text-gray-500 font-semibold text-xs mb- flex items-center justify-start gap-2">
+            Discover More
+          </li>
+          {topSearches.map((search, index) => (
+            <li
+              key={index}
+              className="py-2 px-2 text-gray-400 hover:rounded-md text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer flex items-center justify-start gap-2"
+            >
+              <FiSearch className="text-gray-500" /> {search}
+            </li>
+          ))}
+        </>
+      );
+    }
+
+    if (searchData.length > 0) {
+      return searchData.map((product, index) => (
+        <li
+          key={index}
+          className="py-2 px-2 text-gray-400 hover:rounded-md text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer flex items-center justify-start gap-2"
+        >
+          <img
+            src={product.image_Url[0]?.url}
+            alt={product.name}
+            className="w-8 h-8 object-contain bg-center bg-no-repeat rounded-full"
+          />
+          {product.name}
+        </li>
+      ));
+    }
+
+    return (
+      <li className="py-2 px-2 text-gray-400 text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer text-center">
+        No results found
+      </li>
+    );
+  };
+
+  const categoryOptions = categoriesData.map(category => ({
+    value: category.title,
+    label: category.title,
+  }));
+
   return (
     <>
       <header className="bg-white border-gray-200 main-navbar">
@@ -59,42 +126,62 @@ const Header = () => {
             <img src="assets/img/logo-black.png" className="h-8" alt="Eshop" />
           </Link>
           <div className="w-full max-w-xs xl:max-w-2xl 2xl:max-w-2xl bg-primary-40 rounded-md hidden xl:flex items-center relative">
-            <select
-              className="bg-transparent capitalize font-semibold text-xs p-3 mr-4"
-              name=""
-              id=""
-            >
-              <option>all categories</option>
-              <option>Electronics</option>
-              <option>Books</option>
-              <option>Cloths</option>
-            </select>
+            <Select
+              options={categoryOptions}
+              className="basic-single"
+              classNamePrefix="eshop"
+              placeholder="All Categories"
+              styles={{
+                control: (provided) => ({
+                  ...provided,
+                  width:'132px',
+                  background: 'transparent',
+                  fontSize: '0.75rem',
+                  fontWeight: '600',
+                  color: 'rgb(75 85 99)',
+                  border: 0,
+                  ':hover':{
+                    boxShadow:'none',
+                    borderColor:'transparent'
+                  }
+                }),
+                menu: (provided) => ({
+                  ...provided,
+                  zIndex: 9999,
+                  color: 'rgb(75 85 99)',
+                  width:'250px',
+                  fontSize:'0.8rem',
+                  fontWeight: '400',
+                  border:'none',
+                  boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+                  borderRadius:'0.5rem',
+                }),
+              }}
+            />
             <input
-              className="border-l border-gray-300 bg-transparent font-normal text-sm pl-3 w-full"
+              className="bg-transparent font-normal text-sm border-l pl-3 w-full"
               type="text"
-              placeholder="I'm searching for ..."
+              id="search-input"
+              value={searchTerm}
+              onChange={handleSearchChange}
               ref={searchInputRef}
               onFocus={() => setSearchDropdownVisible(true)}
+              placeholder="Search for Products and more"
             />
             <div className="p-3 rounded-md bottom-0">
               <FiSearch className="text-gray-500" />
             </div>
+
             {searchDropdownVisible && (
-              <div className="absolute top-full w-[535px] right-0 bg-white rounded-lg shadow-md mt-1 p-2 z-10">
-                <ul>
-                  {topSearches.map((search, index) => (
-                    <li key={index} className="py-2 px-2 text-gray-400 hover:rounded-md text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer flex items-center justify-start gap-2">
-                      <FiSearch className="text-gray-500" /> {search}
-                    </li>
-                  ))}
-                </ul>
+              <div className="absolute top-full w-[540px] right-0 bg-white rounded-lg shadow-md mt-1 p-2 z-10">
+                <ul>{renderSearchResults()}</ul>
               </div>
             )}
           </div>
           <div className="flex items-center justify-end">
             <Link
               to="/"
-              className="hover:text-primary-500 hover:bg-primary-100 rounded-md p-2 font-semibold md:text-sm flex justify-between items-center gap-1"
+              className="hover:text-primary-600 hover:bg-primary-100 rounded-md p-2 font-semibold md:text-sm flex justify-between items-center gap-1"
             >
               <CiShop className="w-6 h-6" /> Become a Seller
             </Link>
@@ -106,7 +193,11 @@ const Header = () => {
                   <div>
                     <button
                       type="button"
-                      className={`relative flex justify-between gap-1.5 items-center cursor-pointer text-sm rounded-md p-2 font-semibold ${dropdownVisible ? "bg-primary-30" : "hover:bg-primary-30"}`}
+                      className={`relative flex justify-between gap-1.5 items-center cursor-pointer text-sm rounded-md p-2 font-semibold ${
+                        dropdownVisible
+                          ? "bg-primary-30"
+                          : "hover:bg-primary-30"
+                      }`}
                       id="user-menu-button"
                       aria-expanded="false"
                       aria-haspopup="true"
@@ -123,76 +214,76 @@ const Header = () => {
                     </button>
                   </div>
                   {dropdownVisible && (
-                  <div
-                    className="absolute z-10 mt-2 w-44 origin-top-right rounded-lg bg-white p-1 shadow-md"
-                    role="menu"
-                    aria-orientation="vertical"
-                    aria-labelledby="user-menu-button"
-                    ref={dropdownRef}
-                  >
-                    <Link
-                      to="#"
-                      className="flex items-center justify-start gap-2 px-4 py-2 text-sm hover:rounded-md text-black hover:bg-primary-20"
-                      role="menuitem"
-                      id="user-menu-item-0"
+                    <div
+                      className="absolute z-10 mt-2 w-44 origin-top-right rounded-lg bg-white p-1 shadow-md"
+                      role="menu"
+                      aria-orientation="vertical"
+                      aria-labelledby="user-menu-button"
+                      ref={dropdownRef}
                     >
-                      <LuUserCircle2 className="w-5 h-5" /> My Profile
-                    </Link>
-                    <Link
-                      to="#"
-                      className="flex items-center justify-start gap-2 px-4 py-2 text-sm hover:rounded-md text-black hover:bg-primary-20"
-                      role="menuitem"
-                      id="user-menu-item-2"
-                    >
-                      <PiPackage className="w-5 h-5" />
-                      Orders
-                    </Link>
-                    <Link
-                      to="#"
-                      className="flex items-center justify-start gap-2 px-4 py-2 text-sm hover:rounded-md text-black hover:bg-primary-20"
-                      role="menuitem"
-                      id="user-menu-item-2"
-                    >
-                      <GoHeart className="w-5 h-5" />
-                      Wishlist (12)
-                    </Link>
-                    <Link
-                      to="#"
-                      className="flex items-center justify-start gap-2 px-4 py-2 text-sm hover:rounded-md text-black hover:bg-primary-20"
-                      role="menuitem"
-                      id="user-menu-item-2"
-                    >
-                      <GoTag className="w-5 h-5" />
-                      Coupons
-                    </Link>
-                    <Link
-                      to="#"
-                      className="flex items-center justify-start gap-2 px-4 py-2 text-sm hover:rounded-md text-black hover:bg-primary-20"
-                      role="menuitem"
-                      id="user-menu-item-2"
-                    >
-                      <MdOutlineCardGiftcard className="w-5 h-5" />
-                      Gift Cards
-                    </Link>
-                    <Link
-                      to="#"
-                      className="flex items-center justify-start gap-2 px-4 py-2 text-sm hover:rounded-md text-black hover:bg-primary-20"
-                      role="menuitem"
-                      id="user-menu-item-2"
-                    >
-                      <IoNotificationsOutline className="w-5 h-5" />
-                      Notifications
-                    </Link>
-                    <Link
-                      to="#"
-                      className="flex items-center justify-start gap-2 px-4 py-2 text-sm hover:rounded-md text-black hover:bg-primary-20"
-                      role="menuitem"
-                      id="user-menu-item-2"
-                    >
-                      <IoLogOutOutline className="w-5 h-5" />
-                      Sign out
-                    </Link>
-                  </div>
+                      <Link
+                        to="#"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        role="menuitem"
+                        id="user-menu-item-0"
+                      >
+                        <LuUserCircle2 className="w-5 h-5" /> My Profile
+                      </Link>
+                      <Link
+                        to="#"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        role="menuitem"
+                        id="user-menu-item-2"
+                      >
+                        <PiPackage className="w-5 h-5" />
+                        Orders
+                      </Link>
+                      <Link
+                        to="#"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        role="menuitem"
+                        id="user-menu-item-2"
+                      >
+                        <GoHeart className="w-5 h-5" />
+                        Wishlist (12)
+                      </Link>
+                      <Link
+                        to="#"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        role="menuitem"
+                        id="user-menu-item-2"
+                      >
+                        <GoTag className="w-5 h-5" />
+                        Coupons
+                      </Link>
+                      <Link
+                        to="#"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        role="menuitem"
+                        id="user-menu-item-2"
+                      >
+                        <MdOutlineCardGiftcard className="w-5 h-5" />
+                        Gift Cards
+                      </Link>
+                      <Link
+                        to="#"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        role="menuitem"
+                        id="user-menu-item-2"
+                      >
+                        <IoNotificationsOutline className="w-5 h-5" />
+                        Notifications
+                      </Link>
+                      <Link
+                        to="#"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-red-700"
+                        role="menuitem"
+                        id="user-menu-item-2"
+                      >
+                        <IoLogOutOutline className="w-5 h-5" />
+                        Sign out
+                      </Link>
+                    </div>
                   )}
                 </li>
                 <li className="relative">
@@ -213,29 +304,16 @@ const Header = () => {
         <div className="max-w-screen-xl mx-auto">
           <div className="flex">
             <ul className="flex h-11 flex-row items-center font-medium mx-auto mt-0 text-sm gap-7">
-              <li>
-                <Link
-                  to="#"
-                  className="text-white p-3 hover:bg-primary-700" 
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="text-white p-3 hover:bg-primary-700">
-                  Company
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="text-white p-3 hover:bg-primary-700">
-                  Team
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="text-white p-3 hover:bg-primary-700">
-                  Features
-                </Link>
-              </li>
+              {navItems.map((item, index) => (
+                <li key={index}>
+                  <Link
+                    to={item.link}
+                    className="text-white p-3 hover:bg-primary-700"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
