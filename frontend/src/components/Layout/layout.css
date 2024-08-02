@@ -15,3 +15,13 @@
 .eshop__indicator-separator{
     display: none;
 }
+
+.notifications-dot{
+    width: 8px;
+    height: 8px;
+    background-color: #dc2626;
+    border-radius: 50%;
+    position: absolute;
+    left: 18px;
+    top: 8px;
+}

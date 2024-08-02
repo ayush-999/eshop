@@ -2,7 +2,7 @@ import Header from '../components/Layout/Header'
 const HomePage = () => {
   return (
     <>
-        <Header />
+        <Header activeHeading={1} />
     </>
   )
 }

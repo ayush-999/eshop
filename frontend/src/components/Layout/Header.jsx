@@ -7,9 +7,10 @@ import { CiShop } from "react-icons/ci";
 import { PiPackage } from "react-icons/pi";
 import { IoLogOutOutline, IoNotificationsOutline } from "react-icons/io5";
 import { MdOutlineCardGiftcard } from "react-icons/md";
-import Select from 'react-select';
+import Select from "react-select";
 import "./layout.css";
-import { navItems, categoriesData, productData } from "../../static/data";
+import { categoriesData, productData } from "../../static/data";
+import Navbar from "./Navbar";
 
 const Header = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -93,24 +94,29 @@ const Header = () => {
           key={index}
           className="py-2 px-2 text-gray-400 hover:rounded-md text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer flex items-center justify-start gap-2"
         >
-          <img
-            src={product.image_Url[0]?.url}
-            alt={product.name}
-            className="w-8 h-8 object-contain bg-center bg-no-repeat rounded-full"
-          />
-          {product.name}
+          <Link
+            to={`/product/${product.name.replace(/\s+/g, "-")}`}
+            className="flex items-center justify-between"
+          >
+            <img
+              src={product.image_Url[0]?.url}
+              alt={product.name}
+              className="w-8 h-8 object-contain bg-center bg-no-repeat rounded-full mr-2"
+            />
+            {product.name}
+          </Link>
         </li>
       ));
     }
 
     return (
-      <li className="py-2 px-2 text-gray-400 text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer text-center">
+      <li className="py-2 px-2 text-gray-400 hover:rounded-md text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer text-center">
         No results found
       </li>
     );
   };
 
-  const categoryOptions = categoriesData.map(category => ({
+  const categoryOptions = categoriesData.map((category) => ({
     value: category.title,
     label: category.title,
   }));
@@ -134,27 +140,28 @@ const Header = () => {
               styles={{
                 control: (provided) => ({
                   ...provided,
-                  width:'132px',
-                  background: 'transparent',
-                  fontSize: '0.75rem',
-                  fontWeight: '600',
-                  color: 'rgb(75 85 99)',
+                  width: "132px",
+                  background: "transparent",
+                  fontSize: "0.75rem",
+                  fontWeight: "600",
+                  color: "rgb(75 85 99)",
                   border: 0,
-                  ':hover':{
-                    boxShadow:'none',
-                    borderColor:'transparent'
-                  }
+                  ":hover": {
+                    boxShadow: "none",
+                    borderColor: "transparent",
+                  },
                 }),
                 menu: (provided) => ({
                   ...provided,
                   zIndex: 9999,
-                  color: 'rgb(75 85 99)',
-                  width:'250px',
-                  fontSize:'0.8rem',
-                  fontWeight: '400',
-                  border:'none',
-                  boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-                  borderRadius:'0.5rem',
+                  color: "rgb(75 85 99)",
+                  width: "250px",
+                  fontSize: "0.8rem",
+                  fontWeight: "400",
+                  border: "none",
+                  boxShadow:
+                    "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+                  borderRadius: "0 0 0.5rem 0.5rem",
                 }),
               }}
             />
@@ -173,14 +180,14 @@ const Header = () => {
             </div>
 
             {searchDropdownVisible && (
-              <div className="absolute top-full w-[540px] right-0 bg-white rounded-lg shadow-md mt-1 p-2 z-10">
+              <div className="absolute top-full w-[540px] right-0 bg-white rounded-b-lg shadow-md mt-1 p-2 z-10">
                 <ul>{renderSearchResults()}</ul>
               </div>
             )}
           </div>
           <div className="flex items-center justify-end">
             <Link
-              to="/"
+              to="/seller"
               className="hover:text-primary-600 hover:bg-primary-100 rounded-md p-2 font-semibold md:text-sm flex justify-between items-center gap-1"
             >
               <CiShop className="w-6 h-6" /> Become a Seller
@@ -215,7 +222,7 @@ const Header = () => {
                   </div>
                   {dropdownVisible && (
                     <div
-                      className="absolute z-10 mt-2 w-44 origin-top-right rounded-lg bg-white p-1 shadow-md"
+                      className="absolute z-10 mt-2 w-44 origin-top-right rounded-b-lg bg-white p-1 shadow-md"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="user-menu-button"
@@ -267,12 +274,13 @@ const Header = () => {
                       </Link>
                       <Link
                         to="#"
-                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        className="relative flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
                         role="menuitem"
                         id="user-menu-item-2"
                       >
+                        <span className="notifications-dot"></span>
                         <IoNotificationsOutline className="w-5 h-5" />
-                        Notifications
+                        Notifications (5)
                       </Link>
                       <Link
                         to="#"
@@ -300,24 +308,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <nav className="bg-primary-600">
-        <div className="max-w-screen-xl mx-auto">
-          <div className="flex">
-            <ul className="flex h-11 flex-row items-center font-medium mx-auto mt-0 text-sm gap-7">
-              {navItems.map((item, index) => (
-                <li key={index}>
-                  <Link
-                    to={item.link}
-                    className="text-white p-3 hover:bg-primary-700"
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
     </>
   );
 };
