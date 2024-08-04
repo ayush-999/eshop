@@ -174,6 +174,7 @@ const Header = () => {
               ref={searchInputRef}
               onFocus={() => setSearchDropdownVisible(true)}
               placeholder="Search for Products and more"
+              autoComplete="off"
             />
             <div className="p-3 rounded-md bottom-0">
               <FiSearch className="text-gray-500" />
