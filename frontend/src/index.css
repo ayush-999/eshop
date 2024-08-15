@@ -112,3 +112,62 @@ input[type="number"] {
   margin: 0 auto;
 }
 
+.swiper-button-prev{    
+  background: #fff;
+  left: -1px;
+  height: 80px;
+  width: 30px;
+  border-radius: 0 5px 5px 0;
+  color: #000;
+  top: 50%;
+  transform: translate(0, -30%);
+  transition: all 0.1s ease-in-out;
+}
+
+.swiper-button-prev:after{
+  font-size: 11px;
+}
+
+.swiper-button-next{    
+  background: #fff;
+  right: -1px;
+  height: 80px;
+  width: 30px;
+  border-radius: 5px 0 0 5px;
+  color: #000;
+  top: 50%;
+  transform: translate(0, -30%);
+  transition: all 0.1s ease-in-out;
+
+}
+
+.swiper-button-next:after{
+  font-size: 11px;
+}
+
+.swiper-pagination{
+  background: rgba(0, 0, 0, 0.3);
+  padding: 3px;
+  border-radius: 50px;
+}
+
+.swiper-pagination-bullet-active{
+  background: #fff;
+}
+
+.swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled{
+  display: none;
+}
+
+.truncate-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.pcard-rating-separator{
+  width: 1.2px;
+  background: rgba(0, 0, 0, 0.3);
+  height: 12px;
+}

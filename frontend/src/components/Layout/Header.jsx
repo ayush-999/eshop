@@ -10,7 +10,7 @@ import { MdOutlineCardGiftcard } from "react-icons/md";
 import Select from "react-select";
 import "./layout.css";
 import { categoriesData, productData } from "../../static/data";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 
 const Header = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -18,6 +18,7 @@ const Header = () => {
   const [topSearches, setTopSearches] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState([]);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
   const searchInputRef = useRef(null);
@@ -42,9 +43,19 @@ const Header = () => {
       }
     };
 
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -92,7 +103,7 @@ const Header = () => {
       return searchData.map((product, index) => (
         <li
           key={index}
-          className="py-2 px-2 text-gray-400 hover:rounded-md text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer flex items-center justify-start gap-2"
+          className="py-2 px-2 text-gray-400 hover:rounded-md text-sm font-normal hover:bg-primary-20 cursor-pointer flex items-center justify-start gap-2"
         >
           <Link
             to={`/product/${product.name.replace(/\s+/g, "-")}`}
@@ -103,7 +114,7 @@ const Header = () => {
               alt={product.name}
               className="w-8 h-8 object-contain bg-center bg-no-repeat rounded-full mr-2"
             />
-            {product.name}
+            <span className="truncate-text w-[468px]">{product.name}</span>
           </Link>
         </li>
       ));
@@ -123,8 +134,8 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-white border-gray-200 main-navbar">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-2">
+      <header className={`bg-white border-gray-200 main-navbar fixed w-full top-0 ${isScrolled ? "shadow-sm z-50" : ''}`}>
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl pt-2 pb-2">
           <Link
             to="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -181,7 +192,7 @@ const Header = () => {
             </div>
 
             {searchDropdownVisible && (
-              <div className="absolute top-full w-[540px] right-0 bg-white rounded-b-lg shadow-md mt-1 p-2 z-10">
+              <div className="absolute top-full w-[540px] right-0 bg-white rounded-b-lg shadow-md mt-1 p-2 z-10 searchResults">
                 <ul>{renderSearchResults()}</ul>
               </div>
             )}
@@ -309,7 +320,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <Navbar />
+      {/* <Navbar /> */}
     </>
   );
 };

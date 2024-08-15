@@ -3,13 +3,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "./slider.css";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { sliderItems } from "../../../static/data";
 
 const Slider = () => {
   return (
-    <>
+    <div className="slider-wrapper">
       <Swiper
         slidesPerView={1}
         loop={true}
@@ -19,7 +18,7 @@ const Slider = () => {
           clickable: true, 
         }}
         autoplay={{
-          delay: 5000,
+          delay: 8000,
           disableOnInteraction: false,
         }}
         modules={[Autoplay, Navigation, Pagination]}
@@ -36,7 +35,7 @@ const Slider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };
 
