@@ -330,11 +330,11 @@ export const productData = [
     image_Url: [
       {
         public_id: "test",
-        url: "https://rukminim2.flixcart.com/image/312/312/xif0q/computer/l/q/t/-original-imaguw3hwp55jj7b.jpeg?q=70",
+        url: "https://images.ctfassets.net/hrltx12pl8hq/01rJn4TormMsGQs1ZRIpzX/16a1cae2440420d0fd0a7a9a006f2dcb/Artboard_Copy_231.jpg?fit=fill&w=600&h=600",
       },
       {
         public_id: "test",
-        url: "https://rukminim2.flixcart.com/image/312/312/xif0q/computer/l/q/t/-original-imaguw3hwp55jj7b.jpeg?q=70",
+        url: "https://images.ctfassets.net/hrltx12pl8hq/01rJn4TormMsGQs1ZRIpzX/16a1cae2440420d0fd0a7a9a006f2dcb/Artboard_Copy_231.jpg?fit=fill&w=600&h=600",
       },
     ],
     shop: {

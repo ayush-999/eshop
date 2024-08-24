@@ -5,12 +5,10 @@ import { FaStar } from "react-icons/fa";
 import { RiEyeLine } from "react-icons/ri";
 import { FiShoppingCart } from "react-icons/fi";
 import { GoHeart, GoHeartFill } from "react-icons/go";
-import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard.jsx";
 import "./productCard.css";
 
-const ProductCard = ({ data }) => {
+const ProductCard = ({ data, onOpenDetails }) => {
   const [click, setClick] = useState(false);
-  const [open, setOpen] = useState(false);
 
   const pName = data.name;
   const product_name = pName.toLowerCase().replace(/\s+/g, "-");
@@ -25,7 +23,7 @@ const ProductCard = ({ data }) => {
               <div className="pcard-rating-icon flex items-center justify-between gap-1">
                 <p className="pcard-rating-text font-bold">{data.rating}</p>
                 <FaStar className="text-primary-500" />
-                <div className="pcard-rating-separator ml-1 mr-1"></div>
+                <div className="rating-separator ml-1 mr-1"></div>
                 <p className="pcard-total-rating font-bold">4.2k</p>
               </div>
             </div>
@@ -35,20 +33,20 @@ const ProductCard = ({ data }) => {
               <GoHeartFill
                 className="pcard-icon"
                 onClick={() => setClick(!click)}
-                color={click ? "#e5042f" : "#333"}
+                color={click ? "#dc2626" : "#333"}
                 title="Remove from wishlist"
               />
             ) : (
               <GoHeart
                 className="pcard-icon"
                 onClick={() => setClick(!click)}
-                color={click ? "#e5042f" : "#333"}
+                color={click ? "#dc2626" : "#333"}
                 title="Add to wishlist"
               />
             )}
             <RiEyeLine
               className="pcard-icon"
-              onClick={() => setOpen(!open)}
+              onClick={() => onOpenDetails(data)}
               color="#333"
               title="Quick view"
             />
@@ -57,7 +55,6 @@ const ProductCard = ({ data }) => {
               color="#333"
               title="Add to cart"
             />
-            {open ? <ProductDetailsCard setOpen={setOpen} data={data} /> : null}
           </div>
           <div className="pcard-img-wrap">
             <Link to={`/product/${product_name}`}>
@@ -65,7 +62,7 @@ const ProductCard = ({ data }) => {
                 src={data.image_Url[0]?.url}
                 alt={data.name}
                 className="pcard-image"
-              />
+                />
             </Link>
           </div>
         </div>
@@ -79,22 +76,24 @@ const ProductCard = ({ data }) => {
           <div className="flex items-baseline justify-between">
             <div className="pcard-price-wrap">
               <h5 className="pcard-discount_price">
-                <span className="mr-1">Rs.</span>
+                <span className="mr-1">₹</span>
                 {data.price === 0 ? data.price : data.discount_price}
               </h5>
               {data.price && data.price !== data.discount_price && (
                 <h5 className="pcard-price">
-                  (<span className="mr-0">Rs.</span>
+                  (<span className="mr-0">
+                    ₹
+                  </span>
                   {data.price})
                 </h5>
               )}
             </div>
-            <div className="pcard-sold-wrap">
+            <div className="pcard-discount">
               <p>
                 <span className="mr-1">
-                  {data.total_sell ? data.total_sell : null}
+                  70%
                 </span>
-                sold
+                off
               </p>
             </div>
           </div>

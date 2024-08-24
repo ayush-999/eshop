@@ -1,0 +1,128 @@
+.pcarddetails-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.pcarddetails-content {
+  background-color: white;
+  width: 90%;
+  max-width: 800px;
+  height: 90vh;
+  overflow-y: scroll;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close-icon {
+  position: fixed;
+  top: 8%;
+  right: 20%;
+  font-size: 26px;
+  cursor: pointer;
+  z-index: 10000;
+  background-color: #fff;
+  padding: 6px;
+  border-radius: 100px;
+  transition: all 0.2s ease-in-out;
+}
+
+.close-icon:hover {
+  background-color: #f5f5f5;
+}
+
+.pcarddetails-img-wrap{
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 3px;
+}
+
+.pcarddetails-img{
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.pcarddetails-img .swiper-button-prev{    
+  background: rgba(255, 255, 255, 0.3);
+  left: 1px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  color: #000;
+  top: 50%;
+  transform: translate(0, 0);
+  transition: all 0.1s ease-in-out;
+}
+.pcarddetails-img .swiper-button-prev:hover{
+background-color: #F1F6FF;
+}   
+
+.pcarddetails-img .swiper-button-prev:after{
+  font-size: 14px;
+}
+
+.pcarddetails-img .swiper-button-next{    
+  background: rgba(255, 255, 255, 0.3);
+  right: 1px;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  color: #000;
+  top: 50%;
+  transform: translate(0, 0);
+  transition: all 0.1s ease-in-out;
+}
+
+.pcarddetails-img .swiper-button-next:hover{
+  background-color: #F1F6FF;
+}   
+
+.pcarddetails-img .swiper-button-next:after{
+  font-size: 14px;
+}
+
+.pcarddetails-thumbs img {
+  /* width: 100%;
+  height: auto; */
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.pcarddetails-thumbs .swiper-slide-thumb-active img {
+  opacity: 1;
+}
+
+.pcarddetails-icon{
+  font-size: 28px;
+}
+
+.pcarddetails-discount-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.pcarddetails-rating{
+  font-size: 14px;
+  color: #fff;
+  background-color: #4a51e1;
+  border-radius: 50px;
+  padding: 1.5px 10px;
+}

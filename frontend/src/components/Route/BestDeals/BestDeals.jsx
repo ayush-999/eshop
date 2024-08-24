@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import 'swiper/css/free-mode';
+import { Navigation, FreeMode } from "swiper/modules";
 import { FiChevronRight } from "react-icons/fi";
 import ProductCard from "../ProductCard/ProductCard.jsx";
 import { productData } from "../../../static/data";
+import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard.jsx";
 
 const BestDeals = () => {
   const [data, setData] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const d =
@@ -17,6 +20,15 @@ const BestDeals = () => {
     const firstSix = d.slice(0, 6);
     setData(firstSix);
   }, []);
+
+  const handleOpenDetails = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedProduct(null);
+  };
+
   return (
     <>
       <div className="grid grid-cols-12 gap-3 mb-6">
@@ -38,14 +50,15 @@ const BestDeals = () => {
               slidesPerView={5}
               spaceBetween={10}
               navigation={true}
-              modules={[Navigation]}
+              freeMode={true}
+              modules={[Navigation, FreeMode]}
               className="bestDealsSlider"
             >
               {data &&
                 data.map((item, index) => (
                   <SwiperSlide key={index}>
                     <div className="w-full h-[280px] ">
-                      <ProductCard data={item} />
+                      <ProductCard data={item} onOpenDetails={handleOpenDetails}/>
                     </div>
                   </SwiperSlide>
                 ))}
@@ -63,6 +76,12 @@ const BestDeals = () => {
           </div>
         </div>
       </div>
+      {selectedProduct && (
+        <ProductDetailsCard
+          data={selectedProduct}
+          setOpen={handleCloseDetails}
+        />
+      )}
     </>
   );
 };
