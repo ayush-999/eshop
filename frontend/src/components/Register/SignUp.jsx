@@ -185,7 +185,7 @@ const SignUp = () => {
                   <div className="flex justify-end mt-5">
                     <button
                       type="button"
-                      className="text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-medium rounded-lg text-sm px-5 py-3 text-center mr-2"
+                      className="text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-medium rounded-lg text-sm px-5 py-3 text-center mr-2 ease-in-out duration-100"
                       onClick={() => {
                         if (page === 0) {
                           navigate("/sign-in");
@@ -198,7 +198,7 @@ const SignUp = () => {
                     </button>
                     <button
                       type="submit"
-                      className="text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-medium rounded-lg text-sm px-5 py-3 text-center disabled:opacity-70"
+                      className="text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-medium rounded-lg text-sm px-5 py-3 text-center disabled:opacity-70 ease-in-out duration-100"
                       disabled={
                         isNextDisabled(errors, touched, values) || loading
                       }

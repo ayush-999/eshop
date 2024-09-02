@@ -7,10 +7,9 @@ import { CiShop } from "react-icons/ci";
 import { PiPackage } from "react-icons/pi";
 import { IoLogOutOutline, IoNotificationsOutline } from "react-icons/io5";
 import { MdOutlineCardGiftcard } from "react-icons/md";
-import Select from "react-select";
 import "./layout.css";
-import { categoriesData, productData } from "../../static/data";
-import Navbar from "./Navbar";
+import { productData } from "../../static/data";
+// import Navbar from "./Navbar";
 
 const Header = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -18,6 +17,7 @@ const Header = () => {
   const [topSearches, setTopSearches] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState([]);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
   const searchInputRef = useRef(null);
@@ -42,9 +42,19 @@ const Header = () => {
       }
     };
 
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -79,7 +89,7 @@ const Header = () => {
           {topSearches.map((search, index) => (
             <li
               key={index}
-              className="py-2 px-2 text-gray-400 hover:rounded-md text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer flex items-center justify-start gap-2"
+              className="py-2 px-2 text-gray-400 hover:rounded-lg text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer flex items-center justify-start gap-2"
             >
               <FiSearch className="text-gray-500" /> {search}
             </li>
@@ -92,7 +102,7 @@ const Header = () => {
       return searchData.map((product, index) => (
         <li
           key={index}
-          className="py-2 px-2 text-gray-400 hover:rounded-md text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer flex items-center justify-start gap-2"
+          className="py-2 px-2 text-gray-400 hover:rounded-lg text-sm font-normal hover:bg-primary-20 cursor-pointer flex items-center justify-start gap-2"
         >
           <Link
             to={`/product/${product.name.replace(/\s+/g, "-")}`}
@@ -103,70 +113,39 @@ const Header = () => {
               alt={product.name}
               className="w-8 h-8 object-contain bg-center bg-no-repeat rounded-full mr-2"
             />
-            {product.name}
+            <span className="truncate-text w-[468px]">{product.name}</span>
           </Link>
         </li>
       ));
     }
 
     return (
-      <li className="py-2 px-2 text-gray-400 hover:rounded-md text-sm mb-1 font-normal hover:bg-primary-20 cursor-pointer text-center">
+      <li className="py-2 px-2 text-gray-400 text-sm mb-1 font-normal cursor-pointer text-center">
         No results found
       </li>
     );
   };
 
-  const categoryOptions = categoriesData.map((category) => ({
-    value: category.title,
-    label: category.title,
-  }));
-
   return (
     <>
-      <header className="bg-white border-gray-200 main-navbar">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-2">
+      <header
+        className={`bg-white border-gray-200 main-navbar fixed w-full top-0 ${
+          isScrolled ? "shadow-sm z-50" : ""
+        }`}
+      >
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl pt-2 pb-2">
           <Link
             to="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img src="assets/img/logo-black.png" className="h-8" alt="Eshop" />
           </Link>
-          <div className="w-full max-w-xs xl:max-w-2xl 2xl:max-w-2xl bg-primary-40 rounded-md hidden xl:flex items-center relative">
-            <Select
-              options={categoryOptions}
-              className="basic-single"
-              classNamePrefix="eshop"
-              placeholder="All Categories"
-              styles={{
-                control: (provided) => ({
-                  ...provided,
-                  width: "132px",
-                  background: "transparent",
-                  fontSize: "0.75rem",
-                  fontWeight: "600",
-                  color: "rgb(75 85 99)",
-                  border: 0,
-                  ":hover": {
-                    boxShadow: "none",
-                    borderColor: "transparent",
-                  },
-                }),
-                menu: (provided) => ({
-                  ...provided,
-                  zIndex: 9999,
-                  color: "rgb(75 85 99)",
-                  width: "250px",
-                  fontSize: "0.8rem",
-                  fontWeight: "400",
-                  border: "none",
-                  boxShadow:
-                    "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
-                  borderRadius: "0 0 0.5rem 0.5rem",
-                }),
-              }}
-            />
+          <div className="w-full max-w-xs xl:max-w-2xl 2xl:max-w-2xl bg-primary-40 rounded-lg hidden xl:flex items-center relative">
+            <div className="p-3 rounded-lg bottom-0">
+              <FiSearch className="text-gray-500" />
+            </div>
             <input
-              className="bg-transparent font-normal text-sm border-l pl-3 w-full"
+              className="bg-transparent font-normal text-sm border-l pl-3 pr-3 w-full"
               type="text"
               id="search-input"
               value={searchTerm}
@@ -174,21 +153,18 @@ const Header = () => {
               ref={searchInputRef}
               onFocus={() => setSearchDropdownVisible(true)}
               placeholder="Search for Products and more"
+              autoComplete="off"
             />
-            <div className="p-3 rounded-md bottom-0">
-              <FiSearch className="text-gray-500" />
-            </div>
-
             {searchDropdownVisible && (
-              <div className="absolute top-full w-[540px] right-0 bg-white rounded-b-lg shadow-md mt-1 p-2 z-10">
+              <div className="absolute top-full w-full right-0 bg-white rounded-b-lg shadow-md mt-1 p-2 z-10 searchResults">
                 <ul>{renderSearchResults()}</ul>
               </div>
             )}
           </div>
-          <div className="flex items-center justify-end">
+          <div className="flex items-center">
             <Link
-              to="/seller"
-              className="hover:text-primary-600 hover:bg-primary-100 rounded-md p-2 font-semibold md:text-sm flex justify-between items-center gap-1"
+              to="/sign-in"
+              className="hover:text-primary-600 hover:bg-primary-100 rounded-lg p-2 font-semibold md:text-sm flex justify-between items-center gap-1"
             >
               <CiShop className="w-6 h-6" /> Become a Seller
             </Link>
@@ -200,7 +176,7 @@ const Header = () => {
                   <div>
                     <button
                       type="button"
-                      className={`relative flex justify-between gap-1.5 items-center cursor-pointer text-sm rounded-md p-2 font-semibold ${
+                      className={`relative flex justify-between gap-1.5 items-center cursor-pointer text-sm rounded-lg p-2 font-semibold ${
                         dropdownVisible
                           ? "bg-primary-30"
                           : "hover:bg-primary-30"
@@ -230,7 +206,7 @@ const Header = () => {
                     >
                       <Link
                         to="#"
-                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
                         role="menuitem"
                         id="user-menu-item-0"
                       >
@@ -238,7 +214,7 @@ const Header = () => {
                       </Link>
                       <Link
                         to="#"
-                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
                         role="menuitem"
                         id="user-menu-item-2"
                       >
@@ -247,7 +223,7 @@ const Header = () => {
                       </Link>
                       <Link
                         to="#"
-                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
                         role="menuitem"
                         id="user-menu-item-2"
                       >
@@ -256,7 +232,7 @@ const Header = () => {
                       </Link>
                       <Link
                         to="#"
-                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
                         role="menuitem"
                         id="user-menu-item-2"
                       >
@@ -265,7 +241,7 @@ const Header = () => {
                       </Link>
                       <Link
                         to="#"
-                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
                         role="menuitem"
                         id="user-menu-item-2"
                       >
@@ -274,7 +250,7 @@ const Header = () => {
                       </Link>
                       <Link
                         to="#"
-                        className="relative flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-black"
+                        className="relative flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
                         role="menuitem"
                         id="user-menu-item-2"
                       >
@@ -284,7 +260,7 @@ const Header = () => {
                       </Link>
                       <Link
                         to="#"
-                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-md text-gray-600 hover:bg-primary-20 hover:text-red-700"
+                        className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-red-700"
                         role="menuitem"
                         id="user-menu-item-2"
                       >
@@ -308,7 +284,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <Navbar />
+      {/* <Navbar /> */}
     </>
   );
 };

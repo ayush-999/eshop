@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Field, ErrorMessage } from "formik";
-import { FaCamera } from "react-icons/fa6";
+import { PiCameraFill } from "react-icons/pi";
 import { useState } from "react";
 
 const SignUpInfo = ({ formData, setFormData, errors, touched }) => {
@@ -26,7 +26,7 @@ const SignUpInfo = ({ formData, setFormData, errors, touched }) => {
             id="uploadBtn"
             className="uploadBtn bg-gray-100 rounded-full hover:bg-primary-600 hover:text-white"
           >
-            <FaCamera />
+            <PiCameraFill />
           </label>
           <img
             src={imageSrc}
