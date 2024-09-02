@@ -29,3 +29,7 @@
 .main-navbar {
   z-index: 9999;
 }
+
+.payment-method-img{
+  height: 16px;
+}

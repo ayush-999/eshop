@@ -8,7 +8,7 @@ import { sliderItems } from "../../../static/data";
 
 const Slider = () => {
   return (
-    <div className="slider-wrapper">
+    <div className="slider-wrapper w-full">
       <Swiper
         slidesPerView={1}
         loop={true}

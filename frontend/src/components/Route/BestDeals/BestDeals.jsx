@@ -34,7 +34,7 @@ const BestDeals = () => {
       <div className="grid grid-cols-12 gap-3 mb-6">
         <div className="col-span-10 bestDeals-wrapper">
           <div
-            className="bg-white p-6 rounded-lg mb-6 shadow-sm"
+            className="bg-white p-6 rounded-lg shadow-sm"
             id="bestDeals"
           >
             <div className="flex justify-between items-center mb-5">

@@ -46,7 +46,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
     <div className="pcarddetails-popup">
       {data ? (
         <div className="pcarddetails-overlay">
-          <div className="w-[90%] 800px:w-[60%] h-[90vh] 800px:h-[75vh] bg-white rounded-lg shadow-sm relative p-6 overflow-hidden">
+          <div className="w-[90%] 800px:w-[60%] h-[90vh] 800px:h-[75vh] bg-white rounded-lg shadow-sm relative p-6 overflow-y-scroll">
             <RxCross1 className="close-icon" onClick={() => setOpen(false)} />
             <div className="block w-full">
               <div className="grid grid-cols-12 gap-3">
@@ -184,7 +184,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                         </p>
                       </div>
                       <div className="flex items-center justify-start gap-2">
-                      <span className="bg-[#f8f8ff] text-[#616173] text-xs font-medium me-2 px-[10px] py-[4px] rounded-full">
+                        <span className="bg-[#f8f8ff] text-[#616173] text-xs font-medium me-2 px-[10px] py-[4px] rounded-full">
                           Free Delivery
                         </span>
                       </div>

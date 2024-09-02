@@ -161,9 +161,9 @@ const Header = () => {
               </div>
             )}
           </div>
-          <div className="flex items-center justify-end">
+          <div className="flex items-center">
             <Link
-              to="/seller"
+              to="/sign-in"
               className="hover:text-primary-600 hover:bg-primary-100 rounded-lg p-2 font-semibold md:text-sm flex justify-between items-center gap-1"
             >
               <CiShop className="w-6 h-6" /> Become a Seller
