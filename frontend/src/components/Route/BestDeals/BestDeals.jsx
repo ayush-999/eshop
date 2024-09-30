@@ -40,7 +40,7 @@ const BestDeals = () => {
             <div className="flex justify-between items-center mb-5">
               <h1 className="font-bold text-base">Best Deals</h1>
               <Link
-                to="/"
+                to="/best-deals"
                 className="bg-primary-600 hover:bg-primary-700 p-1 text-white rounded-full"
               >
                 <FiChevronRight />

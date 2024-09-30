@@ -33,3 +33,13 @@
 .payment-method-img{
   height: 16px;
 }
+
+.footer-appImg{
+  width: auto;
+  height: 35px;
+}
+
+.sidebar-title-wrapper{
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 8px;
+}

@@ -133,12 +133,9 @@ const Header = () => {
           isScrolled ? "shadow-sm z-50" : ""
         }`}
       >
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl pt-2 pb-2">
-          <Link
-            to="/"
-            className="flex items-center space-x-3 rtl:space-x-reverse"
-          >
-            <img src="assets/img/logo-black.png" className="h-8" alt="Eshop" />
+        <div className="flex flex-wrap justify-between items-center mx-auto sm:max-w-screen-xl sm:py-2 sm:px-0 py-2 px-2">
+          <Link to="/">
+            <img src="assets/img/logo-black.png" className="h-8 nav-logo" alt="Eshop" />
           </Link>
           <div className="w-full max-w-xs xl:max-w-2xl 2xl:max-w-2xl bg-primary-40 rounded-lg hidden xl:flex items-center relative">
             <div className="p-3 rounded-lg bottom-0">

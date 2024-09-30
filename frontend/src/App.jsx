@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { SignInPage, SignUpPage, ActivationPage, HomePage } from "./Routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import Store from "./redux/store";
 import { loadUser } from "./redux/action/user";
+import { SignInPage, SignUpPage, ActivationPage, HomePage, BestDealsPage } from "./Routes";
 
 const App = () => {
   useEffect(() => {
@@ -20,6 +20,7 @@ const App = () => {
           path="/activation/:activation_token"
           element={<ActivationPage />}
         />
+        <Route path="/best-deals" element={<BestDealsPage/>}/>
       </Routes>
       <ToastContainer
         position="top-center"
