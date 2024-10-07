@@ -10,7 +10,7 @@ import Footer from "../components/Layout/Footer.jsx";
 const HomePage = () => {
   return (
     <>
-      <Header activeHeading={1} />
+      <Header />
       <div className="max-w-screen-xl mx-auto mt-10 md:mt-16 mb-6 sm:px-6 lg:px-0">
         <Slider />
         <Categories/>

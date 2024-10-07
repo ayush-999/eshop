@@ -33,11 +33,11 @@ const BestDealsPage = () => {
   };
   return (
     <>
-      <Header activeHeading={1} />
+      <Header />
       <div className="max-w-screen-xl mx-auto mt-10 md:mt-16 mb-6 sm:px-6 lg:px-0">
         <div className="grid grid-cols-12 gap-3">
           <div className="col-span-3 sideBar-wrapper">
-          <SideBar onApplyFilter={handleApplyFilter} />
+            <SideBar onApplyFilter={handleApplyFilter} />
           </div>
           <div className="col-span-9 dealsPage-wrapper">
             <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -45,7 +45,7 @@ const BestDealsPage = () => {
                 <h1 className="font-bold text-base">Best Deals</h1>
               </div>
               <div className="grid grid-cols-12 gap-3">
-              {data.map((item) => (
+                {data.map((item) => (
                   <div className="col-span-3 bestDeals-wrapper" key={item.id}>
                     <div className="w-full h-[280px]">
                       <ProductCard

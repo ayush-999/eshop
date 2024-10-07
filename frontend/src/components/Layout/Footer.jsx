@@ -13,7 +13,7 @@ const Footer = () => {
               <ul className="text-gray-500 dark:text-gray-400 font-normal">
                 <li className="mb-1">
                   <Link
-                    to=""
+                    to="/about"
                     className=" text-sm hover:text-white hover:underline"
                   >
                     About
@@ -21,7 +21,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-1">
                   <Link
-                    to=""
+                    to="/careers"
                     className="text-sm hover:text-white hover:underline"
                   >
                     Careers
@@ -29,7 +29,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-1">
                   <Link
-                    to=""
+                    to="/faq"
                     className="text-sm hover:text-white hover:underline"
                   >
                     FAQ
@@ -37,7 +37,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-1">
                   <Link
-                    to=""
+                    to="/blog"
                     className="text-sm hover:text-white hover:underline"
                   >
                     Blog
@@ -50,14 +50,6 @@ const Footer = () => {
                 Help center
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-normal">
-                <li className="mb-1">
-                  <Link
-                    to=""
-                    className="text-sm hover:text-white hover:underline"
-                  >
-                    Discord Server
-                  </Link>
-                </li>
                 <li className="mb-1">
                   <Link
                     to=""
@@ -89,7 +81,7 @@ const Footer = () => {
               <ul className="text-gray-500 dark:text-gray-400 font-normal">
                 <li className="mb-1">
                   <Link
-                    to=""
+                    to="/privacy-policy"
                     className="text-sm hover:text-white hover:underline"
                   >
                     Privacy Policy
@@ -97,15 +89,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-1">
                   <Link
-                    to=""
-                    className="text-sm hover:text-white hover:underline"
-                  >
-                    Licensing
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link
-                    to=""
+                    to="/terms-conditions"
                     className="text-sm hover:text-white hover:underline"
                   >
                     Terms &amp; Conditions

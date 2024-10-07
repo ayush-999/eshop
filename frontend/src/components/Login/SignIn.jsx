@@ -46,6 +46,7 @@ const SignInPage = () => {
       .then((res) => {
         toast.success("Login Success!");
         navigate("/");
+        window.location.reload()
       })
       .catch((err) => {
         if (err.response && err.response.data && err.response.data.message) {
