@@ -114,6 +114,8 @@ router.post(
       if (user) {
         if (user.isActivated) {
           return res.status(200).json({ message: "Account already activated" });
+        }else {
+          return next(new ErrorHandler("User already exists but is not activated", 400));
         }
         user.isActivated = true;
         await user.save();

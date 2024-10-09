@@ -41,7 +41,7 @@ const ActivationPage = () => {
   useEffect(() => {
     if (!error) {
       const timer = setTimeout(() => {
-        navigate("/sign-in");
+        navigate("/");
       }, 3000);
       return () => clearTimeout(timer);
     }
