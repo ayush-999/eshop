@@ -8,7 +8,7 @@ import { Navigation, FreeMode } from "swiper/modules";
 import { FiChevronRight } from "react-icons/fi";
 import ProductCard from "../ProductCard/ProductCard.jsx";
 import { productData } from "../../../static/data";
-import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard.jsx";
+import ProductDetailsCard from "../../../models/ProductDetailsCard/ProductDetailsCard.jsx";
 
 const BestDeals = () => {
   const [data, setData] = useState([]);

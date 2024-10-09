@@ -24,12 +24,12 @@
 
 .close-icon {
   position: fixed;
-  top: 8%;
-  right: 20%;
-  font-size: 26px;
+  top: 13%;
+  right: 20.3%;
+  font-size: 30px;
   cursor: pointer;
   z-index: 10000;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 6px;
   border-radius: 100px;
   transition: all 0.2s ease-in-out;

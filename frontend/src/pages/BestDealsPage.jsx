@@ -4,7 +4,7 @@ import Header from "../components/Layout/Header";
 import SideBar from "../components/Layout/SideBar";
 import { productData } from "../static/data";
 import ProductCard from "../components/Route/ProductCard/ProductCard";
-import ProductDetailsCard from "../components/Route/ProductDetailsCard/ProductDetailsCard";
+import ProductDetailsCard from "../models/ProductDetailsCard/ProductDetailsCard";
 const BestDealsPage = () => {
   const [data, setData] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);

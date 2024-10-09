@@ -45,8 +45,8 @@ const ProductDetailsCard = ({ setOpen, data }) => {
   return (
     <div className="pcarddetails-popup">
       {data ? (
-        <div className="pcarddetails-overlay">
-          <div className="w-[90%] 800px:w-[60%] h-[90vh] 800px:h-[75vh] bg-white rounded-lg shadow-sm relative p-6 overflow-y-scroll">
+        <div className="pcarddetails-overlay"> 
+          <div className="w-[90%] 800px:w-[60%] h-[90vh] 800px:h-[75vh] bg-white rounded-lg shadow-sm relative p-8 overflow-y-scroll">
             <RxCross1 className="close-icon" onClick={() => setOpen(false)} />
             <div className="block w-full">
               <div className="grid grid-cols-12 gap-3">

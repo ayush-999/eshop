@@ -5,12 +5,12 @@ import { toast } from "react-toastify";
 import { SyncLoader } from "react-spinners";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import SignUpInfo from "./SignUpInfo";
-import PersonalInfo from "./PersonalInfo";
-import OtherInfo from "./OtherInfo";
+import SellerSignUpInfo from "./SellerSignUpInfo";
+import PersonalInfo from "./SellerPersonalInfo";
+import OtherInfo from "./SellerOtherInfo";
 import { server } from "../../server";
 import { TypeAnimation } from "react-type-animation";
-const SignUp = () => {
+const SellerSignUp = () => {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const FormTitles = ["step-1", "step-2", "step-3"];
@@ -47,6 +47,7 @@ const SignUp = () => {
     }),
   ];
 
+    // TODO: need to change to seller abhi ye user ke liye chal raha hain
   const handleSubmit = async (values) => {
     setLoading(true);
     const newForm = new FormData();
@@ -156,7 +157,7 @@ const SignUp = () => {
               }) => (
                 <Form>
                   {page === 0 && (
-                    <SignUpInfo
+                    <SellerSignUpInfo
                       formData={values}
                       setFormData={setFieldValue}
                       errors={errors}
@@ -222,4 +223,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SellerSignUp;

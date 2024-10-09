@@ -11,6 +11,7 @@ import "./layout.css";
 import { productData } from "../../static/data";
 // import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
+import LoginModel from "../../models/LoginModel/LoginModel";
 
 const Header = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -23,6 +24,7 @@ const Header = () => {
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
   const searchInputRef = useRef(null);
+  const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
 
   useEffect(() => {
     // Fetch today's top searches when the component mounts
@@ -166,7 +168,7 @@ const Header = () => {
           </div>
           <div className="flex items-center">
             <Link
-              to="#"
+              to="/sign-in"
               className="hover:text-primary-600 hover:bg-primary-100 rounded-lg p-2 font-semibold md:text-sm flex justify-between items-center gap-1"
             >
               <CiShop className="w-6 h-6" /> Become a Seller
@@ -275,12 +277,12 @@ const Header = () => {
                     )}
                   </li>
                 ) : (
-                  <Link
-                    to="/sign-in"
+                  <button
+                    onClick={() => setIsLoginPopupOpen(true)}
                     className="text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-semibold rounded-lg text-sm px-5 py-2 text-center disabled:opacity-70 ease-in-out duration-100"
                   >
                     Login
-                  </Link>
+                  </button>
                 )}
                 <li className="relative">
                   <span className="cart-badge">10</span>
@@ -297,6 +299,7 @@ const Header = () => {
         </div>
       </header>
       {/* <Navbar /> */}
+      {isLoginPopupOpen && <LoginModel setOpen={setIsLoginPopupOpen} />}
     </>
   );
 };

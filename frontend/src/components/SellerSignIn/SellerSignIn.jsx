@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Link, useNavigate } from "react-router-dom";
-import "./SignIn.css";
+import "./sellerSignIn.css";
 import { useState } from "react";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -11,7 +11,7 @@ import { TypeAnimation } from "react-type-animation";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 
-const SignInPage = () => {
+const SellerSignIn = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -34,6 +34,7 @@ const SignInPage = () => {
     password: "",
   };
 
+  // TODO: need to change to seller abhi ye user ke liye chal raha hain
   const handleSubmit = async (values) => {
     setLoading(true);
     axios
@@ -206,4 +207,4 @@ const SignInPage = () => {
   );
 };
 
-export default SignInPage;
+export default SellerSignIn;
