@@ -3,7 +3,7 @@ import { Field, ErrorMessage } from "formik";
 import { PiCameraFill } from "react-icons/pi";
 import { useState } from "react";
 
-const SignUpInfo = ({ formData, setFormData, errors, touched }) => {
+const SellerRegisterInfo = ({ formData, setFormData, errors, touched }) => {
   const [imageSrc, setImageSrc] = useState(
     formData.userPic
       ? URL.createObjectURL(formData.userPic)
@@ -71,4 +71,4 @@ const SignUpInfo = ({ formData, setFormData, errors, touched }) => {
     </div>
   );
 };
-export default SignUpInfo;
+export default SellerRegisterInfo;

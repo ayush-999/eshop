@@ -5,8 +5,6 @@ import { useEffect } from "react";
 import Store from "./redux/store";
 import { loadUser } from "./redux/action/user";
 import {
-  SignInPage,
-  SignUpPage,
   ActivationPage,
   HomePage,
   BestDealsPage,
@@ -17,6 +15,8 @@ import {
   BlogPage,
   PrivacyPolicyPage,
   TermsConditionsPage,
+  SellerLoginPage,
+  SellerRegisterPage,
 } from "./Routes";
 import { useSelector } from "react-redux";
 
@@ -32,8 +32,11 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/sign-in" element={<SignInPage />} />
-            <Route path="/sign-up" element={<SignUpPage />} />
+
+            {/* TODO: ise seller"sign-in" aur "sign-up" route bnne ke ise bd badlna hai */}
+            <Route path="/seller-login" element={<SellerLoginPage />} />
+            <Route path="/seller-register" element={<SellerRegisterPage />} />
+            {/* ------------------------------------------------------------------- */}
             <Route
               path="/activation/:activation_token"
               element={<ActivationPage />}
@@ -65,7 +68,7 @@ const App = () => {
             toastStyle={{
               margin: "auto",
               marginTop: "10px",
-              borderRadius: "10px",
+              borderRadius: "10px"
             }}
           />
         </BrowserRouter>

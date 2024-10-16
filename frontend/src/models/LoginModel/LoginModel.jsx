@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import "./loginModel.css";
+import "./LoginModel.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SyncLoader } from "react-spinners";
@@ -13,7 +13,7 @@ import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 import { RxCross1 } from "react-icons/rx";
 
 const LoginModel = ({ setOpen }) => {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -45,9 +45,10 @@ const LoginModel = ({ setOpen }) => {
         },
       })
       .then((res) => {
-        toast.success("Login Success!");
+        toast.success("Login Successfully!");
+        setOpen(false);
         navigate("/");
-        window.location.reload()
+        // window.location.reload();
       })
       .catch((err) => {
         if (err.response && err.response.data && err.response.data.message) {
@@ -64,7 +65,7 @@ const LoginModel = ({ setOpen }) => {
   return (
     <div className="login-popup">
       <div className="login-overlay">
-        <div className="w-[34%] 800px:w-[34%] h-[60vh] 800px:h-[60vh] bg-white rounded-lg shadow-sm relative p-6 overflow-y-scroll">
+        <div className="w-[34%] h-[60vh] bg-white rounded-lg shadow-sm relative p-6 overflow-y-scroll">
           <RxCross1 className="login-close" onClick={() => setOpen(false)} />
           <div className="block w-full">
             <h2 className="text-center font-bold text-2xl mb-4">Login</h2>
@@ -75,7 +76,7 @@ const LoginModel = ({ setOpen }) => {
             >
               {({ errors, touched, isValid }) => (
                 <Form className="space-y-4 md:space-y-4">
-                  <div className="input-container">
+                  <div className="input-container mb-16">
                     <label
                       htmlFor="email"
                       className="inline-block mb-2 text-sm font-medium text-gray-900"
@@ -97,10 +98,10 @@ const LoginModel = ({ setOpen }) => {
                     <ErrorMessage
                       name="email"
                       component="div"
-                      className="text-red-500 text-sm"
+                      className="error-message"
                     />
                   </div>
-                  <div className="input-with-icon-container">
+                  <div className="input-container mb-20">
                     <label
                       htmlFor="password"
                       className="inline-block mb-2 text-sm font-medium text-gray-900"
@@ -166,16 +167,16 @@ const LoginModel = ({ setOpen }) => {
                     {loading ? (
                       <SyncLoader margin={1} size={8} color={"#fff"} />
                     ) : (
-                      "Sign In"
+                      "Login"
                     )}
                   </button>
                   <p className="text-sm font-light text-gray-400 text-center">
                     Don’t have an account yet?
                     <Link
-                      to="/sign-up"
+                      to="/"
                       className="font-medium text-gray-400 hover:text-primary-600 hover:underline ml-1"
                     >
-                      Sign Up
+                      Register
                     </Link>
                   </p>
                 </Form>

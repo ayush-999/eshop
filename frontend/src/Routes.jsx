@@ -1,6 +1,6 @@
 import HomePage from "./pages/HomePage";
-import SignInPage from "./pages/SellerSignInPage";
-import SignUpPage from "./pages/SellerSignUpPage";
+import SellerLoginPage from "./pages/SellerLoginPage";
+import SellerRegisterPage from "./pages/SellerRegisterPage";
 import ActivationPage from "./pages/ActivationPage";
 import BestDealsPage from "./pages/BestDealsPage";
 import EventsPage from "./pages/EventsPage";
@@ -11,4 +11,17 @@ import BlogPage from "./pages/BlogPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsConditionsPage from "./pages/TermsConditionsPage";
 
-export { HomePage, SignInPage, SignUpPage, ActivationPage, BestDealsPage, EventsPage, AboutPage, FaqPage, CareerPage, BlogPage, PrivacyPolicyPage, TermsConditionsPage};
+export {
+  HomePage,
+  SellerLoginPage,
+  SellerRegisterPage,
+  ActivationPage,
+  BestDealsPage,
+  EventsPage,
+  AboutPage,
+  FaqPage,
+  CareerPage,
+  BlogPage,
+  PrivacyPolicyPage,
+  TermsConditionsPage,
+};

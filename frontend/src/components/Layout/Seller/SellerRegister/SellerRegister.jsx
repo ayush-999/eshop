@@ -5,12 +5,12 @@ import { toast } from "react-toastify";
 import { SyncLoader } from "react-spinners";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import SellerSignUpInfo from "./SellerSignUpInfo";
+import SellerRegisterInfo from "./SellerRegisterInfo";
 import PersonalInfo from "./SellerPersonalInfo";
 import OtherInfo from "./SellerOtherInfo";
-import { server } from "../../server";
+import { server } from "../../../../server";
 import { TypeAnimation } from "react-type-animation";
-const SellerSignUp = () => {
+const SellerRegister = () => {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const FormTitles = ["step-1", "step-2", "step-3"];
@@ -157,7 +157,7 @@ const SellerSignUp = () => {
               }) => (
                 <Form>
                   {page === 0 && (
-                    <SellerSignUpInfo
+                    <SellerRegisterInfo
                       formData={values}
                       setFormData={setFieldValue}
                       errors={errors}
@@ -189,7 +189,7 @@ const SellerSignUp = () => {
                       className="text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-medium rounded-lg text-sm px-5 py-3 text-center mr-2 ease-in-out duration-100"
                       onClick={() => {
                         if (page === 0) {
-                          navigate("/sign-in");
+                          navigate("/seller-login");
                         } else {
                           setPage((currPage) => currPage - 1);
                         }
@@ -223,4 +223,4 @@ const SellerSignUp = () => {
   );
 };
 
-export default SellerSignUp;
+export default SellerRegister;

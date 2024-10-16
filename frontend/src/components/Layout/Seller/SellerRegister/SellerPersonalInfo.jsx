@@ -2,7 +2,7 @@
 import { Field, ErrorMessage } from "formik";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
-import "./sellerSignUp.css";
+import "./SellerRegister.css";
 
 const PersonalInfo = ({
   errors,

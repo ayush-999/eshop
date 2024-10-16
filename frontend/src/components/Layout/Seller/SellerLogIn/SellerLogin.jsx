@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Link, useNavigate } from "react-router-dom";
-import "./sellerSignIn.css";
+import "./SellerLogin.css";
 import { useState } from "react";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -8,10 +8,10 @@ import * as Yup from "yup";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 import { SyncLoader } from "react-spinners";
 import { TypeAnimation } from "react-type-animation";
-import { server } from "../../server";
+import { server } from "../../../../server";
 import { toast } from "react-toastify";
 
-const SellerSignIn = () => {
+const SellerLogin = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -119,7 +119,7 @@ const SellerSignIn = () => {
                       className="text-red-500 text-sm"
                     />
                   </div>
-                  <div className="input-with-icon-container">
+                  <div className="input-with-icon-container mb-30">
                     <label
                       htmlFor="password"
                       className="inline-block mb-2 text-sm font-medium text-gray-900"
@@ -191,7 +191,7 @@ const SellerSignIn = () => {
                   <p className="text-sm font-light text-gray-400 text-center">
                     Don’t have an account yet?
                     <Link
-                      to="/sign-up"
+                      to="/seller-register"
                       className="font-medium text-gray-400 hover:text-primary-600 hover:underline ml-1"
                     >
                       Sign Up
@@ -207,4 +207,4 @@ const SellerSignIn = () => {
   );
 };
 
-export default SellerSignIn;
+export default SellerLogin;
