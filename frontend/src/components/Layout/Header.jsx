@@ -13,6 +13,7 @@ import { productData } from "../../static/data";
 import { useSelector } from "react-redux";
 import LoginModel from "../../models/LoginModel/LoginModel";
 import RegisterModel from "../../models/RegisterModel/RegisterModel";
+import CartModel from "../../models/CartModel/CartModel";
 
 const Header = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -27,6 +28,7 @@ const Header = () => {
   const searchInputRef = useRef(null);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
 
   useEffect(() => {
     // Fetch today's top searches when the component mounts
@@ -142,7 +144,7 @@ const Header = () => {
         <div className="flex flex-wrap justify-between items-center mx-auto sm:max-w-screen-xl sm:py-2 sm:px-0 py-2 px-2">
           <Link to="/">
             <img
-              src="assets/img/logo-black.png"
+              src="/public/assets/img/logo-black.png"
               className="h-8 nav-logo"
               alt="Eshop"
             />
@@ -211,9 +213,9 @@ const Header = () => {
                         aria-orientation="vertical"
                         aria-labelledby="user-menu-button"
                         ref={dropdownRef}
-                      >
+                      > 
                         <Link
-                          to="#"
+                          to="/account/profile"
                           className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
                           role="menuitem"
                           id="user-menu-item-0"
@@ -230,7 +232,7 @@ const Header = () => {
                           Orders
                         </Link>
                         <Link
-                          to="#"
+                          to="/account/wishlist"
                           className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
                           role="menuitem"
                           id="user-menu-item-2"
@@ -287,17 +289,21 @@ const Header = () => {
                       Login
                     </button>
                     <p className="text-gray-500">or</p>
-                    <button 
-                     onClick={() => setIsRegisterPopupOpen(true)}
-                    className="text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-semibold rounded-lg text-sm px-5 py-2 text-center disabled:opacity-70 ease-in-out duration-100">
+                    <button
+                      onClick={() => setIsRegisterPopupOpen(true)}
+                      className="text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-semibold rounded-lg text-sm px-5 py-2 text-center disabled:opacity-70 ease-in-out duration-100"
+                    >
                       Register
                     </button>
                   </div>
                 )}
                 <li className="relative">
                   <span className="cart-badge">10</span>
-                  <div className="flex justify-between items-center gap-2 cursor-pointer md:text-sm p-2 font-semibold">
-                    <Link to="">
+                  <div
+                    className="flex justify-between items-center gap-2 cursor-pointer md:text-sm p-2 font-semibold"
+                    onClick={() => setOpenCart(true)}
+                  >
+                    <Link to="#">
                       <FiShoppingCart className="w-5 h-5" />
                     </Link>
                     <span>Cart</span>
@@ -305,12 +311,15 @@ const Header = () => {
                 </li>
               </ul>
             </nav>
+            {openCart ? <CartModel setOpen={setOpenCart} /> : null}
           </div>
         </div>
       </header>
       {/* <Navbar /> */}
       {isLoginPopupOpen && <LoginModel setOpen={setIsLoginPopupOpen} />}
-      {isRegisterPopupOpen && <RegisterModel setOpen={setIsRegisterPopupOpen} />}
+      {isRegisterPopupOpen && (
+        <RegisterModel setOpen={setIsRegisterPopupOpen} />
+      )}
     </>
   );
 };

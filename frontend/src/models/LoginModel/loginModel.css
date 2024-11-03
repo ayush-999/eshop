@@ -4,7 +4,8 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  background-color: #0000004b;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +14,7 @@
 
 .login-close {
   position: fixed;
-  top: 21%;
+  top: 18.5%;
   right: 33.5%;
   font-size: 30px;
   cursor: pointer;

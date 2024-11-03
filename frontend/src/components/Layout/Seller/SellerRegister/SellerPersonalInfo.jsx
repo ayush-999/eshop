@@ -50,6 +50,7 @@ const PersonalInfo = ({
             name="userMobile"
             id="userMobile"
             defaultCountry="in"
+            forceDialCode={true}
             value={values.userMobile}
             onChange={(phone) => {
               setFieldValue("userMobile", phone);

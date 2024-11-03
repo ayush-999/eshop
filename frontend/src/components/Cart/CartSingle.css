@@ -1,0 +1,7 @@
+.cart-img{
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}

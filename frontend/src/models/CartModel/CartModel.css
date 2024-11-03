@@ -1,0 +1,14 @@
+.cart-close{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 28px;
+    padding: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.cart-close:hover{
+    background: #f4f4f4;
+}

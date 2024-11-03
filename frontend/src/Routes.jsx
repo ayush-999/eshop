@@ -10,6 +10,10 @@ import CareerPage from "./pages/CareerPage";
 import BlogPage from "./pages/BlogPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsConditionsPage from "./pages/TermsConditionsPage";
+import AccountPage from "./pages/account/AccountPage";
+import WishlistPage from "./pages/account/WishlistPage";
+import ProfileInformationPage from "./pages/account/ProfileInformationPage";
+import ManageAddressesPage from "./pages/account/ManageAddressesPage";
 
 export {
   HomePage,
@@ -24,4 +28,8 @@ export {
   BlogPage,
   PrivacyPolicyPage,
   TermsConditionsPage,
+  AccountPage,
+  WishlistPage,
+  ProfileInformationPage,
+  ManageAddressesPage
 };

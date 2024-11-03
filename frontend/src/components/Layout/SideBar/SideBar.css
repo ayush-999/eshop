@@ -1,0 +1,35 @@
+.profile-wrapper .userTitle {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.profile-wrapper .p-greetings {
+  font-size: 13px;
+}
+
+.accordion-header {
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.05s ease-in-out;
+}
+
+.accordion-btn {
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accordion-logoutBtn:hover{
+    color: #b91c1c;
+}
+.accordion-orderBtn:hover{
+    color: #4a51e1;
+}

@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema({
     required: [true, "Please enter your email!"],
     unique: true,
   },
+  gender: {
+    type: String,
+    enum: ["male", "female", "other"],
+  },
   password: {
     type: String,
     required: [true, "Please enter your password"],

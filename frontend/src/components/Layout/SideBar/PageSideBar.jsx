@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
-import { productData } from "../../static/data";
+import { productData } from "../../../static/data";
 
-const SideBar = ({ onApplyFilter }) => {
+const PageSideBar = ({ onApplyFilter }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
 
@@ -26,7 +26,7 @@ const SideBar = ({ onApplyFilter }) => {
     onApplyFilter(selectedCategories, { minValue, maxValue });
   };
 
-  const [activeId, setActiveId] = useState(null);
+  const [activeId, setActiveId] = useState(0);
 
   const togglerFunction = (index) => {
     if (activeId === index) {
@@ -53,19 +53,19 @@ const SideBar = ({ onApplyFilter }) => {
   ];
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm">
-      <div className="sidebar-title-wrapper">
-        <h1 className="font-bold text-base mb-1 sidebar-title">Filters</h1>
-        <p className="font-semibold text-xs mb-3 text-[#8b8ba3] sidebar-subtitle">
+    <div className="bg-white p-4 rounded-lg shadow-sm">
+      <div className="PageSideBar-title-wrapper">
+        <h1 className="font-bold text-base mb-1 PageSideBar-title">Filters</h1>
+        <p className="font-semibold text-xs mb-3 text-[#8b8ba3] PageSideBar-subtitle">
           1000+ Products
         </p>
       </div>
-      <div className="sidebar-item-wrapper">
+      <div className="PageSideBar-item-wrapper">
         {accordionData.map((item, i) => (
           <div key={i} className="border-b last:border-b-0 mb-2">
             <div
               className={`px-2 py-3 flex items-center justify-between transition-all ${
-                activeId === i ? "bg-primary-20 rounded-lg" : ""
+                activeId === i ? "bg-primary-600 text-white rounded-lg" : ""
               }`}
               onClick={() => togglerFunction(i)}
             >
@@ -159,4 +159,4 @@ const SideBar = ({ onApplyFilter }) => {
   );
 };
 
-export default SideBar;
+export default PageSideBar;

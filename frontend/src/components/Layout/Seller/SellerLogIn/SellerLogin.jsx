@@ -119,7 +119,7 @@ const SellerLogin = () => {
                       className="text-red-500 text-sm"
                     />
                   </div>
-                  <div className="input-with-icon-container mb-30">
+                  <div className="input-with-icon-container c-mb-30">
                     <label
                       htmlFor="password"
                       className="inline-block mb-2 text-sm font-medium text-gray-900"

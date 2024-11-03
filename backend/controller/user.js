@@ -216,4 +216,54 @@ router.get(
   })
 );
 
+// Update user details
+router.put(
+  "/edit-user/:id",
+  isAuthenticated,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const { name, email, phoneNumber, gender, addresses } = req.body;
+      const user = await User.findById(id);
+      if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+      }
+      if (name) user.name = name;
+      if (email) user.email = email;
+      if (phoneNumber) user.phoneNumber = phoneNumber;
+      if (gender) user.gender = gender;
+      if (addresses) user.addresses = addresses;
+      await user.save();
+      res.status(200).json({
+        success: true,
+        message: "User details updated successfully",
+        user,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+router.delete(
+  "/delete-user/:id",
+  isAuthenticated,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const user = await User.findById(id);
+      if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+      }
+      await user.remove();
+      res.status(200).json({
+        success: true,
+        message: "User deleted successfully",
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
 module.exports = router;

@@ -75,6 +75,11 @@ input[type="number"] {
   background: transparent; /* Hide the track */
 }
 
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
 
 .input-with-icon {
   padding-right: 2.5rem !important;
@@ -107,11 +112,11 @@ input[type="number"] {
   color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
-.activate-icon{
+.activate-icon {
   margin: 0 auto;
 }
 
-.swiper-button-prev{    
+.swiper-button-prev {
   background: #fff;
   left: -1px;
   height: 80px;
@@ -123,11 +128,11 @@ input[type="number"] {
   transition: all 0.1s ease-in-out;
 }
 
-.swiper-button-prev:after{
+.swiper-button-prev:after {
   font-size: 11px;
 }
 
-.swiper-button-next{    
+.swiper-button-next {
   background: #fff;
   right: -1px;
   height: 80px;
@@ -137,24 +142,24 @@ input[type="number"] {
   top: 50%;
   transform: translate(0, -30%);
   transition: all 0.1s ease-in-out;
-
 }
 
-.swiper-button-next:after{
+.swiper-button-next:after {
   font-size: 11px;
 }
 
-.swiper-pagination{
+.swiper-pagination {
   background: rgba(0, 0, 0, 0.3);
   padding: 3px;
   border-radius: 50px;
 }
 
-.swiper-pagination-bullet-active{
+.swiper-pagination-bullet-active {
   background: #fff;
 }
 
-.swiper-button-prev.swiper-button-disabled, .swiper-button-next.swiper-button-disabled{
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
   display: none;
 }
 
@@ -164,20 +169,63 @@ input[type="number"] {
   text-overflow: ellipsis;
 }
 
-.rating-separator{
+.rating-separator {
   width: 1.2px;
   background: rgba(0, 0, 0, 0.3);
   height: 12px;
 }
 
-.mb-16{
+.c-mb-16 {
   margin-bottom: 16px !important;
 }
 
-.mb-20{
+.c-mb-20 {
   margin-bottom: 20px !important;
 }
 
-.mb-30{
+.c-mb-22 {
+  margin-bottom: 20px !important;
+}
+
+.c-mb-30 {
   margin-bottom: 30px !important;
+}
+
+.divider {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  color: #9ca3af;
+}
+
+.divider::before,
+.divider::after {
+  flex: 1;
+  content: "";
+  padding: 0.5px;
+  background-color: #e5e7eb;
+  margin: 8px;
+}
+
+.google-btn-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.userMobile .react-international-phone-input {
+  background-color: #f9fafb !important;
+}
+
+.userMobile .react-international-phone-country-selector button {
+  background-color: #f9fafb !important;
+}
+
+.userMobile .react-international-phone-input:disabled {
+  color: #6b7280 !important;
+  background-color: #f3f4f6 !important;
+}
+
+.userMobile .react-international-phone-country-selector button:disabled {
+  color: #6b7280 !important;
+  background-color: #f3f4f6 !important;
 }

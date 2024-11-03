@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
-import SideBar from "../components/Layout/SideBar";
+import PageSideBar from "../components/Layout/SideBar/PageSideBar";
 import { productData } from "../static/data";
 import ProductCard from "../components/Route/ProductCard/ProductCard";
 import ProductDetailsCard from "../models/ProductDetailsCard/ProductDetailsCard";
@@ -37,7 +37,7 @@ const BestDealsPage = () => {
       <div className="max-w-screen-xl mx-auto mt-10 md:mt-16 mb-6 sm:px-6 lg:px-0">
         <div className="grid grid-cols-12 gap-3">
           <div className="col-span-3 sideBar-wrapper">
-            <SideBar onApplyFilter={handleApplyFilter} />
+            <PageSideBar onApplyFilter={handleApplyFilter} />
           </div>
           <div className="col-span-9 dealsPage-wrapper">
             <div className="bg-white p-6 rounded-lg shadow-sm">

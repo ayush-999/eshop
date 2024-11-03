@@ -108,7 +108,7 @@ const Footer = () => {
                     className="text-sm hover:text-white hover:underline"
                   >
                     <img
-                      src="assets/img/appStore.png"
+                      src="/public/assets/img/appStore.png"
                       className="footer-appImg mb-3"
                     />
                   </Link>
@@ -119,7 +119,7 @@ const Footer = () => {
                     className="text-sm hover:text-white hover:underline"
                   >
                     <img
-                      src="assets/img/playStore.png"
+                      src="/public/assets/img/playStore.png"
                       className="footer-appImg"
                     />
                   </Link>
