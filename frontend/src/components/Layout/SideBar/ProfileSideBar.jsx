@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./SideBar.css";
 import { GoChevronUp, GoChevronDown, GoChevronRight } from "react-icons/go";
@@ -6,11 +6,25 @@ import { LuUserCircle2 } from "react-icons/lu";
 import { MdOutlineFolderShared, MdOutlinePayment } from "react-icons/md";
 import { PiPackage } from "react-icons/pi";
 import { IoLogOutOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 const ProfileSideBar = () => {
   const { user } = useSelector((state) => state.user);
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check the current path and set openIndex based on the page
+    if (location.pathname === "/account/profile") {
+      setOpenIndex(0); // Profile section
+    } else if (location.pathname === "/account/addresses") {
+      setOpenIndex(0); // Profile section
+    } else if (location.pathname === "/account/wishlist") {
+      setOpenIndex(1); // My Stuff section
+    } else if (location.pathname === "/account/coupons") {
+      setOpenIndex(1); // My Stuff section
+    }
+  }, [location.pathname]);
 
   const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? -1 : index);
@@ -57,13 +71,21 @@ const ProfileSideBar = () => {
             <div className="accordion-content py-2 px-1">
               <Link
                 to="/account/profile"
-                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm mb-1 hover:rounded-lg hover:bg-primary-20 hover:text-black ${
+                  location.pathname === "/account/profile"
+                    ? "profile-active-link"
+                    : "text-gray-600"
+                }`}
               >
                 Profile Information
               </Link>
               <Link
                 to="/account/addresses"
-                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg hover:bg-primary-20 hover:text-black ${
+                  location.pathname === "/account/addresses"
+                    ? "profile-active-link"
+                    : "text-gray-600"
+                }`}
               >
                 Manage Addresses
               </Link>
@@ -106,7 +128,11 @@ const ProfileSideBar = () => {
               </Link>
               <Link
                 to="/account/wishlist"
-                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm mb-1 hover:rounded-lg hover:bg-primary-20 hover:text-black ${
+                  location.pathname === "/account/wishlist"
+                    ? "profile-active-link"
+                    : "text-gray-600"
+                }`}
               >
                 My Wishlist
               </Link>

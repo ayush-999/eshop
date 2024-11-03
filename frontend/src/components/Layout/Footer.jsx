@@ -108,7 +108,7 @@ const Footer = () => {
                     className="text-sm hover:text-white hover:underline"
                   >
                     <img
-                      src="/public/assets/img/appStore.png"
+                      src="/assets/img/appStore.png"
                       className="footer-appImg mb-3"
                     />
                   </Link>
@@ -119,7 +119,7 @@ const Footer = () => {
                     className="text-sm hover:text-white hover:underline"
                   >
                     <img
-                      src="/public/assets/img/playStore.png"
+                      src="/assets/img/playStore.png"
                       className="footer-appImg"
                     />
                   </Link>
@@ -192,7 +192,7 @@ const Footer = () => {
           <div className="flex items-center justify-between">
             <div className="payment-method-wrap">
               <img
-                src="assets/img/payment-method.svg"
+                src="/assets/img/payment-method.svg"
                 className="payment-method-img"
               />
             </div>

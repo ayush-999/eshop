@@ -229,3 +229,9 @@ input[type="number"] {
   color: #6b7280 !important;
   background-color: #f3f4f6 !important;
 }
+
+.profile-active-link {
+  background-color: #F3F7FF;
+  color: #000;
+  border-radius: 0.5rem;
+}

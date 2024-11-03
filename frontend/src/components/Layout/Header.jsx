@@ -144,7 +144,7 @@ const Header = () => {
         <div className="flex flex-wrap justify-between items-center mx-auto sm:max-w-screen-xl sm:py-2 sm:px-0 py-2 px-2">
           <Link to="/">
             <img
-              src="/public/assets/img/logo-black.png"
+              src="/assets/img/logo-black.png"
               className="h-8 nav-logo"
               alt="Eshop"
             />
