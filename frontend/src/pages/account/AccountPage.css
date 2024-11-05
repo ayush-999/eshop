@@ -1,0 +1,24 @@
+.address-menu-icon{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 6px;
+    border-radius: 100%;
+    font-size: 15px;
+    background: transparent;
+    cursor: pointer;
+    background: transparent;
+    color: #64748b;
+}
+
+.address-menu{
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    background: #ffffff;
+    width: 100px;
+    border-radius: 5px;
+    padding: 3px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}

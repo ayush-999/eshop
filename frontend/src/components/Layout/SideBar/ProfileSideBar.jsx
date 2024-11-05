@@ -54,7 +54,7 @@ const ProfileSideBar = () => {
           <GoChevronRight className="w-5 h-5" />
         </button>
 
-        <div className="accordion-item border-b last:border-b-0 mb-2">
+        <div className="accordion-item border-b last:border-b-0 mb-2 border-gray-200">
           <div
             className={`accordion-header px-2 py-3 ${
               openIndex === 0 ? "bg-primary-600 text-white rounded-lg" : ""
@@ -71,7 +71,7 @@ const ProfileSideBar = () => {
             <div className="accordion-content py-2 px-1">
               <Link
                 to="/account/profile"
-                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm mb-1 hover:rounded-lg hover:bg-primary-20 hover:text-black ${
+                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm mb-1 hover:rounded-lg hover:bg-primary-20 hover:text-gray-900 ${
                   location.pathname === "/account/profile"
                     ? "profile-active-link"
                     : "text-gray-600"
@@ -81,7 +81,7 @@ const ProfileSideBar = () => {
               </Link>
               <Link
                 to="/account/addresses"
-                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg hover:bg-primary-20 hover:text-black ${
+                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg hover:bg-primary-20 hover:text-gray-900 ${
                   location.pathname === "/account/addresses"
                     ? "profile-active-link"
                     : "text-gray-600"
@@ -93,7 +93,7 @@ const ProfileSideBar = () => {
           )}
         </div>
 
-        <div className="accordion-item border-b last:border-b-0 mb-2">
+        <div className="accordion-item border-b last:border-b-0 mb-2 border-gray-200">
           <div
             className={`accordion-header px-2 py-3 ${
               openIndex === 1 ? "bg-primary-600 text-white rounded-lg" : ""
@@ -110,25 +110,25 @@ const ProfileSideBar = () => {
             <div className="accordion-content p-4">
               <Link
                 to="#"
-                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900"
               >
                 My Coupons
               </Link>
               <Link
                 to="#"
-                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900"
               >
                 My Reviews & Ratings
               </Link>
               <Link
                 to="#"
-                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900"
               >
                 All Notifications
               </Link>
               <Link
                 to="/account/wishlist"
-                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm mb-1 hover:rounded-lg hover:bg-primary-20 hover:text-black ${
+                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm mb-1 hover:rounded-lg hover:bg-primary-20 hover:text-gray-900 ${
                   location.pathname === "/account/wishlist"
                     ? "profile-active-link"
                     : "text-gray-600"
@@ -140,7 +140,7 @@ const ProfileSideBar = () => {
           )}
         </div>
 
-        <div className="accordion-item border-b last:border-b-0 mb-2">
+        <div className="accordion-item border-b last:border-b-0 mb-2 border-gray-200">
           <div
             className={`accordion-header px-2 py-3 ${
               openIndex === 2 ? "bg-primary-600 text-white rounded-lg" : ""
@@ -157,7 +157,7 @@ const ProfileSideBar = () => {
             <div className="accordion-content p-4">
               <Link
                 to="#"
-                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900"
               >
                 Saved Cards
               </Link>

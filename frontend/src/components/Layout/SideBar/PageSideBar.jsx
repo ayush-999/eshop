@@ -62,7 +62,7 @@ const PageSideBar = ({ onApplyFilter }) => {
       </div>
       <div className="PageSideBar-item-wrapper">
         {accordionData.map((item, i) => (
-          <div key={i} className="border-b last:border-b-0 mb-2">
+          <div key={i} className="border-b last:border-b-0 mb-2 border-gray-200">
             <div
               className={`px-2 py-3 flex items-center justify-between transition-all ${
                 activeId === i ? "bg-primary-600 text-white rounded-lg" : ""

@@ -149,7 +149,7 @@ const RegisterModel = ({ setOpen }) => {
                       htmlFor="userMobile"
                       className="inline-block mb-2 text-sm font-medium text-gray-900"
                     >
-                      Your Mobile number
+                      Your mobile number
                     </label>
                     <PhoneInput
                       name="userMobile"

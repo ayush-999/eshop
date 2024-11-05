@@ -73,6 +73,7 @@ const ProfileInformationPage = () => {
         console.error("Failed to update profile:", err);
       } else {
         toast.error("An error occurred. Please try again.");
+        console.error(err);
       }
     } finally {
       setLoading(false);
@@ -225,7 +226,7 @@ const ProfileInformationPage = () => {
                         htmlFor="phoneNumber"
                         className="inline-block mb-2 text-sm font-medium text-gray-900"
                       >
-                        Your Mobile number
+                        Your mobile number
                       </label>
                       <PhoneInput
                         name="phoneNumber"

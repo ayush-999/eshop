@@ -25,25 +25,47 @@ const userSchema = new mongoose.Schema({
   phoneNumber: {
     type: Number,
   },
+  status: {
+    type: String,
+    enum: ["active", "inactive", "suspended"],
+    default: "active",
+  },
   addresses: [
     {
+      addressType: {
+        type: String,
+      },
+      name: {
+        type: String,
+      },
+      userPhone: {
+        type: Number,
+      },
       country: {
+        type: String,
+      },
+      state: {
+        type: String,
+      },
+      userAddress: {
         type: String,
       },
       city: {
         type: String,
       },
-      address1: {
-        type: String,
-      },
-      address2: {
-        type: String,
-      },
-      zipCode: {
+      pincode: {
         type: Number,
       },
-      addressType: {
+      landmark: {
         type: String,
+      },
+      userAlternatePhone: {
+        type: Number,
+      },
+      isDefault: {
+        type: Number,
+        enum: [0, 1],
+        default: 0,
       },
     },
   ],
@@ -53,7 +75,7 @@ const userSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    default:null
+    default: null,
   },
   // avatar: {
   //    public_id: {

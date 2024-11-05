@@ -113,8 +113,10 @@ router.post(
       if (user) {
         if (user.isActivated) {
           return res.status(200).json({ message: "Account already activated" });
-        }else {
-          return next(new ErrorHandler("User already exists but is not activated", 400));
+        } else {
+          return next(
+            new ErrorHandler("User already exists but is not activated", 400)
+          );
         }
         user.isActivated = true;
         await user.save();
@@ -223,7 +225,7 @@ router.put(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { name, email, phoneNumber, gender, addresses } = req.body;
+      const { name, email, phoneNumber, gender } = req.body;
       const user = await User.findById(id);
       if (!user) {
         return next(new ErrorHandler("User not found", 404));
@@ -232,7 +234,7 @@ router.put(
       if (email) user.email = email;
       if (phoneNumber) user.phoneNumber = phoneNumber;
       if (gender) user.gender = gender;
-      if (addresses) user.addresses = addresses;
+
       await user.save();
       res.status(200).json({
         success: true,
@@ -245,6 +247,7 @@ router.put(
   })
 );
 
+// Delete user
 router.delete(
   "/delete-user/:id",
   isAuthenticated,
@@ -265,5 +268,37 @@ router.delete(
     }
   })
 );
+
+// Add user address
+router.post(
+  "/add-address/:id",
+  isAuthenticated,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const { newAddress } = req.body;
+      const user = await User.findById(id);
+
+      if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+      }
+
+      // Push the new address to the addresses array
+      user.addresses.push(newAddress);
+
+      await user.save();
+      res.status(200).json({
+        success: true,
+        message: "Address added successfully",
+        user,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+// Update user address
+
 
 module.exports = router;
