@@ -298,7 +298,74 @@ router.post(
   })
 );
 
-// Update user address
+// Edit user address
+router.post(
+  "/edit-address/:userId/:addressId",
+  isAuthenticated,
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const { userId, addressId } = req.params;
+      const { newAddress } = req.body;
+      const user = await User.findById(userId);
+
+      if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+      }
+
+      // Find the specific address by addressId and update it
+      const addressIndex = user.addresses.findIndex(
+        (address) => address._id.toString() === addressId
+      );
+
+      if (addressIndex === -1) {
+        return next(new ErrorHandler("Address not found", 404));
+      }
+
+      // Update the specific address fields
+      user.addresses[addressIndex] = { ...user.addresses[addressIndex].toObject(), ...newAddress };
+
+      await user.save();
+      res.status(200).json({
+        success: true,
+        message: "Address updated successfully",
+        user,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
+// Delete user address
+router.delete(
+  "/delete-address/:userId/:addressId",
+  isAuthenticated,
+  catchAsyncErrors(async (req, res, next) => {
+    const { userId, addressId } = req.params;
+
+    try {
+      const user = await User.findById(userId);
+      if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+      }
+
+      // Remove the address with the specified addressId
+      user.addresses = user.addresses.filter(
+        (address) => address._id.toString() !== addressId
+      );
+
+      await user.save();
+      res.status(200).json({
+        success: true,
+        message: "Address deleted successfully",
+        user,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error.message, 500));
+    }
+  })
+);
+
 
 
 module.exports = router;

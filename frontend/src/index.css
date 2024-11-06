@@ -232,12 +232,6 @@ input[type="number"] {
 
 .profile-active-link {
   background-color: #F3F7FF;
-  color: #000;
+  color: #111827;
   border-radius: 0.5rem;
 }
-
-/* .add-address-wrapper{
-  padding: 5px;
-  border: 1px dashed #c9d8fc;
-  border-radius: 0.5rem;
-} */

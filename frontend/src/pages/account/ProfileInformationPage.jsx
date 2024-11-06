@@ -15,7 +15,6 @@ const ProfileInformationPage = () => {
   const [isPersonalEdit, setIsPersonalEdit] = useState(false);
   const [isContactEdit, setIsContactEdit] = useState(false);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
   const { handleProfileRefresh } = useOutletContext();
 
   const togglePersonalEdit = () => setIsPersonalEdit(!isPersonalEdit);
@@ -66,7 +65,6 @@ const ProfileInformationPage = () => {
       dispatch({ type: "UPDATE_USER", payload: res.data.user });
       toast.success(res.data.message);
       handleProfileRefresh();
-      navigate("/account/profile");
     } catch (err) {
       if (err.res && err.res.data && err.res.data.message) {
         toast.error(err.res.data.message);
