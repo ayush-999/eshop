@@ -1,9 +1,11 @@
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect, Suspense, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Store from "./redux/store";
 import { loadUser } from "./redux/action/user";
+import { useSelector } from "react-redux";
+// Routes
 import {
   ActivationPage,
   HomePage,
@@ -17,18 +19,13 @@ import {
   TermsConditionsPage,
   SellerLoginPage,
   SellerRegisterPage,
-  WishlistPage,
   AccountPage,
-  ManageAddressesPage,
+  Wishlist,
+  ProductDetailsPage,
 } from "./Routes";
-import { useSelector } from "react-redux";
-
-// Lazy load
-const ProfileInformationPage = lazy(() =>
-  import("./Routes").then((module) => ({
-    default: module.ProfileInformationPage,
-  }))
-);
+// Lazy-loaded Routes
+import { ProfileInformation, ManageAddresses } from "./LazyRoutes";
+import LoadingSpinner from "./components/Loader/LoadingSpinner";
 
 // ProtectedRoute component
 const ProtectedRoute = ({ children }) => {
@@ -38,6 +35,17 @@ const ProtectedRoute = ({ children }) => {
 
 // App Component
 const App = () => {
+
+ /** 
+  // For Testing
+
+  const [loading, setLoading] = useState(true); 
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 5000); 
+    return () => clearTimeout(timer);
+  }, []);
+ 
+  */
   const { loading } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -46,7 +54,7 @@ const App = () => {
 
   return (
     <>
-      {loading ? null : (
+      {loading ? <LoadingSpinner/> : (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -60,6 +68,7 @@ const App = () => {
               path="/activation/:activation_token"
               element={<ActivationPage />}
             />
+            <Route path="/product/:name" element={<ProductDetailsPage />} />
             <Route path="/best-deals" element={<BestDealsPage />} />
             <Route path="/events" element={<EventsPage />} />
 
@@ -68,20 +77,27 @@ const App = () => {
               path="/account"
               element={
                 // <ProtectedRoute>
-                  <AccountPage />
+                <AccountPage />
                 // </ProtectedRoute>
               }
             >
-              <Route path="wishlist" element={<WishlistPage />} />
+              <Route path="wishlist" element={<Wishlist />} />
               <Route
                 path="profile"
                 element={
-                  <Suspense fallback={<div>Loading Profile...</div>}>
-                    <ProfileInformationPage />
+                  <Suspense fallback={<LoadingSpinner/>}>
+                    <ProfileInformation />
                   </Suspense>
                 }
               />
-              <Route path="addresses" element={<ManageAddressesPage />} />
+              <Route
+                path="addresses"
+                element={
+                  <Suspense fallback={<LoadingSpinner/>}>
+                    <ManageAddresses />
+                  </Suspense>
+                }
+              />
             </Route>
 
             {/* Company */}

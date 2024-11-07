@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "../../components/Layout/Header";
-import ProfileSideBar from "../../components/Layout/SideBar/ProfileSideBar";
-import Footer from "../../components/Layout/Footer";
+import Header from "../components/Layout/Header";
+import ProfileSideBar from "../components/Layout/SideBar/ProfileSideBar";
+import Footer from "../components/Layout/Footer";
 
 const AccountPage = () => {
-  const [refreshKey, setRefreshKey] = useState(0);
-  const handleProfileRefresh = () => setRefreshKey((prevKey) => prevKey + 1);
   return (
     <>
       <Header />
@@ -16,7 +14,9 @@ const AccountPage = () => {
             <ProfileSideBar />
           </div>
           <div className="col-span-9">
-            <Outlet context={{ handleProfileRefresh }} key={refreshKey} />
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <Outlet />
+            </div>
           </div>
         </div>
       </div>

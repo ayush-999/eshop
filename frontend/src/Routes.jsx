@@ -10,10 +10,11 @@ import CareerPage from "./pages/CareerPage";
 import BlogPage from "./pages/BlogPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsConditionsPage from "./pages/TermsConditionsPage";
-import AccountPage from "./pages/account/AccountPage";
-import WishlistPage from "./pages/account/WishlistPage";
-import ProfileInformationPage from "./pages/account/ProfileInformationPage";
-import ManageAddressesPage from "./pages/account/ManageAddressesPage";
+import AccountPage from "./pages/AccountPage";
+import Wishlist from "./components/Accounts/Wishlist";
+import ProfileInformation from "./components/Accounts/ProfileInformation";
+import ManageAddresses from "./components/Accounts/ManageAddresses";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 export {
   HomePage,
@@ -29,7 +30,8 @@ export {
   PrivacyPolicyPage,
   TermsConditionsPage,
   AccountPage,
-  WishlistPage,
-  ProfileInformationPage,
-  ManageAddressesPage
+  Wishlist,
+  ProfileInformation,
+  ManageAddresses,
+  ProductDetailsPage
 };
