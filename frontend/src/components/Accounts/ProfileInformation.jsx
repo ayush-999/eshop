@@ -41,7 +41,7 @@ const ProfileInformation = () => {
     gender: user?.gender || "male",
   };
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, { setValues }) => {
     const updates = {};
     setLoading(true);
     Object.keys(values).forEach((key) => {
@@ -51,6 +51,7 @@ const ProfileInformation = () => {
     });
     if (Object.keys(updates).length === 0) {
       toast.warning("No changes to update.");
+      setLoading(false);
       return;
     }
     try {
@@ -62,7 +63,16 @@ const ProfileInformation = () => {
         }
       );
       dispatch({ type: "UPDATE_USER", payload: res.data.user });
-      toast.success(res.data.message);
+      toast.success(res.data.message);      
+      setValues({
+        name: res.data.user.name,
+        email: res.data.user.email,
+        phoneNumber: res.data.user.phoneNumber?.toString(),
+        gender: res.data.user.gender,
+      });
+      setIsPersonalEdit(false);
+      setIsContactEdit(false);
+
     } catch (err) {
       if (err.res && err.res.data && err.res.data.message) {
         toast.error(err.res.data.message);

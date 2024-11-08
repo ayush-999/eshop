@@ -63,9 +63,9 @@ const ManageAddresses = () => {
       );
       dispatch({ type: "UPDATE_USER", payload: res.data.user });
       toast.success(res.data.message);
-      handleProfileRefresh();
       setIsFormVisible(false);
       setEditAddress(null);
+      
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
         toast.error(err.response.data.message);
