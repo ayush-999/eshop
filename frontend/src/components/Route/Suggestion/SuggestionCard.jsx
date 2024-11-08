@@ -20,7 +20,7 @@ const SuggestionCard = () => {
           const product_name = item.name.toLowerCase().replace(/\s+/g, "-");
           return (
             <div className="col-span-6" key={index}>
-              <div className="w-full h-full p-2 border border-gray-200 rounded-lg cursor-pointer">
+              <div className="w-full h-full p-2 border border-dashed border-primary-200 rounded-lg cursor-pointer">
                 <div className="suggested-img-wrap mb-2 mx-auto">
                   <Link to={`/product/${product_name}`}>
                     <img

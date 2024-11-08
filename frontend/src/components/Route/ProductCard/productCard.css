@@ -53,11 +53,13 @@
 .pcard-price {
   font-size: 13px;
   color: #878787;
+  font-weight: 500;
   text-decoration: line-through;
 }
 
 .pcard-discount {
   font-size: 12px;
+  font-weight: 500;
   color: #16a34a;
 }
 

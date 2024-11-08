@@ -16,7 +16,7 @@ const ProductCard = ({ data, onOpenDetails }) => {
   const shop_name = sName.toLowerCase().replace(/\s+/g, "-");
   return (
     <>
-      <div className="w-full h-full p-2 border border-gray-200 rounded-lg cursor-pointer">
+      <div className="w-full h-full p-2 border border-dashed border-primary-200 rounded-lg cursor-pointer">
         <div className="pcard-image-wrapper">
           <div className="pcard-left">
             <div className="pcard-rating-wrap">

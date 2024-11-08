@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { HiOutlineMinus, HiPlus } from "react-icons/hi";
 import "./CartSingle.css";
-import { RxCross1 } from "react-icons/rx";
+import { AiOutlineDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 const CartSingle = ({ data }) => {
   const [value, setValue] = useState(1);
@@ -66,7 +66,7 @@ const CartSingle = ({ data }) => {
             </div>
           </div>
         </div>
-        <RxCross1 className="bg-error-700 hover:bg-error-800 cursor-pointer absolute text-white w-5 h-5 p-1 rounded-full top-[-5px] right-0" />
+        <AiOutlineDelete className="text-gray-500 text-[16px] hover:text-error-700 cursor-pointer absolute top-[-5px] right-0" />
       </div>
     </>
   );

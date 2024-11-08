@@ -150,7 +150,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                 <div className="col-span-7 pcarddetails-l-wrapper">
                   <div className="w-full">
                     {/* Product Info */}
-                    <div className="p-2 border border-gray-200 rounded-lg mb-2">
+                    <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                       <h1
                         className="text-[16px] font-medium text-[#878787] mb-2 truncate-text"
                         title={data.name}
@@ -190,7 +190,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                       </div>
                     </div>
                     {/* Select Size */}
-                    <div className="p-2 border border-gray-200 rounded-lg mb-2">
+                    <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                       <div className="flex justify-between items-center">
                         <h1 className="text-[15px] font-medium mb-1 truncate-text">
                           Select Size
@@ -206,7 +206,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                       </div>
                     </div>
                     {/* Product Description */}
-                    <div className="p-2 border border-gray-200 rounded-lg">
+                    <div className="p-2 border border-dashed border-primary-200 rounded-lg">
                       <div className="desc-wrap mb-4">
                         <h1 className="text-[16px] font-medium mb-1">
                           Product Details

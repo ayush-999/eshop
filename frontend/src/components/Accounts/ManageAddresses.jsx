@@ -12,6 +12,7 @@ import { SyncLoader } from "react-spinners";
 import { HiDotsVertical } from "react-icons/hi";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../Loader/LoadingSpinner";
+import './Accounts.css';
 
 const ManageAddresses = () => {
   const [addressType, setAddressType] = useState("home");
