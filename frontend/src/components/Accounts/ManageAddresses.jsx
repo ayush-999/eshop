@@ -15,6 +15,7 @@ import LoadingSpinner from "../Loader/LoadingSpinner";
 import './Accounts.css';
 
 const ManageAddresses = () => {
+  const [addresses, setAddresses] = useState([]);
   const [addressType, setAddressType] = useState("home");
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [editAddress, setEditAddress] = useState(null);
@@ -22,6 +23,12 @@ const ManageAddresses = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(null);
+
+  useEffect(() => {
+    if (user && user.addresses) {
+      setAddresses(user.addresses);
+    }
+  }, [user]);
 
   const initialValues = editAddress || {
     addressType: "",
@@ -64,9 +71,9 @@ const ManageAddresses = () => {
       );
       dispatch({ type: "UPDATE_USER", payload: res.data.user });
       toast.success(res.data.message);
+      setAddresses(res.data.user.addresses); // Update local addresses state
       setIsFormVisible(false);
       setEditAddress(null);
-      
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
         toast.error(err.response.data.message);
@@ -104,6 +111,7 @@ const ManageAddresses = () => {
       const res = await axios.delete(url, { withCredentials: true });
       dispatch({ type: "UPDATE_USER", payload: res.data.user });
       toast.success(res.data.message);
+      setAddresses(res.data.user.addresses);
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
         toast.error(err.response.data.message);
@@ -440,8 +448,8 @@ const ManageAddresses = () => {
                 )}
               </div>
               <div className="address-wrapper rounded-lg border border-dashed border-primary-200">
-                {user?.addresses && user.addresses.length > 0 ? (
-                  user.addresses.map((address, index) => (
+                {addresses && addresses.length > 0 ? (
+                  addresses.map((address, index) => (
                     <div
                       key={address._id}
                       className="address-view-wrap border-b border-dashed last:border-b-0 border-primary-200 relative"

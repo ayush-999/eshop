@@ -12,9 +12,19 @@ import LoadingSpinner from "../Loader/LoadingSpinner";
 const ProfileInformation = () => {
   const { user, dataLoading } = useSelector((state) => state.user) || {};
   const dispatch = useDispatch();
+
+  const [profileInfo, setProfileInfo] = useState({});
   const [isPersonalEdit, setIsPersonalEdit] = useState(false);
   const [isContactEdit, setIsContactEdit] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      setProfileInfo(user);
+      setPhoneNumber(user.phoneNumber ? String(user.phoneNumber) : "");
+    }
+  }, [user]);
 
   const togglePersonalEdit = () => setIsPersonalEdit(!isPersonalEdit);
   const toggleContactEdit = () => setIsContactEdit(!isContactEdit);
@@ -35,21 +45,24 @@ const ProfileInformation = () => {
   });
 
   const initialValues = {
-    name: user?.name || "",
-    email: user?.email || "",
-    phoneNumber: user?.phoneNumber?.toString() || "",
-    gender: user?.gender || "male",
+    name: profileInfo?.name || "",
+    email: profileInfo?.email || "",
+    phoneNumber: phoneNumber || "", 
+    gender: profileInfo?.gender || "male",
   };
 
-  const handleSubmit = async (values, { setValues }) => {
-    const updates = {};
+  const handleSubmit = async (values) => {
     setLoading(true);
-    Object.keys(values).forEach((key) => {
-      if (values[key] !== initialValues[key]) {
-        updates[key] = values[key];
-      }
-    });
-    if (Object.keys(updates).length === 0) {
+    const updates = {
+      ...values,
+      phoneNumber, 
+    };
+    if (
+      values.name === initialValues.name &&
+      values.email === initialValues.email &&
+      values.gender === initialValues.gender &&
+      phoneNumber === initialValues.phoneNumber
+    ) {
       toast.warning("No changes to update.");
       setLoading(false);
       return;
@@ -63,13 +76,8 @@ const ProfileInformation = () => {
         }
       );
       dispatch({ type: "UPDATE_USER", payload: res.data.user });
-      toast.success(res.data.message);      
-      setValues({
-        name: res.data.user.name,
-        email: res.data.user.email,
-        phoneNumber: res.data.user.phoneNumber?.toString(),
-        gender: res.data.user.gender,
-      });
+      setProfileInfo(res.data.user); // Update local profileInfo state to trigger re-render
+      toast.success(res.data.message);
       setIsPersonalEdit(false);
       setIsContactEdit(false);
 
@@ -96,6 +104,7 @@ const ProfileInformation = () => {
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={handleSubmit}
+              enableReinitialize
             >
               {({ errors, touched, setFieldValue }) => (
                 <Form>
@@ -246,10 +255,11 @@ const ProfileInformation = () => {
                           <PhoneInput
                             name="phoneNumber"
                             id="phoneNumber"
-                            value={initialValues.phoneNumber}
-                            onChange={(value) =>
-                              setFieldValue("phoneNumber", value)
-                            }
+                            value={phoneNumber}
+                            onChange={(value) => {
+                              setPhoneNumber(value);
+                              setFieldValue("phoneNumber", value);
+                            }}
                             defaultCountry="in"
                             forceDialCode={true}
                             disabled={!isContactEdit}
