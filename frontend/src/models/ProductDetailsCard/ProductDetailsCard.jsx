@@ -45,7 +45,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
   return (
     <div className="pcarddetails-popup">
       {data ? (
-        <div className="pcarddetails-overlay"> 
+        <div className="pcarddetails-overlay">
           <div className="w-[90%] 800px:w-[60%] h-[90vh] 800px:h-[75vh] bg-white rounded-lg shadow-sm relative p-8 overflow-y-scroll">
             <RxCross1 className="close-icon" onClick={() => setOpen(false)} />
             <div className="block w-full">
@@ -167,7 +167,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                         </h3>
                         <div className="pcarddetails-discount-wrap">
                           <h3 className="pcarddetails-discount-text">
-                            21% off
+                            {data.discount_percent}
                           </h3>
                           <div className="info-wrap cursor-pointer text-[20px] text-[#878787]">
                             <HiOutlineInformationCircle />

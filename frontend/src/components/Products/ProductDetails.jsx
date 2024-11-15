@@ -23,6 +23,8 @@ const ProductDetails = ({ data }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const handleMessageSubmit = () => {};
 
+  console.log(data);
+
   return (
     <>
       <div className="grid grid-cols-12 gap-3">
@@ -53,7 +55,7 @@ const ProductDetails = ({ data }) => {
                   onSwiper={setThumbsSwiper}
                   loop={true}
                   spaceBetween={3}
-                  slidesPerView={5}
+                  slidesPerView={7}
                   freeMode={true}
                   watchSlidesProgress={true}
                   modules={[FreeMode, Navigation, Thumbs]}
@@ -126,7 +128,9 @@ const ProductDetails = ({ data }) => {
                     ({data.price ? "₹" + data.price : null})
                   </h3>
                   <div className="productDetails-discount-wrap">
-                    <h3 className="productDetails-discount-text">21% off</h3>
+                    <h3 className="productDetails-discount-text">
+                      {data.discount_percent} off
+                    </h3>
                     <div className="info-wrap cursor-pointer text-[20px] text-[#878787]">
                       <HiOutlineInformationCircle />
                     </div>
@@ -311,13 +315,46 @@ const ProductDetails = ({ data }) => {
                       </span>
                     </div>
                   </div>
-
-                  <div className="ratings-bottom p-2 border-b last:border-b-0 border-dashed border-primary-200 ">
-                    <div className="">abc</div>
-                  </div>
-                  <div className="ratings-bottom p-2 border-b last:border-b-0 border-dashed border-primary-200">
-                    <div className="">abc</div>
-                  </div>
+                  {data.reviews.map((review, index) => (
+                    <div
+                      key={index}
+                      className="ratings-bottom px-2 py-4 border-b last:border-b-0 border-dashed border-primary-200 "
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
+                          <FaStar className="text-[10px]" />
+                          <p className="text-[10px] font-medium">
+                            {review.rating}
+                          </p>
+                        </div>
+                        <div className="">
+                          <h5 className="text-sm font-medium text-gray-900">
+                            {review.comment_title}
+                          </h5>
+                        </div>
+                      </div>
+                      <div className="ratings-comment-wrap mt-2">
+                        <h5 className="text-sm font-normal text-gray-900">
+                          {review.comment}
+                        </h5>
+                        <div className="ratings-comment-user-wrap mt-1 flex justify-start gap-2">
+                          <p className="text-xs font-semibold text-gray-500 ">
+                          {review.user.username}
+                          </p>
+                          <p className="text-xs font-semibold text-gray-500 ">
+                            {new Date(review.review_date).toLocaleDateString(
+                              "en-US",
+                              {
+                                month: "short",
+                                day: "numeric",
+                                year: "numeric",
+                              }
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

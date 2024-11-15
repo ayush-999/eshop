@@ -62,7 +62,7 @@ const ProductCard = ({ data, onOpenDetails }) => {
                 src={data.image_Url[0]?.url}
                 alt={data.name}
                 className="pcard-image"
-                />
+              />
             </Link>
           </div>
         </div>
@@ -81,18 +81,14 @@ const ProductCard = ({ data, onOpenDetails }) => {
               </h5>
               {data.price && data.price !== data.discount_price && (
                 <h5 className="pcard-price">
-                  (<span className="mr-0">
-                    ₹
-                  </span>
+                  (<span className="mr-0">₹</span>
                   {data.price})
                 </h5>
               )}
             </div>
             <div className="pcard-discount">
               <p>
-                <span className="mr-1">
-                  70%
-                </span>
+                <span className="mr-1">{data.discount_percent}</span>
                 off
               </p>
             </div>

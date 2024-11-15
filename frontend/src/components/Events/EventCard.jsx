@@ -5,11 +5,12 @@ import Countdown from "../Countdown/Countdown";
 
 const EventCard = () => {
   return (
+    // TODO: Need to work on this page
     <div className="grid grid-cols-12 gap-3">
       <div className="col-span-5">
         <div className="w-full event-left mx-auto">
           <img
-            src="https://images.ctfassets.net/hrltx12pl8hq/01rJn4TormMsGQs1ZRIpzX/16a1cae2440420d0fd0a7a9a006f2dcb/Artboard_Copy_231.jpg?fit=fill&w=600&h=600"
+            src="https://dummyimage.com/420x420/000/fff&text=Product"
             className="eventImg"
           />
         </div>
@@ -18,7 +19,7 @@ const EventCard = () => {
       <div className="col-span-7">
         <div className="w-full event-right">
           <h1 className="event-title truncate-text">
-            Iphone 14 pro max 256 gb ssd and 8 gb ram silver color
+          Product Name
           </h1>
           <p className="event-detail">
             Lorem Ipsum is simply dummy text of the printing and typesetting
