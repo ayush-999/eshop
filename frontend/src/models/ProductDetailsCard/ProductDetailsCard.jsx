@@ -53,7 +53,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                 <div className="col-span-5 pcarddetails-r-wrapper">
                   {/* Image Swiper */}
                   <div className="pcarddetails-img-wrapper mb-4">
-                    <div className="pcarddetails-img-wrap mx-auto">
+                    <div className="pcarddetails-img-wrap mx-auto relative">
                       <Swiper
                         loop={true}
                         spaceBetween={10}
@@ -91,6 +91,25 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                           </SwiperSlide>
                         ))}
                       </Swiper>
+                      <div className="ml-3 mr-3">
+                        <div className="productDetails-icon-wrapper bg-primary-20 hover:bg-primary-50 cursor-pointer border border-dashed hover:border-solid border-primary-200 rounded-full p-2">
+                          {click ? (
+                            <GoHeartFill
+                              className="pcarddetails-icon cursor-pointer"
+                              onClick={() => setClick(!click)}
+                              color={click ? "#dc2626" : "#333"}
+                              title="Remove from wishlist"
+                            />
+                          ) : (
+                            <GoHeart
+                              className="pcarddetails-icon cursor-pointer"
+                              onClick={() => setClick(!click)}
+                              color={click ? "#dc2626" : "#333"}
+                              title="Add to wishlist"
+                            />
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
                   {/* Shop Info and Wishlist Button */}
@@ -118,7 +137,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                     </div>
                   </div>
                   {/* Message and Wishlist Buttons */}
-                  <div className="flex items-center justify-between gap-1 mt-3">
+                  {/* <div className="flex items-center justify-between gap-1 mt-3">
                     <button
                       type="submit"
                       className="bg-primary-600 hover:bg-primary-700 text-white rounded-lg w-full px-1.5 py-2.5 flex items-center justify-center gap-[5px] text-sm me-1 outline-none focus:outline-none ease-in-out duration-100 font-medium"
@@ -127,24 +146,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                       Send Message
                       <AiOutlineMessage className="text-[18px]" />
                     </button>
-                    <div className="ml-3 mr-3">
-                      {click ? (
-                        <GoHeartFill
-                          className="pcarddetails-icon cursor-pointer"
-                          onClick={() => setClick(!click)}
-                          color={click ? "#dc2626" : "#333"}
-                          title="Remove from wishlist"
-                        />
-                      ) : (
-                        <GoHeart
-                          className="pcarddetails-icon cursor-pointer"
-                          onClick={() => setClick(!click)}
-                          color={click ? "#dc2626" : "#333"}
-                          title="Add to wishlist"
-                        />
-                      )}
-                    </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="col-span-7 pcarddetails-l-wrapper">

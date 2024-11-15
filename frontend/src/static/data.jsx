@@ -674,7 +674,7 @@ export const productData = [
       rating: (Math.random() * 2 + 1).toFixed(1), // Random ratings between 3.0 and 5.0
       total_sell: Math.floor(Math.random() * 1000), // Random total sell between 0 and 999
       stock: Math.floor(Math.random() * 50 + 1), // Random stock between 1 and 50
-      reviews: Array.from({ length: Math.floor(Math.random() * 5 + 1) }).map(
+      reviews: Array.from({ length: Math.floor(Math.random() * 10 + 1) }).map(
         (_, reviewIndex) => ({
           user: {
             username: `Username ${index + 1}_${reviewIndex + 1}`,

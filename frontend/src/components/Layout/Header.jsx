@@ -196,104 +196,118 @@ const Header = () => {
             <nav className="contents">
               <ul className="flex items-center justify-end gap-6">
                 {isAuthenticated ? (
-                  <li className="relative">
-                    <div>
-                      <button
-                        type="button"
-                        className={`relative flex justify-between gap-1.5 items-center cursor-pointer text-sm rounded-lg p-2 font-semibold ${
-                          dropdownVisible
-                            ? "bg-primary-30"
-                            : "hover:bg-primary-30"
-                        }`}
-                        id="user-menu-button"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                        onClick={() => setDropdownVisible(!dropdownVisible)}
-                        ref={buttonRef}
-                      >
-                        <LuUserCircle2 className="w-5 h-5" />
-                        <span>{user.name}</span>
-                        {dropdownVisible ? (
-                          <GoChevronUp className="mt-1" />
-                        ) : (
-                          <GoChevronDown className="mt-1" />
-                        )}
-                      </button>
-                    </div>
-                    {dropdownVisible && (
-                      <div
-                        className="absolute z-10 mt-2 w-44 origin-top-right rounded-b-lg bg-white p-1 shadow-md"
-                        role="menu"
-                        aria-orientation="vertical"
-                        aria-labelledby="user-menu-button"
-                        ref={dropdownRef}
-                      >
-                        <Link
-                          to="/account/profile"
-                          className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
-                          role="menuitem"
-                          id="user-menu-item-0"
+                  <>
+                    <li className="relative">
+                      <div>
+                        <button
+                          type="button"
+                          className={`relative flex justify-between gap-1.5 items-center cursor-pointer text-sm rounded-lg p-2 font-semibold ${
+                            dropdownVisible
+                              ? "bg-primary-30"
+                              : "hover:bg-primary-30"
+                          }`}
+                          id="user-menu-button"
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          onClick={() => setDropdownVisible(!dropdownVisible)}
+                          ref={buttonRef}
                         >
-                          <LuUserCircle2 className="w-5 h-5" /> My Profile
-                        </Link>
-                        <Link
-                          to="#"
-                          className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
-                          role="menuitem"
-                          id="user-menu-item-2"
-                        >
-                          <PiPackage className="w-5 h-5" />
-                          Orders
-                        </Link>
-                        <Link
-                          to="/account/wishlist"
-                          className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
-                          role="menuitem"
-                          id="user-menu-item-2"
-                        >
-                          <GoHeart className="w-5 h-5" />
-                          Wishlist (12)
-                        </Link>
-                        <Link
-                          to="#"
-                          className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
-                          role="menuitem"
-                          id="user-menu-item-2"
-                        >
-                          <GoTag className="w-5 h-5" />
-                          Coupons
-                        </Link>
-                        <Link
-                          to="#"
-                          className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
-                          role="menuitem"
-                          id="user-menu-item-2"
-                        >
-                          <MdOutlineCardGiftcard className="w-5 h-5" />
-                          Gift Cards
-                        </Link>
-                        <Link
-                          to="#"
-                          className="relative flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
-                          role="menuitem"
-                          id="user-menu-item-2"
-                        >
-                          <span className="notifications-dot"></span>
-                          <IoNotificationsOutline className="w-5 h-5" />
-                          Notifications (5)
-                        </Link>
-                        <Link
-                          to="#"
-                          className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-red-700"
-                          role="menuitem"
-                          id="user-menu-item-2"
-                        >
-                          <IoLogOutOutline className="w-5 h-5" />
-                          Sign out
-                        </Link>
+                          <LuUserCircle2 className="w-5 h-5" />
+                          <span>{user.name}</span>
+                          {dropdownVisible ? (
+                            <GoChevronUp className="mt-1" />
+                          ) : (
+                            <GoChevronDown className="mt-1" />
+                          )}
+                        </button>
                       </div>
-                    )}
-                  </li>
+                      {dropdownVisible && (
+                        <div
+                          className="absolute z-10 mt-2 w-44 origin-top-right rounded-b-lg bg-white p-1 shadow-md"
+                          role="menu"
+                          aria-orientation="vertical"
+                          aria-labelledby="user-menu-button"
+                          ref={dropdownRef}
+                        >
+                          <Link
+                            to="/account/profile"
+                            className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                            role="menuitem"
+                            id="user-menu-item-0"
+                          >
+                            <LuUserCircle2 className="w-5 h-5" /> My Profile
+                          </Link>
+                          <Link
+                            to="#"
+                            className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                            role="menuitem"
+                            id="user-menu-item-2"
+                          >
+                            <PiPackage className="w-5 h-5" />
+                            Orders
+                          </Link>
+                          <Link
+                            to="/account/wishlist"
+                            className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                            role="menuitem"
+                            id="user-menu-item-2"
+                          >
+                            <GoHeart className="w-5 h-5" />
+                            Wishlist (12)
+                          </Link>
+                          <Link
+                            to="#"
+                            className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                            role="menuitem"
+                            id="user-menu-item-2"
+                          >
+                            <GoTag className="w-5 h-5" />
+                            Coupons
+                          </Link>
+                          <Link
+                            to="#"
+                            className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                            role="menuitem"
+                            id="user-menu-item-2"
+                          >
+                            <MdOutlineCardGiftcard className="w-5 h-5" />
+                            Gift Cards
+                          </Link>
+                          <Link
+                            to="#"
+                            className="relative flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
+                            role="menuitem"
+                            id="user-menu-item-2"
+                          >
+                            <span className="notifications-dot"></span>
+                            <IoNotificationsOutline className="w-5 h-5" />
+                            Notifications (5)
+                          </Link>
+                          <Link
+                            to="#"
+                            className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-red-700"
+                            role="menuitem"
+                            id="user-menu-item-2"
+                          >
+                            <IoLogOutOutline className="w-5 h-5" />
+                            Sign out
+                          </Link>
+                        </div>
+                      )}
+                    </li>
+                    <li className="relative">
+                      <span className="cart-badge">10</span>
+                      <div
+                        className="flex justify-between items-center gap-2 cursor-pointer md:text-sm p-2 font-semibold"
+                        onClick={() => setOpenCart(true)}
+                      >
+                        <Link to="#">
+                          <FiShoppingCart className="w-5 h-5" />
+                        </Link>
+                        <span>Cart</span>
+                      </div>
+                    </li>
+                  </>
                 ) : (
                   <div className="flex items-center justify-end gap-2">
                     <button
@@ -311,18 +325,6 @@ const Header = () => {
                     </button>
                   </div>
                 )}
-                <li className="relative">
-                  <span className="cart-badge">10</span>
-                  <div
-                    className="flex justify-between items-center gap-2 cursor-pointer md:text-sm p-2 font-semibold"
-                    onClick={() => setOpenCart(true)}
-                  >
-                    <Link to="#">
-                      <FiShoppingCart className="w-5 h-5" />
-                    </Link>
-                    <span>Cart</span>
-                  </div>
-                </li>
               </ul>
             </nav>
             {openCart ? <CartModel setOpen={setOpenCart} /> : null}

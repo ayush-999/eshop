@@ -3,7 +3,7 @@ import Header from "../components/Layout/Header";
 import ProfileSideBar from "../components/Layout/SideBar/ProfileSideBar";
 import Footer from "../components/Layout/Footer";
 
-const AccountPage = () => {
+const ProfilePage = () => {
   return (
     <>
       <Header />
@@ -26,4 +26,4 @@ const AccountPage = () => {
   );
 };
 
-export default AccountPage;
+export default ProfilePage;

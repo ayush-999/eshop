@@ -19,12 +19,16 @@ import {
   TermsConditionsPage,
   SellerLoginPage,
   SellerRegisterPage,
-  AccountPage,
+  ProfilePage,
   Wishlist,
   ProductDetailsPage,
 } from "./Routes";
 // Lazy-loaded Routes
-import { ProfileInformation, ManageAddresses, ManageWallet } from "./LazyRoutes";
+import {
+  ProfileInformation,
+  ManageAddresses,
+  ManageWallet,
+} from "./LazyRoutes";
 import LoadingSpinner from "./components/Loader/LoadingSpinner";
 
 // ProtectedRoute component
@@ -35,8 +39,7 @@ const ProtectedRoute = ({ children }) => {
 
 // App Component
 const App = () => {
-
- /** 
+  /** 
   // For Testing
 
   const [loading, setLoading] = useState(true); 
@@ -54,7 +57,9 @@ const App = () => {
 
   return (
     <>
-      {loading ? <LoadingSpinner/> : (
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -76,16 +81,16 @@ const App = () => {
             <Route
               path="/account"
               element={
-                // <ProtectedRoute>
-                <AccountPage />
-                // </ProtectedRoute>
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
               }
             >
               <Route path="wishlist" element={<Wishlist />} />
               <Route
                 path="profile"
                 element={
-                  <Suspense fallback={<LoadingSpinner/>}>
+                  <Suspense fallback={<LoadingSpinner />}>
                     <ProfileInformation />
                   </Suspense>
                 }
@@ -93,7 +98,7 @@ const App = () => {
               <Route
                 path="addresses"
                 element={
-                  <Suspense fallback={<LoadingSpinner/>}>
+                  <Suspense fallback={<LoadingSpinner />}>
                     <ManageAddresses />
                   </Suspense>
                 }
@@ -101,7 +106,7 @@ const App = () => {
               <Route
                 path="wallet"
                 element={
-                  <Suspense fallback={<LoadingSpinner/>}>
+                  <Suspense fallback={<LoadingSpinner />}>
                     <ManageWallet />
                   </Suspense>
                 }
