@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 import { RxCross1 } from "react-icons/rx";
 
-const LoginModel = ({ setOpen }) => {
+const LoginModel = ({ setOpen, switchToRegister }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -77,7 +77,7 @@ const LoginModel = ({ setOpen }) => {
               {({ errors, touched, isValid, dirty }) => (
                 <Form className="space-y-4 md:space-y-4">
                   <div className="input-container c-mb-16">
-                    <label 
+                    <label
                       htmlFor="email"
                       className="inline-block mb-2 text-sm font-medium text-gray-900"
                     >
@@ -176,17 +176,22 @@ const LoginModel = ({ setOpen }) => {
                       type="button"
                       className="w-full text-gray-500 bg-white hover:bg-gray-100 border border-button-border-light font-medium rounded-lg text-sm px-5 py-3 text-center ease-in-out duration-100 flex gap-2 justify-center items-center"
                     >
-                      <img src="/public/assets/img/google.svg" className="google-btn-icon" alt="Google" title=""/>
+                      <img
+                        src="/public/assets/img/google.svg"
+                        className="google-btn-icon"
+                        alt="Google"
+                        title=""
+                      />
                       Login with Google
                     </button>
                     <p className="text-sm font-light text-gray-400 text-center">
                       Don’t have an account yet?
-                      <Link
-                        to="/"
+                      <button
+                        onClick={switchToRegister}
                         className="font-medium text-gray-400 hover:text-primary-600 hover:underline ml-1"
                       >
                         Register
-                      </Link>
+                      </button>
                     </p>
                   </div>
                 </Form>

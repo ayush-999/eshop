@@ -26,6 +26,8 @@ const Header = () => {
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
   const searchInputRef = useRef(null);
+
+  // State for login, register, and cart modals
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [openCart, setOpenCart] = useState(false);
@@ -65,6 +67,18 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Switch from Login to Register
+  const switchToRegister = () => {
+    setIsLoginPopupOpen(false);
+    setIsRegisterPopupOpen(true);
+  };
+
+  // Switch from Register to Login
+  const switchToLogin = () => {
+    setIsRegisterPopupOpen(false);
+    setIsLoginPopupOpen(true);
+  };
 
   const fetchTopSearches = async () => {
     // Replace this with your actual fetch call or logic to get top searches
@@ -213,7 +227,7 @@ const Header = () => {
                         aria-orientation="vertical"
                         aria-labelledby="user-menu-button"
                         ref={dropdownRef}
-                      > 
+                      >
                         <Link
                           to="/account/profile"
                           className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
@@ -316,9 +330,18 @@ const Header = () => {
         </div>
       </header>
       {/* <Navbar /> */}
-      {isLoginPopupOpen && <LoginModel setOpen={setIsLoginPopupOpen} />}
+      {isLoginPopupOpen && (
+        <LoginModel
+          setOpen={setIsLoginPopupOpen}
+          switchToRegister={switchToRegister}
+        />
+      )}
+
       {isRegisterPopupOpen && (
-        <RegisterModel setOpen={setIsRegisterPopupOpen} />
+        <RegisterModel
+          setOpen={setIsRegisterPopupOpen}
+          switchToLogin={switchToLogin}
+        />
       )}
     </>
   );

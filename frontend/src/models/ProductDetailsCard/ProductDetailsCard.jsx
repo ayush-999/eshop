@@ -95,7 +95,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                   </div>
                   {/* Shop Info and Wishlist Button */}
                   <div className="flex items-center">
-                    <p className="w-full flex items-center justify-start">
+                    <div className="w-full flex items-center justify-start">
                       <Link to={`/shop/preview/${data.shop._id}`}>
                         <div className="flex items-center gap-2">
                           <img
@@ -115,7 +115,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                           </div>
                         </div>
                       </Link>
-                    </p>
+                    </div>
                   </div>
                   {/* Message and Wishlist Buttons */}
                   <div className="flex items-center justify-between gap-1 mt-3">

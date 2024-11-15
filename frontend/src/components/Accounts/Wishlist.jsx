@@ -19,7 +19,7 @@ const Wishlist = () => {
   const pName = data[0]?.name || "";
   const product_name = pName.toLowerCase().replace(/\s+/g, "-");
 
-  const truncateText = (text, maxWords = 30, maxChars = 100) => {
+  const truncateText = (text, maxWords = 30, maxChars = 75) => {
     if (!text) return "";
     const wordsArray = text.split(" ");
     const truncatedByWords =
@@ -35,7 +35,7 @@ const Wishlist = () => {
     return truncatedByChars;
   };
 
-  const handleDelete = (addressId) => {
+  const handleDelete = (wishListItemId) => {
     Swal.fire({
       title: "Are you sure?",
       text: "Do you really want to delete this item to your wishlist?",
@@ -47,10 +47,15 @@ const Wishlist = () => {
       cancelButtonText: "No",
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteAddress(addressId);
+        deleteWishListItem(wishListItemId);
       }
     });
   };
+
+  const deleteWishListItem = () => {
+    // implement delete logic here
+    
+  }
 
   return (
     <>
@@ -115,8 +120,8 @@ const Wishlist = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="wishlist-delete">
-                    <AiOutlineDelete className="text-gray-500 hover:text-error-700" onClick={() => handleDelete(item.id)}/>
+                  <div className="wishlist-delete text-gray-500 hover:text-error-700 bg-primary-50 hover:bg-primary-100">
+                    <AiOutlineDelete className="wishlist-delete-icon " onClick={() => handleDelete(item.id)}/>
                   </div>
                 </div>
               ))}

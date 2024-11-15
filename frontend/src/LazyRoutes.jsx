@@ -7,3 +7,7 @@ export const ProfileInformation = lazy(() =>
 export const ManageAddresses = lazy(() =>
   import("./Routes").then((module) => ({ default: module.ManageAddresses }))
 );
+
+export const ManageWallet = lazy(() =>
+  import("./Routes").then((module) => ({ default: module.ManageWallet }))
+);

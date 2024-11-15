@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import "./SideBar.css";
 import { GoChevronUp, GoChevronDown, GoChevronRight } from "react-icons/go";
 import { LuUserCircle2 } from "react-icons/lu";
-import { MdOutlineFolderShared, MdOutlinePayment } from "react-icons/md";
+import { CiBank } from "react-icons/ci";
+import { BsFolder } from "react-icons/bs";
 import { PiPackage } from "react-icons/pi";
 import { IoLogOutOutline } from "react-icons/io5";
 import { useLocation, Link } from "react-router-dom";
@@ -101,7 +102,7 @@ const ProfileSideBar = () => {
             onClick={() => toggleAccordion(1)}
           >
             <div className="flex justify-start items-center gap-2">
-              <MdOutlineFolderShared className="w-5 h-5" />
+              <BsFolder className="w-4 h-4" />
               <h4 className="text-[15px]">My Stuff</h4>
             </div>
             {openIndex === 1 ? <GoChevronUp /> : <GoChevronDown />}
@@ -110,25 +111,25 @@ const ProfileSideBar = () => {
             <div className="accordion-content p-4">
               <Link
                 to="#"
-                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900"
+                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900 mb-1"
               >
                 My Coupons
               </Link>
               <Link
                 to="#"
-                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900"
+                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900 mb-1"
               >
                 My Reviews & Ratings
               </Link>
               <Link
                 to="#"
-                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900"
+                className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900 mb-1"
               >
                 All Notifications
               </Link>
               <Link
                 to="/account/wishlist"
-                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm mb-1 hover:rounded-lg hover:bg-primary-20 hover:text-gray-900 ${
+                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg hover:bg-primary-20 hover:text-gray-900 ${
                   location.pathname === "/account/wishlist"
                     ? "profile-active-link"
                     : "text-gray-600"
@@ -148,13 +149,23 @@ const ProfileSideBar = () => {
             onClick={() => toggleAccordion(2)}
           >
             <div className="flex justify-start items-center gap-2">
-              <MdOutlinePayment className="w-5 h-5" />
+              <CiBank className="w-5 h-5" />
               <h4 className="text-[15px]">Payments</h4>
             </div>
             {openIndex === 2 ? <GoChevronUp /> : <GoChevronDown />}
           </div>
           {openIndex === 2 && (
             <div className="accordion-content p-4">
+              <Link
+                to="/account/wallet"
+                className={`flex items-center justify-start gap-2 px-2 py-2 text-sm mb-1 hover:rounded-lg hover:bg-primary-20 hover:text-gray-900 ${
+                  location.pathname === "/account/wallet"
+                    ? "profile-active-link"
+                    : "text-gray-600"
+                }`}
+              >
+                Wallet
+              </Link>
               <Link
                 to="#"
                 className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900"

@@ -11,10 +11,12 @@ import BlogPage from "./pages/BlogPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsConditionsPage from "./pages/TermsConditionsPage";
 import AccountPage from "./pages/AccountPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 import Wishlist from "./components/Accounts/Wishlist";
 import ProfileInformation from "./components/Accounts/ProfileInformation";
 import ManageAddresses from "./components/Accounts/ManageAddresses";
-import ProductDetailsPage from "./pages/ProductDetailsPage";
+import ManageWallet from "./components/Payments/ManageWallet";
+
 
 export {
   HomePage,
@@ -30,8 +32,9 @@ export {
   PrivacyPolicyPage,
   TermsConditionsPage,
   AccountPage,
+  ProductDetailsPage,
   Wishlist,
   ProfileInformation,
   ManageAddresses,
-  ProductDetailsPage
+  ManageWallet
 };

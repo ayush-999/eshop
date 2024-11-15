@@ -8,22 +8,26 @@ import { productData } from "../static/data";
 const ProductDetailsPage = () => {
   const { name } = useParams();
   const [data, setData] = useState(null);
+  const productName = name.replace(/-/g, " ");
 
-  const productName  = name.replace(/-/g," ");
+  useEffect(() => {
+    const product = productData.find((i) => i.name.toLowerCase() === productName.toLowerCase());
+    setData(product);
+  }, [productName]);
 
-  useEffect(()=>{
-    const data = productData.find((i) => i.name === productName);
-    setData(data);
-  },[])
 
   return (
     <>
-      <Header />
-      <div className="max-w-screen-xl mx-auto mt-10 md:mt-16 mb-6 sm:px-6 lg:px-0">
-        <ProductDetails />
-      </div>
-      <Footer />
-    </>
+    <Header />
+    <div className="max-w-screen-xl mx-auto mt-10 md:mt-16 mb-6 sm:px-6 lg:px-0">
+      {data ? (
+        <ProductDetails data={data} />
+      ) : (
+        <p className="text-center text-lg">Product not found</p>
+      )}
+    </div>
+    <Footer />
+  </>
   );
 };
 

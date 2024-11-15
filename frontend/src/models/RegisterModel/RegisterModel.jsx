@@ -14,7 +14,7 @@ import "./RegisterModel.css";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 
-const RegisterModel = ({ setOpen }) => {
+const RegisterModel = ({ setOpen, switchToLogin }) => {
   const [loading, setLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
@@ -278,12 +278,12 @@ const RegisterModel = ({ setOpen }) => {
                   {/* Login Link */}
                   <p className="text-sm font-light text-gray-400 text-center">
                     Already have an account?
-                    <Link
-                      to="/sign-up"
+                    <button
+                      onClick={switchToLogin}
                       className="font-medium text-gray-400 hover:text-primary-600 hover:underline ml-1"
                     >
                       Login
-                    </Link>
+                    </button>
                   </p>
                 </Form>
               )}

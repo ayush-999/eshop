@@ -24,7 +24,7 @@ import {
   ProductDetailsPage,
 } from "./Routes";
 // Lazy-loaded Routes
-import { ProfileInformation, ManageAddresses } from "./LazyRoutes";
+import { ProfileInformation, ManageAddresses, ManageWallet } from "./LazyRoutes";
 import LoadingSpinner from "./components/Loader/LoadingSpinner";
 
 // ProtectedRoute component
@@ -95,6 +95,14 @@ const App = () => {
                 element={
                   <Suspense fallback={<LoadingSpinner/>}>
                     <ManageAddresses />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="wallet"
+                element={
+                  <Suspense fallback={<LoadingSpinner/>}>
+                    <ManageWallet />
                   </Suspense>
                 }
               />
