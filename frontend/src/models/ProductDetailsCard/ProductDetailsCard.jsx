@@ -15,6 +15,7 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import "./productDetailsCard.css";
 import { Link } from "react-router-dom";
+import { truncateText } from "../../utils/helper";
 
 const ProductDetailsCard = ({ setOpen, data }) => {
   const [click, setClick] = useState(false);
@@ -25,21 +26,6 @@ const ProductDetailsCard = ({ setOpen, data }) => {
 
   const toggleTruncation = () => {
     setIsTruncated(!isTruncated);
-  };
-
-  const truncateText = (text, maxWords = 100, maxChars = 300) => {
-    const wordsArray = text.split(" ");
-    const truncatedByWords =
-      wordsArray.length > maxWords
-        ? wordsArray.slice(0, maxWords).join(" ") + "... "
-        : text;
-
-    const truncatedByChars =
-      truncatedByWords.length > maxChars
-        ? truncatedByWords.slice(0, maxChars) + "... "
-        : truncatedByWords;
-
-    return truncatedByChars;
   };
 
   return (
@@ -115,7 +101,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                   {/* Shop Info and Wishlist Button */}
                   <div className="flex items-center">
                     <div className="w-full flex items-center justify-start">
-                      <Link to={`/shop/preview/${data.shop._id}`}>
+                      <Link to={`/shop/${data.shop.id}`}>
                         <div className="flex items-center gap-2">
                           <img
                             src={data.shop.shop_avatar.url}
@@ -179,7 +165,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                       <div className="flex items-center justify-start gap-2 mb-3">
                         <div className="pcarddetails-rating flex items-center justify-start gap-1">
                           <FaStar />
-                          <p className="font-medium">{data.shop.ratings}</p>
+                          <p className="font-medium">{data.ratings}</p>
                         </div>
                         <p className="text-[#878787] text-xs font-normal">
                           105098 Ratings, 21052 Reviews
@@ -215,7 +201,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                         </h1>
                         <p className="text-[15px] leading-normal">
                           {isTruncated
-                            ? truncateText(data.description)
+                            ? truncateText(data.description, 100, 300)
                             : data.description}
                           {isTruncated && (
                             <Link

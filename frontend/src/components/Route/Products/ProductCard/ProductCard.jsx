@@ -12,8 +12,6 @@ const ProductCard = ({ data, onOpenDetails }) => {
 
   const pName = data.name;
   const product_name = pName.toLowerCase().replace(/\s+/g, "-");
-  const sName = data.shop.name;
-  const shop_name = sName.toLowerCase().replace(/\s+/g, "-");
   return (
     <>
       <div className="w-full h-full p-2 border border-dashed border-primary-200 rounded-lg cursor-pointer">
@@ -21,7 +19,7 @@ const ProductCard = ({ data, onOpenDetails }) => {
           <div className="pcard-left">
             <div className="pcard-rating-wrap">
               <div className="pcard-rating-icon flex items-center justify-between gap-1">
-                <p className="pcard-rating-text font-bold">{data.rating}</p>
+                <p className="pcard-rating-text font-bold">{data.ratings}</p>
                 <FaStar className="text-primary-500" />
                 <div className="rating-separator ml-1 mr-1"></div>
                 <p className="pcard-total-rating font-bold">4.2k</p>
@@ -66,7 +64,7 @@ const ProductCard = ({ data, onOpenDetails }) => {
             </Link>
           </div>
         </div>
-        <Link to={`/product/${shop_name}`}>
+        <Link to={`/shop/${data.shop.id}`}>
           <span className="truncate-text block w-full pcard-shopName">
             {data.shop.name}
           </span>

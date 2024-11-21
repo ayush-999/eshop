@@ -14,16 +14,19 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Link } from "react-router-dom";
 import "./ProductDetails.css";
-import MarketingPriceCard from "../MarketingCard/MarketingPriceCard";
+import MarketingPriceCard from "../../../MarketingCard/MarketingPriceCard";
 const ProductDetails = ({ data }) => {
   const [visibleReviews, setVisibleReviews] = useState(3); // Initially show 3 reviews
   const [click, setClick] = useState(false);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   if (!data) {
-    return null; // or return a loading or error message
+    return (
+      <div className="text-center text-gray-500">
+        No product details available.
+      </div>
+    );
   }
-
   const handleViewMore = () => {
     setVisibleReviews((prev) => prev + 5); // Show 5 more reviews on each click
   };
@@ -100,7 +103,7 @@ const ProductDetails = ({ data }) => {
                 className="bg-primary-600 hover:bg-primary-700 text-white rounded-lg w-full px-1.5 py-2.5 flex items-center justify-center gap-1 text-sm me-1 outline-none focus:outline-none ease-in-out duration-100 font-medium"
               >
                 Add to cart
-                <FiShoppingCart className="text-[16px]" />
+                <FiShoppingCart className="text-lg" />
               </button>
               <button
                 type="submit"
@@ -120,7 +123,7 @@ const ProductDetails = ({ data }) => {
               {/* Product Info */}
               <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                 <h1
-                  className="text-[16px] font-medium text-gray-900 mb-2 truncate-text"
+                  className="text-lg font-medium text-gray-900 mb-2 truncate-text"
                   title={data.name}
                 >
                   {data.name}
@@ -145,7 +148,7 @@ const ProductDetails = ({ data }) => {
                 <div className="flex items-center justify-start gap-2 mb-3">
                   <div className="productDetails-rating flex items-center justify-start gap-1">
                     <FaStar />
-                    <p className="font-medium">{data.shop.ratings}</p>
+                    <p className="font-medium">{data.ratings}</p>
                   </div>
                   <p className="text-[#878787] text-xs font-normal">
                     105098 Ratings, 21052 Reviews
@@ -160,7 +163,7 @@ const ProductDetails = ({ data }) => {
               {/* Select Size */}
               <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                 <div className="flex justify-between items-center">
-                  <h1 className="text-[16px] font-medium mb-1 truncate-text">
+                  <h1 className="text-lg font-medium mb-1 truncate-text">
                     Select Size
                   </h1>
                   <div className="info-wrap cursor-pointer text-[20px] text-[#878787]">
@@ -176,7 +179,7 @@ const ProductDetails = ({ data }) => {
               {/* Product Description */}
               <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                 <div className="desc-wrap mb-4">
-                  <h1 className="text-[16px] font-medium mb-3">
+                  <h1 className="text-lg font-medium mb-3">
                     Product Description
                   </h1>
                   <p className="text-[14px] leading-normal">
@@ -187,7 +190,7 @@ const ProductDetails = ({ data }) => {
               {/* Seller Description */}
               <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                 <div className="seller-wrap">
-                  <h1 className="text-[16px] font-medium mb-3">Sold By</h1>
+                  <h1 className="text-lg font-medium mb-3">Sold By</h1>
                   <div className="flex items-center">
                     <div className="w-full flex items-center justify-start">
                       <div className="flex items-center justify-between gap-5">
@@ -209,19 +212,19 @@ const ProductDetails = ({ data }) => {
                                 </p>
                               </div>
                               <p className="text-[#878787] text-xs font-semibold">
-                                105098 Ratings & 21052 Reviews
+                                105098 Ratings
                               </p>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <button
-                      type="submit"
-                      className="w-48 border border-solid border-primary-200 text-primary-400 rounded-lg py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-sm ease-in-out duration-100 font-medium"
+                    <Link
+                      to={`/shop/${data.shop.id}`}
+                      className="w-48 border border-solid border-primary-200 text-primary-400 rounded-lg py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-sm ease-in-out duration-100 font-medium text-center"
                     >
                       View Shop
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -229,9 +232,7 @@ const ProductDetails = ({ data }) => {
               <div className="productDetails-ratings-wrapper border border-dashed border-primary-200 rounded-lg">
                 <div className="productDetails-ratings-wrapper-top p-2 mb-3">
                   <div className="rating-wrap">
-                    <h1 className="text-[16px] font-medium">
-                      Ratings & Reviews
-                    </h1>
+                    <h1 className="text-lg font-medium">Ratings & Reviews</h1>
                   </div>
                 </div>
                 <div className="productDetails-ratings-wrapper-bottom">
@@ -321,60 +322,77 @@ const ProductDetails = ({ data }) => {
                       </span>
                     </div>
                   </div>
-                  {data.reviews
-                    .slice(0, visibleReviews)
-                    .map((review, index) => (
-                      <div
-                        key={index}
-                        className="ratings-bottom px-2 py-4 border-b last:border-b-0 border-dashed border-primary-200 "
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
-                            <FaStar className="text-[10px]" />
-                            <p className="text-[10px] font-medium">
-                              {review.rating}
-                            </p>
+                  {data.reviews.length > 0 ? (
+                    <>
+                      {data.reviews
+                        .slice(0, visibleReviews)
+                        .map((review, index) => (
+                          <div
+                            key={index}
+                            className="ratings-bottom px-2 py-4 border-b last:border-b-0 border-dashed border-primary-200"
+                          >
+                            <div className="flex items-start gap-3">
+                              <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
+                                <FaStar className="text-[10px]" />
+                                <p className="text-[10px] font-medium">
+                                  {review.rating}
+                                </p>
+                              </div>
+                              <div className="rating-title-wrap">
+                                <h5 className="text-sm font-medium text-gray-900">
+                                  {review.comment_title}
+                                </h5>
+                              </div>
+                            </div>
+                            <div className="ratings-comment-wrap mt-2">
+                              <h5 className="text-sm font-normal text-gray-900">
+                                {review.comment}
+                              </h5>
+                              <div className="ratings-comment-user-wrap mt-1 flex justify-start gap-2">
+                                <p className="text-xs font-semibold text-gray-500 ">
+                                  {review.user.username}
+                                </p>
+                                <p className="text-xs font-semibold text-gray-500 ">
+                                  {new Date(
+                                    review.review_date
+                                  ).toLocaleDateString("en-US", {
+                                    month: "short",
+                                    day: "numeric",
+                                    year: "numeric",
+                                  })}
+                                </p>
+                              </div>
+                            </div>
                           </div>
-                          <div className="rating-title-wrap">
-                            <h5 className="text-sm font-medium text-gray-900">
-                              {review.comment_title}
-                            </h5>
-                          </div>
+                        ))}
+                      {visibleReviews < data.reviews.length && (
+                        <div className="p-2 flex justify-center">
+                          <button
+                            onClick={handleViewMore}
+                            className="w-full py-2 px-3 transition-all bg-primary-50 text-primary-500 text-sm font-medium rounded-lg hover:bg-primary-100 hover:text-primary-600"
+                          >
+                            View more
+                          </button>
                         </div>
-                        <div className="ratings-comment-wrap mt-2">
-                          <h5 className="text-sm font-normal text-gray-900">
-                            {review.comment}
-                          </h5>
-                          <div className="ratings-comment-user-wrap mt-1 flex justify-start gap-2">
-                            <p className="text-xs font-semibold text-gray-500 ">
-                              {review.user.username}
-                            </p>
-                            <p className="text-xs font-semibold text-gray-500 ">
-                              {new Date(review.review_date).toLocaleDateString(
-                                "en-US",
-                                {
-                                  month: "short",
-                                  day: "numeric",
-                                  year: "numeric",
-                                }
-                              )}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                      )}
+                    </>
+                  ) : (
+                    <div className="p-2">
+                      <p className="text-sm font-semibold text-center block w-full p-2 text-primary-500 bg-primary-50 rounded-lg">
+                        No reviews yet
+                      </p>
+                    </div>
+                  )}
                 </div>
-                {visibleReviews < data.reviews.length && (
-                  <div className="p-2 flex justify-center border-t border-dashed border-primary-200">
-                    <button
-                      onClick={handleViewMore}
-                      className="w-full py-2 px-3 transition-all bg-primary-100 text-primary-500 font-medium rounded-lg hover:bg-primary-200 hover:text-primary-600"
-                    >
-                      View More
-                    </button>
-                  </div>
-                )}
               </div>
+              {/* Q & Ans section
+              <div className="p-2 border border-dashed border-primary-200 rounded-lg mt-2">
+                <div className="seller-wrap">
+                  <h1 className="text-lg font-medium mb-3">
+                    Questions and Answers
+                  </h1>
+                </div>
+              </div> */}
             </div>
             <MarketingPriceCard />
           </div>

@@ -12,10 +12,11 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsConditionsPage from "./pages/TermsConditionsPage";
 import ProfilePage from "./pages/ProfilePage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
-import Wishlist from "./components/Profile/Wishlist";
-import ProfileInformation from "./components/Profile/ProfileInformation";
-import ManageAddresses from "./components/Profile/ManageAddresses";
-import ManageWallet from "./components/Payments/ManageWallet";
+import ShopPage from "./pages/ShopPage";
+import Wishlist from "./components/Route/Profile/Wishlist";
+import ProfileInformation from "./components/Route/Profile/ProfileInformation";
+import ManageAddresses from "./components/Route/Profile/ManageAddresses";
+import ManageWallet from "./components/Route/Payments/ManageWallet";
 
 
 export {
@@ -33,6 +34,7 @@ export {
   TermsConditionsPage,
   ProfilePage,
   ProductDetailsPage,
+  ShopPage,
   Wishlist,
   ProfileInformation,
   ManageAddresses,

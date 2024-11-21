@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { PhoneInput } from "react-international-phone";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { server } from "../../server";
+import { server } from "../../../server";
 import { SyncLoader } from "react-spinners";
 import axios from "axios";
 import { toast } from "react-toastify";
-import LoadingSpinner from "../Loader/LoadingSpinner";
+import LoadingSpinner from "../../Loader/LoadingSpinner";
 
 const ProfileInformation = () => {
   const { user, dataLoading } = useSelector((state) => state.user) || {};

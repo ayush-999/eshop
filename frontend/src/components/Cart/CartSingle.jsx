@@ -4,24 +4,10 @@ import { HiOutlineMinus, HiPlus } from "react-icons/hi";
 import "./CartSingle.css";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { truncateText } from "../../utils/helper";
 const CartSingle = ({ data }) => {
   const [value, setValue] = useState(1);
   const totalPrice = data.price * value;
-
-  const truncateText = (text, maxWords = 10, maxChars = 42) => {
-    const wordsArray = text.split(" ");
-    const truncatedByWords =
-      wordsArray.length > maxWords
-        ? wordsArray.slice(0, maxWords).join(" ") + "... "
-        : text;
-
-    const truncatedByChars =
-      truncatedByWords.length > maxChars
-        ? truncatedByWords.slice(0, maxChars) + "... "
-        : truncatedByWords;
-
-    return truncatedByChars;
-  };
   const pName = data.name;
   const product_name = pName.toLowerCase().replace(/\s+/g, "-");
   return (
@@ -54,7 +40,7 @@ const CartSingle = ({ data }) => {
             <div className="flex flex-col gap-2 justify-between">
               <Link to={`/product/${product_name}`}>
                 <h6 className="text-sm font-semibold">
-                  {truncateText(data.name)}
+                  {truncateText(data.name, 10, 42)}
                 </h6>
               </Link>
               <div className="flex justify-start gap-2 items-center">

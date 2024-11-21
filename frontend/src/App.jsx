@@ -22,6 +22,7 @@ import {
   ProfilePage,
   Wishlist,
   ProductDetailsPage,
+  ShopPage,
 } from "./Routes";
 // Lazy-loaded Routes
 import {
@@ -112,6 +113,8 @@ const App = () => {
                 }
               />
             </Route>
+
+            <Route path="/shop/:id" element={<ShopPage />} />
 
             {/* Company */}
             <Route path="/about" element={<AboutPage />} />

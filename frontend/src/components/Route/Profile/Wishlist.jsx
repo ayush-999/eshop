@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { productData } from "../../static/data";
+import { productData } from "../../../static/data";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 import "./Accounts.css";
+import {truncateText} from "../../../utils/helper"
 
 const Wishlist = () => {
   const [data, setData] = useState([]);
@@ -18,22 +19,6 @@ const Wishlist = () => {
 
   const pName = data[0]?.name || "";
   const product_name = pName.toLowerCase().replace(/\s+/g, "-");
-
-  const truncateText = (text, maxWords = 30, maxChars = 75) => {
-    if (!text) return "";
-    const wordsArray = text.split(" ");
-    const truncatedByWords =
-      wordsArray.length > maxWords
-        ? wordsArray.slice(0, maxWords).join(" ") + "... "
-        : text;
-
-    const truncatedByChars =
-      truncatedByWords.length > maxChars
-        ? truncatedByWords.slice(0, maxChars) + "... "
-        : truncatedByWords;
-
-    return truncatedByChars;
-  };
 
   const handleDelete = (wishListItemId) => {
     Swal.fire({
@@ -84,7 +69,7 @@ const Wishlist = () => {
                     <div className="col-span-10">
                       <Link to={`/product/${product_name}`}>
                         <h1 className="text-[16px] font-semibold mb-2">
-                          {truncateText(item.name)}
+                          {truncateText(item.name, 30, 75)}
                         </h1>
                       </Link>
                       <div className="flex items-center justify-start gap-2 mb-3">

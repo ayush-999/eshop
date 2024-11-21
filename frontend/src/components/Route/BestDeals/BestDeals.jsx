@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import 'swiper/css/free-mode';
 import { Navigation, FreeMode } from "swiper/modules";
 import { FiChevronRight } from "react-icons/fi";
-import ProductCard from "../ProductCard/ProductCard.jsx";
+import ProductCard from "../../Route/Products/ProductCard/ProductCard.jsx";
 import { productData } from "../../../static/data";
 import ProductDetailsCard from "../../../models/ProductDetailsCard/ProductDetailsCard.jsx";
 

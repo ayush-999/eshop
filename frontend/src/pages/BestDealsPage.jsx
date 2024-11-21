@@ -3,7 +3,7 @@ import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
 import PageSideBar from "../components/Layout/SideBar/PageSideBar";
 import { productData } from "../static/data";
-import ProductCard from "../components/Route/ProductCard/ProductCard";
+import ProductCard from "../components/Route/Products/ProductCard/ProductCard";
 import ProductDetailsCard from "../models/ProductDetailsCard/ProductDetailsCard";
 const BestDealsPage = () => {
   const [data, setData] = useState([]);

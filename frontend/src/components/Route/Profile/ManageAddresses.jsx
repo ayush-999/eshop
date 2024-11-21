@@ -6,12 +6,12 @@ import { PhoneInput } from "react-international-phone";
 import { MdOutlineWorkOutline } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik } from "formik";
-import { server } from "../../server";
+import { server } from "../../../server";
 import { toast } from "react-toastify";
 import { SyncLoader } from "react-spinners";
 import { HiDotsVertical } from "react-icons/hi";
 import Swal from "sweetalert2";
-import LoadingSpinner from "../Loader/LoadingSpinner";
+import LoadingSpinner from "../../Loader/LoadingSpinner";
 import './Accounts.css';
 
 const ManageAddresses = () => {

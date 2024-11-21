@@ -1,3 +1,5 @@
+import { getRandomHexColor } from '../utils/helper';
+
 // navigation Data
 export const navItems = [
   {
@@ -593,7 +595,9 @@ export const categoriesData = [
 export const productData = [
   ...Array.from({ length: 100 }).map((_, index) => {
     const price = parseFloat((Math.random() * 1000 + 100).toFixed(0)); // Random price between $100 and $1100
-    const discountPrice = parseFloat((Math.random() * (price - 50) + 50).toFixed(0)); // Discount price always less than price
+    const discountPrice = parseFloat(
+      (Math.random() * (price - 50) + 50).toFixed(0)
+    ); // Discount price always less than price
     const discountPercent = (((price - discountPrice) / price) * 100).toFixed(0);
     return {
       id: index + 1,
@@ -606,95 +610,71 @@ export const productData = [
       name: `Product Name ${index + 1}`,
       description:
         "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales. Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
-      image_Url: [
-        {
-          public_id: `test${index + 1}_1`,
-          url: `https://dummyimage.com/512x560/000/fff&text=Product+${
+      image_Url: Array.from({ length: 8 }).map((_, imageIndex) => {
+        const bgColor = getRandomHexColor();
+        const textColor = getRandomHexColor();
+        return {
+          public_id: `test${index + 1}_${imageIndex + 1}`,
+          url: `https://dummyimage.com/512x560/${bgColor}/${textColor}&text=Product+${
             index + 1
-          }+Image+1`,
-        },
-        {
-          public_id: `test${index + 1}_2`,
-          url: `https://dummyimage.com/512x560/000/fff&text=Product+${
-            index + 1
-          }+Image+2`,
-        },
-        {
-          public_id: `test${index + 1}_3`,
-          url: `https://dummyimage.com/512x560/000/fff&text=Product+${
-            index + 1
-          }+Image+3`,
-        },
-        {
-          public_id: `test${index + 1}_4`,
-          url: `https://dummyimage.com/512x560/000/fff&text=Product+${
-            index + 1
-          }+Image+4`,
-        },
-        {
-          public_id: `test${index + 1}_5`,
-          url: `https://dummyimage.com/512x560/000/fff&text=Product+${
-            index + 1
-          }+Image+5`,
-        },
-        {
-          public_id: `test${index + 1}_6`,
-          url: `https://dummyimage.com/512x560/000/fff&text=Product+${
-            index + 1
-          }+Image+6`,
-        },
-        {
-          public_id: `test${index + 1}_7`,
-          url: `https://dummyimage.com/512x560/000/fff&text=Product+${
-            index + 1
-          }+Image+7`,
-        },
-        {
-          public_id: `test${index + 1}_8`,
-          url: `https://dummyimage.com/512x560/000/fff&text=Product+${
-            index + 1
-          }+Image+8`,
-        },
-      ],
+          }+Image+${imageIndex + 1}`,
+        };
+      }),
       shop: {
+        id: index + 1,
         name: ["Apple Inc.", "Amazon Ltd", "Asus Ltd", "Shahriar Watch House"][
           index % 4
         ],
         shop_avatar: {
           public_id: `shop${index % 4}`,
-          url: `https://dummyimage.com/100x100/000/fff&text=Shop+${
+          url: `https://dummyimage.com/100x100/${getRandomHexColor()}/fff&text=Shop+${
             (index % 4) + 1
           }`,
         },
-        ratings: (Math.random() * 2 + 1).toFixed(1), // Random ratings between 3.0 and 5.0
+        ratings: Math.floor(Math.random() * 2 + 3).toFixed(1), // Random rating between 1 and 5
+        reviews: Array.from({ length: Math.floor(Math.random() * 10 + 1) }).map(
+          (_, reviewIndex) => ({
+            user: {
+              username: `Shop User ${index + 1}_${reviewIndex + 1}`,
+              avatar_url: `https://dummyimage.com/50x50/${getRandomHexColor()}/fff&text=User+${
+                reviewIndex + 1
+              }`,
+            },
+            comment_title: `Shop review title ${index + 1} ${reviewIndex + 1}`,
+            comment: `Shop review comment for product ${index + 1} by user ${
+              reviewIndex + 1
+            }`,
+            rating: Math.floor(Math.random() * 2 + 3).toFixed(1), // Random rating between 1 and 5
+            review_date: new Date().toISOString(),
+          })
+        ),
       },
       price,
       discount_price: discountPrice,
       discount_percent: `${discountPercent}%`,
-      rating: (Math.random() * 2 + 1).toFixed(1), // Random ratings between 3.0 and 5.0
       total_sell: Math.floor(Math.random() * 1000), // Random total sell between 0 and 999
       stock: Math.floor(Math.random() * 50 + 1), // Random stock between 1 and 50
+      ratings: (Math.random() * 2 + 3).toFixed(1), // Random ratings between 3.0 and 5.0
       reviews: Array.from({ length: Math.floor(Math.random() * 10 + 1) }).map(
         (_, reviewIndex) => ({
           user: {
-            username: `Username ${index + 1}_${reviewIndex + 1}`,
-            avatar_url: `https://dummyimage.com/50x50/000/fff&text=User+${
+            username: `Product User ${index + 1}_${reviewIndex + 1}`,
+            avatar_url: `https://dummyimage.com/50x50/${getRandomHexColor()}/fff&text=User+${
               reviewIndex + 1
             }`,
           },
-          comment_title: `Review title product ${index + 1} ${
-            reviewIndex + 1
-          }`,
+          comment_title: `Review title product ${index + 1} ${reviewIndex + 1}`,
           comment: `Review comment for product ${index + 1} by user ${
             reviewIndex + 1
           }`,
-          rating: Math.floor(Math.random() * 5 + 1), // Random rating between 1 and 5
-          review_date: Date()
+          rating: Math.floor(Math.random() * 2 + 3).toFixed(1), // Random rating between 1 and 5
+          review_date: new Date().toISOString(),
         })
       ),
     };
   }),
 ];
+
 
 export const footerProductLinks = [
   {
