@@ -12,15 +12,14 @@ const ShopDetail = ({ data }) => {
     );
   }
 
-  const { shop, reviews } = data;
-
-  console.log(data)
+  const { shop } = data;
 
   const handleViewMore = () => {
     setVisibleReviews((prev) => prev + 5); // Show 5 more reviews on each click
   };
 
   return (
+    // TODO: need to change it in the future
     <>
       <div className="grid grid-cols-12 gap-3">
         <div className="col-span-3">
@@ -44,7 +43,9 @@ const ShopDetail = ({ data }) => {
                     <div className="flex items-center justify-start gap-2 mb-3">
                       <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
                         <FaStar className="text-[10px]" />
-                        <p className="text-[10px] font-medium">{shop.ratings}</p>
+                        <p className="text-[10px] font-medium">
+                          {shop.ratings || "N/A"}
+                        </p>
                       </div>
                       <p className="text-[#878787] text-xs font-normal">
                         105098 Ratings
@@ -82,7 +83,7 @@ const ShopDetail = ({ data }) => {
                           <FaStar className="w-4 h-4 text-yellow-400 me-1" />
                           <FaStar className="w-4 h-4 text-yellow-400 me-1" />
                           <p className="ms-1 text-sm font-semibold text-gray-500">
-                            4.95
+                            4.9
                           </p>
                           <p className="ms-1 text-sm font-semibold text-gray-500">
                             out of
@@ -152,48 +153,50 @@ const ShopDetail = ({ data }) => {
                       </span>
                     </div>
                   </div>
-                  {reviews.length > 0 ? (
+                  {shop.reviews && shop.reviews.length > 0 ? (
                     <>
-                      {reviews.slice(0, visibleReviews).map((review, index) => (
-                        <div
-                          key={index}
-                          className="ratings-bottom px-2 py-4 border-b last:border-b-0 border-dashed border-primary-200"
-                        >
-                          <div className="flex items-start gap-3">
-                            <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
-                              <FaStar className="text-[10px]" />
-                              <p className="text-[10px] font-medium">
-                                {review.rating}
-                              </p>
+                      {shop.reviews
+                        .slice(0, visibleReviews)
+                        .map((review, index) => (
+                          <div
+                            key={index}
+                            className="ratings-bottom px-2 py-4 border-b last:border-b-0 border-dashed border-primary-200"
+                          >
+                            <div className="flex items-start gap-3">
+                              <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
+                                <FaStar className="text-[10px]" />
+                                <p className="text-[10px] font-medium">
+                                  {review.rating}
+                                </p>
+                              </div>
+                              <div className="rating-title-wrap">
+                                <h5 className="text-sm font-medium text-gray-900">
+                                  {review.comment_title}
+                                </h5>
+                              </div>
                             </div>
-                            <div className="rating-title-wrap">
-                              <h5 className="text-sm font-medium text-gray-900">
-                                {review.comment_title}
+                            <div className="ratings-comment-wrap mt-2">
+                              <h5 className="text-sm font-normal text-gray-900">
+                                {review.comment}
                               </h5>
+                              <div className="ratings-comment-user-wrap mt-1 flex justify-start gap-2">
+                                <p className="text-xs font-semibold text-gray-500 ">
+                                  {review.user.username}
+                                </p>
+                                <p className="text-xs font-semibold text-gray-500 ">
+                                  {new Date(
+                                    review.review_date
+                                  ).toLocaleDateString("en-US", {
+                                    month: "short",
+                                    day: "numeric",
+                                    year: "numeric",
+                                  })}
+                                </p>
+                              </div>
                             </div>
                           </div>
-                          <div className="ratings-comment-wrap mt-2">
-                            <h5 className="text-sm font-normal text-gray-900">
-                              {review.comment}
-                            </h5>
-                            <div className="ratings-comment-user-wrap mt-1 flex justify-start gap-2">
-                              <p className="text-xs font-semibold text-gray-500 ">
-                                {review.user.username}
-                              </p>
-                              <p className="text-xs font-semibold text-gray-500 ">
-                                {new Date(
-                                  review.review_date
-                                ).toLocaleDateString("en-US", {
-                                  month: "short",
-                                  day: "numeric",
-                                  year: "numeric",
-                                })}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                      {visibleReviews < reviews.length && (
+                        ))}
+                      {visibleReviews < shop.reviews.length && (
                         <div className="p-2 flex justify-center">
                           <button
                             onClick={handleViewMore}

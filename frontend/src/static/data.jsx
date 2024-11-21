@@ -631,7 +631,7 @@ export const productData = [
             (index % 4) + 1
           }`,
         },
-        ratings: Math.floor(Math.random() * 2 + 3).toFixed(1), // Random rating between 1 and 5
+        ratings: (Math.random() * 2 + 3).toFixed(1), // Random rating between 1 and 5
         reviews: Array.from({ length: Math.floor(Math.random() * 10 + 1) }).map(
           (_, reviewIndex) => ({
             user: {
@@ -644,7 +644,7 @@ export const productData = [
             comment: `Shop review comment for product ${index + 1} by user ${
               reviewIndex + 1
             }`,
-            rating: Math.floor(Math.random() * 2 + 3).toFixed(1), // Random rating between 1 and 5
+            rating: (Math.random() * 2 + 3).toFixed(1), // Random rating between 1 and 5
             review_date: new Date().toISOString(),
           })
         ),
@@ -667,14 +667,13 @@ export const productData = [
           comment: `Review comment for product ${index + 1} by user ${
             reviewIndex + 1
           }`,
-          rating: Math.floor(Math.random() * 2 + 3).toFixed(1), // Random rating between 1 and 5
+          rating: (Math.random() * 2 + 3).toFixed(1), // Random rating between 1 and 5
           review_date: new Date().toISOString(),
         })
       ),
     };
   }),
 ];
-
 
 export const footerProductLinks = [
   {
