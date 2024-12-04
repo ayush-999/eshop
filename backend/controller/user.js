@@ -238,7 +238,7 @@ router.put(
       await user.save();
       res.status(200).json({
         success: true,
-        message: "User details updated successfully",
+        message: "User details updated successfully!",
         user,
       });
     } catch (error) {

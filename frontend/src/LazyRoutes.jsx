@@ -11,3 +11,7 @@ export const ManageAddresses = lazy(() =>
 export const ManageWallet = lazy(() =>
   import("./Routes").then((module) => ({ default: module.ManageWallet }))
 );
+
+export const ManageOrder = lazy(() =>
+  import("./Routes").then((module) => ({ default: module.ManageOrder }))
+);

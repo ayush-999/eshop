@@ -19,7 +19,6 @@ const Wishlist = () => {
 
   const pName = data[0]?.name || "";
   const product_name = pName.toLowerCase().replace(/\s+/g, "-");
-
   const handleDelete = (wishListItemId) => {
     Swal.fire({
       title: "Are you sure?",
@@ -75,7 +74,7 @@ const Wishlist = () => {
                       <div className="flex items-center justify-start gap-2 mb-3">
                         <div className="wishlist-rating flex items-center justify-start gap-1">
                           <FaStar />
-                          <p className="font-medium">{item.rating}</p>
+                          <p className="font-medium">{item.ratings}</p>
                         </div>
                         <p className="text-[#878787] text-xs font-normal">
                           105098 Ratings, 21052 Reviews

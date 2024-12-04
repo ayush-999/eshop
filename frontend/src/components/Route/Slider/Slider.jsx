@@ -22,14 +22,14 @@ const Slider = () => {
           disableOnInteraction: false,
         }}
         modules={[Autoplay, Navigation, Pagination]}
-        className="mySwiper"
+        className="mySwiper rounded-2xl"
       >
         {sliderItems.map((item, index) => (
           <SwiperSlide key={index}>
             <Link to={item.url}>
               <img
                 src={item.image_Url}
-                className="h-[270px] object-cover bg-center bg-no-repeat"
+                className="h-[490px] object-cover bg-center bg-no-repeat"
               />
             </Link>
           </SwiperSlide>

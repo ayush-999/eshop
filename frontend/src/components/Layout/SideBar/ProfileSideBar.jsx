@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { server } from "../../../server";
 import "./SideBar.css";
 import { GoChevronUp, GoChevronDown, GoChevronRight } from "react-icons/go";
 import { LuUserCircle2 } from "react-icons/lu";
-import { CiBank } from "react-icons/ci";
+import { AiOutlineBank } from "react-icons/ai";
 import { BsFolder } from "react-icons/bs";
 import { PiPackage } from "react-icons/pi";
 import { IoLogOutOutline } from "react-icons/io5";
@@ -13,6 +16,7 @@ const ProfileSideBar = () => {
   const { user } = useSelector((state) => state.user);
   const [openIndex, setOpenIndex] = useState(-1);
   const location = useLocation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // Check the current path and set openIndex based on the page
@@ -28,7 +32,32 @@ const ProfileSideBar = () => {
   }, [location.pathname]);
 
   const toggleAccordion = (index) => {
-    setOpenIndex(openIndex === index ? -1 : index);
+    if (index === -1) {
+      setOpenIndex(-1); // Close all accordions when My Orders is clicked
+    } else {
+      setOpenIndex(openIndex === index ? -1 : index); // Toggle specific accordion
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      const res = await axios.get(`${server}/user/logout`, {
+        withCredentials: true,
+      });
+
+      if (res.data.success) {
+        // Update Redux or local state to remove user session
+        dispatch({ type: "LOGOUT_USER", payload: res.data.user });
+        toast.success(res.data.message);
+        // Redirect to login or homepage
+        window.location.href = "/";
+      } else {
+        toast.error("Failed to log out. Please try again.");
+      }
+    } catch (error) {
+      toast.error(error.res?.data?.message || "An error occurred.");
+      console.error("Logout error:", error);
+    }
   };
 
   return (
@@ -47,13 +76,21 @@ const ProfileSideBar = () => {
       </div>
 
       <div className="bg-white p-4 rounded-lg shadow-sm accordion-wrapper">
-        <button className="accordion-btn px-2 py-3 mb-2 border-b w-full accordion-orderBtn">
+        <Link
+          to="/account/order"
+          className={`accordion-btn px-2 py-3 mb-2 border-b w-full accordion-orderBtn ${
+            location.pathname === "/account/order"
+              ? "accordion-orderBtn-active"
+              : "text-gray-900"
+          }`}
+          onClick={() => toggleAccordion(-1)} // Close all accordions when "My Orders" is clicked
+        >
           <span className="flex justify-start items-center gap-2">
             <PiPackage className="w-5 h-5" />
             My orders
           </span>
           <GoChevronRight className="w-5 h-5" />
-        </button>
+        </Link>
 
         <div className="accordion-item border-b last:border-b-0 mb-2 border-gray-200">
           <div
@@ -108,7 +145,7 @@ const ProfileSideBar = () => {
             {openIndex === 1 ? <GoChevronUp /> : <GoChevronDown />}
           </div>
           {openIndex === 1 && (
-            <div className="accordion-content p-4">
+            <div className="accordion-content py-2 px-1">
               <Link
                 to="#"
                 className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-gray-900 mb-1"
@@ -149,13 +186,13 @@ const ProfileSideBar = () => {
             onClick={() => toggleAccordion(2)}
           >
             <div className="flex justify-start items-center gap-2">
-              <CiBank className="w-5 h-5" />
-              <h4 className="text-[15px]">Payments</h4>
+              <AiOutlineBank className="w-5 h-5" />
+              <h4 className="text-[15px]">Bank Details</h4>
             </div>
             {openIndex === 2 ? <GoChevronUp /> : <GoChevronDown />}
           </div>
           {openIndex === 2 && (
-            <div className="accordion-content p-4">
+            <div className="accordion-content py-2 px-1">
               <Link
                 to="/account/wallet"
                 className={`flex items-center justify-start gap-2 px-2 py-2 text-sm mb-1 hover:rounded-lg hover:bg-primary-20 hover:text-gray-900 ${
@@ -176,7 +213,7 @@ const ProfileSideBar = () => {
           )}
         </div>
 
-        <button className="accordion-btn px-2 py-3 w-full accordion-logoutBtn">
+        <button className="accordion-btn px-2 py-3 w-full accordion-logoutBtn" onClick={handleLogout}>
           <span className="flex justify-start items-center gap-2">
             <IoLogOutOutline className="w-5 h-5" />
             <h4 className="text-[15px]">Logout</h4>

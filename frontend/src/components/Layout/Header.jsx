@@ -1,5 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { server } from "../../server";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+//
 import { FiSearch, FiShoppingCart } from "react-icons/fi";
 import { LuUserCircle2 } from "react-icons/lu";
 import { GoChevronDown, GoChevronUp, GoHeart, GoTag } from "react-icons/go";
@@ -10,7 +15,6 @@ import { MdOutlineCardGiftcard } from "react-icons/md";
 import "./layout.css";
 import { productData } from "../../static/data";
 // import Navbar from "./Navbar";
-import { useSelector } from "react-redux";
 import LoginModel from "../../models/LoginModel/LoginModel";
 import RegisterModel from "../../models/RegisterModel/RegisterModel";
 import CartModel from "../../models/CartModel/CartModel";
@@ -26,6 +30,7 @@ const Header = () => {
   const dropdownRef = useRef(null);
   const buttonRef = useRef(null);
   const searchInputRef = useRef(null);
+  const dispatch = useDispatch();
 
   // State for login, register, and cart modals
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
@@ -148,6 +153,27 @@ const Header = () => {
     );
   };
 
+  const handleLogout = async () => {
+    try {
+      const res = await axios.get(`${server}/user/logout`, {
+        withCredentials: true,
+      });
+
+      if (res.data.success) {
+        // Update Redux or local state to remove user session
+        dispatch({ type: "LOGOUT_USER", payload: res.data.user });
+        toast.success(res.data.message);
+        // Redirect to login or homepage
+        window.location.href = "/";
+      } else {
+        toast.error("Failed to log out. Please try again.");
+      }
+    } catch (error) {
+      toast.error(error.res?.data?.message || "An error occurred.");
+      console.error("Logout error:", error);
+    }
+  };
+
   return (
     <>
       <header
@@ -197,7 +223,11 @@ const Header = () => {
               <ul className="flex items-center justify-end gap-6">
                 {isAuthenticated ? (
                   <>
-                    <li className="relative">
+                    <li
+                      className="relative h-profile-wrapper"
+                      onMouseEnter={() => setDropdownVisible(true)}
+                      onMouseLeave={() => setDropdownVisible(false)}
+                    >
                       <div>
                         <button
                           type="button"
@@ -209,7 +239,7 @@ const Header = () => {
                           id="user-menu-button"
                           aria-expanded="false"
                           aria-haspopup="true"
-                          onClick={() => setDropdownVisible(!dropdownVisible)}
+                          // onClick={() => setDropdownVisible(!dropdownVisible)}
                           ref={buttonRef}
                         >
                           <LuUserCircle2 className="w-5 h-5" />
@@ -223,7 +253,7 @@ const Header = () => {
                       </div>
                       {dropdownVisible && (
                         <div
-                          className="absolute z-10 mt-2 w-44 origin-top-right rounded-b-lg bg-white p-1 shadow-md"
+                          className="absolute z-10 w-44 origin-top-right rounded-b-lg bg-white p-1 shadow-md"
                           role="menu"
                           aria-orientation="vertical"
                           aria-labelledby="user-menu-button"
@@ -238,7 +268,7 @@ const Header = () => {
                             <LuUserCircle2 className="w-5 h-5" /> My Profile
                           </Link>
                           <Link
-                            to="#"
+                            to="/account/order"
                             className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
                             role="menuitem"
                             id="user-menu-item-2"
@@ -283,19 +313,19 @@ const Header = () => {
                             <IoNotificationsOutline className="w-5 h-5" />
                             Notifications (5)
                           </Link>
-                          <Link
-                            to="#"
-                            className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-red-700"
+                          <button
+                            className="w-full flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-red-700"
                             role="menuitem"
                             id="user-menu-item-2"
+                            onClick={handleLogout}
                           >
                             <IoLogOutOutline className="w-5 h-5" />
-                            Sign out
-                          </Link>
+                            Log out
+                          </button>
                         </div>
                       )}
                     </li>
-                    <li className="relative">
+                    <li className="relative h-cart-wrapper">
                       <span className="cart-badge">10</span>
                       <div
                         className="flex justify-between items-center gap-2 cursor-pointer md:text-sm p-2 font-semibold"

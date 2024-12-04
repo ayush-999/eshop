@@ -29,6 +29,7 @@ import {
   ProfileInformation,
   ManageAddresses,
   ManageWallet,
+  ManageOrder
 } from "./LazyRoutes";
 import LoadingSpinner from "./components/Loader/LoadingSpinner";
 
@@ -109,6 +110,14 @@ const App = () => {
                 element={
                   <Suspense fallback={<LoadingSpinner />}>
                     <ManageWallet />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="order"
+                element={
+                  <Suspense fallback={<LoadingSpinner />}>
+                    <ManageOrder />
                   </Suspense>
                 }
               />

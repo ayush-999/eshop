@@ -33,3 +33,6 @@
 .accordion-orderBtn:hover{
     color: #4a51e1;
 }
+.accordion-orderBtn-active{
+    color: #4a51e1;
+}
