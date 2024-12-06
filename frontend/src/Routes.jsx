@@ -17,7 +17,7 @@ import Wishlist from "./components/Route/Profile/Wishlist";
 import ProfileInformation from "./components/Route/Profile/ProfileInformation";
 import ManageAddresses from "./components/Route/Profile/ManageAddresses";
 import ManageWallet from "./components/Route/Payments/ManageWallet";
-import ManageOrder from "./components/Route/Order/ManageOrder";
+import MyOrder from "./components/Route/Order/MyOrder";
 
 
 export {
@@ -40,5 +40,5 @@ export {
   ProfileInformation,
   ManageAddresses,
   ManageWallet,
-  ManageOrder
+  MyOrder
 };

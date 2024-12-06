@@ -1,0 +1,23 @@
+order-filter-wrapper {
+  position: relative;
+}
+
+.order-filter-wrapper:hover .order-filter-wrap {
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.order-filter-wrap {
+  display: none;
+}
+
+.order-filter-dropdown {
+  width: 180px;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}

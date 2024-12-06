@@ -134,7 +134,7 @@ const ManageAddresses = () => {
                 <h1 className="text-lg font-medium">Manage Addresses</h1>
               </div>
               <div
-                className="add-address-wrapper rounded-lg p-2 border border-dashed border-primary-200 mb-4
+                className="add-address-wrapper mb-4
             "
               >
                 {!isFormVisible && (
@@ -502,7 +502,7 @@ const ManageAddresses = () => {
                       </div>
                     </div>
                   ))
-                ) : (
+                ) : ( 
                   <div className="p-2">
                     <p className="text-sm font-semibold text-center block w-full p-2 text-primary-500 bg-primary-50 rounded-lg">
                       No addresses found
