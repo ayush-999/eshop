@@ -3,7 +3,7 @@ import Slider from "../components/Route/Slider/Slider";
 import Branding from "../components/Route/Branding/Branding";
 import Categories from "../components/Route/Categories/Categories";
 import BestDeals from "../components/Route/BestDeals/BestDeals";
-import Events from "../components/Events/Events.jsx";
+import Events from "../components/Route/Events/Events.jsx";
 import FeaturedProduct from "../components/Route/FeaturedProduct/FeaturedProduct";
 import Footer from "../components/Layout/Footer.jsx";
 

@@ -10,8 +10,8 @@ import { server } from "../../server";
 import { toast } from "react-toastify";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 import { RxCross1 } from "react-icons/rx";
-import "./RegisterModel.css";
 import { PhoneInput } from "react-international-phone";
+import "./RegisterModel.css";
 import "react-international-phone/style.css";
 
 const RegisterModel = ({ setOpen, switchToLogin }) => {
@@ -90,7 +90,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
               onSubmit={handleSubmit}
             >
               {({ errors, touched, isValid, setFieldValue, dirty }) => (
-                <Form className="space-y-4 md:space-y-4">
+                <Form className="space-y-3 md:space-y-3">
                   {/* Full Name Field */}
                   <div className="input-container c-mb-16">
                     <label
@@ -107,7 +107,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                         errors.name && touched.name
                           ? "border-red-600 bg-red-50"
                           : "border-gray-300"
-                      } text-gray-900 rounded-lg block w-full p-2.5`}
+                      } text-gray-900 rounded-lg block w-full p-2`}
                       placeholder="Enter full name"
                     />
                     <ErrorMessage
@@ -133,7 +133,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                         errors.email && touched.email
                           ? "border-red-600 bg-red-50"
                           : "border-gray-300"
-                      } text-gray-900 rounded-lg block w-full p-2.5`}
+                      } text-gray-900 rounded-lg block w-full p-2`}
                       placeholder="name@company.com"
                     />
                     <ErrorMessage
@@ -187,7 +187,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                         errors.password && touched.password
                           ? "border-red-600 bg-red-50"
                           : "border-gray-300"
-                      } text-gray-900 rounded-lg block w-full p-2.5`}
+                      } text-gray-900 rounded-lg block w-full p-2`}
                       placeholder="••••••••"
                     />
                     <span
@@ -223,7 +223,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                         errors.confirmPassword && touched.confirmPassword
                           ? "border-red-600 bg-red-50"
                           : "border-gray-300"
-                      } text-gray-900 rounded-lg block w-full p-2.5`}
+                      } text-gray-900 rounded-lg block w-full p-2`}
                       placeholder="••••••••"
                     />
                     <span
@@ -251,7 +251,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                   <div className="register-button-wrap flex justify-between flex-col gap-2">
                     <button
                       type="submit"
-                      className="w-full text-white bg-primary-600 hover:bg-primary-700 font-medium rounded-lg text-sm px-5 py-3 text-center disabled:opacity-70 ease-in-out duration-100"
+                      className="w-full text-white bg-primary-600 hover:bg-primary-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:opacity-70 ease-in-out duration-100"
                       disabled={!isValid || !dirty || loading}
                     >
                       {loading ? (
@@ -263,7 +263,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                     <div className="divider">OR</div>
                     <button
                       type="button"
-                      className="w-full text-gray-500 bg-white hover:bg-gray-100 border border-button-border-light font-medium rounded-lg text-sm px-5 py-3 text-center ease-in-out duration-100 flex gap-2 justify-center items-center"
+                      className="w-full text-gray-500 bg-white hover:bg-gray-100 border border-button-border-light font-medium rounded-lg text-sm px-5 py-2.5 text-center ease-in-out duration-100 flex gap-2 justify-center items-center"
                     >
                       <img
                         src="/public/assets/img/google.svg"

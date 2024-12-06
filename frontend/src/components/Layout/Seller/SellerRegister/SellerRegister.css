@@ -32,26 +32,3 @@
 .progress-bar {
   height: 3px;
 }
-
-.userMobile .react-international-phone-input {
-  padding: 22px 10px;
-  font-size: 100%;
-  width: 100%;
-  border-radius: 0 0.5rem 0.5rem 0;
-}
-
-.userMobile .react-international-phone-country-selector button {
-  padding: 22px 10px;
-  border-radius: 0.5rem 0 0 0.5rem;
-}
-
-.userMobile.error-show .react-international-phone-input {
-  border-color: rgb(248 10 55);
-  background-color: rgb(255 243 245);
-}
-
-.userMobile.error-show .react-international-phone-country-selector button {
-  border-color: rgb(248 10 55);
-  background-color: rgb(255 243 245);
-}
-

@@ -1,4 +1,4 @@
-import EventCard from "../components/Events/EventCard";
+import EventCard from "../components/Route/Events/EventCard";
 import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
 import PageSideBar from "../components/Layout/SideBar/PageSideBar";

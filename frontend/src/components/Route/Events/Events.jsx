@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./events.css";
 import { FiChevronRight } from "react-icons/fi";
 import EventCard from "./EventCard.jsx";
-import SuggestionCard from "../Route/Suggestion/SuggestionCard.jsx";
+import SuggestionCard from "../Suggestion/SuggestionCard.jsx";
 const Events = () => {
   return (
     <>

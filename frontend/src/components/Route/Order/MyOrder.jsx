@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import LoadingSpinner from "../../Loader/LoadingSpinner";
 import { FiSearch } from "react-icons/fi";
@@ -5,78 +6,13 @@ import { IoFilter, IoCloseCircle } from "react-icons/io5";
 import { FaCheck, FaCircleCheck } from "react-icons/fa6";
 import { TbProgressCheck } from "react-icons/tb";
 import { Tooltip } from "react-tooltip";
+import { ordersData } from "../../../static/data"; // Import ordersData
+import { formatDate } from "../../../utils/helper";
 import "./MyOrder.css";
+import OrderStatus from "../../Status/OrderStatus";
 
 const MyOrder = () => {
   const { user, dataLoading } = useSelector((state) => state.user) || {};
-
-  const orders = [
-    {
-      id: 1,
-      name: "Damensch Solid Men Round Neck Black T-Shirt",
-      image:
-        "https://rukminim2.flixcart.com/image/200/200/xif0q/t-shirt/h/d/a/m-ts1102-jetblk-damensch-original-imagqy7e5ezvvbbh.jpeg?q=90",
-      price: 722,
-      color: "Black",
-      size: "XL",
-      status: "Delivered",
-      deliveredDate: "Oct 09",
-    },
-    {
-      id: 2,
-      name: "SanDisk Extreme Portable SSD",
-      image:
-        "https://rukminim2.flixcart.com/image/200/200/klv7ekw0/external-hard-drive/ssd/x/u/4/sdssde61-500g-g25-sandisk-original-imagywhgg8zcjjvv.jpeg?q=90",
-      price: 9399,
-      color: "Black, Red",
-      status: "Refund Completed",
-      refundDate: "Oct 03, 2022",
-    },
-    {
-      id: 3,
-      name: "Men Tapered Fit Low Rise Blue Jeans",
-      image:
-        "https://rukminim2.flixcart.com/image/200/200/xif0q/jean/n/s/j/-original-imah2mvtbcjuczmv.jpeg?q=90",
-      price: 1300,
-      color: "Blue",
-      size: "34",
-      status: "On the way",
-      estimatedDelivery: "Oct 18, 2023",
-    },
-    {
-      id: 4,
-      name: "Puma Unisex Running Shoes",
-      image:
-        "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/r/h/x/-original-imah4syhzcztjuzm.jpeg?q=70",
-      price: 2499,
-      color: "Black, Red",
-      size: "9",
-      status: "Returned",
-      returnDate: "Nov 15, 2023",
-    },
-    {
-      id: 5,
-      name: "Refund Inprogress Item",
-      image:
-        "https://rukminim2.flixcart.com/image/200/200/xif0q/backpack/q/j/j/-original-imagh3wa6fzrzkaj.jpeg?q=90",
-      price: 1500,
-      color: "Black",
-      size: "34L",
-      status: "Refund Inprogress",
-      refundDate: "Nov 20, 2023",
-    },
-    {
-      id: 6,
-      name: "Refund Failed Item",
-      image:
-        "https://rukminim2.flixcart.com/image/200/200/xif0q/backpack/q/j/j/-original-imagh3wa6fzrzkaj.jpeg?q=90",
-      price: 2000,
-      color: "Blue",
-      size: "",
-      status: "Refund Failed",
-      refundDate: "Nov 22, 2023",
-    },
-  ];
 
   return (
     <>
@@ -89,7 +25,7 @@ const MyOrder = () => {
               <div className="flex justify-start items-center mb-5">
                 <h1 className="text-lg font-medium">My Orders</h1>
               </div>
-              {orders.length > 0 ? (
+              {ordersData.length > 0 ? (
                 <>
                   {/* Order search and filter */}
                   <div className="order-search-wrapper mb-4 relative">
@@ -144,7 +80,7 @@ const MyOrder = () => {
                   </div>
                   {/* Order details */}
                   <div className="order-item-rapper rounded-lg border border-dashed border-primary-200">
-                    {orders.map((order) => (
+                    {ordersData.map((order) => (
                       <div
                         key={order.id}
                         className="order-view-wrap cursor-pointer border-b border-dashed last:border-b-0 border-primary-200"
@@ -154,43 +90,46 @@ const MyOrder = () => {
                             <div className="w-8/12 order-details-wrap flex gap-2">
                               <div className="order-details-img">
                                 <img
-                                  src={order.image}
+                                  src={order.product.image_Url[0].url}
                                   className="w-16 h-16 object-contain"
+                                  alt={order.product.name}
                                 />
                               </div>
                               <div className="order-details-text">
                                 <h3 className="text-sm font-normal">
-                                  {order.name}
+                                  {order.product.name}
                                 </h3>
                                 <p className="text-xs text-[#878787]">
-                                  Color: {order.color} | Size:{" "}
-                                  {order.size || "N/A"}
+                                  Color: {order.product.shop.name} | Size:
+                                  {order.product.category || "N/A"}
                                 </p>
                                 <p className="text-xs text-gray-900">
-                                  ₹ {order.price.toLocaleString()}
+                                  ₹ {order.product.price.toLocaleString()}
                                 </p>
                               </div>
                             </div>
                             <div className="w-4/12 order-status-wrapper flex flex-col gap-4">
                               <div className="order-status flex flex-col gap-1">
-                                {order.status === "Delivered" ? (
+                                {order.status === "delivered" ? (
                                   <div className="order-status-delivered">
                                     <div className="flex items-center gap-2 mb-1">
                                       <div className="w-3 h-3 rounded-full bg-green-600"></div>
                                       <h3 className="text-sm font-medium text-gray-900">
-                                        Delivered on {order.deliveredDate}
+                                        Order delivered on{" "}
+                                        {formatDate(order.deliveredDate)}
                                       </h3>
                                     </div>
                                     <p className="text-xs text-gray-800">
                                       Your item has been delivered
                                     </p>
                                   </div>
-                                ) : order.status === "Refund Completed" ? (
+                                ) : order.status === "cancelled" ? (
                                   <div className="order-status-return">
                                     <div className="flex items-center gap-2 mb-1">
                                       <div className="w-3 h-3 rounded-full bg-red-600"></div>
                                       <h3 className="text-sm font-medium text-gray-900">
-                                        Refund Completed on {order.refundDate}
+                                        Order cancelled on
+                                        {formatDate(order.refundDate)}
                                       </h3>
                                     </div>
                                     <p className="text-xs text-gray-800">
@@ -198,7 +137,7 @@ const MyOrder = () => {
                                       changed your mind about this product.
                                     </p>
                                   </div>
-                                ) : order.status === "On the way" ? (
+                                ) : order.status === "out_for_delivery" ? (
                                   <div className="order-status-onTheWay">
                                     <div className="flex items-center gap-2 mb-1">
                                       <div className="w-3 h-3 rounded-full bg-primary-500"></div>
@@ -208,63 +147,65 @@ const MyOrder = () => {
                                     </div>
                                     <p className="text-xs text-gray-800">
                                       <span className="font-medium me-1">
-                                        {" "}
                                         Estimated delivery :
                                       </span>
-                                      {order.estimatedDelivery}
+                                      {formatDate(order.outForDeliveryDate)}
                                     </p>
                                   </div>
-                                ) : order.status === "Refund Inprogress" ? (
-                                  <div className="order-status-refund-inprogress">
-                                    <div className="flex items-center gap-2 mb-1">
-                                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                      <h3 className="text-sm font-medium text-gray-900">
-                                        Refund Inprogress
-                                      </h3>
-                                    </div>
-                                    <p className="text-xs text-gray-800">
-                                      Your refund is being processed.
-                                    </p>
-                                  </div>
-                                ) : order.status === "Refund Failed" ? (
-                                  <div className="order-status-refund-failed">
-                                    <div className="flex items-center gap-2 mb-1">
-                                      <div className="w-3 h-3 rounded-full bg-red-600"></div>
-                                      <h3 className="text-sm font-medium text-gray-900">
-                                        Refund Failed on {order.refundDate}
-                                      </h3>
-                                    </div>
-                                    <p className="text-xs text-gray-800">
-                                      Your refund request has failed.
-                                    </p>
-                                  </div>
-                                ) : (
+                                ) : order.status === "returned" ? (
                                   <div className="order-status-returned">
                                     <div className="flex items-center gap-2 mb-1">
                                       <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                                       <h3 className="text-sm font-medium text-gray-900">
-                                        Returned on {order.returnDate}
+                                        Order returned on{" "}
+                                        {formatDate(order.returnDate)}
                                       </h3>
                                     </div>
                                     <p className="text-xs text-gray-800">
                                       Your item was successfully returned.
                                     </p>
                                   </div>
+                                ) : order.status === "refund_in_progress" ? (
+                                  <div className="order-status-refund_in_progress">
+                                    <div className="flex items-center gap-2 mb-1">
+                                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                      <h3 className="text-sm font-medium text-gray-900">
+                                        Order refund in progress
+                                      </h3>
+                                    </div>
+                                    <p className="text-xs text-gray-800">
+                                      Your refund is being processed.
+                                    </p>
+                                  </div>
+                                ) : (
+                                  <div className="order-status-refund_failed">
+                                    <div className="flex items-center gap-2 mb-1">
+                                      <div className="w-3 h-3 rounded-full bg-red-600"></div>
+                                      <h3 className="text-sm font-medium text-gray-900">
+                                        Order refund failed
+                                      </h3>
+                                    </div>
+                                    <p className="text-xs text-gray-800">
+                                      Your refund request has failed.
+                                    </p>
+                                  </div>
                                 )}
                               </div>
-                              {order.status === "Delivered" && (
+                              {order.status === "delivered" && (
                                 <button className="border border-solid border-primary-200 text-primary-400 rounded-md px-6 py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-xs ease-in-out duration-100 font-semibold">
                                   Rate & Review Product
                                 </button>
                               )}
-                              {order.status === "On the way" && (
+                              {order.status === "out_for_delivery" && (
                                 <div className="progress-bar-wrapper mt-3 mb-3">
                                   <div className="bg-gray-200 h-1 flex items-center justify-between">
                                     <div className="w-1/3 bg-primary-600 h-1 flex items-center">
                                       <div
                                         className="bg-primary-600 h-6 w-6 rounded-full shadow flex items-center justify-center"
                                         data-tooltip-id="progress-bar-item"
-                                        data-tooltip-content="Order Confirmed"
+                                        data-tooltip-content={`Order Confirmed : ${formatDate(
+                                          order.confirmedDate
+                                        )}`}
                                         data-tooltip-variant="dark"
                                       >
                                         <FaCheck className="w-3 h-3 text-white" />
@@ -274,18 +215,22 @@ const MyOrder = () => {
                                       <div
                                         className="bg-primary-600 h-6 w-6 rounded-full shadow flex items-center justify-center -ml-2"
                                         data-tooltip-id="progress-bar-item"
-                                        data-tooltip-content="Shipped"
+                                        data-tooltip-content={`Shipped : ${formatDate(
+                                          order.shippedDate
+                                        )}`}
                                         data-tooltip-variant="dark"
                                       >
                                         <FaCheck className="w-3 h-3 text-white" />
                                       </div>
-                                      <div className="bg-white h-6 w-6 rounded-full shadow flex items-center justify-center -mr-3">
-                                        <div
-                                          className="h-3 w-3 bg-primary-600 rounded-full"
-                                          data-tooltip-id="progress-bar-item"
-                                          data-tooltip-content="Out for Delivery"
-                                          data-tooltip-variant="dark"
-                                        />
+                                      <div
+                                        className="bg-white h-6 w-6 rounded-full shadow flex items-center justify-center -mr-3"
+                                        data-tooltip-id="progress-bar-item"
+                                        data-tooltip-content={`Out for Delivery : ${formatDate(
+                                          order.outForDeliveryDate
+                                        )}`}
+                                        data-tooltip-variant="dark"
+                                      >
+                                        <div className="h-3 w-3 bg-primary-600 rounded-full" />
                                       </div>
                                     </div>
                                     <div className="w-1/3 flex justify-end">
@@ -309,87 +254,7 @@ const MyOrder = () => {
                               )}
                             </div>
                           </div>
-                          <div className="order-status-bottom">
-                            {order.status === "Delivered" ? (
-                              <div className="rounded-lg border border-dashed border-green-600 p-2 bg-green-50">
-                                <div className="flex gap-2 items-center">
-                                  <FaCircleCheck className="text-green-600 text-lg" />
-                                  <h3 className="text-sm font-normal">
-                                    <span className="text-gray-900 font-medium">
-                                      Order delivered successfully
-                                    </span>
-                                  </h3>
-                                </div>
-                              </div>
-                            ) : order.status === "On the way" ? (
-                              <div className="rounded-lg border border-dashed border-primary-600 p-2 bg-primary-50">
-                                <div className="flex gap-2 items-center">
-                                  <TbProgressCheck className="text-primary-600 text-lg" />
-                                  <h3 className="text-sm font-normal">
-                                    <span className="text-gray-900 font-medium">
-                                      Your order is Out for delivery
-                                    </span>
-                                  </h3>
-                                </div>
-                              </div>
-                            ) : order.status === "Refund Completed" ? (
-                              <div className="rounded-lg border border-dashed border-green-600 p-2 bg-green-50">
-                                <div className="flex flex-col gap-2">
-                                  <h3 className="text-sm font-medium">
-                                    <span className="text-green-600 me-2">
-                                      Refund Completed
-                                    </span>
-                                    <span className="text-xs text-[#878787]">
-                                      (Refund ID :{" "}
-                                      {Math.random().toFixed(10).substr(2, 20)})
-                                    </span>
-                                  </h3>
-                                  <p className="text-xs text-gray-900">
-                                    The money was added to your bank account
-                                  </p>
-                                </div>
-                              </div>
-                            ) : order.status === "Refund Inprogress" ? (
-                              <div className="rounded-lg border border-dashed border-yellow-500 p-2 bg-yellow-50">
-                                <div className="flex gap-2 items-center">
-                                  <TbProgressCheck className="text-yellow-500 text-lg" />
-                                  <h3 className="text-sm font-normal">
-                                    <span className="text-gray-900 font-medium">
-                                      Refund Inprogress
-                                    </span>
-                                  </h3>
-                                </div>
-                              </div>
-                            ) : order.status === "Refund Failed" ? (
-                              <div className="rounded-lg border border-dashed border-red-600 p-2 bg-red-50">
-                                <div className="flex gap-2 items-center">
-                                  <IoCloseCircle className="text-red-600 text-lg" />
-                                  <h3 className="text-sm font-normal">
-                                    <span className="text-gray-900 font-medium">
-                                      Refund Failed
-                                    </span>
-                                  </h3>
-                                </div>
-                              </div>
-                            ) : (
-                              <div className="rounded-lg border border-dashed border-green-600 p-2 bg-green-50">
-                                <div className="flex flex-col gap-2">
-                                  <h3 className="text-sm font-medium">
-                                    <span className="text-green-600 me-2">
-                                      Refund Completed
-                                    </span>
-                                    <span className="text-xs text-[#878787]">
-                                      (Refund ID :{" "}
-                                      {Math.random().toFixed(10).substr(2, 10)})
-                                    </span>
-                                  </h3>
-                                  <p className="text-xs text-gray-900">
-                                    The money was added to your bank account
-                                  </p>
-                                </div>
-                              </div>
-                            )}
-                          </div>
+                          <OrderStatus status={order.status} />
                         </div>
                       </div>
                     ))}

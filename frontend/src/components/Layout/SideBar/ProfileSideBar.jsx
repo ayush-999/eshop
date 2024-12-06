@@ -77,9 +77,9 @@ const ProfileSideBar = () => {
 
       <div className="bg-white p-4 rounded-lg shadow-sm accordion-wrapper">
         <Link
-          to="/account/order"
+          to="/account/orders"
           className={`accordion-btn px-2 py-3 mb-2 border-b w-full accordion-orderBtn ${
-            location.pathname === "/account/order"
+            location.pathname === "/account/orders"
               ? "accordion-orderBtn-active"
               : "text-gray-900"
           }`}

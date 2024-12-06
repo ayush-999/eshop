@@ -1,7 +1,7 @@
 import { FaAnglesRight } from "react-icons/fa6";
 import { HiOutlineInformationCircle } from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import Countdown from "../Countdown/Countdown";
+import Countdown from "../../Countdown/Countdown";
 
 const EventCard = () => {
   return (

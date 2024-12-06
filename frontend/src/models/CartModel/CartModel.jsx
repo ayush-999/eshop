@@ -4,7 +4,7 @@ import { productData } from "../../static/data";
 import "./CartModel.css";
 import { RxCross1 } from "react-icons/rx";
 import { IoBagHandleOutline } from "react-icons/io5";
-import CartSingle from "../../components/Cart/CartSingle";
+import CartSingle from "../../components/Route/Cart/CartSingle";
 
 const CartModel = ({ setOpen }) => { 
   const [data, setData] = useState([]);

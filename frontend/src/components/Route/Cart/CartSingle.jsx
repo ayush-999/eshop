@@ -4,7 +4,7 @@ import { HiOutlineMinus, HiPlus } from "react-icons/hi";
 import "./CartSingle.css";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { truncateText } from "../../utils/helper";
+import { truncateText } from "../../../utils/helper";
 const CartSingle = ({ data }) => {
   const [value, setValue] = useState(1);
   const totalPrice = data.price * value;

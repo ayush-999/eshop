@@ -268,7 +268,7 @@ const Header = () => {
                             <LuUserCircle2 className="w-5 h-5" /> My Profile
                           </Link>
                           <Link
-                            to="/account/order"
+                            to="/account/orders"
                             className="flex items-center justify-start gap-2 px-2 py-2 text-sm hover:rounded-lg text-gray-600 hover:bg-primary-20 hover:text-black"
                             role="menuitem"
                             id="user-menu-item-2"

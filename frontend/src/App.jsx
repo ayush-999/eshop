@@ -65,11 +65,9 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
-
             {/* TODO: ise seller"sign-in" aur "sign-up" route bnne ke ise bd badlna hai 👇 */}
             <Route path="/seller-login" element={<SellerLoginPage />} />
             <Route path="/seller-register" element={<SellerRegisterPage />} />
-
             {/* ------------------------------------------------------------------- */}
             <Route
               path="/activation/:activation_token"
@@ -78,7 +76,6 @@ const App = () => {
             <Route path="/product/:name" element={<ProductDetailsPage />} />
             <Route path="/best-deals" element={<BestDealsPage />} />
             <Route path="/events" element={<EventsPage />} />
-
             {/* TODO: ise dynamically me badlna hai 👇 */}
             <Route
               path="/account"
@@ -114,7 +111,7 @@ const App = () => {
                 }
               />
               <Route
-                path="order"
+                path="orders"
                 element={
                   <Suspense fallback={<LoadingSpinner />}>
                     <MyOrder />
@@ -122,9 +119,8 @@ const App = () => {
                 }
               />
             </Route>
-
             <Route path="/shop/:id" element={<ShopPage />} />
-
+            {/* ------------------------------------------------------------------- */}
             {/* Company */}
             <Route path="/about" element={<AboutPage />} />
             <Route path="/faq" element={<FaqPage />} />
