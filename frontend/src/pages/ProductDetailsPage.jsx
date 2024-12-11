@@ -4,6 +4,7 @@ import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
 import ProductDetails from "../components/Route/Products/ProductDetails/ProductDetails";
 import { productData } from "../static/data";
+import ProductNotFound from "../components/Error/ProductNotFound";
 
 const ProductDetailsPage = () => {
   const { name } = useParams();
@@ -21,15 +22,7 @@ const ProductDetailsPage = () => {
     <>
       <Header />
       <div className="max-w-screen-xl mx-auto mt-10 md:mt-16 mb-6 sm:px-6 lg:px-0">
-        {data ? (
-          <ProductDetails data={data} />
-        ) : (
-          <div className="p-2 bg-white rounded-lg ">
-            <p className="text-sm font-semibold text-center block w-full p-2 text-primary-500 bg-primary-50 rounded-lg">
-              Product not found
-            </p>
-          </div>
-        )}
+        {data ? <ProductDetails data={data} /> : <ProductNotFound />}
       </div>
       <Footer />
     </>

@@ -20,11 +20,24 @@ export function truncateText(text, maxWords, maxChars) {
 
 export function formatDate(dateString) {
   const date = new Date(dateString);
-  const options = { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' };
-  const formattedDate = date.toLocaleDateString('en-US', options);
+  const options = {
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  };
+  const formattedDate = date.toLocaleDateString("en-US", options);
 
   // Reformat the date string to "Sun Dec 01, 2024"
-  const [weekday, month, day, year] = formattedDate.split(' ');
+  const [weekday, month, day, year] = formattedDate.split(" ");
   // return `${weekday} ${month} ${day.padStart(2, '0')} ${year}`;
-  return `${month} ${day.padStart(2, '0')} ${year}`;
-};
+  return `${month} ${day.padStart(2, "0")} ${year}`;
+}
+
+export function randomId(num) {
+  return (
+    String.fromCharCode(65 + Math.floor(Math.random() * 26)) +
+    String.fromCharCode(65 + Math.floor(Math.random() * 26)) +
+    Math.random().toFixed(num).substr(2, num)
+  );
+}

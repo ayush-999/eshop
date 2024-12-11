@@ -4,6 +4,7 @@ import ShopDetail from "../components/Route/Shop/ShopDetail";
 import Header from "../components/Layout/Header";
 import Footer from "../components/Layout/Footer";
 import { productData } from "../static/data";
+import ShopNotFound from "../components/Error/ShopNotFound";
 const ShopPage = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
@@ -22,15 +23,7 @@ const ShopPage = () => {
     <>
       <Header />
       <div className="max-w-screen-xl mx-auto mt-10 md:mt-16 mb-6 sm:px-6 lg:px-0">
-        {data ? (
-          <ShopDetail data={data} />
-        ) : (
-          <div className="p-2 bg-white rounded-lg">
-            <p className="text-sm font-semibold text-center block w-full p-2 text-primary-500 bg-primary-50 rounded-lg">
-              Shop not found
-            </p>
-          </div>
-        )}
+        {data ? <ShopDetail data={data} /> : <ShopNotFound />}
       </div>
       <Footer />
     </>

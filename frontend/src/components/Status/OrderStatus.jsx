@@ -2,6 +2,7 @@ import React from "react";
 import { IoCloseCircle } from "react-icons/io5";
 import { FaCircleCheck } from "react-icons/fa6";
 import { TbProgressCheck } from "react-icons/tb";
+import { randomId } from "../../utils/helper";
 
 const OrderStatus = ({ status }) => {
   return (
@@ -53,7 +54,7 @@ const OrderStatus = ({ status }) => {
               <h3 className="text-sm font-medium">
                 <span className="text-green-600 me-2">Refund Completed</span>
                 <span className="text-xs text-[#878787]">
-                  (Refund ID : {Math.random().toFixed(10).substr(2, 20)})
+                  (Refund ID : {randomId(10)})
                 </span>
               </h3>
             </div>
@@ -73,7 +74,7 @@ const OrderStatus = ({ status }) => {
             </h3>
           </div>
         </div>
-      ) : status === "refund_failed" ? (
+      ) : (
         <div className="rounded-lg border border-dashed border-red-600 p-2 bg-red-50">
           <div className="flex gap-2 items-center">
             <IoCloseCircle className="text-red-600 text-lg" />
@@ -82,8 +83,6 @@ const OrderStatus = ({ status }) => {
             </h3>
           </div>
         </div>
-      ) : (
-        ""
       )}
     </div>
   );

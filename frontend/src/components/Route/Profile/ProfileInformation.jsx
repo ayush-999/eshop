@@ -140,7 +140,7 @@ const ProfileInformation = () => {
                               errors.name && touched.name
                                 ? "border-red-600 bg-red-50"
                                 : "border-gray-300"
-                            } text-gray-900 rounded-lg block w-full p-2.5 disabled:bg-gray-100 disabled:text-gray-500`}
+                            } text-gray-900 rounded-lg block w-full p-2 disabled:bg-gray-100 disabled:text-gray-500`}
                             placeholder="Enter full name"
                           />
                           <ErrorMessage
@@ -234,7 +234,7 @@ const ProfileInformation = () => {
                               errors.email && touched.email
                                 ? "border-red-600 bg-red-50"
                                 : "border-gray-300"
-                            } text-gray-900 rounded-lg block w-full p-2.5 disabled:bg-gray-100 disabled:text-gray-500`}
+                            } text-gray-900 rounded-lg block w-full p-2 disabled:bg-gray-100 disabled:text-gray-500`}
                             placeholder="name@company.com"
                           />
                           <ErrorMessage
@@ -263,7 +263,7 @@ const ProfileInformation = () => {
                             defaultCountry="in"
                             forceDialCode={true}
                             disabled={!isContactEdit}
-                            className={`userMobile ${
+                            className={`phoneNumber ${
                               errors.phoneNumber && touched.phoneNumber
                                 ? "border-red-600 bg-red-50"
                                 : "border-gray-300"

@@ -3,15 +3,6 @@ import { FaStar } from "react-icons/fa";
 
 const ShopDetail = ({ data }) => {
   const [visibleReviews, setVisibleReviews] = useState(3); // Initially show 3 reviews
-
-  if (!data) {
-    return (
-      <div className="text-center text-gray-500">
-        No shop details available.
-      </div>
-    );
-  }
-
   const { shop } = data;
 
   const handleViewMore = () => {

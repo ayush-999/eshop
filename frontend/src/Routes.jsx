@@ -17,8 +17,8 @@ import Wishlist from "./components/Route/Profile/Wishlist";
 import ProfileInformation from "./components/Route/Profile/ProfileInformation";
 import ManageAddresses from "./components/Route/Profile/ManageAddresses";
 import ManageWallet from "./components/Route/Payments/ManageWallet";
-import MyOrder from "./components/Route/Order/MyOrder";
-
+import MyOrder from "./components/Route/Order/MyOrder/MyOrder";
+import OrderDetailsPage from "./pages/OrderDetailsPage";
 
 export {
   HomePage,
@@ -40,5 +40,6 @@ export {
   ProfileInformation,
   ManageAddresses,
   ManageWallet,
-  MyOrder
+  MyOrder,
+  OrderDetailsPage
 };

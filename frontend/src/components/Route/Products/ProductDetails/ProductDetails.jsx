@@ -20,13 +20,6 @@ const ProductDetails = ({ data }) => {
   const [click, setClick] = useState(false);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  if (!data) {
-    return (
-      <div className="text-center text-gray-500">
-        No product details available.
-      </div>
-    );
-  }
   const handleViewMore = () => {
     setVisibleReviews((prev) => prev + 5); // Show 5 more reviews on each click
   };
@@ -36,7 +29,7 @@ const ProductDetails = ({ data }) => {
   return (
     <>
       <div className="grid grid-cols-12 gap-3">
-        <div className="col-span-5 productDetails-r-wrapper">
+        <div className="col-span-5 productDetails-l-wrapper">
           {/* Image Swiper */}
           <div className="bg-white p-6 rounded-lg shadow-sm sticky top-16 z-10">
             <div className="productDetails-img-wrapper mb-[13px]">
@@ -117,7 +110,7 @@ const ProductDetails = ({ data }) => {
           </div>
         </div>
 
-        <div className="col-span-7 productDetails-l-wrapper">
+        <div className="col-span-7 productDetails-r-wrapper">
           <div className="w-full">
             <div className="bg-white p-6 rounded-lg shadow-sm mb-3">
               {/* Product Info */}

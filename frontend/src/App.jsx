@@ -29,7 +29,8 @@ import {
   ProfileInformation,
   ManageAddresses,
   ManageWallet,
-  MyOrder
+  MyOrder,
+  OrderDetailsPage,
 } from "./LazyRoutes";
 import LoadingSpinner from "./components/Loader/LoadingSpinner";
 
@@ -81,7 +82,7 @@ const App = () => {
               path="/account"
               element={
                 // <ProtectedRoute>
-                  <ProfilePage />
+                <ProfilePage />
                 // </ProtectedRoute>
               }
             >
@@ -119,6 +120,14 @@ const App = () => {
                 }
               />
             </Route>
+            <Route
+                path="/order_details/:order_id"
+                element={
+                  <Suspense fallback={<LoadingSpinner />}>
+                    <OrderDetailsPage />
+                  </Suspense>
+                }
+              />
             <Route path="/shop/:id" element={<ShopPage />} />
             {/* ------------------------------------------------------------------- */}
             {/* Company */}

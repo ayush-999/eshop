@@ -1,4 +1,4 @@
-import { getRandomHexColor } from "../utils/helper";
+import { getRandomHexColor, randomId } from "../utils/helper";
 
 // navigation Data
 export const navItems = [
@@ -447,6 +447,7 @@ export const ordersData = [
       "refund_in_progress",
       "refund_failed",
     ];
+    const orderID = randomId(17);
     const status = statuses[Math.floor(Math.random() * statuses.length)];
     const confirmedDate = new Date(
       new Date().setDate(new Date().getDate() - Math.floor(Math.random() * 30))
@@ -508,7 +509,7 @@ export const ordersData = [
         : null;
 
     return {
-      id: index + 1,
+      order_id: orderID,
       product: productData[index % productData.length],
       quantity: Math.floor(Math.random() * 5) + 1,
       status,
