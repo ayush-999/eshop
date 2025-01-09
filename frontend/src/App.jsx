@@ -31,20 +31,15 @@ import {
   ManageWallet,
   MyOrder,
   OrderDetailsPage,
+  CartPage,
 } from "./LazyRoutes";
 import LoadingSpinner from "./components/Loader/LoadingSpinner";
-
-// ProtectedRoute component
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated } = useSelector((state) => state.user);
-  return isAuthenticated ? children : <Navigate to="/" />;
-};
+import ProtectedRoute from "./ProtectedRoute";
 
 // App Component
 const App = () => {
   /** 
   // For Testing
-
   const [loading, setLoading] = useState(true); 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 5000); 
@@ -52,7 +47,7 @@ const App = () => {
   }, []);
  
   */
-  const { loading } = useSelector((state) => state.user);
+  const { loading, isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
     Store.dispatch(loadUser());
@@ -81,9 +76,9 @@ const App = () => {
             <Route
               path="/account"
               element={
-                // <ProtectedRoute>
-                <ProfilePage />
-                // </ProtectedRoute>
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
+                  <ProfilePage />
+                </ProtectedRoute>
               }
             >
               <Route path="wishlist" element={<Wishlist />} />
@@ -121,13 +116,23 @@ const App = () => {
               />
             </Route>
             <Route
-                path="/order_details/:order_id"
-                element={
+              path="/order_details/:order_id"
+              element={
+                <Suspense fallback={<LoadingSpinner />}>
+                  <OrderDetailsPage />
+                </Suspense>
+              }
+            />
+            <Route
+              path="viewcart"
+              element={
+                <ProtectedRoute isAuthenticated={isAuthenticated}>
                   <Suspense fallback={<LoadingSpinner />}>
-                    <OrderDetailsPage />
+                    <CartPage />
                   </Suspense>
-                }
-              />
+                </ProtectedRoute>
+              }
+            />
             <Route path="/shop/:id" element={<ShopPage />} />
             {/* ------------------------------------------------------------------- */}
             {/* Company */}

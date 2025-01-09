@@ -12,7 +12,7 @@ const OrderStatus = ({ status }) => {
           <div className="flex gap-2 items-center">
             <FaCircleCheck className="text-green-600 text-lg" />
             <h3 className="text-sm font-normal">
-              <span className="text-gray-900 font-medium">
+              <span className="text-gray-900 font-semibold">
                 Order delivered successfully
               </span>
             </h3>
@@ -23,7 +23,7 @@ const OrderStatus = ({ status }) => {
           <div className="flex gap-2 items-center">
             <TbProgressCheck className="text-primary-600 text-lg" />
             <h3 className="text-sm font-normal">
-              <span className="text-gray-900 font-medium">
+              <span className="text-gray-900 font-semibold">
                 Your order is Out for delivery
               </span>
             </h3>
@@ -34,7 +34,7 @@ const OrderStatus = ({ status }) => {
           <div className="flex flex-col gap-2">
             <div className="flex gap-2 items-center">
               <FaCircleCheck className="text-green-600 text-lg" />
-              <h3 className="text-sm font-medium">
+              <h3 className="text-sm font-semibold">
                 <span className="text-green-600 me-2">Refund Completed</span>
                 <span className="text-xs text-[#878787]">
                   (Refund ID : {Math.random().toFixed(10).substr(2, 20)})
@@ -51,7 +51,7 @@ const OrderStatus = ({ status }) => {
           <div className="flex flex-col gap-2">
             <div className="flex gap-2 items-center">
               <FaCircleCheck className="text-green-600 text-lg" />
-              <h3 className="text-sm font-medium">
+              <h3 className="text-sm font-semibold">
                 <span className="text-green-600 me-2">Refund Completed</span>
                 <span className="text-xs text-[#878787]">
                   (Refund ID : {randomId(10)})
@@ -68,7 +68,7 @@ const OrderStatus = ({ status }) => {
           <div className="flex gap-2 items-center">
             <TbProgressCheck className="text-yellow-500 text-lg" />
             <h3 className="text-sm font-normal">
-              <span className="text-gray-900 font-medium">
+              <span className="text-gray-900 font-semibold">
                 Refund Inprogress
               </span>
             </h3>
@@ -79,7 +79,7 @@ const OrderStatus = ({ status }) => {
           <div className="flex gap-2 items-center">
             <IoCloseCircle className="text-red-600 text-lg" />
             <h3 className="text-sm font-normal">
-              <span className="text-gray-900 font-medium">Refund Failed</span>
+              <span className="text-gray-900 font-semibold">Refund Failed</span>
             </h3>
           </div>
         </div>

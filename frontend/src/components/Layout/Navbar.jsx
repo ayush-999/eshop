@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="bg-primary-600">
       <div className="max-w-screen-xl mx-auto">
         <div className="flex">
-          <ul className="flex h-11 flex-row items-center font-medium mx-auto mt-0 text-sm gap-7">
+          <ul className="flex h-11 flex-row items-center font-semibold mx-auto mt-0 text-sm gap-7">
             {navItems.map((item, index) => (
               <li key={index}>
                 <Link

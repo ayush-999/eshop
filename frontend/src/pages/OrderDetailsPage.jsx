@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { ordersData } from "../static/data";
 import Header from "../components/Layout/Header";
 import Footer from "../components/Layout/Footer";
-import OrderNotFound from "../components/Error/OrderNotFound";
+import OrderNotFound from "../components/NotFound/OrderNotFound";
 import OrderDetails from "../components/Route/Order/OrderDetails/OrderDetails";
 
 const OrderDetailsPage = () => {

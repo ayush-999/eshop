@@ -19,3 +19,7 @@ export const MyOrder = lazy(() =>
 export const OrderDetailsPage = lazy(() =>
   import("./Routes").then((module) => ({ default: module.OrderDetailsPage }))
 );
+
+export const CartPage = lazy(() =>
+  import("./Routes").then((module) => ({ default: module.CartPage }))
+);

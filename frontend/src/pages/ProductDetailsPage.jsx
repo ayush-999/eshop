@@ -4,7 +4,7 @@ import Footer from "../components/Layout/Footer";
 import Header from "../components/Layout/Header";
 import ProductDetails from "../components/Route/Products/ProductDetails/ProductDetails";
 import { productData } from "../static/data";
-import ProductNotFound from "../components/Error/ProductNotFound";
+import ProductNotFound from "../components/NotFound/ProductNotFound";
 
 const ProductDetailsPage = () => {
   const { name } = useParams();

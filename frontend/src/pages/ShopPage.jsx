@@ -4,7 +4,7 @@ import ShopDetail from "../components/Route/Shop/ShopDetail";
 import Header from "../components/Layout/Header";
 import Footer from "../components/Layout/Footer";
 import { productData } from "../static/data";
-import ShopNotFound from "../components/Error/ShopNotFound";
+import ShopNotFound from "../components/NotFound/ShopNotFound";
 const ShopPage = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);

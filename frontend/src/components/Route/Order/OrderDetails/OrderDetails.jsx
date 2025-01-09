@@ -11,14 +11,14 @@ const OrderDetails = ({ data }) => {
       <div className="bg-white p-6 rounded-lg shadow-sm mb-3">
         <div className="grid grid-cols-12 rounded-lg border-dashed border border-primary-200">
           <div className="col-span-6 orderDetails-l-wrapper p-5 border-dashed border-r border-primary-200">
-            <h1 className="text-lg font-medium mb-3">Delivery Address</h1>
+            <h1 className="text-lg font-semibold mb-3">Delivery Address</h1>
             <div className="orderDetails-delivery">
-              <h3 className="text-sm font-medium text-gray-900">Ayush</h3>
+              <h3 className="text-sm font-semibold text-gray-900">Ayush</h3>
               <p className="text-xs text-gray-600 mt-1 mb-3 w-[70%]">
                 {data.address.street}, {data.address.city}, {data.address.state}{" "}
                 - {data.address.zipCode}, {data.address.country}
               </p>
-              <h3 className="text-sm font-medium text-gray-900">
+              <h3 className="text-sm font-semibold text-gray-900">
                 Phone number
               </h3>
               <p className="text-xs font-normal text-gray-600 mt-1 w-[70%]">
@@ -27,7 +27,7 @@ const OrderDetails = ({ data }) => {
             </div>
           </div>
           <div className="col-span-6 p-5 orderDetails-r-wrapper">
-            <h1 className="text-lg font-medium mb-3">More actions</h1>
+            <h1 className="text-lg font-semibold mb-3">More actions</h1>
             <div className="flex items-center justify-between orderDetails-invoice ">
               <div className="flex items-center gap-2">
                 <img
@@ -64,14 +64,14 @@ const OrderDetails = ({ data }) => {
                 />
               </div>
               <div className="order-details-text">
-                <h3 className="text-sm font-medium mb-1">
+                <h3 className="text-sm font-semibold mb-1">
                   {data.product.name}
                 </h3>
                 <p className="text-xs text-[#878787] mb-1">
                   Color: {data.product.shop.name} | Size:{" "}
                   {data.product.category || "N/A"}
                 </p>
-                <p className="text-sm font-medium text-gray-900 flex items-center gap-2">
+                <p className="text-sm font-semibold text-gray-900 flex items-center gap-2">
                  <span> ₹ {data.product.price.toLocaleString()}</span>
                   <div className="info-wrap cursor-pointer text-[18px] text-[#878787]">
                     <HiOutlineInformationCircle />
@@ -93,39 +93,39 @@ const OrderDetails = ({ data }) => {
               <div className="bg-gray-200 h-1 flex items-center justify-between mt-8">
                 <div className="w-1/3 bg-green-600 h-1 flex items-center">
                   <div className="flex flex-col items-start">
-                    <p className="text-xs text-green-600 font-medium mb-2">
+                    <p className="text-xs text-green-600 font-semibold mb-2">
                       Order Confirmed
                     </p>
                     <div className="bg-green-600 h-6 w-6 rounded-full shadow flex items-center justify-center">
                       <FaCheck className="w-3 h-3 text-white" />
                     </div>
-                    <p className="text-xs text-gray-600 font-medium mt-2">
+                    <p className="text-xs text-gray-600 font-semibold mt-2">
                       {formatDate(data.confirmedDate)}
                     </p>
                   </div>
                 </div>
                 <div className="w-1/3 bg-green-600 h-1 flex items-center">
                   <div className="flex flex-col items-start">
-                    <p className="text-xs text-green-600 font-medium mb-2">
+                    <p className="text-xs text-green-600 font-semibold mb-2">
                       Shipped
                     </p>
                     <div className="bg-green-600 h-6 w-6 rounded-full shadow flex items-center justify-center">
                       <FaCheck className="w-3 h-3 text-white" />
                     </div>
-                    <p className="text-xs text-gray-600 font-medium mt-2">
+                    <p className="text-xs text-gray-600 font-semibold mt-2">
                       {formatDate(data.shippedDate)}
                     </p>
                   </div>
                 </div>
                 <div className="w-1/3 bg-green-600 h-1 flex items-center">
                   <div className="flex flex-col items-start">
-                    <p className="text-xs text-green-600 font-medium mb-2">
+                    <p className="text-xs text-green-600 font-semibold mb-2">
                       Out for delivery
                     </p>
                     <div className="bg-green-600 h-6 w-6 rounded-full shadow flex items-center justify-center">
                       <FaCheck className="w-3 h-3 text-white" />
                     </div>
-                    <p className="text-xs text-gray-600 font-medium mt-2">
+                    <p className="text-xs text-gray-600 font-semibold mt-2">
                       {formatDate(data.outForDeliveryDate)}
                     </p>
                   </div>

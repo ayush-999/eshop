@@ -93,14 +93,14 @@ const ProductDetails = ({ data }) => {
             <div className="flex items-center justify-between gap-1 mt-3">
               <button
                 type="submit"
-                className="bg-primary-600 hover:bg-primary-700 text-white rounded-lg w-full px-1.5 py-2.5 flex items-center justify-center gap-1 text-sm me-1 outline-none focus:outline-none ease-in-out duration-100 font-medium"
+                className="bg-primary-600 hover:bg-primary-700 text-white rounded-lg w-full px-1.5 py-2.5 flex items-center justify-center gap-1 text-sm me-1 outline-none focus:outline-none ease-in-out duration-100 font-semibold"
               >
                 Add to cart
                 <FiShoppingCart className="text-lg" />
               </button>
               <button
                 type="submit"
-                className="w-full border border-solid border-primary-600 text-primary-600 rounded-lg px-1.5 py-2.5 flex items-center justify-center gap-1 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-sm ease-in-out duration-100 font-medium"
+                className="w-full border border-solid border-primary-600 text-primary-600 rounded-lg px-1.5 py-2.5 flex items-center justify-center gap-1 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-sm ease-in-out duration-100 font-semibold"
               >
                 Buy Now
                 <FaAnglesRight className="text-[14px]" />
@@ -116,17 +116,17 @@ const ProductDetails = ({ data }) => {
               {/* Product Info */}
               <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                 <h1
-                  className="text-lg font-medium text-gray-900 mb-2 truncate-text"
+                  className="text-lg font-semibold text-gray-900 mb-2 truncate-text"
                   title={data.name}
                 >
                   {data.name}
                 </h1>
                 <div className="flex items-center justify-start gap-2 mb-2">
-                  <h4 className="text-[22px] font-medium">
+                  <h4 className="text-[22px] font-semibold">
                     <span className="rupee-icon mr-1">₹</span>
                     {data.discount_price}
                   </h4>
-                  <h3 className="text-[14px] line-through text-[#878787] font-medium">
+                  <h3 className="text-[14px] line-through text-[#878787] font-semibold">
                     ({data.price ? "₹" + data.price : null})
                   </h3>
                   <div className="productDetails-discount-wrap">
@@ -141,14 +141,14 @@ const ProductDetails = ({ data }) => {
                 <div className="flex items-center justify-start gap-2 mb-3">
                   <div className="productDetails-rating flex items-center justify-start gap-1">
                     <FaStar />
-                    <p className="font-medium">{data.ratings}</p>
+                    <p className="font-semibold">{data.ratings}</p>
                   </div>
                   <p className="text-[#878787] text-xs font-normal">
                     105098 Ratings, 21052 Reviews
                   </p>
                 </div>
                 <div className="flex items-center justify-start gap-2">
-                  <span className="bg-[#f8f8ff] text-[#616173] text-xs font-medium me-2 px-[10px] py-[4px] rounded-full">
+                  <span className="bg-[#f8f8ff] text-[#616173] text-xs font-semibold me-2 px-[10px] py-[4px] rounded-full">
                     Free Delivery
                   </span>
                 </div>
@@ -156,7 +156,7 @@ const ProductDetails = ({ data }) => {
               {/* Select Size */}
               <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                 <div className="flex justify-between items-center">
-                  <h1 className="text-lg font-medium mb-1 truncate-text">
+                  <h1 className="text-lg font-semibold mb-1 truncate-text">
                     Select Size
                   </h1>
                   <div className="info-wrap cursor-pointer text-[20px] text-[#878787]">
@@ -164,7 +164,7 @@ const ProductDetails = ({ data }) => {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <span className="bg-primary-100 text-primary-500 text-sm font-medium me-2 px-3 py-1.5 rounded-full">
+                  <span className="bg-primary-100 text-primary-500 text-sm font-semibold me-2 px-3 py-1.5 rounded-full">
                     Free Size
                   </span>
                 </div>
@@ -172,7 +172,7 @@ const ProductDetails = ({ data }) => {
               {/* Product Description */}
               <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                 <div className="desc-wrap mb-4">
-                  <h1 className="text-lg font-medium mb-3">
+                  <h1 className="text-lg font-semibold mb-3">
                     Product Description
                   </h1>
                   <p className="text-[14px] leading-normal">
@@ -183,7 +183,7 @@ const ProductDetails = ({ data }) => {
               {/* Seller Description */}
               <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                 <div className="seller-wrap">
-                  <h1 className="text-lg font-medium mb-3">Sold By</h1>
+                  <h1 className="text-lg font-semibold mb-3">Sold By</h1>
                   <div className="flex items-center">
                     <div className="w-full flex items-center justify-start">
                       <div className="flex items-center justify-between gap-5">
@@ -194,13 +194,13 @@ const ProductDetails = ({ data }) => {
                             className="w-[55px] h-[55px] object-cover rounded-full"
                           />
                           <div className="flex flex-col">
-                            <h3 className="text-sm font-medium mb-1">
+                            <h3 className="text-sm font-semibold mb-1">
                               {data.shop.name}
                             </h3>
                             <div className="flex items-center justify-start gap-2 mb-3">
                               <div className="flex items-center justify-start gap-1 bg-primary-600 py-1 px-2 rounded-full text-xs text-white">
                                 <FaStar />
-                                <p className="font-medium">
+                                <p className="font-semibold">
                                   {data.shop.ratings}
                                 </p>
                               </div>
@@ -214,7 +214,7 @@ const ProductDetails = ({ data }) => {
                     </div>
                     <Link
                       to={`/shop/${data.shop.id}`}
-                      className="w-48 border border-solid border-primary-200 text-primary-400 rounded-lg py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-sm ease-in-out duration-100 font-medium text-center"
+                      className="w-48 border border-solid border-primary-200 text-primary-400 rounded-lg py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-sm ease-in-out duration-100 font-semibold text-center"
                     >
                       View Shop
                     </Link>
@@ -225,7 +225,7 @@ const ProductDetails = ({ data }) => {
               <div className="productDetails-ratings-wrapper border border-dashed border-primary-200 rounded-lg">
                 <div className="productDetails-ratings-wrapper-top p-2 mb-3">
                   <div className="rating-wrap">
-                    <h1 className="text-lg font-medium">Ratings & Reviews</h1>
+                    <h1 className="text-lg font-semibold">Ratings & Reviews</h1>
                   </div>
                 </div>
                 <div className="productDetails-ratings-wrapper-bottom">
@@ -260,57 +260,57 @@ const ProductDetails = ({ data }) => {
                       </button>
                     </div>
                     <div className="flex items-center mt-4">
-                      <div className="text-sm font-medium text-gray-900 flex items-center justify-start gap-1">
+                      <div className="text-sm font-semibold text-gray-900 flex items-center justify-start gap-1">
                         <span>5</span> <FaStar />
                       </div>
                       <div className="w-2/4 h-3 mx-4 bg-gray-200 rounded">
                         <div className="h-3 bg-yellow-400 rounded w-[70%]"></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-500">
+                      <span className="text-sm font-semibold text-gray-500">
                         70%
                       </span>
                     </div>
                     <div className="flex items-center mt-2">
-                      <div className="text-sm font-medium text-gray-900 flex items-center justify-start gap-1">
+                      <div className="text-sm font-semibold text-gray-900 flex items-center justify-start gap-1">
                         <span>4</span> <FaStar />
                       </div>
                       <div className="w-2/4 h-3 mx-4 bg-gray-200 rounded">
                         <div className="h-3 bg-yellow-400 rounded w-[17%]"></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-500">
+                      <span className="text-sm font-semibold text-gray-500">
                         17%
                       </span>
                     </div>
                     <div className="flex items-center mt-2">
-                      <div className="text-sm font-medium text-gray-900 flex items-center justify-start gap-1">
+                      <div className="text-sm font-semibold text-gray-900 flex items-center justify-start gap-1">
                         <span>3</span> <FaStar />
                       </div>
                       <div className="w-2/4 h-3 mx-4 bg-gray-200 rounded">
                         <div className="h-3 bg-yellow-400 rounded w-[8%]"></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-500">
+                      <span className="text-sm font-semibold text-gray-500">
                         8%
                       </span>
                     </div>
                     <div className="flex items-center mt-2">
-                      <div className="text-sm font-medium text-gray-900 flex items-center justify-start gap-1">
+                      <div className="text-sm font-semibold text-gray-900 flex items-center justify-start gap-1">
                         <span>2</span> <FaStar />
                       </div>
                       <div className="w-2/4 h-3 mx-4 bg-gray-200 rounded">
                         <div className="h-3 bg-yellow-400 rounded w-[4%]"></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-500">
+                      <span className="text-sm font-semibold text-gray-500">
                         4%
                       </span>
                     </div>
                     <div className="flex items-center mt-2 mb-4">
-                      <div className="text-sm font-medium text-gray-900 flex items-center justify-start gap-1">
+                      <div className="text-sm font-semibold text-gray-900 flex items-center justify-start gap-1">
                         <span>1</span> <FaStar />
                       </div>
                       <div className="w-2/4 h-3 mx-[18px] bg-gray-200 rounded">
                         <div className="h-3 bg-yellow-400 rounded w-[10%]"></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-500">
+                      <span className="text-sm font-semibold text-gray-500">
                         1%
                       </span>
                     </div>
@@ -327,12 +327,12 @@ const ProductDetails = ({ data }) => {
                             <div className="flex items-start gap-3">
                               <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
                                 <FaStar className="text-[10px]" />
-                                <p className="text-[10px] font-medium">
+                                <p className="text-[10px] font-semibold">
                                   {review.rating}
                                 </p>
                               </div>
                               <div className="rating-title-wrap">
-                                <h5 className="text-sm font-medium text-gray-900">
+                                <h5 className="text-sm font-semibold text-gray-900">
                                   {review.comment_title}
                                 </h5>
                               </div>
@@ -362,7 +362,7 @@ const ProductDetails = ({ data }) => {
                         <div className="p-2 flex justify-center">
                           <button
                             onClick={handleViewMore}
-                            className="w-full py-2 px-3 transition-all bg-primary-50 text-primary-500 text-sm font-medium rounded-lg hover:bg-primary-100 hover:text-primary-600"
+                            className="w-full py-2 px-3 transition-all bg-primary-50 text-primary-500 text-sm font-semibold rounded-lg hover:bg-primary-100 hover:text-primary-600"
                           >
                             View more
                           </button>
@@ -381,7 +381,7 @@ const ProductDetails = ({ data }) => {
               {/* Q & Ans section
               <div className="p-2 border border-dashed border-primary-200 rounded-lg mt-2">
                 <div className="seller-wrap">
-                  <h1 className="text-lg font-medium mb-3">
+                  <h1 className="text-lg font-semibold mb-3">
                     Questions and Answers
                   </h1>
                 </div>

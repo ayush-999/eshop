@@ -362,6 +362,9 @@ const Header = () => {
         </div>
       </header>
       {/* <Navbar /> */}
+
+      {/* Mobile header need to watch video part-2 time 02:59 */}
+
       {isLoginPopupOpen && (
         <LoginModel
           setOpen={setIsLoginPopupOpen}

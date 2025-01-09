@@ -31,11 +31,11 @@ const SuggestionCard = () => {
                   </Link>
                 </div>
                 <div className="suggested-title-wrap mb-2">
-                  <p className="suggested-title truncate-text font-medium">
+                  <p className="suggested-title truncate-text font-semibold">
                     <Link to={`/product/${product_name}`}>{item.name}</Link>
                   </p>
                   <div className="suggested-discount-wrap">
-                    <h3 className="suggested-discount-text">21% off</h3>
+                    <h3 className="suggested-discount-text font-semibold">21% off</h3>
                   </div>
                 </div>
               </div>

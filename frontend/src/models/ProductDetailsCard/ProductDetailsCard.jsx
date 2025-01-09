@@ -109,7 +109,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                             className="w-[20px] h-[20px] rounded-full"
                           />
                           <div className="flex items-center justify-start gap-2">
-                            <h3 className="text-sm font-medium">
+                            <h3 className="text-sm font-semibold">
                               {data.shop.name}
                             </h3>
                             <div className="rating-separator"></div>
@@ -126,7 +126,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                   {/* <div className="flex items-center justify-between gap-1 mt-3">
                     <button
                       type="submit"
-                      className="bg-primary-600 hover:bg-primary-700 text-white rounded-lg w-full px-1.5 py-2.5 flex items-center justify-center gap-[5px] text-sm me-1 outline-none focus:outline-none ease-in-out duration-100 font-medium"
+                      className="bg-primary-600 hover:bg-primary-700 text-white rounded-lg w-full px-1.5 py-2.5 flex items-center justify-center gap-[5px] text-sm me-1 outline-none focus:outline-none ease-in-out duration-100 font-semibold"
                       onClick={handleMessageSubmit}
                     >
                       Send Message
@@ -140,17 +140,17 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                     {/* Product Info */}
                     <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                       <h1
-                        className="text-[16px] font-medium text-[#878787] mb-2 truncate-text"
+                        className="text-[16px] font-semibold text-[#878787] mb-2 truncate-text"
                         title={data.name}
                       >
                         {data.name}
                       </h1>
                       <div className="flex items-center justify-start gap-2 mb-2">
-                        <h4 className="text-[22px] font-medium">
+                        <h4 className="text-[22px] font-semibold">
                           <span className="rupee-icon mr-1">₹</span>
                           {data.discount_price}
                         </h4>
-                        <h3 className="text-[14px] line-through text-[#878787] font-medium">
+                        <h3 className="text-[14px] line-through text-[#878787] font-semibold">
                           ({data.price ? "₹" + data.price : null})
                         </h3>
                         <div className="pcarddetails-discount-wrap">
@@ -165,14 +165,14 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                       <div className="flex items-center justify-start gap-2 mb-3">
                         <div className="pcarddetails-rating flex items-center justify-start gap-1">
                           <FaStar />
-                          <p className="font-medium">{data.ratings}</p>
+                          <p className="font-semibold">{data.ratings}</p>
                         </div>
                         <p className="text-[#878787] text-xs font-normal">
                           105098 Ratings, 21052 Reviews
                         </p>
                       </div>
                       <div className="flex items-center justify-start gap-2">
-                        <span className="bg-[#f8f8ff] text-[#616173] text-xs font-medium me-2 px-[10px] py-[4px] rounded-full">
+                        <span className="bg-[#f8f8ff] text-[#616173] text-xs font-semibold me-2 px-[10px] py-[4px] rounded-full">
                           Free Delivery
                         </span>
                       </div>
@@ -180,7 +180,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                     {/* Select Size */}
                     <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                       <div className="flex justify-between items-center">
-                        <h1 className="text-[15px] font-medium mb-1 truncate-text">
+                        <h1 className="text-[15px] font-semibold mb-1 truncate-text">
                           Select Size
                         </h1>
                         <div className="info-wrap cursor-pointer text-[20px] text-[#878787]">
@@ -188,7 +188,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                         </div>
                       </div>
                       <div className="flex gap-2">
-                        <span className="bg-primary-100 text-primary-500 text-sm font-medium me-2 px-3 py-1.5 rounded-full">
+                        <span className="bg-primary-100 text-primary-500 text-sm font-semibold me-2 px-3 py-1.5 rounded-full">
                           Free Size
                         </span>
                       </div>
@@ -196,7 +196,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                     {/* Product Description */}
                     <div className="p-2 border border-dashed border-primary-200 rounded-lg">
                       <div className="desc-wrap mb-4">
-                        <h1 className="text-[16px] font-medium mb-1">
+                        <h1 className="text-[16px] font-semibold mb-1">
                           Product Details
                         </h1>
                         <p className="text-[15px] leading-normal">
@@ -219,14 +219,14 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                     <div className="flex items-center mt-3 justify-between">
                       <button
                         type="submit"
-                        className="bg-primary-600 hover:bg-primary-700 text-white rounded-lg w-full px-1.5 py-2.5 flex items-center justify-center gap-1 text-sm me-1 outline-none focus:outline-none ease-in-out duration-100 font-medium"
+                        className="bg-primary-600 hover:bg-primary-700 text-white rounded-lg w-full px-1.5 py-2.5 flex items-center justify-center gap-1 text-sm me-1 outline-none focus:outline-none ease-in-out duration-100 font-semibold"
                       >
                         Add to cart
                         <FiShoppingCart className="text-[16px]" />
                       </button>
                       <button
                         type="submit"
-                        className="w-full border border-solid border-primary-600 text-primary-600 rounded-lg px-1.5 py-2.5 flex items-center justify-center gap-1 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-sm ease-in-out duration-100 font-medium"
+                        className="w-full border border-solid border-primary-600 text-primary-600 rounded-lg px-1.5 py-2.5 flex items-center justify-center gap-1 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-sm ease-in-out duration-100 font-semibold"
                       >
                         Buy Now
                         <FaAnglesRight className="text-[14px]" />

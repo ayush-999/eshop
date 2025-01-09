@@ -283,6 +283,13 @@ router.post(
         return next(new ErrorHandler("User not found", 404));
       }
 
+      // If the new address is set as default, update other addresses
+      if (newAddress.isDefault === 1) {
+        user.addresses.forEach((address) => {
+          address.isDefault = 0;
+        });
+      }
+
       // Push the new address to the addresses array
       user.addresses.push(newAddress);
 
@@ -323,6 +330,15 @@ router.post(
 
       // Update the specific address fields
       user.addresses[addressIndex] = { ...user.addresses[addressIndex].toObject(), ...newAddress };
+
+      // If the new address is set as default, update other addresses
+      if (newAddress.isDefault === 1) {
+        user.addresses.forEach((address, index) => {
+          if (index !== addressIndex) {
+            address.isDefault = 0;
+          }
+        });
+      }
 
       await user.save();
       res.status(200).json({

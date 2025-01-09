@@ -21,7 +21,7 @@
 
 .pcard-name {
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 5px;
 }
 
@@ -40,7 +40,7 @@
 
 .pcard-discount_price {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .pcard-price-wrap {
@@ -53,13 +53,13 @@
 .pcard-price {
   font-size: 13px;
   color: #878787;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: line-through;
 }
 
 .pcard-discount {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   color: #16a34a;
 }
 

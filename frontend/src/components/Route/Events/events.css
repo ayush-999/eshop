@@ -9,7 +9,7 @@
 
 .event-title{
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     color: #000;
     margin-bottom: 8px;
 }
@@ -27,5 +27,5 @@
     justify-content: space-between;
     gap: 5px;
     color: #16a34a;
-    font-weight: 500;
+    font-weight: 600;
   }

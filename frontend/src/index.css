@@ -76,6 +76,10 @@ input[type="number"] {
   background: transparent; /* Hide the track */
 }
 
+:focus-visible {
+  outline: none;
+}
+
 .prevent-select {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */

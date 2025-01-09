@@ -19,6 +19,7 @@ import ManageAddresses from "./components/Route/Profile/ManageAddresses";
 import ManageWallet from "./components/Route/Payments/ManageWallet";
 import MyOrder from "./components/Route/Order/MyOrder/MyOrder";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
+import CartPage from "./pages/CartPage";
 
 export {
   HomePage,
@@ -41,5 +42,6 @@ export {
   ManageAddresses,
   ManageWallet,
   MyOrder,
-  OrderDetailsPage
+  OrderDetailsPage,
+  CartPage
 };

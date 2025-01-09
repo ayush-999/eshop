@@ -95,7 +95,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                   <div className="input-container c-mb-16">
                     <label
                       htmlFor="name"
-                      className="inline-block mb-2 text-sm font-medium text-gray-900"
+                      className="inline-block mb-2 text-sm font-semibold text-gray-900"
                     >
                       Your full name
                     </label>
@@ -121,7 +121,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                   <div className="input-container c-mb-16">
                     <label
                       htmlFor="email"
-                      className="inline-block mb-2 text-sm font-medium text-gray-900"
+                      className="inline-block mb-2 text-sm font-semibold text-gray-900"
                     >
                       Your email
                     </label>
@@ -147,7 +147,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                   <div className="input-container c-mb-16">
                     <label
                       htmlFor="userMobile"
-                      className="inline-block mb-2 text-sm font-medium text-gray-900"
+                      className="inline-block mb-2 text-sm font-semibold text-gray-900"
                     >
                       Your mobile number
                     </label>
@@ -175,7 +175,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                   <div className="input-container c-mb-16">
                     <label
                       htmlFor="password"
-                      className="inline-block mb-2 text-sm font-medium text-gray-900"
+                      className="inline-block mb-2 text-sm font-semibold text-gray-900"
                     >
                       Password
                     </label>
@@ -211,7 +211,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                   <div className="input-container c-mb-22">
                     <label
                       htmlFor="confirmPassword"
-                      className="inline-block mb-2 text-sm font-medium text-gray-900"
+                      className="inline-block mb-2 text-sm font-semibold text-gray-900"
                     >
                       Confirm password
                     </label>
@@ -251,7 +251,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                   <div className="register-button-wrap flex justify-between flex-col gap-2">
                     <button
                       type="submit"
-                      className="w-full text-white bg-primary-600 hover:bg-primary-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:opacity-70 ease-in-out duration-100"
+                      className="w-full text-white bg-primary-600 hover:bg-primary-700 font-semibold rounded-lg text-sm px-5 py-2.5 text-center disabled:opacity-70 ease-in-out duration-100"
                       disabled={!isValid || !dirty || loading}
                     >
                       {loading ? (
@@ -263,7 +263,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                     <div className="divider">OR</div>
                     <button
                       type="button"
-                      className="w-full text-gray-500 bg-white hover:bg-gray-100 border border-button-border-light font-medium rounded-lg text-sm px-5 py-2.5 text-center ease-in-out duration-100 flex gap-2 justify-center items-center"
+                      className="w-full text-gray-500 bg-white hover:bg-gray-100 border border-button-border-light font-semibold rounded-lg text-sm px-5 py-2.5 text-center ease-in-out duration-100 flex gap-2 justify-center items-center"
                     >
                       <img
                         src="/public/assets/img/google.svg"
@@ -280,7 +280,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                     Already have an account?
                     <button
                       onClick={switchToLogin}
-                      className="font-medium text-gray-400 hover:text-primary-600 hover:underline ml-1"
+                      className="font-semibold text-gray-400 hover:text-primary-600 hover:underline ml-1"
                     >
                       Login
                     </button>

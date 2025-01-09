@@ -34,7 +34,7 @@ const ShopDetail = ({ data }) => {
                     <div className="flex items-center justify-start gap-2 mb-3">
                       <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
                         <FaStar className="text-[10px]" />
-                        <p className="text-[10px] font-medium">
+                        <p className="text-[10px] font-semibold">
                           {shop.ratings || "N/A"}
                         </p>
                       </div>
@@ -60,7 +60,7 @@ const ShopDetail = ({ data }) => {
               <div className="shopDetails-review border border-dashed border-primary-200 rounded-lg">
                 <div className="shopDetails-review-wrapper-top p-2 mb-3">
                   <div className="rating-wrap">
-                    <h1 className="text-lg font-medium">Ratings & Reviews</h1>
+                    <h1 className="text-lg font-semibold">Ratings & Reviews</h1>
                   </div>
                 </div>
                 <div className="shopDetails-review-wrapper-bottom">
@@ -89,57 +89,57 @@ const ShopDetail = ({ data }) => {
                       </div>
                     </div>
                     <div className="flex items-center mt-4">
-                      <div className="text-sm font-medium text-gray-900 flex items-center justify-start gap-1">
+                      <div className="text-sm font-semibold text-gray-900 flex items-center justify-start gap-1">
                         <span>5</span> <FaStar />
                       </div>
                       <div className="w-2/4 h-3 mx-4 bg-gray-200 rounded">
                         <div className="h-3 bg-yellow-400 rounded w-[70%]"></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-500">
+                      <span className="text-sm font-semibold text-gray-500">
                         70%
                       </span>
                     </div>
                     <div className="flex items-center mt-2">
-                      <div className="text-sm font-medium text-gray-900 flex items-center justify-start gap-1">
+                      <div className="text-sm font-semibold text-gray-900 flex items-center justify-start gap-1">
                         <span>4</span> <FaStar />
                       </div>
                       <div className="w-2/4 h-3 mx-4 bg-gray-200 rounded">
                         <div className="h-3 bg-yellow-400 rounded w-[17%]"></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-500">
+                      <span className="text-sm font-semibold text-gray-500">
                         17%
                       </span>
                     </div>
                     <div className="flex items-center mt-2">
-                      <div className="text-sm font-medium text-gray-900 flex items-center justify-start gap-1">
+                      <div className="text-sm font-semibold text-gray-900 flex items-center justify-start gap-1">
                         <span>3</span> <FaStar />
                       </div>
                       <div className="w-2/4 h-3 mx-4 bg-gray-200 rounded">
                         <div className="h-3 bg-yellow-400 rounded w-[8%]"></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-500">
+                      <span className="text-sm font-semibold text-gray-500">
                         8%
                       </span>
                     </div>
                     <div className="flex items-center mt-2">
-                      <div className="text-sm font-medium text-gray-900 flex items-center justify-start gap-1">
+                      <div className="text-sm font-semibold text-gray-900 flex items-center justify-start gap-1">
                         <span>2</span> <FaStar />
                       </div>
                       <div className="w-2/4 h-3 mx-4 bg-gray-200 rounded">
                         <div className="h-3 bg-yellow-400 rounded w-[4%]"></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-500">
+                      <span className="text-sm font-semibold text-gray-500">
                         4%
                       </span>
                     </div>
                     <div className="flex items-center mt-2 mb-4">
-                      <div className="text-sm font-medium text-gray-900 flex items-center justify-start gap-1">
+                      <div className="text-sm font-semibold text-gray-900 flex items-center justify-start gap-1">
                         <span>1</span> <FaStar />
                       </div>
                       <div className="w-2/4 h-3 mx-[18px] bg-gray-200 rounded">
                         <div className="h-3 bg-yellow-400 rounded w-[10%]"></div>
                       </div>
-                      <span className="text-sm font-medium text-gray-500">
+                      <span className="text-sm font-semibold text-gray-500">
                         1%
                       </span>
                     </div>
@@ -156,12 +156,12 @@ const ShopDetail = ({ data }) => {
                             <div className="flex items-start gap-3">
                               <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
                                 <FaStar className="text-[10px]" />
-                                <p className="text-[10px] font-medium">
+                                <p className="text-[10px] font-semibold">
                                   {review.rating}
                                 </p>
                               </div>
                               <div className="rating-title-wrap">
-                                <h5 className="text-sm font-medium text-gray-900">
+                                <h5 className="text-sm font-semibold text-gray-900">
                                   {review.comment_title}
                                 </h5>
                               </div>
@@ -191,7 +191,7 @@ const ShopDetail = ({ data }) => {
                         <div className="p-2 flex justify-center">
                           <button
                             onClick={handleViewMore}
-                            className="w-full py-2 px-3 transition-all bg-primary-50 text-primary-500 text-sm font-medium rounded-lg hover:bg-primary-100 hover:text-primary-600"
+                            className="w-full py-2 px-3 transition-all bg-primary-50 text-primary-500 text-sm font-semibold rounded-lg hover:bg-primary-100 hover:text-primary-600"
                           >
                             View more
                           </button>

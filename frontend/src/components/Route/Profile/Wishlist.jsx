@@ -5,7 +5,8 @@ import { FaStar } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 import "./Accounts.css";
-import {truncateText} from "../../../utils/helper"
+import { truncateText } from "../../../utils/helper";
+import { HiOutlineInformationCircle } from "react-icons/hi";
 
 const Wishlist = () => {
   const [data, setData] = useState([]);
@@ -38,8 +39,7 @@ const Wishlist = () => {
 
   const deleteWishListItem = () => {
     // implement delete logic here
-    
-  }
+  };
 
   return (
     <>
@@ -47,7 +47,7 @@ const Wishlist = () => {
         <div className="grid grid-cols-12">
           <div className="col-span-12">
             <div className="flex justify-start items-center mb-5">
-              <h1 className="text-lg font-medium">My Wishlist (14)</h1>
+              <h1 className="text-lg font-semibold">My Wishlist (14)</h1>
             </div>
             <div className="wishlist-card-wrap rounded-lg border border-dashed border-primary-200">
               {data.map((item, index) => (
@@ -74,13 +74,13 @@ const Wishlist = () => {
                       <div className="flex items-center justify-start gap-2 mb-3">
                         <div className="wishlist-rating flex items-center justify-start gap-1">
                           <FaStar />
-                          <p className="font-medium">{item.ratings}</p>
+                          <p className="font-semibold">{item.ratings}</p>
                         </div>
                         <p className="text-[#878787] text-xs font-normal">
                           105098 Ratings, 21052 Reviews
                         </p>
                       </div>
-                      <div className="flex items-baseline justify-start gap-3">
+                      <div className="flex items-center justify-start gap-3">
                         <div className="wishlist-price-wrap">
                           <h5 className="wishlist-discount_price">
                             <span className="mr-1">₹</span>
@@ -101,11 +101,17 @@ const Wishlist = () => {
                             off
                           </p>
                         </div>
+                        <div className="cursor-pointer text-[20px] text-[#878787]">
+                          <HiOutlineInformationCircle />
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div className="wishlist-delete text-gray-500 hover:text-error-700 bg-primary-50 hover:bg-primary-100">
-                    <AiOutlineDelete className="wishlist-delete-icon " onClick={() => handleDelete(item.id)}/>
+                    <AiOutlineDelete
+                      className="wishlist-delete-icon "
+                      onClick={() => handleDelete(item.id)}
+                    />
                   </div>
                 </div>
               ))}

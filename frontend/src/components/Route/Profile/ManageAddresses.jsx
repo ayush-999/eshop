@@ -12,7 +12,8 @@ import { SyncLoader } from "react-spinners";
 import { HiDotsVertical } from "react-icons/hi";
 import Swal from "sweetalert2";
 import LoadingSpinner from "../../Loader/LoadingSpinner";
-import './Accounts.css';
+import "./Accounts.css";
+import AddressesNotFound from "../../NotFound/AddressesNotFound";
 
 const ManageAddresses = () => {
   const [addresses, setAddresses] = useState([]);
@@ -41,6 +42,7 @@ const ManageAddresses = () => {
     pincode: "",
     landmark: "",
     userAlternatePhone: editAddress?.userAlternatePhone || "",
+    isDefault: editAddress?.isDefault === 1 ? true : false,
   };
 
   const handleMouseEnter = (addressId) => {
@@ -59,7 +61,11 @@ const ManageAddresses = () => {
 
   const handleSubmit = async (values) => {
     setLoading(true);
-    const newAddress = { ...values, addressType };
+    const newAddress = {
+      ...values,
+      addressType,
+      isDefault: values.isDefault ? 1 : 0,
+    };
     const url = editAddress
       ? `${server}/user/edit-address/${user._id}/${editAddress._id}`
       : `${server}/user/add-address/${user._id}`;
@@ -131,7 +137,7 @@ const ManageAddresses = () => {
           <div className="grid grid-cols-12">
             <div className="col-span-12">
               <div className="flex justify-start items-center mb-5">
-                <h1 className="text-lg font-medium">Manage Addresses</h1>
+                <h1 className="text-lg font-semibold">Manage Addresses</h1>
               </div>
               <div
                 className="add-address-wrapper mb-4
@@ -149,7 +155,7 @@ const ManageAddresses = () => {
                 )}
                 {isFormVisible && (
                   <div className="add-address-form bg-primary-10 p-5 rounded-lg">
-                    <h1 className="text-[18px] mb-3 font-semibold text-gray-900 text-center">
+                    <h1 className="text-[1.125rem] mb-3 font-semibold text-gray-900 text-center">
                       {editAddress ? "Edit Address" : "Add a new address"}
                     </h1>
                     <Formik
@@ -178,9 +184,9 @@ const ManageAddresses = () => {
                                 <div className="input-container">
                                   <label
                                     htmlFor="address-type"
-                                    className="inline-block mb-3 text-sm font-medium text-gray-900"
+                                    className="inline-block mb-3 text-sm font-semibold text-gray-900"
                                   >
-                                    Address Type{" "}
+                                    Address Type
                                     <span className="text-red-500">*</span>
                                   </label>
                                   <div className="flex justify-start items-center gap-3">
@@ -191,7 +197,7 @@ const ManageAddresses = () => {
                                           : "text-primary-600"
                                       }`}
                                     >
-                                      <TbHome className="text-[16px]" />
+                                      <TbHome className="text-[1rem]" />
                                       <Field
                                         type="radio"
                                         name="addressType"
@@ -209,7 +215,7 @@ const ManageAddresses = () => {
                                           : "text-primary-600"
                                       }`}
                                     >
-                                      <MdOutlineWorkOutline className="text-[16px]" />
+                                      <MdOutlineWorkOutline className="text-[1rem]" />
                                       <Field
                                         type="radio"
                                         name="addressType"
@@ -228,9 +234,9 @@ const ManageAddresses = () => {
                                 <div className="input-container mb-3">
                                   <label
                                     htmlFor="name"
-                                    className="inline-block mb-2 text-sm font-medium text-gray-900"
+                                    className="inline-block mb-2 text-sm font-semibold text-gray-900"
                                   >
-                                    Your full name{" "}
+                                    Your full name
                                     <span className="text-red-500">*</span>
                                   </label>
                                   <Field
@@ -248,9 +254,9 @@ const ManageAddresses = () => {
                                 <div className="input-container mb-3">
                                   <label
                                     htmlFor="userPhone"
-                                    className="inline-block mb-2 text-sm font-medium text-gray-900"
+                                    className="inline-block mb-2 text-sm font-semibold text-gray-900"
                                   >
-                                    Your mobile number{" "}
+                                    Your mobile number
                                     <span className="text-red-500">*</span>
                                   </label>
                                   <PhoneInput
@@ -272,9 +278,9 @@ const ManageAddresses = () => {
                                 <div className="input-container mb-3">
                                   <label
                                     htmlFor="country"
-                                    className="inline-block mb-2 text-sm font-medium text-gray-900"
+                                    className="inline-block mb-2 text-sm font-semibold text-gray-900"
                                   >
-                                    Country{" "}
+                                    Country
                                     <span className="text-red-500">*</span>
                                   </label>
                                   <Field
@@ -292,9 +298,9 @@ const ManageAddresses = () => {
                                 <div className="input-container mb-3">
                                   <label
                                     htmlFor="state"
-                                    className="inline-block mb-2 text-sm font-medium text-gray-900"
+                                    className="inline-block mb-2 text-sm font-semibold text-gray-900"
                                   >
-                                    State{" "}
+                                    State
                                     <span className="text-red-500">*</span>
                                   </label>
                                   <Field
@@ -312,9 +318,9 @@ const ManageAddresses = () => {
                                 <div className="input-container mb-3">
                                   <label
                                     htmlFor="userAddress"
-                                    className="inline-block mb-2 text-sm font-medium text-gray-900"
+                                    className="inline-block mb-2 text-sm font-semibold text-gray-900"
                                   >
-                                    Address (Area and Street){" "}
+                                    Address (Area and Street)
                                     <span className="text-red-500">*</span>
                                   </label>
                                   <Field
@@ -334,9 +340,9 @@ const ManageAddresses = () => {
                                 <div className="input-container mb-3">
                                   <label
                                     htmlFor="city"
-                                    className="inline-block mb-2 text-sm font-medium text-gray-900"
+                                    className="inline-block mb-2 text-sm font-semibold text-gray-900"
                                   >
-                                    City/ District/ Town{" "}
+                                    City/ District/ Town
                                     <span className="text-red-500">*</span>
                                   </label>
                                   <Field
@@ -354,9 +360,9 @@ const ManageAddresses = () => {
                                 <div className="input-container mb-3">
                                   <label
                                     htmlFor="pincode"
-                                    className="inline-block mb-2 text-sm font-medium text-gray-900"
+                                    className="inline-block mb-2 text-sm font-semibold text-gray-900"
                                   >
-                                    Pincode{" "}
+                                    Pincode
                                     <span className="text-red-500">*</span>
                                   </label>
                                   <Field
@@ -371,10 +377,10 @@ const ManageAddresses = () => {
                               </div>
                               {/* landmark */}
                               <div className="col-span-6">
-                                <div className="input-container mb-8">
+                                <div className="input-container mb-4">
                                   <label
                                     htmlFor="landmark"
-                                    className="inline-block mb-2 text-sm font-medium text-gray-900"
+                                    className="inline-block mb-2 text-sm font-semibold text-gray-900"
                                   >
                                     Landmark
                                   </label>
@@ -389,10 +395,10 @@ const ManageAddresses = () => {
                               </div>
                               {/* Alternate Phone */}
                               <div className="col-span-6">
-                                <div className="input-container mb-8">
+                                <div className="input-container mb-4">
                                   <label
                                     htmlFor="userAlternatePhone"
-                                    className="inline-block mb-2 text-sm font-medium text-gray-900"
+                                    className="inline-block mb-2 text-sm font-semibold text-gray-900"
                                   >
                                     Alternate Phone
                                   </label>
@@ -409,6 +415,26 @@ const ManageAddresses = () => {
                                     forceDialCode={true}
                                     className={`userMobile`}
                                   />
+                                </div>
+                              </div>
+                              {/* Default Address */}
+                              <div className="col-span-12">
+                                <div className="input-container mb-8">
+                                  <div className="flex items-center gap-3">
+                                    <Field
+                                      type="checkbox"
+                                      name="isDefault"
+                                      id="isDefault"
+                                      checked={values.isDefault}
+                                      className={`bg-gray-50 border text-gray-900 block checked:bg-primary-600 checked:border-primary-600 checked:text-white p-3 text-sm rounded-lg custom-checkbox`}
+                                    />
+                                    <label
+                                      htmlFor="isDefault"
+                                      className="inline-block text-sm font-semibold text-gray-900"
+                                    >
+                                      Default address
+                                    </label>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -455,9 +481,14 @@ const ManageAddresses = () => {
                       className="address-view-wrap border-b border-dashed last:border-b-0 border-primary-200 relative"
                     >
                       <div className="address-view-item p-5">
-                        <div className="bg-primary-100 py-1 px-3 rounded-[4px] inline-block text-primary-600 text-xs font-semibold capitalize mb-2">
+                        <div className="bg-primary-600 text-white py-1 px-3 rounded-[.25rem] inline-block text-xs font-semibold capitalize mb-2 mr-2">
                           {address.addressType}
                         </div>
+                        {address.isDefault === 1 && (
+                          <div className="bg-primary-100 py-1 px-3 rounded-[.25rem] inline-block text-primary-600 text-xs font-semibold capitalize mb-2 ">
+                            Default
+                          </div>
+                        )}
                         <p className="text-sm mb-2 font-semibold">
                           <span className="me-2">{address.name}</span>
                           <span className="ms-2">+{address.userPhone}</span>
@@ -487,13 +518,13 @@ const ManageAddresses = () => {
                           <ul className="address-menu">
                             <li
                               onClick={() => handleEdit(address)}
-                              className="text-[13px] font-normal py-1 px-2 transition-all hover:rounded-[4px] hover:bg-primary-50 hover:text-gray-900 text-gray-600"
+                              className="text-[.8125rem] font-normal py-1 px-2 transition-all hover:rounded-[.25rem] hover:bg-primary-50 hover:text-gray-900 text-gray-600"
                             >
                               Edit
                             </li>
                             <li
                               onClick={() => handleDelete(address._id)}
-                              className="text-[13px] font-normal py-1 px-2 transition-all hover:rounded-[4px] hover:bg-primary-50 hover:text-gray-900 text-gray-600"
+                              className="text-[.8125rem] font-normal py-1 px-2 transition-all hover:rounded-[.25rem] hover:bg-primary-50 hover:text-gray-900 text-gray-600"
                             >
                               Delete
                             </li>
@@ -502,12 +533,8 @@ const ManageAddresses = () => {
                       </div>
                     </div>
                   ))
-                ) : ( 
-                  <div className="p-2">
-                    <p className="text-sm font-semibold text-center block w-full p-2 text-primary-500 bg-primary-50 rounded-lg">
-                      No addresses found
-                    </p>
-                  </div>
+                ) : (
+                  <AddressesNotFound />
                 )}
               </div>
             </div>

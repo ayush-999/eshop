@@ -62,7 +62,7 @@ const ProfileSideBar = () => {
 
   return (
     <>
-      <div className="bg-white p-4 rounded-lg shadow-sm mb-3">
+      <div className="bg-white p-4 rounded-lg shadow-sm mb-3 md:block hidden">
         <div className="flex justify-start items-center gap-2 profile-wrapper">
           <img
             src="https://api.dicebear.com/7.x/pixel-art/svg"
@@ -87,7 +87,7 @@ const ProfileSideBar = () => {
         >
           <span className="flex justify-start items-center gap-2">
             <PiPackage className="w-5 h-5" />
-            My orders
+            <span className="md:block hidden">My orders</span>
           </span>
           <GoChevronRight className="w-5 h-5" />
         </Link>

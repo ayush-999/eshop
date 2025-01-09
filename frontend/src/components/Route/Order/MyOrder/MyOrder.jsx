@@ -22,7 +22,7 @@ const MyOrder = () => {
           <div className="grid grid-cols-12">
             <div className="col-span-12">
               <div className="flex justify-start items-center mb-5">
-                <h1 className="text-lg font-medium">My Orders</h1>
+                <h1 className="text-lg font-semibold">My Orders</h1>
               </div>
               {ordersData.length > 0 ? (
                 <>
@@ -43,7 +43,7 @@ const MyOrder = () => {
                         </button>
                         <div className="order-filter-wrap z-10">
                           <div className="order-filter-dropdown">
-                            <h3 className="text-sm font-medium mb-2 ml-2">
+                            <h3 className="text-sm font-semibold mb-2 ml-2">
                               Order Status
                             </h3>
                             <div className="flex flex-col gap-1">
@@ -115,7 +115,7 @@ const MyOrder = () => {
                                     <div className="order-status-delivered">
                                       <div className="flex items-center gap-2 mb-1">
                                         <div className="w-3 h-3 rounded-full bg-green-600"></div>
-                                        <h3 className="text-sm font-medium text-gray-900">
+                                        <h3 className="text-sm font-semibold text-gray-900">
                                           Order delivered on{" "}
                                           {formatDate(order.deliveredDate)}
                                         </h3>
@@ -128,7 +128,7 @@ const MyOrder = () => {
                                     <div className="order-status-return">
                                       <div className="flex items-center gap-2 mb-1">
                                         <div className="w-3 h-3 rounded-full bg-red-600"></div>
-                                        <h3 className="text-sm font-medium text-gray-900">
+                                        <h3 className="text-sm font-semibold text-gray-900">
                                           Order cancelled on
                                           {formatDate(order.refundDate)}
                                         </h3>
@@ -142,12 +142,12 @@ const MyOrder = () => {
                                     <div className="order-status-onTheWay">
                                       <div className="flex items-center gap-2 mb-1">
                                         <div className="w-3 h-3 rounded-full bg-primary-500"></div>
-                                        <h3 className="text-sm font-medium text-gray-900">
+                                        <h3 className="text-sm font-semibold text-gray-900">
                                           Your order is on the way
                                         </h3>
                                       </div>
                                       <p className="text-xs text-gray-800">
-                                        <span className="font-medium me-1">
+                                        <span className="font-semibold me-1">
                                           Estimated delivery :
                                         </span>
                                         {formatDate(order.outForDeliveryDate)}
@@ -157,7 +157,7 @@ const MyOrder = () => {
                                     <div className="order-status-returned">
                                       <div className="flex items-center gap-2 mb-1">
                                         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                        <h3 className="text-sm font-medium text-gray-900">
+                                        <h3 className="text-sm font-semibold text-gray-900">
                                           Order returned on{" "}
                                           {formatDate(order.returnDate)}
                                         </h3>
@@ -170,7 +170,7 @@ const MyOrder = () => {
                                     <div className="order-status-refund_in_progress">
                                       <div className="flex items-center gap-2 mb-1">
                                         <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                        <h3 className="text-sm font-medium text-gray-900">
+                                        <h3 className="text-sm font-semibold text-gray-900">
                                           Order refund in progress
                                         </h3>
                                       </div>
@@ -182,7 +182,7 @@ const MyOrder = () => {
                                     <div className="order-status-refund-failed">
                                       <div className="flex items-center gap-2 mb-1">
                                         <div className="w-3 h-3 rounded-full bg-red-600"></div>
-                                        <h3 className="text-sm font-medium text-gray-900">
+                                        <h3 className="text-sm font-semibold text-gray-900">
                                           Order refund failed
                                         </h3>
                                       </div>

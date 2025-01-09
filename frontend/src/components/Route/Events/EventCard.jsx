@@ -32,11 +32,11 @@ const EventCard = () => {
             </Link>
           </p>
           <div className="flex items-center justify-start gap-2 mb-2">
-            <h4 className="text-[22px] font-medium">
+            <h4 className="text-[22px] font-semibold">
               <span className="rupee-icon mr-1">₹</span>
               79000
             </h4>
-            <h3 className="text-[14px] line-through text-[#878787] font-medium">
+            <h3 className="text-[14px] line-through text-[#878787] font-semibold">
               (<span className="rupee-icon mr-[2px]">₹</span>85000)
             </h3>
             <div className="event-discount-wrap">
@@ -48,14 +48,14 @@ const EventCard = () => {
           </div>
           <div className="flex items-center justify-start gap-2 mb-2">
             <Countdown />
-            <span className="bg-[#f8f8ff] text-[#616173] text-xs font-medium me-2 px-[10px] py-[4px] rounded-full">
+            <span className="bg-[#f8f8ff] text-[#616173] text-xs font-semibold me-2 px-[10px] py-[4px] rounded-full">
               Free Delivery
             </span>
           </div>
           <div className="flex items-center mt-3 justify-between">
             <button
               type="submit"
-              className="w-full border border-solid border-primary-600 text-primary-600 rounded-lg px-1.5 py-2.5 flex items-center justify-center gap-1 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-sm ease-in-out duration-100 font-medium"
+              className="w-full border border-solid border-primary-600 text-primary-600 rounded-lg px-1.5 py-2.5 flex items-center justify-center gap-1 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-sm ease-in-out duration-100 font-semibold"
             >
               Buy Now
               <FaAnglesRight className="text-[14px]" />

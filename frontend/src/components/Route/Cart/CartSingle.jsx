@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { HiOutlineMinus, HiPlus } from "react-icons/hi";
+import {
+  HiOutlineInformationCircle,
+  HiOutlineMinus,
+  HiPlus,
+} from "react-icons/hi";
 import "./CartSingle.css";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { truncateText } from "../../../utils/helper";
 const CartSingle = ({ data }) => {
   const [value, setValue] = useState(1);
-  const totalPrice = data.price * value;
   const pName = data.name;
   const product_name = pName.toLowerCase().replace(/\s+/g, "-");
   return (
@@ -44,15 +47,30 @@ const CartSingle = ({ data }) => {
                 </h6>
               </Link>
               <div className="flex justify-start gap-2 items-center">
-                <h4 className="text-[18px] font-medium">
-                  <span className="rupee-icon mr-1">₹</span>
-                  {totalPrice}
-                </h4>
+                <h5 className="cart-discount_price">
+                  <span className="text-[18px] font-medium mr-1">₹</span>
+                  {data.price === 0 ? data.price : data.discount_price}
+                </h5>
+                {data.price && data.price !== data.discount_price && (
+                  <h5 className="cart-price">
+                    (<span className="mr-0">₹</span>
+                    {data.price})
+                  </h5>
+                )}
+                <div className="cart-discount">
+                  <p>
+                    <span className="mr-1">70%</span>
+                    off
+                  </p>
+                </div>
+                <div className="cursor-pointer text-[20px] text-[#878787]">
+                  <HiOutlineInformationCircle />
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <AiOutlineDelete className="text-gray-500 text-[16px] hover:text-error-700 cursor-pointer absolute top-[-5px] right-0" />
+        <AiOutlineDelete className="text-gray-500 text-[16px] hover:text-error-700 cursor-pointer absolute top-[5px] right-0" />
       </div>
     </>
   );
