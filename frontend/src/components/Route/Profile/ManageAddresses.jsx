@@ -268,7 +268,7 @@ const ManageAddresses = () => {
                                     }
                                     defaultCountry="in"
                                     forceDialCode={true}
-                                    className={`userMobile`}
+                                    className={`phoneNumber`}
                                     required
                                   />
                                 </div>
@@ -413,7 +413,7 @@ const ManageAddresses = () => {
                                     }
                                     defaultCountry="in"
                                     forceDialCode={true}
-                                    className={`userMobile`}
+                                    className={`phoneNumber`}
                                   />
                                 </div>
                               </div>

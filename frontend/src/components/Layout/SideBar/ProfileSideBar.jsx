@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { server } from "../../../server";
 import "./SideBar.css";
 import { GoChevronUp, GoChevronDown, GoChevronRight } from "react-icons/go";
-import { LuUserCircle2 } from "react-icons/lu";
+import { PiUserCircle  } from "react-icons/pi";
 import { AiOutlineBank } from "react-icons/ai";
 import { BsFolder } from "react-icons/bs";
 import { PiPackage } from "react-icons/pi";
@@ -100,7 +100,7 @@ const ProfileSideBar = () => {
             onClick={() => toggleAccordion(0)}
           >
             <div className="flex justify-start items-center gap-2">
-              <LuUserCircle2 className="w-5 h-5" />
+              <PiUserCircle  className="w-5 h-5" />
               <h4 className="text-[15px]">Account Settings</h4>
             </div>
             {openIndex === 0 ? <GoChevronUp /> : <GoChevronDown />}

@@ -65,7 +65,7 @@ const LoginModel = ({ setOpen, switchToRegister }) => {
   return (
     <div className="login-popup">
       <div className="login-overlay">
-        <div className="w-[34%] h-[66vh] bg-white rounded-lg shadow-sm relative p-6 overflow-y-scroll">
+        <div className="w-[34%] h-[66vh] bg-white rounded-[.9375rem] shadow-sm relative p-6 overflow-y-scroll">
           <RxCross1 className="login-close" onClick={() => setOpen(false)} />
           <div className="block w-full">
             <h2 className="text-center font-bold text-2xl mb-4">Login</h2>
@@ -76,7 +76,7 @@ const LoginModel = ({ setOpen, switchToRegister }) => {
             >
               {({ errors, touched, isValid, dirty }) => (
                 <Form className="space-y-4 md:space-y-4">
-                  <div className="input-container c-mb-16">
+                  <div className="input-container">
                     <label
                       htmlFor="email"
                       className="inline-block mb-2 text-sm font-semibold text-gray-900"
@@ -159,7 +159,7 @@ const LoginModel = ({ setOpen, switchToRegister }) => {
                       Forgot password?
                     </Link>
                   </div>
-                  <div className="login-button-wrap flex justify-between flex-col gap-2">
+                  <div className="login-button-wrap flex justify-between flex-col gap-3">
                     <button
                       type="submit"
                       className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-semibold rounded-lg text-sm px-5 py-2.5 text-center disabled:opacity-70 ease-in-out duration-100"
@@ -184,7 +184,7 @@ const LoginModel = ({ setOpen, switchToRegister }) => {
                       />
                       Login with Google
                     </button>
-                    <p className="text-sm font-light text-gray-400 text-center">
+                    <p className="text-sm font-normal text-gray-400 text-center">
                       Don’t have an account yet?
                       <button
                         onClick={switchToRegister}

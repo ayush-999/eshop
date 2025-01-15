@@ -47,7 +47,7 @@ const SellerLogin = () => {
       .then((res) => {
         toast.success("Login Success!");
         navigate("/");
-        window.location.reload()
+        window.location.reload();
       })
       .catch((err) => {
         if (err.response && err.response.data && err.response.data.message) {
@@ -79,7 +79,7 @@ const SellerLogin = () => {
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               <TypeAnimation
-                sequence={["Sign In to your account", 1000]}
+                sequence={["Login to your account", 1000]}
                 speed={50}
                 wrapper="span"
                 cursor={false}
@@ -92,12 +92,12 @@ const SellerLogin = () => {
               validationSchema={validationSchema}
               onSubmit={handleSubmit}
             >
-              {({ errors, touched, isValid }) => (
+              {({ errors, touched, isValid, dirty }) => (
                 <Form className="space-y-4 md:space-y-4">
                   <div className="input-container">
                     <label
                       htmlFor="email"
-                      className="inline-block mb-2 text-sm font-medium text-gray-900"
+                      className="inline-block mb-2 text-sm font-semibold text-gray-900"
                     >
                       Your email
                     </label>
@@ -122,7 +122,7 @@ const SellerLogin = () => {
                   <div className="input-with-icon-container c-mb-30">
                     <label
                       htmlFor="password"
-                      className="inline-block mb-2 text-sm font-medium text-gray-900"
+                      className="inline-block mb-2 text-sm font-semibold text-gray-900"
                     >
                       Password
                     </label>
@@ -172,29 +172,29 @@ const SellerLogin = () => {
                     </div>
                     <Link
                       to="#"
-                      className="text-sm font-medium hover:text-primary-600 text-gray-400 hover:underline"
+                      className="text-sm font-semibold hover:text-primary-600 text-gray-400 hover:underline"
                     >
                       Forgot password?
                     </Link>
                   </div>
                   <button
                     type="submit"
-                    className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-medium rounded-lg text-sm px-5 py-3 text-center disabled:opacity-70 ease-in-out duration-100"
-                    disabled={!isValid || loading}
+                    className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-semibold rounded-lg text-sm px-5 py-3 text-center disabled:opacity-70 ease-in-out duration-100"
+                    disabled={!isValid || loading || !dirty}
                   >
                     {loading ? (
                       <SyncLoader margin={1} size={8} color={"#fff"} />
                     ) : (
-                      "Sign In"
+                      "Log In"
                     )}
                   </button>
-                  <p className="text-sm font-light text-gray-400 text-center">
+                  <p className="text-sm font-normal text-gray-400 text-center">
                     Don’t have an account yet?
                     <Link
                       to="/seller-register"
-                      className="font-medium text-gray-400 hover:text-primary-600 hover:underline ml-1"
+                      className="font-semibold text-gray-400 hover:text-primary-600 hover:underline ml-1"
                     >
-                      Sign Up
+                      Register
                     </Link>
                   </p>
                 </Form>

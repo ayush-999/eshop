@@ -217,20 +217,20 @@ input[type="number"] {
   height: 16px;
 }
 
-.userMobile .react-international-phone-input {
+.phoneNumber .react-international-phone-input {
   background-color: #f9fafb !important;
 }
 
-.userMobile .react-international-phone-country-selector button {
+.phoneNumber .react-international-phone-country-selector button {
   background-color: #f9fafb !important;
 }
 
-.userMobile .react-international-phone-input:disabled {
+.phoneNumber .react-international-phone-input:disabled {
   color: #6b7280 !important;
   background-color: #f3f4f6 !important;
 }
 
-.userMobile .react-international-phone-country-selector button:disabled {
+.phoneNumber .react-international-phone-country-selector button:disabled {
   color: #6b7280 !important;
   background-color: #f3f4f6 !important;
 }
@@ -239,4 +239,8 @@ input[type="number"] {
   background-color: #f3f7ff;
   color: #111827;
   border-radius: 0.5rem;
+}
+
+.forgotPassword {
+  margin-top: 14px !important;
 }

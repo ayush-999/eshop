@@ -80,7 +80,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
   return (
     <div className="register-popup">
       <div className="register-overlay">
-        <div className="w-[34%] h-[98vh] bg-white rounded-lg shadow-sm relative p-6 overflow-y-scroll">
+        <div className="w-[34%] h-[98vh] bg-white rounded-[.9375rem] shadow-sm relative p-6 overflow-y-scroll">
           <RxCross1 className="register-close" onClick={() => setOpen(false)} />
           <div className="block w-full">
             <h2 className="text-center font-bold text-2xl mb-2">Register</h2>
@@ -158,7 +158,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                       forceDialCode={true}
                       value={initialValues.userMobile}
                       onChange={(value) => setFieldValue("userMobile", value)}
-                      className={`userMobile ${
+                      className={`phoneNumber ${
                         errors.userMobile && touched.userMobile
                           ? "error-show"
                           : "border-gray-300"
@@ -248,7 +248,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                   </div>
 
                   {/* Submit Button */}
-                  <div className="register-button-wrap flex justify-between flex-col gap-2">
+                  <div className="register-button-wrap flex justify-between flex-col gap-3">
                     <button
                       type="submit"
                       className="w-full text-white bg-primary-600 hover:bg-primary-700 font-semibold rounded-lg text-sm px-5 py-2.5 text-center disabled:opacity-70 ease-in-out duration-100"
@@ -276,7 +276,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                   </div>
 
                   {/* Login Link */}
-                  <p className="text-sm font-light text-gray-400 text-center">
+                  <p className="text-sm font-normal text-gray-400 text-center">
                     Already have an account?
                     <button
                       onClick={switchToLogin}

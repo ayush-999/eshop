@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 //
 import { FiSearch, FiShoppingCart } from "react-icons/fi";
-import { LuUserCircle2 } from "react-icons/lu";
+import { PiUserCircle } from "react-icons/pi";
 import { GoChevronDown, GoChevronUp, GoHeart, GoTag } from "react-icons/go";
 import { CiShop } from "react-icons/ci";
 import { PiPackage } from "react-icons/pi";
@@ -242,7 +242,7 @@ const Header = () => {
                           // onClick={() => setDropdownVisible(!dropdownVisible)}
                           ref={buttonRef}
                         >
-                          <LuUserCircle2 className="w-5 h-5" />
+                          <PiUserCircle className="w-5 h-5" />
                           <span>{user.name}</span>
                           {dropdownVisible ? (
                             <GoChevronUp className="mt-1" />
@@ -265,7 +265,7 @@ const Header = () => {
                             role="menuitem"
                             id="user-menu-item-0"
                           >
-                            <LuUserCircle2 className="w-5 h-5" /> My Profile
+                            <PiUserCircle className="w-5 h-5" /> My Profile
                           </Link>
                           <Link
                             to="/account/orders"
