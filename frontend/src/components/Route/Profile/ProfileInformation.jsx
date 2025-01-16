@@ -104,6 +104,7 @@ const ProfileInformation = () => {
   };
   return (
     <>
+    {/* //TODO: Need to work on this page: need to add password change functionality, Id delete functionality, and OTP verification functionality */}
       {dataLoading ? (
         <LoadingSpinner />
       ) : (
@@ -147,7 +148,7 @@ const ProfileInformation = () => {
                             disabled={!isPersonalEdit}
                             className={`bg-gray-50 border ${
                               errors.name && touched.name
-                                ? "border-red-600 bg-red-50"
+                                ? "border-red-600 bg-red-50 placeholder:text-error-300"
                                 : "border-gray-300"
                             } text-gray-900 rounded-lg block w-full p-2 disabled:bg-gray-100 disabled:text-gray-500`}
                             placeholder="Enter full name"
@@ -191,7 +192,7 @@ const ProfileInformation = () => {
                             className="error-message"
                           />
                         </div>
-                        {/* TODO: Need to add password change logic in backend */}
+                        
                         {/* Password */}
                         <div className="input-with-icon-container mb-4">
                           <label
@@ -206,7 +207,7 @@ const ProfileInformation = () => {
                             id="password"
                             className={`bg-gray-50 border ${
                               errors.password && touched.password
-                                ? "border-red-600 bg-red-50 focus-within:border-red-600"
+                                ? "border-red-600 bg-red-50 focus-within:border-red-600 placeholder:text-error-300"
                                 : "border-gray-300"
                             } text-gray-900 rounded-lg focus-within:border-primary-600 block w-full p-2.5 input-with-icon`}
                             placeholder="••••••••"
@@ -249,7 +250,7 @@ const ProfileInformation = () => {
                             id="confirmPassword"
                             className={`bg-gray-50 border ${
                               errors.confirmPassword && touched.confirmPassword
-                                ? "border-red-600 bg-red-50 focus-within:border-red-600"
+                                ? "border-red-600 bg-red-50 focus-within:border-red-600 placeholder:text-error-300"
                                 : "border-gray-300"
                             } text-gray-900 rounded-lg focus-within:border-primary-600 block w-full p-2.5 input-with-icon`}
                             placeholder="••••••••"
@@ -324,7 +325,7 @@ const ProfileInformation = () => {
                             disabled={true}
                             className={`bg-gray-50 border ${
                               errors.email && touched.email
-                                ? "border-red-600 bg-red-50"
+                                ? "border-red-600 bg-red-50 placeholder:text-error-300"
                                 : "border-gray-300"
                             } text-gray-900 rounded-lg block w-full p-2 disabled:bg-gray-100 disabled:text-gray-500`}
                             placeholder="name@company.com"
@@ -337,7 +338,7 @@ const ProfileInformation = () => {
                         </div>
 
                         {/* Mobile Number */}
-                        <div className="input-container mb-8">
+                        <div className="input-container mb-4">
                           <label
                             htmlFor="phoneNumber"
                             className="inline-block mb-2 text-sm font-semibold text-gray-900"

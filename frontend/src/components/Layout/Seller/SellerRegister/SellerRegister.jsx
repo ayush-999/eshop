@@ -105,22 +105,26 @@ const SellerRegister = () => {
                         </p>
                       </div>
                       <div className="flex items-center justify-between gap-1">
-                        <PhoneInput
-                          name="phoneNumber"
-                          id="phoneNumber"
-                          value={phoneNumber}
-                          onChange={(value) => {
-                            setPhoneNumber(value);
-                            setFieldValue("phoneNumber", value);
-                          }}
-                          defaultCountry="in"
-                          forceDialCode={true}
-                          className={`phoneNumber ${
-                            errors.phoneNumber && touched.phoneNumber
-                              ? "border-red-600 bg-red-50 phoneNumber-error"
-                              : "border-gray-300"
-                          } w-3/4`}
-                        />
+                        <Field name="phoneNumber">
+                          {({ field }) => (
+                            <PhoneInput
+                              {...field} // Spread Formik's field props to PhoneInput
+                              value={phoneNumber}
+                              id="phoneNumber"
+                              onChange={(value) => {
+                                setPhoneNumber(value);
+                                setFieldValue("phoneNumber", value); // Update Formik state
+                              }}
+                              defaultCountry="in"
+                              forceDialCode={true}
+                              className={`phoneNumber ${
+                                errors.phoneNumber && touched.phoneNumber
+                                  ? "border-red-600 bg-red-50 phoneNumber-error"
+                                  : "border-gray-300"
+                              } w-3/4`}
+                            />
+                          )}
+                        </Field>
                         <button
                           type="button"
                           onClick={handleSendOtp}
@@ -133,19 +137,20 @@ const SellerRegister = () => {
                           )}
                         </button>
                       </div>
-                      {phoneError && (
+                      {phoneError ? (
                         <div
                           className="error-message"
                           style={{ bottom: "-1.3rem" }}
                         >
                           {phoneError}
                         </div>
+                      ) : (
+                        <ErrorMessage
+                          name="phoneNumber"
+                          component="div"
+                          className="error-message bottom-[-1.3rem]"
+                        />
                       )}
-                      <ErrorMessage
-                        name="phoneNumber"
-                        component="div"
-                        className="error-message mb-4"
-                      />
                     </div>
 
                     <div className="input-container">
@@ -161,7 +166,7 @@ const SellerRegister = () => {
                         id="email"
                         className={`bg-gray-50 border ${
                           errors.email && touched.email
-                            ? "border-red-600 bg-red-50 focus-within:border-red-600"
+                            ? "border-red-600 bg-red-50 focus-within:border-red-600 placeholder:text-error-300"
                             : "border-gray-300"
                         } text-gray-900 rounded-lg focus-within:border-primary-600 block w-full p-2.5`}
                         placeholder="name@company.com"
@@ -187,7 +192,7 @@ const SellerRegister = () => {
                         id="password"
                         className={`bg-gray-50 border ${
                           errors.password && touched.password
-                            ? "border-red-600 bg-red-50 focus-within:border-red-600"
+                            ? "border-red-600 bg-red-50 focus-within:border-red-600 placeholder:text-error-300"
                             : "border-gray-300"
                         } text-gray-900 rounded-lg focus-within:border-primary-600 block w-full p-2.5 input-with-icon`}
                         placeholder="••••••••"

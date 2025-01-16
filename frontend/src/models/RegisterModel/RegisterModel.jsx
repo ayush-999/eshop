@@ -105,7 +105,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                       id="name"
                       className={`bg-gray-50 border ${
                         errors.name && touched.name
-                          ? "border-red-600 bg-red-50"
+                          ? "border-red-600 bg-red-50 placeholder:text-error-300"
                           : "border-gray-300"
                       } text-gray-900 rounded-lg block w-full p-2`}
                       placeholder="Enter full name"
@@ -131,7 +131,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                       id="email"
                       className={`bg-gray-50 border ${
                         errors.email && touched.email
-                          ? "border-red-600 bg-red-50"
+                          ? "border-red-600 bg-red-50 placeholder:text-error-300"
                           : "border-gray-300"
                       } text-gray-900 rounded-lg block w-full p-2`}
                       placeholder="name@company.com"
@@ -185,7 +185,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                       id="password"
                       className={`bg-gray-50 border ${
                         errors.password && touched.password
-                          ? "border-red-600 bg-red-50"
+                          ? "border-red-600 bg-red-50 placeholder:text-error-300"
                           : "border-gray-300"
                       } text-gray-900 rounded-lg block w-full p-2`}
                       placeholder="••••••••"
@@ -208,7 +208,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                   </div>
 
                   {/* Confirm Password Field */}
-                  <div className="input-container c-mb-22">
+                  <div className="input-container c-mb-30">
                     <label
                       htmlFor="confirmPassword"
                       className="inline-block mb-2 text-sm font-semibold text-gray-900"
@@ -221,7 +221,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                       id="confirmPassword"
                       className={`bg-gray-50 border ${
                         errors.confirmPassword && touched.confirmPassword
-                          ? "border-red-600 bg-red-50"
+                          ? "border-red-600 bg-red-50 placeholder:text-error-300"
                           : "border-gray-300"
                       } text-gray-900 rounded-lg block w-full p-2`}
                       placeholder="••••••••"
@@ -282,7 +282,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                       onClick={switchToLogin}
                       className="font-semibold text-gray-400 hover:text-primary-600 hover:underline ml-1"
                     >
-                      Login
+                      Go to Login
                     </button>
                   </p>
                 </Form>

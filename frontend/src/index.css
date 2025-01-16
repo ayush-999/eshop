@@ -235,6 +235,17 @@ input[type="number"] {
   background-color: #f3f4f6 !important;
 }
 
+.phoneNumber-error .react-international-phone-input {
+  background-color: #fff0f3 !important;
+  border-color: #f80a37;
+  color: #f80a37;
+}
+
+.phoneNumber-error .react-international-phone-country-selector button {
+  background-color: #fff0f3 !important;
+  border-color: #f80a37;
+}
+
 .profile-active-link {
   background-color: #f3f7ff;
   color: #111827;

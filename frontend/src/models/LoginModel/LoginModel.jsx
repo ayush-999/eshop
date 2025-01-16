@@ -89,7 +89,7 @@ const LoginModel = ({ setOpen, switchToRegister }) => {
                       id="email"
                       className={`bg-gray-50 border ${
                         errors.email && touched.email
-                          ? "border-red-600 bg-red-50 focus-within:border-red-600"
+                          ? "border-red-600 bg-red-50 focus-within:border-red-600 placeholder:text-error-300"
                           : "border-gray-300"
                       } text-gray-900 rounded-lg focus-within:border-primary-600 block w-full p-2`}
                       placeholder="name@company.com"
@@ -114,7 +114,7 @@ const LoginModel = ({ setOpen, switchToRegister }) => {
                       id="password"
                       className={`bg-gray-50 border ${
                         errors.password && touched.password
-                          ? "border-red-600 bg-red-50 focus-within:border-red-600"
+                          ? "border-red-600 bg-red-50 focus-within:border-red-600 placeholder:text-error-300"
                           : "border-gray-300"
                       } text-gray-900 rounded-lg focus-within:border-primary-600 block w-full p-2 input-with-icon`}
                       placeholder="••••••••"
