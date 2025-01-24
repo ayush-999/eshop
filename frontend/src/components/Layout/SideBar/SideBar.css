@@ -1,6 +1,6 @@
 .profile-wrapper .userTitle {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .profile-wrapper .p-greetings {
@@ -10,7 +10,7 @@
 .accordion-header {
   text-transform: capitalize;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,7 +21,7 @@
 .accordion-btn {
   text-transform: capitalize;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: space-between;
