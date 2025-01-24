@@ -20,6 +20,7 @@ const SellerRegister = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isOtpPopupOpen, setIsOtpPopupOpen] = useState(false);
   const [phoneError, setPhoneError] = useState("");
+  const [phoneNumberErrorClass, setPhoneNumberErrorClass] = useState("");
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
@@ -53,8 +54,10 @@ const SellerRegister = () => {
     const strippedPhoneNumber = phoneNumber.replace(/^\+\d{1,3}/, "").trim();
     if (!strippedPhoneNumber) {
       setPhoneError("Mobile number is required");
+      setPhoneNumberErrorClass("phoneNumber-error");
     } else {
       setPhoneError("");
+      setPhoneNumberErrorClass("");
       setIsOtpPopupOpen(true);
     }
   };
@@ -73,9 +76,9 @@ const SellerRegister = () => {
               alt="logo"
             />
           </Link>
-          <div className="w-full bg-white rounded-[.9375rem] shadow md:mt-0 sm:max-w-md xl:p-0">
+          <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+              <h1 className="text-lg font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 <TypeAnimation
                   sequence={["Create your account to start selling", 1000]}
                   speed={50}
@@ -90,7 +93,7 @@ const SellerRegister = () => {
                 onSubmit={handleSubmit}
               >
                 {({ errors, touched, isValid, setFieldValue }) => (
-                  <Form className="space-y-3 md:space-y-4">
+                  <Form className="space-y-4 md:space-y-6">
                     <div className="input-container c-mb-20">
                       <div className="flex items-center justify-start gap-1 mb-2">
                         <label
@@ -104,7 +107,7 @@ const SellerRegister = () => {
                           Verified
                         </p>
                       </div>
-                      <div className="flex items-center justify-between gap-1">
+                      <div className="flex flex-col md:flex-row items-center justify-between gap-1">
                         <Field name="phoneNumber">
                           {({ field }) => (
                             <PhoneInput
@@ -114,6 +117,7 @@ const SellerRegister = () => {
                               onChange={(value) => {
                                 setPhoneNumber(value);
                                 setFieldValue("phoneNumber", value); // Update Formik state
+                                setPhoneNumberErrorClass(""); // Remove error class when typing
                               }}
                               defaultCountry="in"
                               forceDialCode={true}
@@ -121,14 +125,14 @@ const SellerRegister = () => {
                                 errors.phoneNumber && touched.phoneNumber
                                   ? "border-red-600 bg-red-50 phoneNumber-error"
                                   : "border-gray-300"
-                              } w-3/4`}
+                              } ${phoneNumberErrorClass} w-full md:w-3/4`}
                             />
                           )}
                         </Field>
                         <button
                           type="button"
                           onClick={handleSendOtp}
-                          className="w-4/4 text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-semibold rounded-lg text-sm px-[14px] py-[10px] text-center disabled:opacity-70 ease-in-out duration-100"
+                          className="w-full md:w-auto text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-semibold rounded-lg text-sm px-[14px] py-[10px] text-center disabled:opacity-70 ease-in-out duration-100 mt-2 md:mt-0"
                         >
                           {loading ? (
                             <SyncLoader margin={1} size={8} color={"#fff"} />

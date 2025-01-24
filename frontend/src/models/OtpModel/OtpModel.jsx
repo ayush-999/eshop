@@ -55,11 +55,11 @@ const OtpModel = ({ setOpen }) => {
   return (
     <div className="otp-popup">
       <div className="otp-overlay">
-        <div className="w-[25%] h-[30vh] bg-white rounded-[.9375rem] shadow-sm relative p-6 overflow-y-scroll">
+        <div className="w-[30%] max-w-md md:w-[30%] lg:w-[25%] h-auto bg-white rounded-lg shadow-sm relative p-6 overflow-y-scroll">
           <RxCross1 className="otp-close" onClick={() => setOpen(false)} />
           <div className="block w-full">
             <form onSubmit={handleSubmit}>
-              <h2 className="text-center font-semibold text-xl mb-4">
+              <h2 className="text-center font-semibold text-xl md:text-2xl mb-4">
                 Enter verification code
               </h2>
               <div className="otpInput-wrapper mb-5 mt-8 flex justify-center">
@@ -76,9 +76,9 @@ const OtpModel = ({ setOpen }) => {
                 />
               </div>
 
-              <div className="otp-button-wrap flex justify-between items-center">
-                <div className="flex justify-end items-center ">
-                  <p className="timer text-primary-600 font-medium hover:underline cursor-pointer">
+              <div className="otp-button-wrap flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="flex justify-center md:justify-start items-center w-full md:w-auto">
+                  <p className="timer text-primary-600 font-medium hover:underline cursor-pointer text-center md:text-left">
                     {isResendVisible ? (
                       <span className="font-semibold" onClick={handleResendClick}>Resend</span>
                     ) : (
@@ -86,7 +86,7 @@ const OtpModel = ({ setOpen }) => {
                     )}
                   </p>
                 </div>
-                <div className="flex justify-end items-center gap-3">
+                <div className="flex justify-center md:justify-end items-center gap-3 w-full md:w-auto">
                   <button
                     className="border border-solid border-primary-200 text-primary-400 px-6 py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none ease-in-out duration-100 font-semibold rounded-lg cursor-pointer"
                     type="button"

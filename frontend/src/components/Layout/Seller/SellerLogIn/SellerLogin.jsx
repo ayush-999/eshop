@@ -75,7 +75,7 @@ const SellerLogin = () => {
             alt="logo"
           />
         </Link>
-        <div className="w-full bg-white rounded-[15px] shadow md:mt-0 sm:max-w-md xl:p-0">
+        <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md md:max-w-md lg:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               <TypeAnimation
@@ -84,7 +84,6 @@ const SellerLogin = () => {
                 wrapper="span"
                 cursor={false}
                 repeat={0}
-                t
               />
             </h1>
             <Formik
@@ -93,7 +92,7 @@ const SellerLogin = () => {
               onSubmit={handleSubmit}
             >
               {({ errors, touched, isValid, dirty }) => (
-                <Form className="space-y-4 md:space-y-4">
+                <Form className="space-y-4 md:space-y-6">
                   <div className="input-container">
                     <label
                       htmlFor="email"
@@ -154,8 +153,8 @@ const SellerLogin = () => {
                       className="error-message"
                     />
                   </div>
-                  <div className="flex items-center justify-between forgotPassword">
-                    <div className="flex items-start">
+                  <div className="flex flex-col md:flex-row items-center justify-between forgotPassword gap-4">
+                    <div className="flex items-start w-full md:w-auto">
                       <div className="flex items-center h-5">
                         <input
                           id="remember"
@@ -172,7 +171,7 @@ const SellerLogin = () => {
                     </div>
                     <Link
                       to="#"
-                      className="text-sm font-semibold hover:text-primary-600 text-gray-400 hover:underline"
+                      className="text-sm font-semibold hover:text-primary-600 text-gray-400 hover:underline w-full md:w-auto text-center md:text-left"
                     >
                       Forgot password?
                     </Link>
