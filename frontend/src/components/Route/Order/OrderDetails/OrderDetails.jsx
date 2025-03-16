@@ -8,20 +8,20 @@ import { HiOutlineInformationCircle } from "react-icons/hi2";
 const OrderDetails = ({ data }) => {
   return (
     <>
-      <div className="bg-white p-6 rounded-lg shadow-sm mb-3">
+      <div className="bg-white p-6 rounded-lg shadow-xs mb-3">
         <div className="grid grid-cols-12 rounded-lg border-dashed border border-primary-200">
           <div className="col-span-6 orderDetails-l-wrapper p-5 border-dashed border-r border-primary-200">
             <h1 className="text-lg font-semibold mb-3">Delivery Address</h1>
             <div className="orderDetails-delivery">
               <h3 className="text-sm font-semibold text-gray-900">Ayush</h3>
-              <p className="text-xs text-gray-600 mt-1 mb-3 w-[70%]">
+              <p className="text-[10px] text-gray-600 mt-1 mb-3 w-[70%]">
                 {data.address.street}, {data.address.city}, {data.address.state}{" "}
                 - {data.address.zipCode}, {data.address.country}
               </p>
               <h3 className="text-sm font-semibold text-gray-900">
                 Phone number
               </h3>
-              <p className="text-xs font-normal text-gray-600 mt-1 w-[70%]">
+              <p className="text-[10px] font-normal text-gray-600 mt-1 w-[70%]">
                 9993832158, 0123456789
               </p>
             </div>
@@ -42,7 +42,7 @@ const OrderDetails = ({ data }) => {
                   class="bg-primary-600 hover:bg-primary-700 text-white rounded-md py-1.5 px-5 flex items-center gap-1"
                 >
                   <CgSoftwareDownload className="w-4 h-4" />
-                  <span className="text-white font-normal text-xs">
+                  <span className="text-white font-normal text-[10px]">
                     Download
                   </span>
                 </button>
@@ -52,7 +52,7 @@ const OrderDetails = ({ data }) => {
         </div>
       </div>
       {/*  */}
-      <div className="bg-white p-6 rounded-lg shadow-sm">
+      <div className="bg-white p-6 rounded-lg shadow-xs">
         <div className="grid grid-cols-12 rounded-lg border-dashed border border-primary-200">
           <div className="col-span-6 p-5 border-dashed border-r border-primary-200">
             <div className="flex gap-2">
@@ -67,7 +67,7 @@ const OrderDetails = ({ data }) => {
                 <h3 className="text-sm font-semibold mb-1">
                   {data.product.name}
                 </h3>
-                <p className="text-xs text-[#878787] mb-1">
+                <p className="text-[10px] text-[#878787] mb-1">
                   Color: {data.product.shop.name} | Size:{" "}
                   {data.product.category || "N/A"}
                 </p>
@@ -83,7 +83,7 @@ const OrderDetails = ({ data }) => {
               <p className="text-sm text-gray-400 font-normal mt-3">
                 Return policy ended on Oct 26
               </p>
-              <button className="border border-solid border-primary-200 text-primary-400 rounded-md px-6 py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-xs ease-in-out duration-100 font-semibold">
+              <button className="border border-solid border-primary-200 text-primary-400 rounded-md px-6 py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-[10px] ease-in-out duration-100 font-semibold">
                 Rate & Review Product
               </button>
             </div>
@@ -93,39 +93,39 @@ const OrderDetails = ({ data }) => {
               <div className="bg-gray-200 h-1 flex items-center justify-between mt-8">
                 <div className="w-1/3 bg-green-600 h-1 flex items-center">
                   <div className="flex flex-col items-start">
-                    <p className="text-xs text-green-600 font-semibold mb-2">
+                    <p className="text-[10px] text-green-600 font-semibold mb-2">
                       Order Confirmed
                     </p>
                     <div className="bg-green-600 h-6 w-6 rounded-full shadow flex items-center justify-center">
                       <FaCheck className="w-3 h-3 text-white" />
                     </div>
-                    <p className="text-xs text-gray-600 font-semibold mt-2">
+                    <p className="text-[10px] text-gray-600 font-semibold mt-2">
                       {formatDate(data.confirmedDate)}
                     </p>
                   </div>
                 </div>
                 <div className="w-1/3 bg-green-600 h-1 flex items-center">
                   <div className="flex flex-col items-start">
-                    <p className="text-xs text-green-600 font-semibold mb-2">
+                    <p className="text-[10px] text-green-600 font-semibold mb-2">
                       Shipped
                     </p>
                     <div className="bg-green-600 h-6 w-6 rounded-full shadow flex items-center justify-center">
                       <FaCheck className="w-3 h-3 text-white" />
                     </div>
-                    <p className="text-xs text-gray-600 font-semibold mt-2">
+                    <p className="text-[10px] text-gray-600 font-semibold mt-2">
                       {formatDate(data.shippedDate)}
                     </p>
                   </div>
                 </div>
                 <div className="w-1/3 bg-green-600 h-1 flex items-center">
                   <div className="flex flex-col items-start">
-                    <p className="text-xs text-green-600 font-semibold mb-2">
+                    <p className="text-[10px] text-green-600 font-semibold mb-2">
                       Out for delivery
                     </p>
                     <div className="bg-green-600 h-6 w-6 rounded-full shadow flex items-center justify-center">
                       <FaCheck className="w-3 h-3 text-white" />
                     </div>
-                    <p className="text-xs text-gray-600 font-semibold mt-2">
+                    <p className="text-[10px] text-gray-600 font-semibold mt-2">
                       {formatDate(data.outForDeliveryDate)}
                     </p>
                   </div>

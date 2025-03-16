@@ -53,10 +53,10 @@ const PageSideBar = ({ onApplyFilter }) => {
   ];
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-sm">
+    <div className="bg-white p-4 rounded-lg shadow-xs">
       <div className="PageSideBar-title-wrapper">
         <h1 className="font-bold text-base mb-1 PageSideBar-title">Filters</h1>
-        <p className="font-semibold text-xs mb-3 text-[#8b8ba3] PageSideBar-subtitle">
+        <p className="font-semibold text-[10px] mb-3 text-[#8b8ba3] PageSideBar-subtitle">
           1000+ Products
         </p>
       </div>
@@ -143,7 +143,7 @@ const PageSideBar = ({ onApplyFilter }) => {
                 {selectedCategories.length > 0 && (
                   <div className="w-full flex items-center justify-end">
                     <button
-                      className="text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-normal rounded-lg text-xs px-3 py-1.5"
+                      className="text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-normal rounded-lg text-[10px] px-3 py-1.5"
                       onClick={handleApply}
                     >
                       Apply

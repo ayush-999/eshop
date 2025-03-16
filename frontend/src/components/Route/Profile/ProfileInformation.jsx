@@ -162,7 +162,7 @@ const ProfileInformation = () => {
 
                         {/* Gender */}
                         <div className="input-container mb-4">
-                          <label className="inline-block mb-[20px] text-sm font-semibold text-gray-900">
+                          <label className="inline-block mb-[1.25rem] text-sm font-semibold text-gray-900">
                             Your Gender
                           </label>
                           <div className="flex">

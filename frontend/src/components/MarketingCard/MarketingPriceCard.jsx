@@ -1,14 +1,14 @@
 import "./Marketing.css";
 const MarketingPriceCard = () => {
   return (
-    <div className="bg-primary-100 p-3 rounded-lg shadow-sm flex justify-between items-center">
+    <div className="bg-primary-100 p-3 rounded-lg shadow-xs flex justify-between items-center">
       <div className="marketing-img-wrap flex flex-col justify-center items-center w-40">
         <img
           src="/assets/img/marketing/cod_new.png"
           className="marketing-img-d"
         />
         <div className="marketing-img-t">
-          <span className="text-xs font-semibold">Cash on Delivery</span>
+          <span className="text-[10px] font-semibold">Cash on Delivery</span>
         </div>
       </div>
       <div className="marketing-img-wrap flex flex-col justify-center items-center w-60 border-l border-r border-primary-200">
@@ -17,7 +17,7 @@ const MarketingPriceCard = () => {
           className="marketing-img-d"
         />
         <div className="marketing-img-t">
-          <span className="text-xs font-semibold">Lowest Price</span>
+          <span className="text-[10px] font-semibold">Lowest Price</span>
         </div>
       </div>
       <div className="marketing-img-wrap flex flex-col justify-center items-center w-40">
@@ -26,7 +26,7 @@ const MarketingPriceCard = () => {
           className="marketing-img-d"
         />
         <div className="marketing-img-t">
-          <span className="text-xs font-semibold">7-day Returns</span>
+          <span className="text-[10px] font-semibold">7-day Returns</span>
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@ const ProductDetails = ({ data }) => {
       <div className="grid grid-cols-12 gap-3">
         <div className="col-span-5 productDetails-l-wrapper">
           {/* Image Swiper */}
-          <div className="bg-white p-6 rounded-lg shadow-sm sticky top-16 z-10">
+          <div className="bg-white p-6 rounded-lg shadow-xs sticky top-16 z-10">
             <div className="productDetails-img-wrapper mb-[13px]">
               <div className="productDetails-img-wrap mx-auto relative">
                 <Swiper
@@ -112,7 +112,7 @@ const ProductDetails = ({ data }) => {
 
         <div className="col-span-7 productDetails-r-wrapper">
           <div className="w-full">
-            <div className="bg-white p-6 rounded-lg shadow-sm mb-3">
+            <div className="bg-white p-6 rounded-lg shadow-xs mb-3">
               {/* Product Info */}
               <div className="p-2 border border-dashed border-primary-200 rounded-lg mb-2">
                 <h1
@@ -143,12 +143,12 @@ const ProductDetails = ({ data }) => {
                     <FaStar />
                     <p className="font-semibold">{data.ratings}</p>
                   </div>
-                  <p className="text-[#878787] text-xs font-normal">
+                  <p className="text-[#878787] text-[10px] font-normal">
                     105098 Ratings, 21052 Reviews
                   </p>
                 </div>
                 <div className="flex items-center justify-start gap-2">
-                  <span className="bg-[#f8f8ff] text-[#616173] text-xs font-semibold me-2 px-[10px] py-[4px] rounded-full">
+                  <span className="bg-[#f8f8ff] text-[#616173] text-[10px] font-semibold me-2 px-[10px] py-[4px] rounded-full">
                     Free Delivery
                   </span>
                 </div>
@@ -198,13 +198,13 @@ const ProductDetails = ({ data }) => {
                               {data.shop.name}
                             </h3>
                             <div className="flex items-center justify-start gap-2 mb-3">
-                              <div className="flex items-center justify-start gap-1 bg-primary-600 py-1 px-2 rounded-full text-xs text-white">
+                              <div className="flex items-center justify-start gap-1 bg-primary-600 py-1 px-2 rounded-full text-[10px] text-white">
                                 <FaStar />
                                 <p className="font-semibold">
                                   {data.shop.ratings}
                                 </p>
                               </div>
-                              <p className="text-[#878787] text-xs font-semibold">
+                              <p className="text-[#878787] text-[10px] font-semibold">
                                 105098 Ratings
                               </p>
                             </div>
@@ -248,13 +248,13 @@ const ProductDetails = ({ data }) => {
                             5
                           </p>
                         </div>
-                        <p className="text-xs font-semibold text-[#878787]">
+                        <p className="text-[10px] font-semibold text-[#878787]">
                           72345 global ratings & 21445 Reviews
                         </p>
                       </div>
                       <button
                         type="submit"
-                        className="border border-solid border-primary-200 text-primary-400 rounded-md px-6 py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-xs ease-in-out duration-100 font-semibold"
+                        className="border border-solid border-primary-200 text-primary-400 rounded-md px-6 py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-[10px] ease-in-out duration-100 font-semibold"
                       >
                         Rate Product
                       </button>
@@ -325,7 +325,7 @@ const ProductDetails = ({ data }) => {
                             className="ratings-bottom px-2 py-4 border-b last:border-b-0 border-dashed border-primary-200"
                           >
                             <div className="flex items-start gap-3">
-                              <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
+                              <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-[10px] text-white">
                                 <FaStar className="text-[10px]" />
                                 <p className="text-[10px] font-semibold">
                                   {review.rating}
@@ -342,10 +342,10 @@ const ProductDetails = ({ data }) => {
                                 {review.comment}
                               </h5>
                               <div className="ratings-comment-user-wrap mt-1 flex justify-start gap-2">
-                                <p className="text-xs font-semibold text-gray-500 ">
+                                <p className="text-[10px] font-semibold text-gray-500 ">
                                   {review.user.username}
                                 </p>
-                                <p className="text-xs font-semibold text-gray-500 ">
+                                <p className="text-[10px] font-semibold text-gray-500 ">
                                   {new Date(
                                     review.review_date
                                   ).toLocaleDateString("en-US", {

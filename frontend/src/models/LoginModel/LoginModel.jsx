@@ -65,7 +65,7 @@ const LoginModel = ({ setOpen, switchToRegister }) => {
   return (
     <div className="login-popup">
       <div className="login-overlay">
-        <div className="w-[34%] h-[66vh] bg-white rounded-[.9375rem] shadow-sm relative p-6 overflow-y-scroll">
+        <div className="w-[34%] h-[66vh] bg-white rounded-[.9375rem] shadow-xs relative p-6 overflow-y-scroll">
           <RxCross1 className="login-close" onClick={() => setOpen(false)} />
           <div className="block w-full">
             <h2 className="text-center font-bold text-2xl mb-4">Login</h2>

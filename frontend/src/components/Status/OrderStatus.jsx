@@ -36,12 +36,12 @@ const OrderStatus = ({ status }) => {
               <FaCircleCheck className="text-green-600 text-lg" />
               <h3 className="text-sm font-semibold">
                 <span className="text-green-600 me-2">Refund Completed</span>
-                <span className="text-xs text-[#878787]">
+                <span className="text-[10px] text-[#878787]">
                   (Refund ID : {Math.random().toFixed(10).substr(2, 20)})
                 </span>
               </h3>
             </div>
-            <p className="text-xs text-gray-900">
+            <p className="text-[10px] text-gray-900">
               The money was added to your bank account
             </p>
           </div>
@@ -53,12 +53,12 @@ const OrderStatus = ({ status }) => {
               <FaCircleCheck className="text-green-600 text-lg" />
               <h3 className="text-sm font-semibold">
                 <span className="text-green-600 me-2">Refund Completed</span>
-                <span className="text-xs text-[#878787]">
+                <span className="text-[10px] text-[#878787]">
                   (Refund ID : {randomId(10)})
                 </span>
               </h3>
             </div>
-            <p className="text-xs text-gray-900">
+            <p className="text-[10px] text-gray-900">
               The money was added to your bank account
             </p>
           </div>

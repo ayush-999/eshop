@@ -17,10 +17,12 @@ import OtpModel from "../../../../models/OtpModel/OtpModel";
 const SellerRegister = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [otpLoading, setOtpLoading] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isOtpPopupOpen, setIsOtpPopupOpen] = useState(false);
   const [phoneError, setPhoneError] = useState("");
   const [phoneNumberErrorClass, setPhoneNumberErrorClass] = useState("");
+  const [isPhoneVerified, setIsPhoneVerified] = useState(false); // New state for phone verification
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
@@ -50,15 +52,31 @@ const SellerRegister = () => {
     alert("Clicked");
   };
 
-  const handleSendOtp = () => {
+  const handleSendOtp = async () => {
     const strippedPhoneNumber = phoneNumber.replace(/^\+\d{1,3}/, "").trim();
     if (!strippedPhoneNumber) {
       setPhoneError("Mobile number is required");
       setPhoneNumberErrorClass("phoneNumber-error");
     } else {
+      setOtpLoading(true); // Set loading to true before making the API call
       setPhoneError("");
       setPhoneNumberErrorClass("");
       setIsOtpPopupOpen(true);
+
+      try { 
+        await axios.post(`${server}/seller/send-otp`, {
+          phoneNumber: strippedPhoneNumber,
+        });
+        toast.success("OTP sent successfully");
+      } catch (error) {
+        if (error.response) {
+          toast.error(error.response.data.message || "Failed to send OTP");
+        } else {
+          toast.error("Failed to send OTP");
+        }
+      } finally {
+        setOtpLoading(false); // Set loading to false after the API call is completed
+      }
     }
   };
 
@@ -94,7 +112,7 @@ const SellerRegister = () => {
               >
                 {({ errors, touched, isValid, setFieldValue }) => (
                   <Form className="space-y-4 md:space-y-6">
-                    <div className="input-container c-mb-20">
+                    {/* <div className="input-container c-mb-20">
                       <div className="flex items-center justify-start gap-1 mb-2">
                         <label
                           htmlFor="phoneNumber"
@@ -102,10 +120,12 @@ const SellerRegister = () => {
                         >
                           Enter mobile number
                         </label>
-                        <p className="flex items-center justify-start gap-1 rounded-[5px] border border-dashed border-green-600 py-[1px] px-2 bg-green-50 text-xs ms-2 text-green-600 font-semibold">
-                          <RiVerifiedBadgeFill />
-                          Verified
-                        </p>
+                        {isPhoneVerified && (
+                          <p className="flex items-center justify-start gap-1 rounded-[5px] border border-dashed border-green-600 py-[1px] px-2 bg-green-50 text-[10px] ms-2 text-green-600 font-semibold">
+                            <RiVerifiedBadgeFill />
+                            Verified
+                          </p>
+                        )}
                       </div>
                       <div className="flex flex-col md:flex-row items-center justify-between gap-1">
                         <Field name="phoneNumber">
@@ -113,11 +133,13 @@ const SellerRegister = () => {
                             <PhoneInput
                               {...field} // Spread Formik's field props to PhoneInput
                               value={phoneNumber}
+                              name="phoneNumber"
                               id="phoneNumber"
                               onChange={(value) => {
                                 setPhoneNumber(value);
                                 setFieldValue("phoneNumber", value); // Update Formik state
                                 setPhoneNumberErrorClass(""); // Remove error class when typing
+                                setPhoneError(""); // Clear phone error when typing
                               }}
                               defaultCountry="in"
                               forceDialCode={true}
@@ -133,8 +155,9 @@ const SellerRegister = () => {
                           type="button"
                           onClick={handleSendOtp}
                           className="w-full md:w-auto text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:bg-primary-600 font-semibold rounded-lg text-sm px-[14px] py-[10px] text-center disabled:opacity-70 ease-in-out duration-100 mt-2 md:mt-0"
+                          disabled={otpLoading}
                         >
-                          {loading ? (
+                          {otpLoading ? (
                             <SyncLoader margin={1} size={8} color={"#fff"} />
                           ) : (
                             "Send OTP"
@@ -155,7 +178,7 @@ const SellerRegister = () => {
                           className="error-message bottom-[-1.3rem]"
                         />
                       )}
-                    </div>
+                    </div> */}
 
                     <div className="input-container">
                       <label
@@ -230,7 +253,7 @@ const SellerRegister = () => {
                         "Create Account"
                       )}
                     </button>
-                    <p className="text-xs font-light text-gray-400 text-center">
+                    <p className="text-[10px] font-light text-gray-400 text-center">
                       By clicking you agree to our{" "}
                       <Link to="#" className="text-primary-600 font-normal">
                         {" "}
@@ -247,7 +270,7 @@ const SellerRegister = () => {
                         to="/seller-login"
                         className="font-semibold text-gray-400 hover:text-primary-600 hover:underline ml-1"
                       >
-                        Go to Login
+                        Go to login
                       </Link>
                     </p>
                   </Form>
@@ -258,7 +281,12 @@ const SellerRegister = () => {
         </div>
       </section>
 
-      {isOtpPopupOpen && <OtpModel setOpen={setIsOtpPopupOpen} />}
+      {isOtpPopupOpen && (
+  <OtpModel
+    setOpen={setIsOtpPopupOpen}
+    phoneNumber={phoneNumber.replace(/^\+\d{1,3}/, "").trim()} // Pass stripped phone number
+  />
+)}
     </>
   );
 };

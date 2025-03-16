@@ -62,7 +62,7 @@ const ProfileSideBar = () => {
 
   return (
     <>
-      <div className="bg-white p-4 rounded-lg shadow-sm mb-3 md:block hidden">
+      <div className="bg-white p-4 rounded-lg shadow-xs mb-3 md:block hidden">
         <div className="flex justify-start items-center gap-2 profile-wrapper">
           <img
             src="https://api.dicebear.com/7.x/pixel-art/svg"
@@ -75,10 +75,10 @@ const ProfileSideBar = () => {
         </div>
       </div>
 
-      <div className="bg-white p-4 rounded-lg shadow-sm accordion-wrapper">
+      <div className="bg-white p-4 rounded-lg shadow-xs accordion-wrapper">
         <Link
           to="/account/orders"
-          className={`accordion-btn px-2 py-3 mb-2 border-b w-full accordion-orderBtn ${
+          className={`accordion-btn px-2 py-3 mb-2 border-b border-gray-200 w-full accordion-orderBtn ${
             location.pathname === "/account/orders"
               ? "accordion-orderBtn-active"
               : "text-gray-900"

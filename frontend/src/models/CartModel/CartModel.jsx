@@ -19,7 +19,7 @@ const CartModel = ({ setOpen }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-10 cartWrapper">
-      <div className="fixed top-0 right-0 min-h-full w-[25%] bg-white flex flex-col justify-between p-5 shadow-sm">
+      <div className="fixed top-0 right-0 min-h-full w-[25%] bg-white flex flex-col justify-between p-5 shadow-xs">
         <RxCross1 className="cart-close" onClick={() => setOpen(false)} />
         <div>
           <div className="flex w-full justify-between mt-6 mb-4 cart-top-wrapper">

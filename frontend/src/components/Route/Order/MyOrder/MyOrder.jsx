@@ -100,11 +100,11 @@ const MyOrder = () => {
                                   <h3 className="text-sm font-normal">
                                     {order.product.name}
                                   </h3>
-                                  <p className="text-xs text-[#878787]">
+                                  <p className="text-[10px] text-[#878787]">
                                     Color: {order.product.shop.name} | Size:
                                     {order.product.category || "N/A"}
                                   </p>
-                                  <p className="text-xs text-gray-900">
+                                  <p className="text-[10px] text-gray-900">
                                     ₹ {order.product.price.toLocaleString()}
                                   </p>
                                 </div>
@@ -120,7 +120,7 @@ const MyOrder = () => {
                                           {formatDate(order.deliveredDate)}
                                         </h3>
                                       </div>
-                                      <p className="text-xs text-gray-800">
+                                      <p className="text-[10px] text-gray-800">
                                         Your item has been delivered
                                       </p>
                                     </div>
@@ -133,7 +133,7 @@ const MyOrder = () => {
                                           {formatDate(order.refundDate)}
                                         </h3>
                                       </div>
-                                      <p className="text-xs text-gray-800">
+                                      <p className="text-[10px] text-gray-800">
                                         You requested a cancellation because you
                                         changed your mind about this product.
                                       </p>
@@ -146,7 +146,7 @@ const MyOrder = () => {
                                           Your order is on the way
                                         </h3>
                                       </div>
-                                      <p className="text-xs text-gray-800">
+                                      <p className="text-[10px] text-gray-800">
                                         <span className="font-semibold me-1">
                                           Estimated delivery :
                                         </span>
@@ -162,7 +162,7 @@ const MyOrder = () => {
                                           {formatDate(order.returnDate)}
                                         </h3>
                                       </div>
-                                      <p className="text-xs text-gray-800">
+                                      <p className="text-[10px] text-gray-800">
                                         Your item was successfully returned.
                                       </p>
                                     </div>
@@ -174,7 +174,7 @@ const MyOrder = () => {
                                           Order refund in progress
                                         </h3>
                                       </div>
-                                      <p className="text-xs text-gray-800">
+                                      <p className="text-[10px] text-gray-800">
                                         Your refund is being processed.
                                       </p>
                                     </div>
@@ -186,14 +186,14 @@ const MyOrder = () => {
                                           Order refund failed
                                         </h3>
                                       </div>
-                                      <p className="text-xs text-gray-800">
+                                      <p className="text-[10px] text-gray-800">
                                         Your refund request has failed.
                                       </p>
                                     </div>
                                   )}
                                 </div>
                                 {order.status === "delivered" && (
-                                  <button className="border border-solid border-primary-200 text-primary-400 rounded-md px-6 py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-xs ease-in-out duration-100 font-semibold">
+                                  <button className="border border-solid border-primary-200 text-primary-400 rounded-md px-6 py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-[10px] ease-in-out duration-100 font-semibold">
                                     Rate & Review Product
                                   </button>
                                 )}

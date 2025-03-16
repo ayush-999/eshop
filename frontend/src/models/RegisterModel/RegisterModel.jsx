@@ -80,7 +80,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
   return (
     <div className="register-popup">
       <div className="register-overlay">
-        <div className="w-[34%] h-[98vh] bg-white rounded-[.9375rem] shadow-sm relative p-6 overflow-y-scroll">
+        <div className="w-[34%] h-[98vh] bg-white rounded-[.9375rem] shadow-xs relative p-6 overflow-y-scroll">
           <RxCross1 className="register-close" onClick={() => setOpen(false)} />
           <div className="block w-full">
             <h2 className="text-center font-bold text-2xl mb-2">Register</h2>
@@ -142,7 +142,6 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                       className="error-message"
                     />
                   </div>
-
                   {/* Mobile Number Field */}
                   <div className="input-container c-mb-16">
                     <label

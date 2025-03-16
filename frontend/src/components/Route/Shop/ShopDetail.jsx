@@ -14,7 +14,7 @@ const ShopDetail = ({ data }) => {
     <>
       <div className="grid grid-cols-12 gap-3">
         <div className="col-span-3">
-          <div className="bg-white shadow-sm rounded-lg sticky top-16 z-10 mb-2">
+          <div className="bg-white shadow-xs rounded-lg sticky top-16 z-10 mb-2">
             <div className="shopDetails-info-wrapper">
               <img
                 src="/assets/img/shop/shop-cover.png"
@@ -32,17 +32,17 @@ const ShopDetail = ({ data }) => {
                   </h1>
                   <div className="text-sm text-gray-500 mt-1">
                     <div className="flex items-center justify-start gap-2 mb-3">
-                      <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
+                      <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-[10px] text-white">
                         <FaStar className="text-[10px]" />
                         <p className="text-[10px] font-semibold">
                           {shop.ratings || "N/A"}
                         </p>
                       </div>
-                      <p className="text-[#878787] text-xs font-normal">
+                      <p className="text-[#878787] text-[10px] font-normal">
                         105098 Ratings
                       </p>
                       <div className="rating-separator"></div>
-                      <p className="text-gray-900 text-xs font-semibold">
+                      <p className="text-gray-900 text-[10px] font-semibold">
                         <span className="text-gray-900 text-sm">48</span>
                         <span className="text-[#878787]"> Products</span>
                       </p>
@@ -54,7 +54,7 @@ const ShopDetail = ({ data }) => {
           </div>
         </div>
         <div className="col-span-9">
-          <div className="bg-white shadow-sm rounded-lg">
+          <div className="bg-white shadow-xs rounded-lg">
             <div className="shopDetails-wrapper p-6">
               {/* Rating */}
               <div className="shopDetails-review border border-dashed border-primary-200 rounded-lg">
@@ -83,7 +83,7 @@ const ShopDetail = ({ data }) => {
                             5
                           </p>
                         </div>
-                        <p className="text-xs font-semibold text-[#878787]">
+                        <p className="text-[10px] font-semibold text-[#878787]">
                           72345 global ratings & 21445 Reviews
                         </p>
                       </div>
@@ -154,7 +154,7 @@ const ShopDetail = ({ data }) => {
                             className="ratings-bottom px-2 py-4 border-b last:border-b-0 border-dashed border-primary-200"
                           >
                             <div className="flex items-start gap-3">
-                              <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-xs text-white">
+                              <div className="flex items-center justify-start gap-1 bg-primary-600 py-[2px] px-2 rounded-full text-[10px] text-white">
                                 <FaStar className="text-[10px]" />
                                 <p className="text-[10px] font-semibold">
                                   {review.rating}
@@ -171,10 +171,10 @@ const ShopDetail = ({ data }) => {
                                 {review.comment}
                               </h5>
                               <div className="ratings-comment-user-wrap mt-1 flex justify-start gap-2">
-                                <p className="text-xs font-semibold text-gray-500 ">
+                                <p className="text-[10px] font-semibold text-gray-500 ">
                                   {review.user.username}
                                 </p>
-                                <p className="text-xs font-semibold text-gray-500 ">
+                                <p className="text-[10px] font-semibold text-gray-500 ">
                                   {new Date(
                                     review.review_date
                                   ).toLocaleDateString("en-US", {

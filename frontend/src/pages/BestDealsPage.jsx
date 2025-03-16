@@ -42,7 +42,7 @@ const BestDealsPage = () => {
             </div>
           </div>
           <div className="col-span-9 dealsPage-wrapper">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-xs">
               <div className="flex justify-between items-center mb-5">
                 <h1 className="font-bold text-base">Best Deals</h1>
               </div>

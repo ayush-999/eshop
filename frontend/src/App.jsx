@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Store from "./redux/store";
-import { loadUser } from "./redux/action/user";
+import { loadUser, loadSeller } from "./redux/action/user";
 import { useSelector } from "react-redux";
 // Routes
 import {
@@ -51,6 +51,7 @@ const App = () => {
 
   useEffect(() => {
     Store.dispatch(loadUser());
+    Store.dispatch(loadSeller());
   }, []);
 
   return (
@@ -64,6 +65,7 @@ const App = () => {
             {/* TODO: ise seller"sign-in" aur "sign-up" route bnne ke ise bd badlna hai 👇 */}
             <Route path="/seller-login" element={<SellerLoginPage />} />
             <Route path="/seller-register" element={<SellerRegisterPage />} />
+            
             {/* ------------------------------------------------------------------- */}
             <Route
               path="/activation/:activation_token"

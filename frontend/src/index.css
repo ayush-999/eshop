@@ -1,16 +1,53 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
+
+@import "tailwindcss";
+
+@theme{
+  --font-Poppins: Poppins;
+  /* primary */
+  --color-primary-0: #F6F9FF;
+  --color-primary-10: #F4F8FF;
+  --color-primary-20: #F3F7FF;
+  --color-primary-30: #F1F6FF;
+  --color-primary-40: #EFF5FF;
+  --color-primary-50: #eef4ff;
+  --color-primary-100: #e1eafe;
+  --color-primary-200: #c9d8fc;
+  --color-primary-300: #a7bffa;
+  --color-primary-400: #849bf5;
+  --color-primary-500: #6778ed;
+  --color-primary-600: #4a51e1;
+  --color-primary-700: #3c40c6;
+  --color-primary-800: #3c40c6;
+  --color-primary-900: #30357f;
+  --color-primary-950: #1c1e4a;
+
+  /* error */
+  --color-error-10: #FFF5F7;
+  --color-error-20: #FFF3F5;
+  --color-error-30: #FFF1F3;
+  --color-error-40: #FFEDF0;
+  --color-error-50: #fff0f3;
+  --color-error-100: #ffdee4;
+  --color-error-200: #ffc2ce;
+  --color-error-300: #ff98ac;
+  --color-error-400: #ff5c7b;
+  --color-error-500: #ff2952;
+  --color-error-600: #f80a37;
+  --color-error-650: #dc2626;
+  --color-error-700: #e5042f;
+  --color-error-800: #ad0727;
+  --color-error-900: #8e0e26;
+  --color-error-950: #4e0110;
+}
 
 * {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Roboto", sans-serif;
   background: rgb(243 244 246);
   scroll-behavior: smooth;
   font-size: 15px;
@@ -45,6 +82,10 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+button{
+  cursor: pointer;
 }
 
 /* Hide scrollbar track */

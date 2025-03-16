@@ -32,7 +32,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
     <div className="pcarddetails-popup">
       {data ? (
         <div className="pcarddetails-overlay">
-          <div className="w-[90%] 800px:w-[60%] h-[90vh] 800px:h-[75vh] bg-white rounded-lg shadow-sm relative p-8 overflow-y-scroll">
+          <div className="w-[60%] bg-white rounded-lg shadow-xs relative p-8 overflow-y-scroll">
             <RxCross1 className="close-icon" onClick={() => setOpen(false)} />
             <div className="block w-full">
               <div className="grid grid-cols-12 gap-3">
@@ -167,12 +167,12 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                           <FaStar />
                           <p className="font-semibold">{data.ratings}</p>
                         </div>
-                        <p className="text-[#878787] text-xs font-normal">
+                        <p className="text-[#878787] text-[10px] font-normal">
                           105098 Ratings, 21052 Reviews
                         </p>
                       </div>
                       <div className="flex items-center justify-start gap-2">
-                        <span className="bg-[#f8f8ff] text-[#616173] text-xs font-semibold me-2 px-[10px] py-[4px] rounded-full">
+                        <span className="bg-[#f8f8ff] text-[#616173] text-[10px] font-semibold me-2 px-[10px] py-[4px] rounded-full">
                           Free Delivery
                         </span>
                       </div>

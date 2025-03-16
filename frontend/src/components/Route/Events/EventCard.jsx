@@ -48,7 +48,7 @@ const EventCard = () => {
           </div>
           <div className="flex items-center justify-start gap-2 mb-2">
             <Countdown />
-            <span className="bg-[#f8f8ff] text-[#616173] text-xs font-semibold me-2 px-[10px] py-[4px] rounded-full">
+            <span className="bg-[#f8f8ff] text-[#616173] text-[10px] font-semibold me-2 px-[10px] py-[4px] rounded-full">
               Free Delivery
             </span>
           </div>

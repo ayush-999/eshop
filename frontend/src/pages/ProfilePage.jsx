@@ -15,7 +15,7 @@ const ProfilePage = () => {
             </div>
           </div>
           <div className="col-span-9">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-xs">
               <Outlet />
             </div>
           </div>

@@ -24,7 +24,7 @@ const FeaturedProduct = () => {
   };
   return (
     <>
-      <div className="bg-white p-6 rounded-lg shadow-sm mb-6" id="featuredProduct">
+      <div className="bg-white p-6 rounded-lg shadow-xs mb-6" id="featuredProduct">
         <div className="flex justify-between items-center mb-5">
           <h1 className="font-bold text-base">Featured Product</h1>
         </div>

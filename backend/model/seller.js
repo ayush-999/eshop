@@ -2,10 +2,17 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const userSchema = new mongoose.Schema({
-  name: {
+const sellerSchema = new mongoose.Schema({
+  shopName: {
     type: String,
     required: [true, "Please enter your name!"],
+  },
+  sellerName: {
+    type: String,
+    required: [true, "Please enter your name!"],
+  },
+  establishmentDate: {
+    type: Date,
   },
   email: {
     type: String,
@@ -30,17 +37,17 @@ const userSchema = new mongoose.Schema({
   status: {
     type: String,
     enum: ["active", "inactive", "suspended"],
-    default: "active",
+    default: "inactive",
   },
   addresses: [
     {
       addressType: {
         type: String,
       },
-      name: {
+      sellerName: {
         type: String,
       },
-      userPhone: {
+      sellerPhone: {
         type: Number,
       },
       country: {
@@ -49,7 +56,7 @@ const userSchema = new mongoose.Schema({
       state: {
         type: String,
       },
-      userAddress: {
+      sellerAddress: {
         type: String,
       },
       city: {
@@ -61,7 +68,7 @@ const userSchema = new mongoose.Schema({
       landmark: {
         type: String,
       },
-      userAlternatePhone: {
+      sellerAlternatePhone: {
         type: Number,
       },
       isDefault: {
@@ -73,13 +80,13 @@ const userSchema = new mongoose.Schema({
   ],
   role: {
     type: String,
-    default: "user",
+    default: "seller",
   },
-  avatar: {
+  sellerLogo: {
     type: String,
     default: null,
   },
-  // avatar: {
+  // sellerLogo: {
   //    public_id: {
   //       type: String,
   //       required: true,
@@ -89,6 +96,55 @@ const userSchema = new mongoose.Schema({
   //       required: true,
   //    },
   // },
+  gstNumber: {
+    type: String,
+    unique: true,
+  },
+  panNumber: {
+    type: String,
+    unique: true,
+  },
+  aadharNumber: {
+    type: String,
+    unique: true,
+  },
+  sellerActLicense: {
+    type: String,
+    unique: true,
+  },
+  tradeLicense: {
+    type: String,
+    unique: true,
+  },
+  fssaiLicense: {
+    type: String,
+    unique: true,
+  },
+  otherLicense: {
+    type: String,
+  },
+  bankDetails: [
+    {
+      bankName: {
+        type: String,
+        unique: true,
+      },
+      accountNumber: {
+        type: Number,
+        unique: true,
+      },
+      ifscCode: {
+        type: String,
+      },
+      branchName: {
+        type: String,
+      },
+      accountType: {
+        type: String,
+        enum: ["savings", "current"],
+      },
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now(),
@@ -102,10 +158,15 @@ const userSchema = new mongoose.Schema({
   activationExpires: {
     type: Date,
   },
+  isPhoneVerified: {
+    type: Number,
+    enum: [0, 1], // 0 = Not verified, 1 = Verified
+    default: 0,
+  },
 });
 
 //  Hash password
-userSchema.pre("save", async function (next) {
+sellerSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
@@ -114,15 +175,15 @@ userSchema.pre("save", async function (next) {
 });
 
 // jwt token
-userSchema.methods.getJwtToken = function () {
+sellerSchema.methods.getJwtToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
     expiresIn: process.env.JWT_EXPIRES,
   });
 };
 
 // compare password
-userSchema.methods.comparePassword = async function (enteredPassword) {
+sellerSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Seller", sellerSchema);

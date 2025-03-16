@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
@@ -25,8 +25,10 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 // import routes
 const user = require("./controller/user");
+const seller = require("./controller/seller");
 
 app.use("/api/v2/user", user);
+app.use("/api/v2/seller", seller);
 
 // it's for ErrorHandling
 app.use(ErrorHandler);

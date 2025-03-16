@@ -76,7 +76,7 @@ const Wishlist = () => {
                           <FaStar />
                           <p className="font-semibold">{item.ratings}</p>
                         </div>
-                        <p className="text-[#878787] text-xs font-normal">
+                        <p className="text-[#878787] text-[10px] font-normal">
                           105098 Ratings, 21052 Reviews
                         </p>
                       </div>

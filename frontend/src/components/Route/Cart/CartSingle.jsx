@@ -15,7 +15,7 @@ const CartSingle = ({ data }) => {
   const product_name = pName.toLowerCase().replace(/\s+/g, "-");
   return (
     <>
-      <div className="border-b p-4 relative">
+      <div className="border-b border-gray-200 p-4 relative">
         <div className="w-full flex gap-3 items-start justify-start prevent-select">
           <div className="text-center">
             <div

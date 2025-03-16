@@ -5,7 +5,7 @@ const Branding = () => {
     <>
       <div className="hidden sm:block">
         <div
-          className={`branding mb-6 flex justify-between w-full shadow-sm bg-white p-5 rounded-lg`}
+          className={`branding mb-6 flex justify-between w-full shadow-xs bg-white p-5 rounded-lg`}
         >
           {brandingData &&
             brandingData.map((data, index) => (
@@ -15,7 +15,7 @@ const Branding = () => {
                   <h3 className="font-bold text-sm md:text-base">
                     {data.title}
                   </h3>
-                  <p className="text-xs md:text-sm">{data.Description}</p>
+                  <p className="text-[10px] md:text-sm">{data.Description}</p>
                 </div>
               </div>
             ))}

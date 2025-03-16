@@ -9,7 +9,7 @@ const Events = () => {
       <div className="grid grid-cols-12 gap-3 mb-6">
         <div className="col-span-4">
           <div
-            className="bg-white p-6 rounded-lg shadow-sm"
+            className="bg-white p-6 rounded-lg shadow-xs"
             id="popularEvents"
           >
             <div className="flex justify-between items-center mb-5">
@@ -20,7 +20,7 @@ const Events = () => {
         </div>
         <div className="col-span-8">
           <div
-            className="bg-white p-6 rounded-lg shadow-sm"
+            className="bg-white p-6 rounded-lg shadow-xs"
             id="popularEvents"
           >
             <div className="flex justify-between items-center mb-5">

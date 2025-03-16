@@ -243,7 +243,7 @@ const ManageAddresses = () => {
                                     type="text"
                                     name="name"
                                     id="name"
-                                    className={`bg-gray-50 border text-gray-900 rounded-lg block w-full p-3 text-sm`}
+                                    className={`bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-3 text-sm`}
                                     placeholder="Enter full name"
                                     required
                                   />
@@ -287,7 +287,7 @@ const ManageAddresses = () => {
                                     type="text"
                                     name="country"
                                     id="country"
-                                    className={`bg-gray-50 border text-gray-900 rounded-lg block w-full p-3 text-sm`}
+                                    className={`bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-3 text-sm`}
                                     placeholder="Country"
                                     required
                                   />
@@ -307,7 +307,7 @@ const ManageAddresses = () => {
                                     type="text"
                                     name="state"
                                     id="state"
-                                    className={`bg-gray-50 border text-gray-900 rounded-lg block w-full p-3 text-sm`}
+                                    className={`bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-3 text-sm`}
                                     placeholder="State"
                                     required
                                   />
@@ -329,7 +329,7 @@ const ManageAddresses = () => {
                                     name="userAddress"
                                     id="userAddress"
                                     rows="2"
-                                    className={`bg-gray-50 border text-gray-900 rounded-lg block w-full p-3 text-sm`}
+                                    className={`bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-3 text-sm`}
                                     placeholder="Address (Area and Street)"
                                     required
                                   />
@@ -349,7 +349,7 @@ const ManageAddresses = () => {
                                     type="text"
                                     name="city"
                                     id="city"
-                                    className={`bg-gray-50 border text-gray-900 rounded-lg block w-full p-3 text-sm`}
+                                    className={`bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-3 text-sm`}
                                     placeholder="City/District/Town"
                                     required
                                   />
@@ -369,7 +369,7 @@ const ManageAddresses = () => {
                                     type="text"
                                     name="pincode"
                                     id="pincode"
-                                    className={`bg-gray-50 border text-gray-900 rounded-lg block w-full p-3 text-sm`}
+                                    className={`bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-3 text-sm`}
                                     placeholder="Pincode"
                                     required
                                   />
@@ -388,7 +388,7 @@ const ManageAddresses = () => {
                                     type="text"
                                     name="landmark"
                                     id="landmark"
-                                    className={`bg-gray-50 border text-gray-900 rounded-lg block w-full p-3 text-sm`}
+                                    className={`bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-3 text-sm`}
                                     placeholder="Landmark (Optional)"
                                   />
                                 </div>
@@ -426,7 +426,7 @@ const ManageAddresses = () => {
                                       name="isDefault"
                                       id="isDefault"
                                       checked={values.isDefault}
-                                      className={`bg-gray-50 border text-gray-900 block checked:bg-primary-600 checked:border-primary-600 checked:text-white p-3 text-sm rounded-lg custom-checkbox`}
+                                      className={`bg-gray-50 border border-gray-300 text-gray-900 block checked:bg-primary-600 checked:border border-gray-300-primary-600 checked:text-white p-3 text-sm rounded-lg custom-checkbox`}
                                     />
                                     <label
                                       htmlFor="isDefault"
@@ -473,19 +473,19 @@ const ManageAddresses = () => {
                   </div>
                 )}
               </div>
-              <div className="address-wrapper rounded-lg border border-dashed border-primary-200">
+              <div className="address-wrapper rounded-lg border border-gray-300 border border-gray-300-dashed border border-gray-300-primary-200">
                 {addresses && addresses.length > 0 ? (
                   addresses.map((address, index) => (
                     <div
                       key={address._id}
-                      className="address-view-wrap border-b border-dashed last:border-b-0 border-primary-200 relative"
+                      className="address-view-wrap border border-gray-300-b border border-gray-300-dashed last:border border-gray-300-b-0 border border-gray-300-primary-200 relative"
                     >
                       <div className="address-view-item p-5">
-                        <div className="bg-primary-600 text-white py-1 px-3 rounded-[.25rem] inline-block text-xs font-semibold capitalize mb-2 mr-2">
+                        <div className="bg-primary-600 text-white py-1 px-3 rounded-[.25rem] inline-block text-[10px] font-semibold capitalize mb-2 mr-2">
                           {address.addressType}
                         </div>
                         {address.isDefault === 1 && (
-                          <div className="bg-primary-100 py-1 px-3 rounded-[.25rem] inline-block text-primary-600 text-xs font-semibold capitalize mb-2 ">
+                          <div className="bg-primary-100 py-1 px-3 rounded-[.25rem] inline-block text-primary-600 text-[10px] font-semibold capitalize mb-2 ">
                             Default
                           </div>
                         )}

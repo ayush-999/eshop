@@ -10,37 +10,22 @@ const jwt = require("jsonwebtoken");
 const sendMailForActivationUrl = require("../utils/Emails/sendMailForActivationUrl");
 const sendToken = require("../utils/jwtToken");
 const { isAuthenticated } = require("../middleware/auth");
-
+ 
 // Create User
-router.post("/create-user", upload.single("file"), async (req, res, next) => {
+router.post("/create-user", async (req, res, next) => {
   try {
     const { name, email, userMobile, password } = req.body;
     const userEmail = await User.findOne({ email });
+
     if (userEmail) {
-      if (req.file) {
-        const filename = req.file.filename;
-        const filePath = `uploads/${filename}`;
-        fs.unlink(filePath, (err) => {
-          if (err) {
-            console.log(err);
-            return res.status(500).json({ message: "Error deleting file" });
-          } else {
-            console.log("File deleted successfully");
-          }
-        });
-      }
       return next(new ErrorHandler("User already exists", 400));
     }
-
-    const filename = req.file ? req.file.filename : null;
-    const fileUrl = filename ? path.join(filename) : null;
 
     const user = new User({
       name,
       email,
       phoneNumber: userMobile,
       password,
-      avatar: fileUrl,
     });
 
     const activationToken = createActivationToken(user);
@@ -60,18 +45,6 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
       return next(new ErrorHandler(error.message, 500));
     }
   } catch (err) {
-    if (req.file) {
-      const filename = req.file.filename;
-      const filePath = `uploads/${filename}`;
-      fs.unlink(filePath, (err) => {
-        if (err) {
-          console.log(err);
-          return res.status(500).json({ message: "Error deleting file" });
-        } else {
-          console.log("File deleted successfully");
-        }
-      });
-    }
     next(new ErrorHandler(err.message, 400));
   }
 });
@@ -84,13 +57,11 @@ const createActivationToken = (user) => {
     email: user.email,
     password: user.password,
     phoneNumber: user.phoneNumber,
-    avatar: user.avatar,
   };
   return jwt.sign(payload, process.env.ACTIVATION_SECRET, {
     expiresIn: "5m",
   });
 };
-
 // activate user
 router.post(
   "/activation",

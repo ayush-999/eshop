@@ -24,7 +24,7 @@ const CartDetails = ({ data }) => {
         <div className="grid grid-cols-12 gap-3">
           <div className="col-span-8">
             <div className="w-full">
-              <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="bg-white p-6 rounded-lg shadow-xs">
                 <div className="flex justify-start items-center mb-5">
                   <h1 className="text-gray-900 text-lg font-semibold">
                     Cart Details
@@ -43,12 +43,12 @@ const CartDetails = ({ data }) => {
                             {defaultAddress.pincode}
                           </span>
                         </h1>
-                        <div className="bg-primary-100 py-1 px-3 rounded-[.25rem] inline-block text-primary-600 text-xs font-semibold capitalize">
+                        <div className="bg-primary-100 py-1 px-3 rounded-[.25rem] inline-block text-primary-600 text-[10px] font-semibold capitalize">
                           {defaultAddress.addressType}
                         </div>
                       </div>
                       <div className="address-head-button">
-                        <button className="border border-solid border-primary-200 text-primary-400 rounded-md px-6 py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-xs ease-in-out duration-100 font-semibold">
+                        <button className="border border-solid border-primary-200 text-primary-400 rounded-md px-6 py-2 bg-transparent hover:bg-primary-600 hover:text-white outline-none focus:outline-none text-[10px] ease-in-out duration-100 font-semibold">
                           Change
                         </button>
                       </div>
@@ -95,7 +95,7 @@ const CartDetails = ({ data }) => {
                                     {item.ratings}
                                   </p>
                                 </div>
-                                <p className="text-[#878787] text-xs font-normal">
+                                <p className="text-[#878787] text-[10px] font-normal">
                                   105098 Ratings, 21052 Reviews
                                 </p>
                               </div>
@@ -127,7 +127,7 @@ const CartDetails = ({ data }) => {
                             <div className="col-span-12">
                               <div className="flex items-center justify-start gap-10">
                                 <div className="cart-quantity flex gap-2 items-center">
-                                  <button className="cart-quantity-btn bg-primary-100 hover:bg-primary-600 hover:text-white p-2 rounded-full transition-all inline-block text-primary-600 text-xs font-semibold capitalize">
+                                  <button className="cart-quantity-btn bg-primary-100 hover:bg-primary-600 hover:text-white p-2 rounded-full transition-all inline-block text-primary-600 text-[10px] font-semibold capitalize">
                                     <HiOutlineMinus className="size-3" />
                                   </button>
                                   <div className="input-container">
@@ -137,11 +137,11 @@ const CartDetails = ({ data }) => {
                                       value="1"
                                     />
                                   </div>
-                                  <button className="cart-quantity-btn bg-primary-100 hover:bg-primary-600 hover:text-white p-2 rounded-full transition-all inline-block text-primary-600 text-xs font-semibold capitalize">
+                                  <button className="cart-quantity-btn bg-primary-100 hover:bg-primary-600 hover:text-white p-2 rounded-full transition-all inline-block text-primary-600 text-[10px] font-semibold capitalize">
                                     <HiPlus className="size-3" />
                                   </button>
                                 </div>
-                                <button className="cart-remove bg-error-50 hover:bg-error-800 hover:text-white px-5 py-2 rounded-md transition-all inline-block text-error-800 text-xs font-semibold capitalize">
+                                <button className="cart-remove bg-error-50 hover:bg-error-800 hover:text-white px-5 py-2 rounded-md transition-all inline-block text-error-800 text-[10px] font-semibold capitalize">
                                   Remove
                                 </button>
                               </div>
@@ -177,7 +177,7 @@ const CartDetails = ({ data }) => {
           </div>
           <div className="col-span-4">
             <div className="w-full">
-              <div className="bg-white p-6 rounded-lg shadow-sm">
+              <div className="bg-white p-6 rounded-lg shadow-xs">
                 <div className="flex justify-start items-center mb-5">
                   <h1 className="text-gray-900 text-lg font-semibold">
                     Price Details

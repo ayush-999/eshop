@@ -16,7 +16,7 @@ const EventsPage = () => {
           </div>
           <div className="col-span-9 dealsPage-wrapper">
             <div
-              className="bg-white p-6 rounded-lg shadow-sm"
+              className="bg-white p-6 rounded-lg shadow-xs"
               id="popularEvents"
             >
               <EventCard />

@@ -110,7 +110,7 @@ const Header = () => {
     if (searchTerm.trim() === "") {
       return (
         <>
-          <li className="py-2 px-2 text-gray-500 font-semibold text-xs mb- flex items-center justify-start gap-2">
+          <li className="py-2 px-2 text-gray-500 font-semibold text-[10px] mb- flex items-center justify-start gap-2">
             Discover More
           </li>
           {topSearches.map((search, index) => (
@@ -178,7 +178,7 @@ const Header = () => {
     <>
       <header
         className={`bg-white border-gray-200 main-navbar fixed w-full top-0 ${
-          isScrolled ? "shadow-sm z-50" : ""
+          isScrolled ? "shadow-xs z-50" : ""
         }`}
       >
         <div className="flex flex-wrap justify-between items-center mx-auto sm:max-w-screen-xl sm:py-2 sm:px-0 py-2 px-2">
@@ -194,7 +194,7 @@ const Header = () => {
               <FiSearch className="text-gray-500" />
             </div>
             <input
-              className="bg-transparent font-normal text-sm border-l pl-3 pr-3 w-full"
+              className="bg-transparent font-normal text-sm border-l border-gray-300 pl-3 pr-3 w-full"
               type="text"
               id="search-input"
               value={searchTerm}

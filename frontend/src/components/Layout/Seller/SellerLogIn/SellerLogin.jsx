@@ -193,7 +193,7 @@ const SellerLogin = () => {
                       to="/seller-register"
                       className="font-semibold text-gray-400 hover:text-primary-600 hover:underline ml-1"
                     >
-                      Register
+                      Go to register
                     </Link>
                   </p>
                 </Form>
