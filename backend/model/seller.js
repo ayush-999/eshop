@@ -5,11 +5,9 @@ const jwt = require("jsonwebtoken");
 const sellerSchema = new mongoose.Schema({
   shopName: {
     type: String,
-    required: [true, "Please enter your name!"],
   },
   sellerName: {
     type: String,
-    required: [true, "Please enter your name!"],
   },
   establishmentDate: {
     type: Date,
@@ -32,7 +30,6 @@ const sellerSchema = new mongoose.Schema({
   phoneNumber: {
     type: Number,
     unique: true,
-    required: [true, "Please enter your phone number!"],
   },
   status: {
     type: String,
@@ -159,9 +156,8 @@ const sellerSchema = new mongoose.Schema({
     type: Date,
   },
   isPhoneVerified: {
-    type: Number,
-    enum: [0, 1], // 0 = Not verified, 1 = Verified
-    default: 0,
+    type: Boolean,
+    default: false,
   },
 });
 

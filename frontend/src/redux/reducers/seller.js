@@ -21,7 +21,7 @@ export const sellerReducer = createReducer(initialState, (builder) => {
     .addCase("LoadSellerFail", (state, action) => {
       state.loading = false;
       state.error = action.payload;
-      state.isAuthenticated = false; 
+      state.isAuthenticated = false;
     })
     .addCase("LOGOUT_SELLER", (state) => {
       state.isAuthenticated = false;

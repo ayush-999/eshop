@@ -262,7 +262,7 @@ const RegisterModel = ({ setOpen, switchToLogin }) => {
                     <div className="divider">OR</div>
                     <button
                       type="button"
-                      className="w-full text-gray-500 bg-white hover:bg-gray-100 border border-button-border-light font-semibold rounded-lg text-sm px-5 py-2.5 text-center ease-in-out duration-100 flex gap-2 justify-center items-center"
+                      className="w-full text-gray-500 bg-white hover:bg-gray-100 border border-gray-200 border-button-border-light font-semibold rounded-lg text-sm px-5 py-2.5 text-center ease-in-out duration-100 flex gap-2 justify-center items-center"
                     >
                       <img
                         src="/public/assets/img/google.svg"

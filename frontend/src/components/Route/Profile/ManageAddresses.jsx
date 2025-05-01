@@ -473,12 +473,12 @@ const ManageAddresses = () => {
                   </div>
                 )}
               </div>
-              <div className="address-wrapper rounded-lg border border-gray-300 border border-gray-300-dashed border border-gray-300-primary-200">
+              <div className="address-wrapper rounded-lg border border-dashed border-primary-200">
                 {addresses && addresses.length > 0 ? (
                   addresses.map((address, index) => (
                     <div
                       key={address._id}
-                      className="address-view-wrap border border-gray-300-b border border-gray-300-dashed last:border border-gray-300-b-0 border border-gray-300-primary-200 relative"
+                      className="address-view-wrap border-b border-dashed last:border-b-0 border-primary-200 relative"
                     >
                       <div className="address-view-item p-5">
                         <div className="bg-primary-600 text-white py-1 px-3 rounded-[.25rem] inline-block text-[10px] font-semibold capitalize mb-2 mr-2">

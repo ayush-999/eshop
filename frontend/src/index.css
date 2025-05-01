@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap");
 
 @import "tailwindcss";
 
-@theme{
+@theme {
   --font-Poppins: Poppins;
   /* primary */
-  --color-primary-0: #F6F9FF;
-  --color-primary-10: #F4F8FF;
-  --color-primary-20: #F3F7FF;
-  --color-primary-30: #F1F6FF;
-  --color-primary-40: #EFF5FF;
+  --color-primary-0: #f6f9ff;
+  --color-primary-10: #f4f8ff;
+  --color-primary-20: #f3f7ff;
+  --color-primary-30: #f1f6ff;
+  --color-primary-40: #eff5ff;
   --color-primary-50: #eef4ff;
   --color-primary-100: #e1eafe;
   --color-primary-200: #c9d8fc;
@@ -23,10 +23,10 @@
   --color-primary-950: #1c1e4a;
 
   /* error */
-  --color-error-10: #FFF5F7;
-  --color-error-20: #FFF3F5;
-  --color-error-30: #FFF1F3;
-  --color-error-40: #FFEDF0;
+  --color-error-10: #fff5f7;
+  --color-error-20: #fff3f5;
+  --color-error-30: #fff1f3;
+  --color-error-40: #ffedf0;
   --color-error-50: #fff0f3;
   --color-error-100: #ffdee4;
   --color-error-200: #ffc2ce;
@@ -84,7 +84,7 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-button{
+button {
   cursor: pointer;
 }
 
@@ -230,7 +230,7 @@ button{
 }
 
 .c-mb-22 {
-  margin-bottom: 20px !important;
+  margin-bottom: 22px !important;
 }
 
 .c-mb-30 {

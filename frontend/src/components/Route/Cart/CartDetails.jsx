@@ -133,7 +133,7 @@ const CartDetails = ({ data }) => {
                                   <div className="input-container">
                                     <input
                                       type="text"
-                                      className="cart-quantity-input bg-gray-50 border text-gray-900 rounded-lg block w-10 p-2 disabled:bg-gray-100 disabled:text-gray-500 text-center"
+                                      className="cart-quantity-input bg-gray-50 border border-primary-200 text-gray-900 rounded-lg block w-10 p-2 disabled:bg-gray-100 disabled:text-gray-500 text-center"
                                       value="1"
                                     />
                                   </div>
@@ -212,7 +212,7 @@ const CartDetails = ({ data }) => {
                       <p className="text-sm font-normal">Platform Fee</p>
                       <p className="text-sm font-semibold">₹9</p>
                     </div>
-                    <hr className="my-3" />
+                    <hr className="my-3 border-primary-200" />
                     <div className="flex justify-between items-center mb-3">
                       <p className="text-base font-semibold">Total Amount</p>
                       <p className="text-base font-semibold">

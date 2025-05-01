@@ -2,6 +2,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./SellerLogin.css";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -10,11 +11,14 @@ import { SyncLoader } from "react-spinners";
 import { TypeAnimation } from "react-type-animation";
 import { server } from "../../../../server";
 import { toast } from "react-toastify";
+import { loadSeller } from "../../../../redux/action/user";
 
 const SellerLogin = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { seller } = useSelector((state) => state.seller);
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
@@ -34,34 +38,71 @@ const SellerLogin = () => {
     password: "",
   };
 
-  // TODO: need to change to seller abhi ye user ke liye chal raha hain
   const handleSubmit = async (values) => {
     setLoading(true);
-    axios
-      .post(`${server}/user/login-user`, values, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        toast.success("Login Success!");
-        navigate("/");
-        window.location.reload();
-      })
-      .catch((err) => {
-        if (err.response && err.response.data && err.response.data.message) {
-          toast.error(err.response.data.message);
-          console.log(err);
-        } else {
-          toast.error("An error occurred. Please try again.");
+    try {
+      const loginResponse = await axios.post(
+        `${server}/seller/login-seller`,
+        values,
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json',
+          }
         }
-      })
-      .finally(() => {
-        setLoading(false);
+      );
+  
+      console.log('Login response:', loginResponse.data);
+  
+      const sellerResponse = await axios.get(`${server}/seller/getSeller`, {
+        withCredentials: true,
       });
+  
+      console.log('Seller data:', sellerResponse.data);
+  
+      const seller = sellerResponse.data.seller;
+  
+      if (!seller) {
+        throw new Error("Seller data not available");
+      }
+  
+      const isOnboardingComplete = 
+        seller.shopName &&
+        seller.gstNumber &&
+        seller.addresses?.length > 0 &&
+        seller.bankDetails?.length > 0;
+  
+      if (!isOnboardingComplete) {
+        navigate("/seller/onboarding");
+      } else if (seller.status !== "active") {
+        navigate("/seller/pending-verification");
+      } else {
+        toast.success("Login Success!");
+        navigate("/seller/dashboard");
+      }
+    } catch (err) {
+      console.error("Detailed error:", {
+        message: err.message,
+        response: err.response?.data,
+        status: err.response?.status,
+        headers: err.response?.headers,
+        config: err.config,
+      });
+  
+      let errorMessage = "Login failed. Please try again.";
+      if (err.response) {
+        if (err.response.status === 401) {
+          errorMessage = "Invalid email or password";
+        } else if (err.response.data?.message) {
+          errorMessage = err.response.data.message;
+        }
+      }
+  
+      toast.error(errorMessage);
+    } finally {
+      setLoading(false);
+    }
   };
-
   return (
     <section>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

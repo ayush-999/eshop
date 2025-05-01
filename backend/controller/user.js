@@ -10,7 +10,7 @@ const jwt = require("jsonwebtoken");
 const sendMailForActivationUrl = require("../utils/Emails/sendMailForActivationUrl");
 const sendToken = require("../utils/jwtToken");
 const { isAuthenticated } = require("../middleware/auth");
- 
+
 // Create User
 router.post("/create-user", async (req, res, next) => {
   try {
@@ -89,11 +89,6 @@ router.post(
             new ErrorHandler("User already exists but is not activated", 400)
           );
         }
-        user.isActivated = true;
-        await user.save();
-        return res
-          .status(200)
-          .json({ message: "Account activated successfully" });
       }
 
       if (user) {
@@ -300,7 +295,10 @@ router.post(
       }
 
       // Update the specific address fields
-      user.addresses[addressIndex] = { ...user.addresses[addressIndex].toObject(), ...newAddress };
+      user.addresses[addressIndex] = {
+        ...user.addresses[addressIndex].toObject(),
+        ...newAddress,
+      };
 
       // If the new address is set as default, update other addresses
       if (newAddress.isDefault === 1) {

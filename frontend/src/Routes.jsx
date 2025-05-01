@@ -2,6 +2,7 @@ import HomePage from "./pages/HomePage";
 import SellerLoginPage from "./pages/SellerLoginPage";
 import SellerRegisterPage from "./pages/SellerRegisterPage";
 import ActivationPage from "./pages/ActivationPage";
+import ActivationPageSeller from "./pages/ActivationPageSeller";
 import BestDealsPage from "./pages/BestDealsPage";
 import EventsPage from "./pages/EventsPage";
 import AboutPage from "./pages/AboutPage";
@@ -20,12 +21,16 @@ import ManageWallet from "./components/Route/Payments/ManageWallet";
 import MyOrder from "./components/Route/Order/MyOrder/MyOrder";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
 import CartPage from "./pages/CartPage";
+import SellerOnboarding from "./components/Layout/Seller/SellerOnboarding/SellerOnboarding";
+import PendingVerification from "./components/Layout/Seller/PendingVerification/PendingVerification";
+import SellerDashboard from "./components/Layout/Seller/SellerDashboard/SellerDashboard";
 
 export {
   HomePage,
   SellerLoginPage,
   SellerRegisterPage,
   ActivationPage,
+  ActivationPageSeller,
   BestDealsPage,
   EventsPage,
   AboutPage,
@@ -43,5 +48,8 @@ export {
   ManageWallet,
   MyOrder,
   OrderDetailsPage,
-  CartPage
+  CartPage,
+  SellerOnboarding,
+  PendingVerification,
+  SellerDashboard,
 };

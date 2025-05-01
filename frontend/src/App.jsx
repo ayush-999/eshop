@@ -23,6 +23,10 @@ import {
   Wishlist,
   ProductDetailsPage,
   ShopPage,
+  ActivationPageSeller,
+  SellerOnboarding,
+  PendingVerification,
+  SellerDashboard,
 } from "./Routes";
 // Lazy-loaded Routes
 import {
@@ -48,6 +52,9 @@ const App = () => {
  
   */
   const { loading, isAuthenticated } = useSelector((state) => state.user);
+  const { sellerLoading, isSellerAuthenticated } = useSelector(
+    (state) => state.seller
+  );
 
   useEffect(() => {
     Store.dispatch(loadUser());
@@ -61,12 +68,41 @@ const App = () => {
       ) : (
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<HomePage />} />
             {/* TODO: ise seller"sign-in" aur "sign-up" route bnne ke ise bd badlna hai 👇 */}
             <Route path="/seller-login" element={<SellerLoginPage />} />
             <Route path="/seller-register" element={<SellerRegisterPage />} />
-            
+            <Route
+              path="/seller/activation/:activation_token"
+              element={<ActivationPageSeller />}
+            />
+
+            <Route
+              path="/seller/onboarding"
+              element={
+                <ProtectedRoute isAuthenticated={isSellerAuthenticated}>
+                  <SellerOnboarding />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/seller/pending-verification"
+              element={
+                <ProtectedRoute isAuthenticated={isSellerAuthenticated}>
+                  <PendingVerification />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/seller/dashboard"
+              element={
+                <ProtectedRoute isAuthenticated={isSellerAuthenticated}>
+                  <SellerDashboard />
+                </ProtectedRoute>
+              }
+            />
+
             {/* ------------------------------------------------------------------- */}
+            <Route path="/" element={<HomePage />} />
             <Route
               path="/activation/:activation_token"
               element={<ActivationPage />}
